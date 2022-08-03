@@ -17,4 +17,9 @@ class Category extends Model
         'updated_at' => 'datetime:d/m/Y',
     ];
 
+    public function ads()
+    {
+        return $this->hasMany(Ad::class);
+    }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/search', [SearchController::class, 'index'])->name('searchPage');
+Route::post('/search', [SearchController::class, 'search'])->name('search');
+Route::resource('ad', AdController::class);
 
-Route::get('/search', [SearchController::class, 'index'])->name('search');

@@ -12,16 +12,15 @@
     <link href=" {{ asset('css/my.css') }}" rel="stylesheet">
     <link href=" {{ asset('css/styles.css') }}" rel="stylesheet">
 {{--    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />--}}
-    <script src="{{ asset("js/bootstrap.bundle.min.js") }}"  crossorigin="anonymous"></script>
-    <script src="{{ asset("js/feather.min.js") }}" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+{{--    <script src="{{ asset("js/bootstrap.bundle.min.js") }}"  crossorigin="anonymous"></script>--}}
+{{--    <script src="{{ asset("js/feather.min.js") }}" crossorigin="anonymous"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>--}}
 
     <title> @yield('title')</title>
 </head>
 
 <body>
 @include('component.navigation')
-@include('component.header')
 
 @yield('content')
 

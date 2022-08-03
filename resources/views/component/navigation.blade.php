@@ -14,10 +14,10 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ms-auto navbar-nav-scroll">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#header">Главная</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#details">Поиск</a>
+                    <a class="nav-link" href="{{ route('searchPage') }}">Поиск</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#services">Доставка</a>

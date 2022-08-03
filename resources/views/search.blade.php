@@ -4,29 +4,23 @@
 
 @section('content')
 
-    <form class="container d-flex flex-column w-25">
-
-        <input type="text" placeholder="Наименование" name="name">
-
-        <select name="city">
-            <option>11</option>
-            <option>2</option>
-            <option>33</option>
-            <option>44</option>
-        </select>
-
-        <select name="category">
-            <option>11</option>
-            <option>2</option>
-            <option>33</option>
-            <option>44</option>
-        </select>
-
-        <button type="submit">Поиск</button>
-
-    </form>
-
-    <div>
-
+    <div class="mt-5 mb-5 h-25">
     </div>
+
+    @include('component.searchForm')
+
+    @if (isset($searchResult))
+        <div class="container mt-5">
+            <table class="mt-5 table-bordered">
+                @foreach( $searchResult as $item)
+                    <tr>
+                        <td>{{ $item['id'] }}</td>
+                        <td><a href="{{ route('ad.show', $item['id'])}}"> {{ $item['title'] }}</a></td>
+                        <td>{{ $item['text'] }}</td>
+                        <td>{{ $item->category->title }}</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+    @endif
 @endsection

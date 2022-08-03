@@ -17,7 +17,7 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake('ru_RU')->city(),
+            'name' => fake('ru_RU')->unique()->city(),
             'city_code' => fake('ru_RU')->unique()->postcode(),
         ];
     }
