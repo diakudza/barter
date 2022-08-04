@@ -14,6 +14,7 @@
 <div class="container mt-5">
     <table class="mt-5 table-bordered">
         @foreach( $searchResult as $item)
+
         <tr>
             <td>{{ $item['id'] }}</td>
             <td><a href="{{ route('ad.show', $item['id'])}}"> {{ $item['title'] }}</a></td>

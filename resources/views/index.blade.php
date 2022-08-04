@@ -17,24 +17,27 @@
     </p>
   </div>
 
+  <!-- Блок поиска -->
   <div class="d-flex flex-row justify-content-sm-evenly">
-    <div id="search" class="d-flex flex-column w-50">
-      @include('component.searchForm')
-    </div>
-    <div class="d-flex flex-column w-50">
-      <p>Последние 10 обьявлений</p>
-      <table>
-        @foreach($lastTenAds as $ad)
-        <tr>
-          <td>
-            <a href="{{ route('ad.show', $ad['id']) }}">{{ $ad['title'] }}</a>
-          </td>
-        </tr>
-        @endforeach()
-      </table>
-    </div>
+
+    @include('component.searchForm')
+
   </div>
 
+  <!-- Последние 10 объявлений -->
+  <div class="d-flex flex-column w-50">
+    <h3>Последние 10 обьявлений</h3>
+
+    <div class="products-last__list">
+      @foreach($lastTenAds as $ad)
+      <div class="product-last__item">
+        <a href="{{ route('ad.show', $ad['id']) }}">
+          <h4 class="product__title">{{ $ad['title'] }}</h4>
+        </a>
+      </div>
+      @endforeach()
+    </div>
+  </div>
 </div>
 
 @endsection
