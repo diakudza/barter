@@ -22,20 +22,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#services">Доставка</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Drop</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                        <li><a class="dropdown-item" href="article.html">Article Details</a></li>
-                        <li><div class="dropdown-divider"></div></li>
-                        <li><a class="dropdown-item" href="terms.html">Terms Conditions</a></li>
-                        <li><div class="dropdown-divider"></div></li>
-                        <li><a class="dropdown-item" href="privacy.html">Privacy Policy</a></li>
-                    </ul>
-                </li>
+                @if(auth()->user())
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ route('logout') }}">{{ auth()->user()->name }}</a>
+                    </li>
+                @endif
             </ul>
+            @if(auth()->guest())
             <span class="nav-item">
-                    <a class="btn-outline-sm" href="#contact">Contact us</a>
-                </span>
+                    <a class="btn-outline-sm" href="{{ route('loginPage') }}">login</a>
+            </span>
+            @endif
         </div> <!-- end of navbar-collapse -->
     </div> <!-- end of container -->
 </nav>

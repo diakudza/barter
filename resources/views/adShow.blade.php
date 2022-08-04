@@ -24,10 +24,12 @@
             </div>
             <p>Описание: {{ $ad['text'] }}</p>
         </div>
+        @if(auth()->user())
         <div>
             <button>Хочу это</button>
             <button>Добавить В избранное</button>
             <button>Написать автору</button>
         </div>
+        @endif
     </div>
 @endsection
