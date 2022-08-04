@@ -21,6 +21,7 @@
   <!-- Блок поиска -->
   <div class="d-flex flex-row justify-content-sm-evenly">
 
+
     @include('components.searchForm')
 
   </div>
@@ -38,6 +39,7 @@
       </div>
       @endforeach()
     </div>
+
   </div>
 
 </div>
