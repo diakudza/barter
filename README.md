@@ -16,7 +16,6 @@ composer install
 ```
 Посля взятия апдейта , что бы верно отображался фронт, т оего надо персобрать 
 ````
-
 ./vendor/bin/sail npm install (если есть новые пакеты)
 ./vendor/bin/sail npm run dev
 ````
