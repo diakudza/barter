@@ -1,11 +1,11 @@
-Поднимал через sail
+Поднимаем через sail
 ```
+composer install
 ./vendor/bin/sail up
-./vendor/bin/sail composer install
 ./vendor/bin/sail npm install
 ```
 
-Выполнить миграции
+Выполнить миграции или использовать дамп
 ```
 ./vendor/bin/sail artisan migrate
 ```
