@@ -1,13 +1,13 @@
 .mydropform {
-    left: unset!important;
+    left: unset !important;
     width: 400px;
-    right:0;
+    right: 0;
     top: 56px;
 }
 .mydropformmenu {
-    left: unset!important;
+    left: unset !important;
     width: 200px;
-    right:0;
+    right: 0;
     top: 56px;
 }
 .mainborder {

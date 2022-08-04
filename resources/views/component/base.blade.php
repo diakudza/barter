@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="TemplateMo">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <!-- Bootstrap core CSS -->
-    <link href=" {{ asset('css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
-    <link href=" {{ asset('css/my.css') }}" rel="stylesheet">
-    <link href=" {{ asset('css/styles.css') }}" rel="stylesheet">
-{{--    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />--}}
-{{--    <script src="{{ asset("js/bootstrap.bundle.min.js") }}"  crossorigin="anonymous"></script>--}}
-{{--    <script src="{{ asset("js/feather.min.js") }}" crossorigin="anonymous"></script>--}}
-{{--    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>--}}
+    <meta name="robots" content="index, follow" />
+    <meta name="google" content="notranslate" />
+    <meta name="description" content="Не нужные товары найдут новых хозяев">
+    <meta name="keywords" content="обмен, бартер" />
+    <!-- <link href=" {{ asset('css/styles.css') }}" rel="stylesheet"> -->
+    @vite(['resources/css/style.scss'])
+
 
     <title> @yield('title')</title>
 </head>
 
 <body>
-@include('component.navigation')
 
-@yield('content')
+    @include('component.navigation')
 
-@include('component.footer')
+    @yield('content')
 
+    <x-footer></x-footer>
+
+    <!-- <script src="{{ asset('js/app1.js') }}"></script> -->
+    @vite(['resources/js/app.js'])
 </body>
+
 </html>

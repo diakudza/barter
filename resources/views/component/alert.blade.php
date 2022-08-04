@@ -1,25 +1,25 @@
 <div class="container mt-5">
-@if (session('success'))
+    @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
-@endif
+    @endif
 
-@if (session('fail'))
+    @if (session('fail'))
     <div class="alert alert-danger">
         {{ session('fail') }}
     </div>
-@endif
+    @endif
 
-@if ($errors->any())
+    @if ($errors->any())
 
     <div class="alert alert-danger mt-5">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
 
     @endif
-    </div>
+</div>
