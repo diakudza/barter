@@ -6,6 +6,7 @@
 
 @include('components.header')
 
+
 <div class="container">
 
   <div id="howitwork" class="mb-5">
@@ -38,6 +39,7 @@
       @endforeach()
     </div>
   </div>
+
 </div>
 
 @endsection
