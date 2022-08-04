@@ -1,0 +1,22 @@
+name: CI
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "login" ]
+  pull_request:
+    branches: [ "login" ]
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: srv12.host-food.ru
+        username: h163155
+        password: ${{ secrets.MY_PASS }}
+        server-dir: /www/barter.diakov.xyz/
