@@ -15,7 +15,10 @@ class MainController extends Controller
             'categories' => $caterory->orderBy('title', 'asc')->get(),
             'cities' => $city->orderBy('name', 'asc')->get(),
             'lastTenAds' => $ad->orderby('created_at', 'desc')->limit(10)->get(),
-            'barter_types' => ['barter', 'free'],
+            'barter_types' => [
+                ['barter', 'Обмен'],
+                ['free','Даров']
+            ],
         ]);
     }
 }
