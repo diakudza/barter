@@ -21,4 +21,17 @@ class MainController extends Controller
             ],
         ]);
     }
+
+    public function product(Category $caterory, City $city, Ad $ad)
+    {
+        return view('product', [
+            'categories' => $caterory->orderBy('title', 'asc')->get(),
+            'cities' => $city->orderBy('name', 'asc')->get(),
+            'lastTenAds' => $ad->orderby('created_at', 'desc')->limit(10)->get(),
+            'barter_types' => [
+                ['barter', 'Обмен'],
+                ['free','Даров']
+            ],
+        ]);
+    }
 }
