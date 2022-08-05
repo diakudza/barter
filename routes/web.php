@@ -4,6 +4,7 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,10 @@ Route::resource('ad', AdController::class);
 
 Route::group(['middleware'=>'auth'],function (){
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
+    Route::controller(UserProfileController::class)->group(function(){
+        Route::get('/personal', 'index')->name('user.profile');
+        Route::get('/add', 'addOffer')->name('user.profile.addOffer');
+    });
 });
 
 Route::group(['middleware'=>'guest'],function () {

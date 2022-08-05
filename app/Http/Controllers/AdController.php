@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Ads\StoreRequest;
 use App\Models\Ad;
 use App\Models\Category;
 use App\Models\City;
@@ -35,9 +36,9 @@ class AdController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**
