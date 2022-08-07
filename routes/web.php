@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     });
 });
 
-Route::group(['middleware' => 'guest'], function () { //for not authorized users
+Route::group(['middleware'=>'guest'], function () {
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
     Route::post('/registration', [UserController::class, 'registration'])->name('registration');
     Route::get('/login', [UserController::class, 'index'])->name('loginPage');
