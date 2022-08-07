@@ -10,6 +10,8 @@ class Ad extends Model
     use HasFactory;
     protected $fillable = ['title', 'text', 'user_id', 'category_id', 'city_id', 'barter_type', 'image'];
 
+    protected $fillable = [ 'status', 'category_id'];
+
     public function Category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');

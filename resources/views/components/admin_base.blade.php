@@ -11,13 +11,14 @@
     <!-- <link href=" {{ asset('css/styles.css') }}" rel="stylesheet"> -->
     @vite(['resources/css/style.scss'])
 
-
     <title> @yield('title')</title>
 </head>
 
 <body>
 
-    @include('component.navigation')
+    @include('components.admin_navigation')
+
+    @include('components.alert')
 
     @yield('content')
 

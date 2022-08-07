@@ -1,4 +1,4 @@
-@extends('component.base')
+@extends('components.base')
 
 @section('title',"Поиск")
 
@@ -7,7 +7,7 @@
     <div class="mt-5 mb-5 h-25">
     </div>
 
-    @include('component.searchForm')
+    @include('components.searchForm')
 
     @if (isset($searchResult))
 

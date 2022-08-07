@@ -22,4 +22,9 @@ class Category extends Model
         return $this->hasMany(Ad::class);
     }
 
+    public function getAdsCount()
+    {
+        return $this->ads()->count();
+    }
+
 }
