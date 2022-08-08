@@ -32,8 +32,8 @@ Route::resource('ad', AdController::class);
 Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     Route::controller(UserProfileController::class)->group(function () {
-        Route::get('/personal', 'index')->name('user.profile');
-        Route::get('/add', 'addOffer')->name('user.profile.addOffer');
+        Route::get('/personal', 'index')->name('user.profile');// Personal area - main page
+        Route::get('/createAd', 'createAd')->name('user.profile.createAd');// Personal area - create ad
     });
 });
 
