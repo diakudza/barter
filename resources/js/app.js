@@ -1,3 +1,5 @@
 import "./bootstrap";
+// import { headerJS } from "./navbar";
 
-console.log("from img");
+// headerJS();
+// console.log("app");
