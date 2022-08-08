@@ -14,7 +14,7 @@ class Ad extends Model
         'barter_type', 'image',  'status'
         ];
 
-    protected $fillable = [ 'status', 'category_id'];
+    protected $fillable = [ 'status', 'category_id', 'blocked_message'];
 
     public function Category()
     {
