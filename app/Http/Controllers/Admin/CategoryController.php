@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Category extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class Category extends Controller
      */
     public function index(\App\Models\Category $category)
     {
-        return view('Admin.Category', ['categories' => $category->all()]);
+        return view('Admin.Categories', ['categories' => $category->all()]);
     }
 
     /**

@@ -16,6 +16,7 @@
             <td>Имя</td>
             <td>Объявлений</td>
             <td>Действия</td>
+
             </thead>
             @foreach( $categories as $category)
                 <tr>

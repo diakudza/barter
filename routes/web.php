@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdController;
-use App\Http\Controllers\Admin\Category;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
+use App\Http\Controllers\Admin\CommentController as AdminCommentController;
+use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\UserController as  AdminUserController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserProfileController;
@@ -41,8 +44,10 @@ Route::group(['middleware'=>'guest'],function () { //for not authorized users
 });
 
 Route::group(['prefix'=>'admin','middleware'=>'isadmin'],function (){ //for admin users (and moderators)
-    Route::resource('category', Category::class);
+    Route::resource('category', CategoryController::class);
     Route::resource('ad', AdminAdController::class);
-
+    Route::resource('user', AdminUserController::class);
+    Route::resource('role', UserRoleController::class);
+    Route::resource('comment', AdminCommentController::class);
 
 });

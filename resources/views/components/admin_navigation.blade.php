@@ -6,12 +6,12 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('ad.index') }}">Объявления</a>
                     <a class="nav-link" aria-current="page" href="{{ route('category.index') }}">Категории</a>
-                    <a class="nav-link" aria-current="page" href="{{ route('home') }}">Комментарии</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('comment.index') }}">Комментарии</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('searchPage') }}">Пользователи</a>
-                    <a class="nav-link" href="{{ route('searchPage') }}">Роли</a>
+                    <a class="nav-link" href="{{ route('user.index') }}">Пользователи</a>
+                    <a class="nav-link" href="{{ route('role.index') }}">Роли</a>
                 </li>
                 @if(auth()->user())
                     <li class="nav-item">

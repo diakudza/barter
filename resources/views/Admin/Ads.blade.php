@@ -44,6 +44,15 @@
                             </select>
                             <button class="btn btn-success" type="submit">Изменить</button>
                         </form>
+
+                        @if ($ad->Status->title == 'blocked')
+                            <form action="{{ route('ad.update', $ad['id']) }}" method="post">
+                                @method('PUT')
+                                @csrf
+                                <input type="text" name="blocked_message" value="{{$ad['blocked_message']}}" >
+                                <Button class="btn btn-danger">Обновить</Button>
+                            </form>
+                        @endif
                     </td>
 
                     <td class="d-flex flex-row">
@@ -53,6 +62,7 @@
                             <Button class="btn btn-danger">Удалить</Button>
                         </form>
                     </td>
+
                 </tr>
             @endforeach
         </table>

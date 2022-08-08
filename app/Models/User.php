@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -47,6 +48,15 @@ class User extends Authenticatable
         return $this->hasMany(Ad::class);
     }
 
+    public function getRole()
+    {
+        return $this->hasOne(UserRole::class, 'id','role_id');
+    }
+
+    public function getByRole($role_id)
+    {
+        return $this->where('role_id',$role_id)->get();
+    }
 //    public function comments()
 //    {
 //        return $this->hasMany(Comment::class);
