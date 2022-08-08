@@ -10,7 +10,7 @@
 <div class="container">
     <div>
         <div style="font-size: x-large" class="mb-3">{{ $ad->title }}</div>
-        <img src="{{ asset("storage/images/1.png") }}" alt="image">
+        <img src="{{ Storage::url($ad->image) }}" alt="image">
         <div class="d-flex flex-row justify-content-sm-between">
             <div>
                 <p>Категория: {{ $ad->category->title }} в {{ $ad->city->name }}</p>
