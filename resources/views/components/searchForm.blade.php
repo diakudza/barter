@@ -24,7 +24,7 @@
         </div>
 
         <div class="d-flex justify-content-between ">
-            <div class="form-group w-50">
+            <div class="form-group w">
                 <select class="form-control-input" name="category">
                     <option value="" selected>категория не выбрана</option>
                     @foreach($categories as $category)
