@@ -89,8 +89,9 @@ class UserRoleController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserRole $userRole)
+    public function destroy(UserRole $userRole, $id)
     {
+        $userRole = $userRole->find($id);
         $userRole->delete();
         return redirect()->route('role.index')->with('success', "Роль удалена");
     }

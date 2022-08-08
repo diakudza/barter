@@ -17,7 +17,7 @@
             @foreach( $ads as $ad)
                 <tr>
                     <td class="">{{ $ad['id'] }}</td>
-                    <td> {{ $ad['title'] }}</td>
+                    <td><a href="{{ route('ad.show', $ad['id']) }}"> {{ $ad['title'] }}</td>
                     <td>{{ $ad['text'] }}</td>
                     <td>
                         <form class="form-group" action="{{ route('adUpdate', $ad['id'])}}" method="post">

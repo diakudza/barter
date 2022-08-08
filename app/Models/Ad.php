@@ -11,7 +11,7 @@ class Ad extends Model
 
     protected $fillable = [
         'title', 'text', 'user_id', 'category_id', 'city_id',
-        'barter_type', 'image',  'status'
+        'barter_type', 'image', 'status'
         ];
 
     public function Category()

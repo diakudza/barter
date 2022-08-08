@@ -14,7 +14,7 @@
                 <p>Текс обьявления: {{ $ad->text }} </p>
             </div>
             <div>
-                <img src="{{$ad->images }}" alt="Картинка">
+                <img src="{{ asset('storage/'.$ad->image) }}" height="400" alt="Картинка">
             </div>
         </div>
 
