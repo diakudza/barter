@@ -4,9 +4,8 @@
 
 @section('content')
 
-<div class="mt-5 mb-5 h-25">
+<div class="mt-5 mb-5">
 </div>
-
 
 @include('components.searchForm')
 
@@ -26,7 +25,6 @@
                 <p>в архиве</p>
                 @endif
             </td>
-
         </tr>
         @endforeach
     </table>

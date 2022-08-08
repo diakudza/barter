@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserRole;
+use App\Models\UserStatus;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,11 +15,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, UserRole $roles)
+    public function index(User $user, UserRole $roles, UserStatus $statuses)
     {
         return view('Admin.Users', [
             'users' => $user->paginate(20),
-            'roles' => $roles->all()
+            'roles' => $roles->all(),
+            'statuses' => $statuses->all()
         ]);
     }
 

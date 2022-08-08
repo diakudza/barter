@@ -60,6 +60,10 @@ class AdController extends Controller
      */
     public function show(Ad $ad)
     {
+        if ($ad->status == '2') {
+            return abort(404);
+        }
+
         return view('adShow', [
             'ad' => $ad
         ]);
