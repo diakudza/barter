@@ -1,39 +1,50 @@
 @extends('components.base')
 
-@section('title',"Просмотр обьявления")
+@section('title', 'Просмотр обьявления')
 
 @section('content')
 
     <div class="mt-5 mb-5">
     </div>
 
-
     <div class="container">
         <div>
-            <div class="d-flex">
+            <div style="font-size: x-large" class="mb-3">{{ $ad->title }}</div>
+            <img src="{{ Storage::url($ad->image) }}" alt="image">
+            <div class="d-flex flex-row justify-content-sm-between">
                 <div>
-                    <div style="font-size: x-large" class="mb-3">{{ $ad->title }}</div>
-                    <div >
-                        <div>
-                            <p>Категория: {{ $ad->category->title }} в {{ $ad->city->name }}</p>
-                            <p>Автор: {{ $ad->user->name }}</p>
-                            <p>Дата создания: {{ $ad['created_at'] }}</p>
-                        </div>
-                        <p>Описание: {{ $ad['text'] }}</p>
-                    </div>
+                    <p>Категория: {{ $ad->category->title }} в {{ $ad->city->name }}</p>
+                    <p>Автор: {{ $ad->user->name }}</p>
+                    <p>Дата создания: {{ $ad['created_at'] }}</p>
                 </div>
-                <div>
-                    <img src="{{ asset('storage/'.$ad->image) }}" height="400" alt="image">
-                </div>
+                <p>Описание: {{ $ad['text'] }}</p>
             </div>
-            @if(auth()->user())
+            @if (auth()->user())
                 <div>
-                    <button class="btn btn-success" >Хочу это</button>
-                    <button class="btn btn-success">Добавить В избранное</button>
-                    <button class="btn btn-info">Написать автору</button>
-                </div>
-            @endif
+                    <div class="d-flex">
+                        <div>
+                            <div style="font-size: x-large" class="mb-3">{{ $ad->title }}</div>
+                            <div>
+                                <div>
+                                    <p>Категория: {{ $ad->category->title }} в {{ $ad->city->name }}</p>
+                                    <p>Автор: {{ $ad->user->name }}</p>
+                                    <p>Дата создания: {{ $ad['created_at'] }}</p>
+                                </div>
+                                <p>Описание: {{ $ad['text'] }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="{{ asset('storage/' . $ad->image) }}" height="400" alt="image">
+                        </div>
+                    </div>
+                    @if (auth()->user())
+                        <div>
+                            <button class="btn btn-success">Хочу это</button>
+                            <button class="btn btn-success">Добавить В избранное</button>
+                            <button class="btn btn-info">Написать автору</button>
+                        </div>
+                    @endif
 
+                </div>
         </div>
-    </div>
-@endsection
+    @endsection
