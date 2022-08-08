@@ -4,9 +4,9 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ms-auto navbar-nav-scroll">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ route('ad.index') }}">Объявления</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('adIndex') }}">Объявления</a>
                     <a class="nav-link" aria-current="page" href="{{ route('category.index') }}">Категории</a>
-                    <a class="nav-link" aria-current="page" href="{{ route('comment.index') }}">Комментарии</a>
+                    <a class="nav-link" aria-current="page" href="{{ route('comment.index') }}"><s>Комментарии</s></a>
                 </li>
 
                 <li class="nav-item">

@@ -9,7 +9,7 @@ class UserRole extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['role_id', 'access_type'];
+    protected $fillable = ['role', 'access_type'];
 
     public function getUsers()
     {

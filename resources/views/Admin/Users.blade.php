@@ -17,7 +17,7 @@
             @foreach( $users as $user)
                 <tr>
                     <td class="">{{ $user['id'] }}</td>
-                    <td> {{ $user['name'] }} </td>
+                    <td><a href="{{ route('user.show', $user['id']) }}"> {{ $user['name'] }}</a> </td>
                     <td> {{ $user['email'] }} </td>
                     <td>
                         <form class="form-group" action="{{ route('user.update', $user['id'])}}" method="post">

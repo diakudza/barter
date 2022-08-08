@@ -20,7 +20,7 @@
                     <td> {{ $ad['title'] }}</td>
                     <td>{{ $ad['text'] }}</td>
                     <td>
-                        <form class="form-group" action="{{ route('ad.update', $ad['id'])}}" method="post">
+                        <form class="form-group" action="{{ route('adUpdate', $ad['id'])}}" method="post">
                             @csrf
                             @method('PUT')
                             <select name="category_id" class="form-select">
@@ -33,7 +33,7 @@
                         </form>
                     </td>
                     <td>
-                        <form class="form-group" action="{{ route('ad.update', $ad['id'])}}" method="post">
+                        <form class="form-group" action="{{ route('adUpdate', $ad['id'])}}" method="post">
                             @csrf
                             @method('PUT')
                             <select name="status" class="form-select">
@@ -46,7 +46,7 @@
                         </form>
 
                         @if ($ad->Status->title == 'blocked')
-                            <form action="{{ route('ad.update', $ad['id']) }}" method="post">
+                            <form action="{{ route('adUpdate', $ad['id']) }}" method="post">
                                 @method('PUT')
                                 @csrf
                                 <input type="text" name="blocked_message" value="{{$ad['blocked_message']}}" >
@@ -56,7 +56,7 @@
                     </td>
 
                     <td class="d-flex flex-row">
-                        <form action="{{ route('ad.destroy', $ad['id']) }}" method="post">
+                        <form action="{{ route('adDestroy', $ad['id']) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <Button class="btn btn-danger">Удалить</Button>

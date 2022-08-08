@@ -19,9 +19,12 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('searchPage') }}">Поиск</a>
         </li>
+        @if ( in_array(auth()->user()->role_id , [2,3,4]))
         <li class="nav-item">
-          <a class="nav-link" href="#services">Доставка</a>
+          <a class="nav-link" href="{{route('adminmain')}}">Панель упраления сайтом</a>
         </li>
+        @endif
+
         @if(auth()->user())
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{{ route('logout') }}">{{ auth()->user()->name }}</a>

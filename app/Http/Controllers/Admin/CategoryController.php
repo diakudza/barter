@@ -59,7 +59,7 @@ class CategoryController extends Controller
      */
     public function edit(\App\Models\Category $category)
     {
-        return view('Admin.Category', [
+        return view('Admin.Categories', [
             'categories' => $category->all(),
             'editedCategory' => $category->id,
             'route' => route('category.update', $category->id),

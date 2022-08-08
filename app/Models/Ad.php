@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Ad extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'text', 'user_id', 'category_id', 'city_id', 'barter_type', 'image'];
 
-    protected $fillable = [ 'status', 'category_id', 'blocked_message'];
+    protected $fillable = [
+        'title', 'text', 'user_id', 'category_id', 'city_id',
+        'barter_type', 'image',  'status'
+        ];
 
     public function Category()
     {

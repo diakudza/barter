@@ -42,9 +42,11 @@ class UserRoleController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, UserRole $userRole)
     {
-        //
+        $userRole->fill($request->all());
+        $userRole->save();
+        return redirect()->back()->with('success', "Добавлена роль");
     }
 
     /**
@@ -87,8 +89,9 @@ class UserRoleController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserRole $userRole)
     {
-        //
+        $userRole->delete();
+        return redirect()->route('role.index')->with('success', "Роль удалена");
     }
 }
