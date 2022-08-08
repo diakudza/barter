@@ -1,10 +1,10 @@
-@extends('component.base')
+@extends('components.base')
 
 @section('title',"Главная")
 
 @section('content')
 
-@include('component.header')
+@include('components.header')
 
 <div class="container">
 
@@ -20,7 +20,7 @@
   <!-- Блок поиска -->
   <div class="d-flex flex-row justify-content-sm-evenly">
 
-    @include('component.searchForm')
+    @include('components.searchForm')
 
   </div>
 

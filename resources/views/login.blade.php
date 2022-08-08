@@ -1,4 +1,4 @@
-@extends('component.base')
+@extends('components.base')
 
 @section('title',"Логин")
 

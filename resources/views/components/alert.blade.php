@@ -1,12 +1,12 @@
-<div class="container mt-5">
+<div class="container mt-5 pt-5">
     @if (session('success'))
-    <div class="alert alert-success">
+    <div class="mt-5 alert alert-success">
         {{ session('success') }}
     </div>
     @endif
 
     @if (session('fail'))
-    <div class="alert alert-danger">
+    <div class="mt-5 alert alert-danger">
         {{ session('fail') }}
     </div>
     @endif
