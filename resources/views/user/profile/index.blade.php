@@ -8,7 +8,7 @@
 
     <ul>
         <li>
-            <a href="{{route ('user.profile.addOffer')}}">Новое объявление</a>
+            <a href="{{route ('user.profile.createAd')}}">Новое объявление</a>
         </li>
         <li>
             <a href="#">Мои обьявления</a>
