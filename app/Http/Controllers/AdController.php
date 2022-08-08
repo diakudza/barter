@@ -46,9 +46,9 @@ class AdController extends Controller
         }
         $ad = new Ad($validated);
         if ($ad->save()) {
-            return redirect()->route('user.profile');
+            return redirect()->route('searchPage')->with('success', 'Объявление успешно добавлено!');
         } else {
-            return back();
+            return back()->with('error');
         }
     }
 

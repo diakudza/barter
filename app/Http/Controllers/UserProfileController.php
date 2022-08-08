@@ -13,9 +13,9 @@ class UserProfileController extends Controller
         return view('user.profile.index');
     }
 
-    public function addOffer(QueryBuilderCategories $categoriesList,
+    public function createAd(QueryBuilderCategories $categoriesList,
     QueryBuilderCities $citiesList) {
-        return view('user.profile.add', [
+        return view('user.profile.createAd', [
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name'])
         ]);
