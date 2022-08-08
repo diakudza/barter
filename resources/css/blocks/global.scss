@@ -5,6 +5,20 @@
 }
 
 body {
-    font-family: Gilroy;
+    font-family: Gilroy, sans-serif;
     font-style: normal;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
 }

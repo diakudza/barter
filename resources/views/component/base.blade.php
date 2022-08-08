@@ -17,7 +17,9 @@
 
 <body>
 
-    @include('component.navigation')
+
+
+    <x-nav></x-nav>
 
     @yield('content')
 

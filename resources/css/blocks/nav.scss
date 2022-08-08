@@ -1,0 +1,202 @@
+// .nav-menu {
+//     position: fixed;
+//     top: 0;
+//     z-index: 100;
+//     width: 100%;
+
+//     background-color: $color-ligthGrey;
+//     padding: 31px 0;
+//     border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+
+//     &__container {
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//     }
+
+//     &__logo {
+//         flex-grow: 1;
+//     }
+
+//     &__content {
+//         flex-grow: 2;
+//         margin-left: 20px;
+
+//         display: flex;
+//         justify-content: space-between;
+
+//         @media (max-width: 990.98px) {
+//             position: absolute;
+//             z-index: 100;
+
+//             left: 0;
+//             bottom: 0;
+//             right: 0;
+
+//             display: flex;
+//             flex-direction: column;
+//             margin: 0;
+
+//             background-color: white;
+//         }
+//     }
+
+//     &__list {
+//         display: flex;
+//         align-items: center;
+
+//         @media (max-width: 990.98px) {
+//             flex-direction: column;
+//             align-items: initial;
+
+//             margin-top: 32px;
+//         }
+//     }
+
+//     &__profile {
+//         display: flex;
+
+//         @media (max-width: 990.98px) {
+//             justify-content: center;
+
+//             padding: 16px 15px 32px;
+//             background: rgba(255, 255, 255, 0.9);
+//             box-shadow: 0px -24px 150px rgb(0 0 0 / 5%);
+//         }
+//     }
+
+//     &__item {
+//         position: relative;
+
+//         &.active {
+//         }
+
+//         &:not(:last-child) {
+//             margin-right: 32px;
+//         }
+
+//         @media (max-width: 990.98px) {
+//             padding: 16px 32px;
+
+//             &:not(:last-child) {
+//                 margin-right: 0px;
+//             }
+
+//             &.active {
+//                 font-weight: 600;
+//                 color: blue;
+//                 border-left: 4px solid blue;
+//             }
+//         }
+//     }
+
+//     &__link {
+//         font-weight: 500;
+//         font-size: 16px;
+//         line-height: 100%;
+//         color: $color-black50;
+//         transition: all 0.4s ease-in;
+
+//         // &.active {
+//         //     font-weight: 600;
+//         //     color: $color-black;
+//         // }
+
+//         &:hover {
+//             text-decoration: none;
+//         }
+
+//         @media (max-width: 990.98px) {
+//             font-size: 32px;
+//             letter-spacing: -0.03em;
+//         }
+//     }
+
+//     &__btn {
+//         &:not(:last-child) {
+//             margin-right: 12px;
+//         }
+//     }
+// }
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+
+    background-color: white;
+    padding: 31px 0;
+    border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__body {
+        display: flex;
+        justify-content: flex-end;
+
+        width: 100%;
+
+        @media (max-width: 990.98px) {
+            position: absolute;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            background-color: red;
+        }
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+
+        flex-basis: 35%;
+
+        padding: 0 30px;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-right: 32px;
+        }
+
+        &.active .nav-menu__link {
+            font-weight: 600;
+            color: $color-black;
+        }
+    }
+
+    &__link {
+        font-family: "Gilroy";
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 100%;
+
+        color: $color-black40;
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+}
