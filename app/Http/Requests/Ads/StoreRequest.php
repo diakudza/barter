@@ -11,7 +11,7 @@ class StoreRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize():bool
+    public function authorize(): bool
     {
         return true;
     }
@@ -26,9 +26,10 @@ class StoreRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'min:3', 'max:255'],
             'text' => ['required', 'string', 'min:3'],
-            'categories' => ['required', 'array', 'exists:categories,id'],
-            'cities' => ['required', 'array', 'exists:cities,id'],
-            'barter_type' => ['required', 'in:free,barter']
+            'category_id' => ['required', 'integer', 'exists:categories,id'],
+            'city_id' => ['required', 'integer', 'exists:cities,id'],
+            'barter_type' => ['required', 'in:free,barter'],
+            'user_id' => ['required', 'integer', 'exists:users,id']
         ];
     }
 }
