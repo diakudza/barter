@@ -26,7 +26,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ])) {
-            return redirect()->home()->with(['success' => 'Привет!']);
+            return redirect()->route('user.profile');#home()->with(['success' => 'Привет!']);
         }
         return redirect()->to(route('loginPage'))->with(['fail' => 'Не верная пара!']);
     }
@@ -40,7 +40,7 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         Auth::login($user);
-        return redirect()->home()->with('success', "User $request->input('name') was register!");
+        return redirect()->route('user.profile');#home()->with('success', "User $request->input('name') was register!");
     }
 
     public function logout(Request $request)
