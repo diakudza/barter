@@ -26,11 +26,13 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ])) {
+
             if (Auth::user()->status_id == 2) {
                 Auth::logout();
                 return redirect()->route('home')
                     ->with('fail' , 'Данный пользователь не может войти в системы, так-как был заблокирован!');
             }
+
             return redirect()->route('searchPage')->with(['success' => 'Привет, Вы успешно вошли в систему!']);
         }
         return redirect()->to(route('loginPage'))->with(['fail' => 'Неверная пара логин\пароль!']);

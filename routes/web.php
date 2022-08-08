@@ -30,6 +30,15 @@ Route::post('/search', [SearchController::class, 'search'])->name('search');
 Route::resource('ad', AdController::class);
 
 
+Route::group(['middleware' => 'auth'], function () {  //for authorized users
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::controller(UserProfileController::class)->group(function () {
+        Route::get('/personal', 'index')->name('user.profile');// Personal area - main page
+        Route::get('/createAd', 'createAd')->name('user.profile.createAd');// Personal area - create ad
+    });
+});
+
+
 Route::group(['middleware' => 'guest'], function () { //for not authorized users
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
     Route::post('/registration', [UserController::class, 'registration'])->name('registration');
