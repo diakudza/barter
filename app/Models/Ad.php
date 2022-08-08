@@ -24,4 +24,10 @@ class Ad extends Model
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
+
+    public function Status()
+    {
+        return $this->belongsTo(AdStatus::class,'status','id');
+    }
+
 }
