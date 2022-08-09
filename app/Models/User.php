@@ -63,8 +63,15 @@ class User extends Authenticatable
     {
         return $this->where('role_id',$role_id)->get();
     }
-//    public function comments()
-//    {
-//        return $this->hasMany(Comment::class);
-//    }
+
+    public function wishes()
+    {
+        return $this->belongsToMany(Ad::class);
+    }
+
+    public function favoriteAds()
+    {
+        return $this->belongsToMany(Ad::class, 'ad_user_favorites');
+    }
+
 }
