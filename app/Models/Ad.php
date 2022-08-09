@@ -11,8 +11,8 @@ class Ad extends Model
 
     protected $fillable = [
         'title', 'text', 'user_id', 'category_id', 'city_id',
-        'barter_type', 'image', 'status'
-        ];
+        'barter_type', 'image', 'status_id'
+    ];
 
     public function Category()
     {
@@ -31,7 +31,6 @@ class Ad extends Model
 
     public function Status()
     {
-        return $this->belongsTo(AdStatus::class,'status_id','id');
+        return $this->belongsTo(AdStatus::class, 'status_id', 'id');
     }
-
 }

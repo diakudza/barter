@@ -42,7 +42,7 @@ class AdController extends Controller
      */
     public function store(StoreRequest $request, UploadService $uploadService)
     {
-        if(!Auth::check()) {
+        if (!Auth::check()) {
             return abort(404);
         }
         $validated = $request->safe()->all();
@@ -94,8 +94,18 @@ class AdController extends Controller
      */
     public function update(UpdateRequest $request, Ad $ad, UploadService $uploadService)
     {
-        $validated = $request->safe()->all();
-        dd($validated);
+        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type']);
+        if ($request->hasFile('image')) {
+            if ($uploadService->removeImage($ad->image)) {
+                $validated['image'] = $uploadService->uploadImage($request->file('image'));
+            }
+        }
+        $ad = $ad->fill($validated);
+        if ($ad->save()) {
+            return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно обновлено!');
+        } else {
+            return back()->with('fail', 'Ошибка обновления объявления!');
+        }
     }
 
     /**
