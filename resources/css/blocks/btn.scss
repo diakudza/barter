@@ -58,7 +58,7 @@
         & .line {
             display: block;
 
-            width: 13px;
+            width: 14px;
             height: 1px;
             background-color: $color-black;
             transition: all 0.4s ease-in-out;
@@ -68,9 +68,22 @@
             }
 
             @media (max-width: 990.98px) {
-                // & .show {
-                // }
+                &.active:nth-child(1) {
+                    transform: rotate(45deg);
+                }
+
+                &.active:nth-child(2) {
+                    transform: rotate(-45deg);
+                }
             }
+        }
+
+        &.active .line:nth-child(1) {
+            transform: translateY(3px) rotate(45deg);
+        }
+
+        &.active .line:nth-child(2) {
+            transform: translateY(-5px) rotate(-45deg);
         }
 
         &:hover {
@@ -91,3 +104,9 @@
         text-decoration: none;
     }
 }
+
+// 1
+// transform: translateY(3px) rotate(45deg);
+
+// 2
+// transform: translateY(-5px) rotate(-45deg);

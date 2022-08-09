@@ -1,14 +1,19 @@
 export const headerJS = () => {
-    const heighthNavbar = document.getElementById("navbar").offsetHeight;
-    const navMenuContent = document.querySelector(".nav-menu__content");
+    const burgerBtn = document.querySelector(".btn-toggel");
+    const navMenu = document.querySelector(".nav-menu__body");
 
-    window.addEventListener("resize", (e) => {
-        const windowSize = window.outerWidth;
+    const profileBody = document.querySelector(".nav-profile__body");
 
-        if (windowSize < 991) {
-            navMenuContent.style.cssText = `top: ${heighthNavbar}px; height: calc(100vh - ${heighthNavbar}px);`;
-        } else {
-            navMenuContent.style.cssText = `top: initial; height: initial;`;
+    document.addEventListener("click", (e) => {
+        const target = e.target;
+
+        if (target.closest(".btn-toggel")) {
+            burgerBtn.classList.toggle("active");
+            navMenu.classList.toggle("show");
+        }
+
+        if (target.closest(".nav-profile__avatar")) {
+            profileBody.classList.toggle("show");
         }
     });
 };

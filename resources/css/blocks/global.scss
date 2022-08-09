@@ -12,6 +12,10 @@ body {
 a {
     display: block;
     text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 li {
@@ -21,4 +25,8 @@ li {
 ul {
     margin: 0;
     padding: 0;
+}
+
+main {
+    margin-top: 150px;
 }

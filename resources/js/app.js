@@ -1,5 +1,5 @@
 import "./bootstrap";
-// import { headerJS } from "./navbar";
+import { headerJS } from "./navbar";
 
-// headerJS();
+headerJS();
 // console.log("app");
