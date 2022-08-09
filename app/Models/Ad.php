@@ -31,7 +31,7 @@ class Ad extends Model
 
     public function Status()
     {
-        return $this->belongsTo(AdStatus::class,'status','id');
+        return $this->belongsTo(AdStatus::class,'status_id','id');
     }
 
 }

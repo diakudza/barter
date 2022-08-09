@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Ads\StoreRequest;
+use App\Http\Requests\Ads\UpdateRequest;
 use App\Models\Ad;
 use App\Models\Category;
 use App\Models\City;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
 {
@@ -40,6 +42,9 @@ class AdController extends Controller
      */
     public function store(StoreRequest $request, UploadService $uploadService)
     {
+        if(!Auth::check()) {
+            return abort(404);
+        }
         $validated = $request->safe()->all();
         if ($request->hasFile('image')) {
             $validated['image'] = $uploadService->uploadImage($request->file('image'));
@@ -87,9 +92,10 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Ad $ad, UploadService $uploadService)
     {
-        //
+        $validated = $request->safe()->all();
+        dd($validated);
     }
 
     /**

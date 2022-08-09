@@ -35,7 +35,8 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::controller(UserProfileController::class)->group(function () {
         Route::get('/personal', 'index')->name('user.profile'); // Personal area - main page
         Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad
-        Route::get('/listAds', 'listAds')->name('user.profile.listAds');
+        Route::get('/listAds', 'listAds')->name('user.profile.listAds'); // Personal area - view all ads for autorized user
+        Route::get('/editAd', 'editAd')->name('user.profile.editAd'); // Personal area - edit ad
     });
 });
 

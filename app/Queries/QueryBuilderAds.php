@@ -16,12 +16,13 @@ class QueryBuilderAds extends QueryBuilderBase implements QueryBuilder
         $this->model = $model;
     }
 
-    public function listAds(array $columns = []): LengthAwarePaginator
+    public function listAdsByUser(int $userId): LengthAwarePaginator
     {
-        if (count($columns)) {
-            return Ad::with(['city', 'category'])->select($columns)->where('user_id', '=', Auth::user()->id)->paginate(15);
-        } else {
-            return Ad::with(['city', 'category'])->where('user_id', '=', Auth::user()->id)->paginate(15);
-        }
+        return $this->model::where('user_id', $userId)->with(['city', 'category', 'status'])->paginate(15);
+    }
+
+    public function getAdDetailById(int $adId): Ad
+    {
+        return $this->model::with(['city', 'category', 'status'])->findOrFail($adId);
     }
 }

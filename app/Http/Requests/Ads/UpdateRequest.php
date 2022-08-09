@@ -2,18 +2,24 @@
 
 namespace App\Http\Requests\Ads;
 
+use App\Models\Ad;
+use App\Queries\QueryBuilderAds;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        //dd($this->route('ad'));
+        //$ad = Ad::find($this->route('ad'));
+        //dd($ad);
+        $ad = $this->route('ad');
+        return $ad && $this->user()->can('update', $ad);
     }
 
     /**
