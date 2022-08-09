@@ -6,11 +6,13 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\UserRoleController;
+use App\Http\Controllers\AdUserFavorites;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +26,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/about', function () {
+    return view ('about');
+});
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/search', [SearchController::class, 'index'])->name('searchPage');
 Route::post('/search', [SearchController::class, 'search'])->name('search');
@@ -36,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
         Route::get('/personal', 'index')->name('user.profile');// Personal area - main page
         Route::get('/createAd', 'createAd')->name('user.profile.createAd');// Personal area - create ad
     });
+    Route::resource('wishlist', WishlistController::class);
+    Route::resource('favorite', AdUserFavorites::class);
 });
 
 
@@ -64,6 +71,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
         'store' => 'adStore',
         'destroy' => 'adDestroy',
         'update' => 'adUpdate',
+        'create' => 'adCreate',
+        'edit' => 'adEdit',
     ]);;
     Route::resource('user', AdminUserController::class);
     Route::resource('role', UserRoleController::class);
