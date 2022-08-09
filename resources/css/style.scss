@@ -976,6 +976,121 @@ a:hover {
     margin-bottom: 0.5rem;
 }
 
+.productName{
+    margin-top: 84px;
+    margin-bottom: 22px;
+    height: 140px;
+    width: 512px;
+    font-family: Gilroy;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 70px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+.productHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.productLocation{
+    height: 20px;
+    width: 350px;
+    left: 32px;
+    top: 2px;
+    font-family: Gilroy;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(35, 38, 47, 0.6);
+    margin-bottom: 50px
+}
+
+.addToFav{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 259px;
+    height: 58px;
+    border: 2px solid;
+    border-color: rgba(35, 38, 47, 0.1);
+    background-color: white;
+    border-radius: 33333px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.productCart {
+
+}
+
+.productView{
+    display: flex;
+}
+
+.productViewBig {
+
+}
+
+.productContact{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 54px 24px 24px;
+    gap: 24px;
+    width: 384px;
+    height: 558px;
+    background: #FFFFFF;
+    border: 2px solid rgba(35, 38, 47, 0.1);
+    border-radius: 20px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.status{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 8px;
+    width: 91px;
+    height: 40px;
+    background: rgba(151, 87, 215, 0.1);
+    backdrop-filter: blur(16px);
+    border-radius: 333px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 16px;
+    gap: 24px;
+    width: 336px;
+    height: 372px;
+    background: #F4F5F6;
+    border-radius: 8px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+
 /*************************/
 /*     Media Queries     */
 /*************************/
@@ -1466,7 +1581,7 @@ a:hover {
 		left: -250px;
 		width: 600px;
 	}
-	
+
 	.header .decoration-star-2 {
 		top: 60px;
 		right: -300px;
