@@ -2,7 +2,9 @@
   <div class="container nav-menu__container">
 
     <a href="{{ route('home') }}" class="nav-menu__logo logo">
+
       <img src="{{ asset('images/logo.svg' )}}" alt="Поменяем поменять">
+
     </a>
 
     <div class="nav-menu__body">
@@ -57,6 +59,7 @@
           </div>
 
           <div class="nav-profile__avatar">
+
             <img src="{{ asset('images/icon-avatar.png' )}}" alt="Name" class="nav-profile__img">
 
             <div class="nav-profile__body">
@@ -117,7 +120,6 @@
                     Мои покупки
                   </li>
                 </a>
-
 
                 <a href="{{ route('logout') }}">
                   <li class="nav-profile__item">

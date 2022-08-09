@@ -26,6 +26,7 @@
             position: absolute;
             z-index: 100;
             top: 111px;
+
             left: 0;
             bottom: 0;
             right: 0;
@@ -48,6 +49,7 @@
     &__list {
         display: flex;
         align-items: center;
+
         // flex-basis: 35%;
         flex-basis: 45%;
 

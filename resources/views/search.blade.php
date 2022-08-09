@@ -7,6 +7,7 @@
 <div class="mt-5 mb-5 h-25">
 </div>
 
+
 @include('components.searchForm')
 
 @if (isset($searchResult))
@@ -25,6 +26,7 @@
                 <p>в архиве</p>
                 @endif
             </td>
+
         </tr>
         @endforeach
     </table>

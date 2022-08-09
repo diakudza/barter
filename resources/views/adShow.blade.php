@@ -6,6 +6,7 @@
 
 <div class="mt-5 mb-5 h-25">
 </div>
+<<<<<<< HEAD
 
 <div class="container">
     <div>
@@ -14,6 +15,12 @@
         <!-- <img src="{{ asset("storage/images/1.png") }}" alt="image"> -->
         <img src="{{ $ad->image }}" alt="image">
 
+=======
+
+<div class="container">
+    <div>
+        <div style="font-size: x-large" class="mb-3">{{ $ad['title'] }}</div>
+>>>>>>> f405fa361bc049356a580d33cf9d89ed28650101
         <div class="d-flex flex-row justify-content-sm-between">
             <div>
                 <p>Категория: {{ $ad->category->title }} в {{ $ad->city->name }}</p>
@@ -33,5 +40,8 @@
 
     </div>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f405fa361bc049356a580d33cf9d89ed28650101
 @endsection

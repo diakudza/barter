@@ -4,8 +4,8 @@
 
 @section('content')
 
-@include('components.header')
 
+@include('components.header')
 
 <div class="container">
 
@@ -20,7 +20,6 @@
 
   <!-- Блок поиска -->
   <div class="d-flex flex-row justify-content-sm-evenly">
-
 
     @include('components.searchForm')
 
@@ -39,9 +38,7 @@
       </div>
       @endforeach()
     </div>
-
   </div>
-
 </div>
 
 @endsection
