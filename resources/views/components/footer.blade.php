@@ -17,7 +17,7 @@
     </nav>
 
     <div class="footer__copy">
-      Copyright © 2022. All rights reserved
+      Copyright © <?php echo date("Y"); ?>. All rights reserved
     </div>
 
   </div>
