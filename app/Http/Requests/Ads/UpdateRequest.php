@@ -15,9 +15,6 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        //dd($this->route('ad'));
-        //$ad = Ad::find($this->route('ad'));
-        //dd($ad);
         $ad = $this->route('ad');
         return $ad && $this->user()->can('update', $ad);
     }
@@ -36,6 +33,7 @@ class UpdateRequest extends FormRequest
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'barter_type' => ['required', 'in:free,barter'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
+            'status_id' => ['required', 'integer', 'exists:ad_statuses,id'],
             'image' => ['image']
         ];
     }

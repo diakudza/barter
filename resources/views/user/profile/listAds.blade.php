@@ -26,12 +26,14 @@
                                     <p class="card-text">Категория: {{ $ad->category->title }}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="{{ route('ad.show', $ad->id) }}" class="btn btn-sm btn-outline-secondary">Просмотреть</a>
-                                            <a href="{{ route('user.profile.editAd', ['ad'=>$ad->id]) }}" class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                            <a href="{{ route('ad.show', $ad->id) }}"
+                                                class="btn btn-sm btn-outline-secondary">Просмотреть</a>
+                                            <a href="{{ route('user.profile.editAd', ['ad' => $ad->id]) }}"
+                                                class="btn btn-sm btn-outline-secondary">Изменить</a>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">Статус: {{ $ad->status->title }}</small>
+                                        <small class="text-muted">Статус: {{ $ad->status->description }}</small>
                                     </div>
                                 </div>
                             </div>
