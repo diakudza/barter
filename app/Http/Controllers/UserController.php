@@ -30,7 +30,7 @@ class UserController extends Controller
             if (Auth::user()->status_id == 2) {
                 Auth::logout();
                 return redirect()->route('home')
-                    ->with('fail' , 'Данный пользователь не может войти в системы, так-как был заблокирован!');
+                    ->with('fail', 'Данный пользователь не может войти в системы, так-как был заблокирован!');
             }
 
             return redirect()->route('searchPage')->with(['success' => 'Привет, Вы успешно вошли в систему!']);

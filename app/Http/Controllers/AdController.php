@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Ads\StoreRequest;
+use App\Http\Requests\Ads\UpdateRequest;
 use App\Models\Ad;
 use App\Models\AdUser;
 use App\Models\AdUserFavorite;
@@ -44,6 +45,9 @@ class AdController extends Controller
      */
     public function store(StoreRequest $request, UploadService $uploadService)
     {
+        if (!Auth::check()) {
+            return abort(404);
+        }
         $validated = $request->safe()->all();
         if ($request->hasFile('image')) {
             $validated['image'] = $uploadService->uploadImage($request->file('image'));
@@ -116,9 +120,20 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Ad $ad, UploadService $uploadService)
     {
-        //
+        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id']);
+        if ($request->hasFile('image')) {
+            if ($uploadService->removeImage($ad->image)) {
+                $validated['image'] = $uploadService->uploadImage($request->file('image'));
+            }
+        }
+        $ad = $ad->fill($validated);
+        if ($ad->save()) {
+            return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно обновлено!');
+        } else {
+            return back()->with('fail', 'Ошибка обновления объявления!');
+        }
     }
 
     /**

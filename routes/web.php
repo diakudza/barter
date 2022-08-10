@@ -38,8 +38,10 @@ Route::resource('ad', AdController::class);
 Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     Route::controller(UserProfileController::class)->group(function () {
-        Route::get('/personal', 'index')->name('user.profile');// Personal area - main page
-        Route::get('/createAd', 'createAd')->name('user.profile.createAd');// Personal area - create ad
+        Route::get('/personal', 'index')->name('user.profile'); // Personal area - main page
+        Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad
+        Route::get('/listAds', 'listAds')->name('user.profile.listAds'); // Personal area - view all ads for autorized user
+        Route::get('/editAd', 'editAd')->name('user.profile.editAd'); // Personal area - edit ad
     });
     Route::resource('wishlist', WishlistController::class);
     Route::resource('favorite', AdUserFavorites::class);
@@ -50,15 +52,14 @@ Route::group(['middleware' => 'guest'], function () { //for not authorized users
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
     Route::post('/registration', [UserController::class, 'registration'])->name('registration');
     Route::get('/login', [UserController::class, 'index'])->name('loginPage');
-
 });
 
 
 Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for authorized users
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     Route::controller(UserProfileController::class)->group(function () {
-        Route::get('/personal', 'index')->name('user.profile');// Personal area - main page
-        Route::get('/createAd', 'createAd')->name('user.profile.createAd');// Personal area - create ad
+        Route::get('/personal', 'index')->name('user.profile'); // Personal area - main page
+        Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad
     });
 });
 
@@ -79,5 +80,3 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
     Route::resource('comment', AdminCommentController::class);
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain');
 });
-
-
