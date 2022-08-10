@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Ads\StoreRequest;
 use App\Http\Requests\Ads\UpdateRequest;
 use App\Models\Ad;
+use App\Models\AdUser;
+use App\Models\AdUserFavorite;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\User;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,14 +66,39 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Ad $ad)
+    public function show(Ad $ad, AdUser $adUser, AdUserFavorite $favorite)
     {
         if ($ad->status == '2') {
             return abort(404);
         }
 
+        $user = User::find(Auth::id());
+
+        if(auth()->user()) {
+
+            if ($user->wishes()->where('ad_id', $ad->id)->first()) {
+                $thisUserWishes = true;
+            } else {
+                $thisUserWishes = false;
+            }
+
+            if ($user->favoriteAds()->where('ad_id', $ad->id)->count()) {
+                $thisUserFavoriteAd = true;
+            } else {
+                $thisUserFavoriteAd = false;
+            }
+
+        }
+
+        $inwishlist = $adUser->where('ad_id', $ad->id)->count();
+        $inFavorites = $favorite->where('ad_id', $ad->id)->count();
+
         return view('adShow', [
-            'ad' => $ad
+            'ad' => $ad,
+            'userWishes' => $thisUserWishes ?? NULL,
+            'userFavorite' => $thisUserFavoriteAd ?? NULL,
+            'infavorites' => $inFavorites ?? 0,
+            'inwishlist' => $inwishlist ?? 0,
         ]);
     }
 
