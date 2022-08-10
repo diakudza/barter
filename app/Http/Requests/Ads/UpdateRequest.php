@@ -2,18 +2,21 @@
 
 namespace App\Http\Requests\Ads;
 
+use App\Models\Ad;
+use App\Queries\QueryBuilderAds;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        $ad = $this->route('ad');
+        return $ad && $this->user()->can('update', $ad);
     }
 
     /**
@@ -30,6 +33,7 @@ class StoreRequest extends FormRequest
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'barter_type' => ['required', 'in:free,barter'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
+            'status_id' => ['required', 'integer', 'exists:ad_statuses,id'],
             'image' => ['image']
         ];
     }

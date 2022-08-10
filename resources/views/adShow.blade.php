@@ -1,6 +1,6 @@
 @extends('components.base')
 
-@section('title',"Просмотр обьявления")
+@section('title', 'Просмотр обьявления')
 
 @section('content')
 
@@ -23,13 +23,17 @@
                     </div>
                 </div>
                 <div>
-                    <img src="{{ asset('storage/'.$ad->image) }}" height="400" alt="image">
+                    <img src="{{ asset('storage/' . $ad->image) }}" height="400" alt="image">
                 </div>
             </div>
-            @if($inwishlist) <p>Пожелали: {{ $inwishlist }}</p> @endif
-            @if($infavorites) <p>Добавили в избранное: {{ $infavorites }}</p> @endif
+            @if ($inwishlist)
+                <p>Пожелали: {{ $inwishlist }}</p>
+            @endif
+            @if ($infavorites)
+                <p>Добавили в избранное: {{ $infavorites }}</p>
+            @endif
 
-            @if(auth()->user())
+            @if (auth()->user())
                 <div class="d-flex ">
                     <div>
                         @if (!$userWishes)
@@ -39,7 +43,7 @@
                                 <button class="btn btn-success">Хочу это</button>
                             </form>
                         @else
-                            <form action="{{ route('wishlist.destroy', $ad['id'])}}" method="post">
+                            <form action="{{ route('wishlist.destroy', $ad['id']) }}" method="post">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-danger">Отказаться</button>
@@ -54,11 +58,10 @@
                                 <button class="btn btn-success">Добавить В избранное</button>
                             </form>
                         @else
-
-                            <form action="{{ route('favorite.destroy', $ad->id)}}" method="post">
+                            <form action="{{ route('favorite.destroy', $ad->id) }}" method="post">
                                 @method('DELETE')
                                 @csrf
-                                <input type="hidden" name="ad_id" value="{{ $ad->id }}"/>
+                                <input type="hidden" name="ad_id" value="{{ $ad->id }}" />
                                 <button class="btn btn-danger">Убрать из избранного</button>
                             </form>
                         @endif

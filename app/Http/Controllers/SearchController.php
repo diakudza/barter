@@ -44,16 +44,16 @@ class SearchController extends Controller
         }
 
         if ($request->input('status')) {
-            $query .= (($query) ? " AND " : "") . "status in (1, 4)"; //when checkbox checked - show active and archived
+            $query .= (($query) ? " AND " : "") . "status_id in (1, 4)"; //when checkbox checked - show active and archived
         } else {
-            $query .= (($query) ? " AND " : "") . "status = 1 "; //active only
+            $query .= (($query) ? " AND " : "") . "status_id = 1 "; //active only
         }
 
-        if ($query == '' || $query == "status = 1 ") {
+        if ($query == '' || $query == "status_id = 1 ") {
             return redirect()->back()->with('alert', 'не выбран ни один параметр');
         }
 
-        $ad = $ad->whereRaw($query)->whereNotIn('status', [2, 3, 5])->get(); //query without status (deleted, blocked, moderated)
+        $ad = $ad->whereRaw($query)->whereNotIn('status_id', [2, 3, 5])->get(); //query without status (deleted, blocked, moderated)
 
         return view('search', [
             'searchResult' => $ad,
@@ -65,7 +65,7 @@ class SearchController extends Controller
             'archived_checked' => $request->input('status') ?? NULL,
             'barter_types' => [
                 ['barter', 'Обмен'],
-                ['free','Даров']
+                ['free', 'Даров']
             ],
             'barter_type_selected' => $request->input('barter_type') ?? NULL,
         ]);
