@@ -976,6 +976,10 @@ a:hover {
     margin-bottom: 0.5rem;
 }
 
+.container p, h6{
+    margin-bottom: 0rem;
+}
+
 .productName{
     margin-top: 84px;
     margin-bottom: 22px;
@@ -992,6 +996,7 @@ a:hover {
 .productHeader{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 
 .productLocation{
@@ -1028,17 +1033,20 @@ a:hover {
     flex-grow: 0;
 }
 
-.productCart {
-
-}
 
 .productView{
     display: flex;
 }
 
-.productViewBig {
-
+.productViewSmall {
+    width: 101%;
 }
+
+.productImg img{
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
 
 .productContact{
     box-sizing: border-box;
@@ -1061,9 +1069,7 @@ a:hover {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     padding: 10px 20px;
-    gap: 8px;
     width: 91px;
     height: 40px;
     background: rgba(151, 87, 215, 0.1);
@@ -1072,11 +1078,10 @@ a:hover {
     flex: none;
     order: 0;
     flex-grow: 0;
+    align-self: flex-start
 }
 
 .user{
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
     padding: 24px 16px;
     gap: 24px;
@@ -1084,6 +1089,126 @@ a:hover {
     height: 372px;
     background: #F4F5F6;
     border-radius: 8px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+.user hr{
+    width: 304px;
+    color: darkgray;
+    size: 5px;
+    margin-top: 29px;
+    margin-bottom: 29px;
+}
+
+.userView{
+    display: flex;
+    align-items: center;
+}
+
+.userRating{
+    display: flex;
+    align-items: baseline;
+}
+
+.userName{
+    margin-left: 15px;
+    height: 48px;
+
+}
+.userName h3{
+    margin-bottom: 0;
+    width: 120px;
+    margin-bottom: 4px;
+}
+
+.contacts p{
+    display: flex;
+}
+.contacts div{
+    margin-bottom: 10px;
+}
+.contactsInfo{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.writeMessage{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 304px;
+    height: 58px;
+    background: #315DF7;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    color: white;
+    margin-bottom: 8px;
+    border-color: #315DF7;
+}
+
+.orderCall{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 304px;
+    height: 58px;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    border-color: rgb(35 38 47 / 29%);
+}
+
+.additionalInfo{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 27px;
+}
+
+.productInfo{
+    display: flex;
+    margin-top: 50px;
+    gap: 25px;
+}
+
+.characteristic{
+    display: flex;
+    border: 1px solid rgba(35,38,47,.1);
+    border-radius: 8px;
+    height: 70px;
+    width: 220px;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+}
+.characteristic svg{
+    margin-right: 10px;
+}
+
+.description{
+    margin-top: 50px;
+    width: 880px;
+    height: 288px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 200%;
+    color: rgba(35, 38, 47, 0.75);
     flex: none;
     order: 1;
     flex-grow: 0;
