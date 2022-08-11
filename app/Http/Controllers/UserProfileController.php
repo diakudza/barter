@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\AdStatus;
 use App\Queries\QueryBuilderAds;
 use App\Queries\QueryBuilderCategories;
 use App\Queries\QueryBuilderCities;
@@ -37,13 +38,15 @@ class UserProfileController extends Controller
         QueryBuilderAds $adsDetail,
         QueryBuilderCategories $categoriesList,
         QueryBuilderCities $citiesList,
-        QueryBuilderStatuses $statusesList
+        //QueryBuilderStatuses $statusesList,
+        AdStatus $statusesList
     ) {
         return view('user.profile.editAd', [
             'ad' => $adsDetail->getAdDetailById($request->ad),
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
-            'statusesList' => $statusesList->listItems(['id', 'description'])
+            //'statusesList' => $statusesList->listItems(['id', 'description'])
+            'statusesList' => $statusesList->getAllPublicStatuses()
         ]);
     }
 }

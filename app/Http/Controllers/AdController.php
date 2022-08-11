@@ -52,9 +52,10 @@ class AdController extends Controller
         if ($request->hasFile('image')) {
             $validated['image'] = $uploadService->uploadImage($request->file('image'));
         }
+        $validated['status_id'] = 5;
         $ad = new Ad($validated);
         if ($ad->save()) {
-            return redirect()->route('searchPage')->with('success', 'Объявление успешно добавлено!');
+            return redirect()->route('searchPage')->with('success', 'Объявление отправлено на модерацию. После одобрения модератором оно буде видно остальным пользователям в поиске.');
         } else {
             return back()->with('error');
         }
@@ -74,7 +75,7 @@ class AdController extends Controller
 
         $user = User::find(Auth::id());
 
-        if(auth()->user()) {
+        if (auth()->user()) {
 
             if ($user->wishes()->where('ad_id', $ad->id)->first()) {
                 $thisUserWishes = true;
@@ -87,7 +88,6 @@ class AdController extends Controller
             } else {
                 $thisUserFavoriteAd = false;
             }
-
         }
 
         $inwishlist = $adUser->where('ad_id', $ad->id)->count();
