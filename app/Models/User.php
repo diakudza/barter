@@ -80,4 +80,9 @@ class User extends Authenticatable
         return ($this->status->status == 'blocked') ? true : false;
     }
 
+    public function isUserHasAdminAccess()
+    {
+        return (in_array($this->getRole->id, [2,3,4])) ? true : false;
+    }
+
 }
