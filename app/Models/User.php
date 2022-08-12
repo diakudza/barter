@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
 {
@@ -51,17 +52,17 @@ class User extends Authenticatable
 
     public function getRole()
     {
-        return $this->hasOne(UserRole::class, 'id','role_id');
+        return $this->hasOne(UserRole::class, 'id', 'role_id');
     }
 
     public function status()
     {
-        return $this->hasOne(UserStatus::class);
+        return $this->hasOne(UserStatus::class, 'id', 'status_id');
     }
 
     public function getByRole($role_id)
     {
-        return $this->where('role_id',$role_id)->get();
+        return $this->where('role_id', $role_id)->get();
     }
 
     public function wishes()
@@ -72,6 +73,11 @@ class User extends Authenticatable
     public function favoriteAds()
     {
         return $this->belongsToMany(Ad::class, 'ad_user_favorites');
+    }
+
+    public function isBlockedUser()
+    {
+        return ($this->status->status == 'blocked') ? true : false;
     }
 
 }
