@@ -117,13 +117,19 @@
                 <div class="productView">
                     <div class="productImg">
                         <div class="productViewBig">
+                            @if($ad->images && count($ad->images) == 1)
                                 <img src="{{ Storage::url($ad->imageMain[0]->path) }}" height="400" alt="image">
                         </div>
                         <div class="productViewSmall">
                             @foreach($ad->images as $image)
-                            <img src="{{ Storage::url($image->path) }}">
+                                <img src="{{ Storage::url($image->path) }}">
                             @endforeach
                         </div>
+                        @else
+                            <div class="productViewBig">
+                                <img src="{{ Storage::url('images/clean.webp') }}" height="400" alt="image">
+                            </div>
+                        @endif
                     </div>
                     <div class="productContact">
                         <div class="status">
