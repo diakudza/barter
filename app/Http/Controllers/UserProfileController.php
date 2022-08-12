@@ -38,14 +38,12 @@ class UserProfileController extends Controller
         QueryBuilderAds $adsDetail,
         QueryBuilderCategories $categoriesList,
         QueryBuilderCities $citiesList,
-        //QueryBuilderStatuses $statusesList,
         AdStatus $statusesList
     ) {
         return view('user.profile.editAd', [
             'ad' => $adsDetail->getAdDetailById($request->ad),
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
-            //'statusesList' => $statusesList->listItems(['id', 'description'])
             'statusesList' => $statusesList->getAllPublicStatuses()
         ]);
     }
