@@ -25,6 +25,8 @@
                 <p>Описание: {{ $ad['text'] }}</p>
             </div>
 
+            <p>Колличество показов: {{ $ad['show_count'] }}</p>
+
             @if ($inwishlist)
             <p>Пожелали: {{ $inwishlist }}</p>
             @endif
