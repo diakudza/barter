@@ -89,7 +89,7 @@ class AdController extends Controller
                 $thisUserFavoriteAd = false;
             }
         }
-
+        $ad->update(['show_count' => ++$ad->show_count]);
         $inwishlist = $adUser->where('ad_id', $ad->id)->count();
         $inFavorites = $favorite->where('ad_id', $ad->id)->count();
 

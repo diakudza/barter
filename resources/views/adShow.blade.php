@@ -26,6 +26,7 @@
                     <img src="{{ asset('storage/' . $ad->image) }}" height="400" alt="image">
                 </div>
             </div>
+            <p>Колличество показов: {{ $ad['show_count'] }}</p>
             @if ($inwishlist)
                 <p>Пожелали: {{ $inwishlist }}</p>
             @endif
