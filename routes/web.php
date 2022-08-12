@@ -74,7 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
         'update' => 'adUpdate',
         'create' => 'adCreate',
         'edit' => 'adEdit',
-    ]);;
+    ]);
     Route::resource('user', AdminUserController::class);
     Route::resource('role', UserRoleController::class);
     Route::resource('comment', AdminCommentController::class);
