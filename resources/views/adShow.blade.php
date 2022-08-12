@@ -20,210 +20,101 @@
 
                     <img src="{{ asset('storage/' . $ad->image) }}" height="400" alt="image">
 
-                </div>
-                <p>Описание: {{ $ad['text'] }}</p>
+                    <h1 class="productName">{{ $ad->title }}</h1>
+                    <div class="productHeader">
+                        <div class="location">
+                            <p class="productLocation">
+                                <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Категория: {{ $ad->category->title }}
+                            </p>
+                            <p class="productLocation">
+                                <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Город: {{ $ad->city->name }}
+                            </p>
 
-                <div class="container">
+                        </div>
+                        <p>Описание: {{ $ad['text'] }}</p>
 
-                    <div id="content" class="mb-5">
 
-                        <h1 class="productName">{{ $ad->title }}</h1>
-                        <div class="productHeader">
-                            <div class="location">
-                                <p class="productLocation">
-                                    <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <div class="add">
+                            @if (auth()->user())
+                            @if (!$userFavorite)
+                            <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
+                                @method('POST')
+                                @csrf
+                                <button class="addToFav btn btn-success">
+                                    <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    Категория: {{ $ad->category->title }}
-                                </p>
-                                <p class="productLocation">
-                                    <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <p>Добавить в избранное</p>
+                                </button>
+                            </form>
+                            @else
+                            <form action="{{ route('favorite.destroy', $ad->id) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <input type="hidden" name="ad_id" value="{{ $ad->id }}" />
+                                <button class="addToFav btn btn-danger">
+                                    <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    Город: {{ $ad->city->name }}
-                                </p>
-                            </div>
-
-                            <div class="add">
-                                @if (auth()->user())
-                                @if (!$userFavorite)
-                                <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
-                                    @method('POST')
-                                    @csrf
-                                    <button class="addToFav btn btn-success">
-                                        <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <p>Добавить в избранное</p>
-                                    </button>
-                                </form>
-                                @else
-                                <form action="{{ route('favorite.destroy', $ad->id) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="hidden" name="ad_id" value="{{ $ad->id }}" />
-                                    <button class="addToFav btn btn-danger">
-                                        <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <p>Убрать из избранного</p>
-                                    </button>
-                                </form>
-                                @endif
-                                @if (!$userWishes)
-                                <form action="{{ route('wishlist.store', ['ad_id' => $ad['id']]) }}" method="post">
-                                    @method('POST')
-                                    @csrf
-                                    <button class="addToFav btn btn-danger">
-                                        <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <p>Хочу это</p>
-                                    </button>
-                                </form>
-                                @else
-                                <form action="{{ route('wishlist.destroy', $ad['id']) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="addToFav btn btn-danger">
-                                        <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                            <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <p>Отказаться</p>
-                                    </button>
-                                </form>
-                                @endif
-                                @endif
-                            </div>
-
-                            >>>>>>> add-product-cart
+                                    <p>Убрать из избранного</p>
+                                </button>
+                            </form>
+                            @endif
+                            @if (!$userWishes)
+                            <form action="{{ route('wishlist.store', ['ad_id' => $ad['id']]) }}" method="post">
+                                @method('POST')
+                                @csrf
+                                <button class="addToFav btn btn-danger">
+                                    <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <p>Хочу это</p>
+                                </button>
+                            </form>
+                            @else
+                            <form action="{{ route('wishlist.destroy', $ad['id']) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button class="addToFav btn btn-danger">
+                                    <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.51367 5.01862H8.39254" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <p>Отказаться</p>
+                                </button>
+                            </form>
+                            @endif
+                            @endif
                         </div>
-
-                        <p>Колличество показов: {{ $ad['show_count'] }}</p>
-
-                        @if ($inwishlist) <p>Пожелали: {{ $inwishlist }}</p>
-                        @endif
-                        @if ($infavorites)
-                        <p>Добавили в избранное: {{ $infavorites }}</p>
-                        @endif
-
-                        @if (auth()->user())
-                        <div class="d-flex ">
-                            <div>
-                                @if (!$userWishes)
-                                <form action="{{ route('wishlist.store', ['ad_id' => $ad['id']]) }}" method="post">
-                                    @method('POST')
-                                    @csrf
-                                    <button class="btn btn-success">Хочу это</button>
-                                </form>
-                                @else
-                                <form action="{{ route('wishlist.destroy', $ad['id']) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-danger">Отказаться</button>
-                                </form>
-                                @endif
-                            </div>
-                            <div>
-                                @if (!$userFavorite)
-                                <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
-                                    @method('POST')
-                                    @csrf
-                                    <button class="btn btn-success">Добавить В избранное</button>
-                                </form>
-                                @else
-                                <form action="{{ route('favorite.destroy', $ad->id) }}" method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                    <input type="hidden" name="ad_id" value="{{ $ad->id }}" />
-                                    <button class="btn btn-danger">Убрать из избранного</button>
-                                </form>
-                                @endif
-                            </div>
-                            <div>
-
-
-                            </div>
-                            <div>
-                                <img src="{{ asset('storage/'.$ad->image) }}" height="400" alt="image">
-
-                                @if($inwishlist) <p>Пожелали: {{ $inwishlist }}</p> @endif
-                                @if($infavorites) <p>Добавили в избранное: {{ $infavorites }}</p> @endif
-
-                                @if(auth()->user())
-                                <div class="d-flex ">
-                                    <div>
-                                        @if (!$userWishes)
-                                        <form action="{{ route('wishlist.store', ['ad_id' => $ad['id']]) }}" method="post">
-                                            @method('POST')
-                                            @csrf
-                                            <button class="btn btn-success">Хочу это</button>
-                                        </form>
-                                        @else
-                                        <form action="{{ route('wishlist.destroy', $ad['id'])}}" method="post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger">Отказаться</button>
-                                        </form>
-                                        @endif
-                                    </div>
-                                    <div>
-                                        @if (!$userFavorite)
-                                        <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
-                                            @method('POST')
-                                            @csrf
-                                            <button class="btn btn-success">Добавить В избранное</button>
-                                        </form>
-                                        @else
-
-                                        <form action="{{ route('favorite.destroy', $ad->id)}}" method="post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <input type="hidden" name="ad_id" value="{{ $ad->id }}" />
-                                            <button class="btn btn-danger">Убрать из избранного</button>
-                                        </form>
-                                        @endif
-                                    </div>
-                                    <div>
-
-                                    </div>
-                                    <button class="btn btn-info">Написать автору</button>
-                                </div>
-                                @endif
-
-                            </div>
-                        </div>
-                        @if(auth()->user())
-                        <div>
-                            <button class="btn btn-success">Хочу это</button>
-                            <button class="btn btn-success">Добавить В избранное</button>
-                            <button class="btn btn-info">Написать автору</button>
-                        </div>
-                        @endif
 
                     </div>
-
                     <div id="productCart" class="productCart">
                         <div class="productView">
                             <div class="productImg">
                                 <div class="productViewBig">
-                                    <img src="{{ asset('storage/' . $ad->image) }}" height="400" alt="image">
-                                    <img src="images/product/house0.png">
+                                    <img src="{{ Storage::url($ad->imageMain[0]->path) }}" height="400" alt="image">
                                 </div>
                                 <div class="productViewSmall">
-                                    <img src="images/product/house1.png">
-                                    <img src="images/product/house2.png">
-                                    <img src="images/product/house3.png">
-                                    <img src="images/product/house4.png">
-                                    <img src="images/product/house4.png">
+                                    @foreach($ad->images as $image)
+                                    <img src="{{ Storage::url($image->path) }}">
+                                    @endforeach
+
                                 </div>
+                                @endif
+
                             </div>
+
                             <div class="productContact">
                                 <div class="status">
                                     <svg style="margin-right: 9.67px" width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -256,7 +147,7 @@
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1673 8.00024C14.1673 11.4062 11.4067 14.1669 8.00067 14.1669C4.59466 14.1669 1.83398 11.4062 1.83398 8.00024C1.83398 4.59423 4.59466 1.83356 8.00067 1.83356C11.4067 1.83356 14.1673 4.59423 14.1673 8.00024Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
                                                 <path d="M10.2878 9.96182L7.77441 8.46248V5.23114" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
-                                            На сайте с 30.01.2022
+                                            На сайте с {{ $ad->user->created_at }}
                                         </div>
                                         <div class="contactsInfo">
                                             <p>
@@ -273,9 +164,9 @@
                                                     <path d="M2 13.9999L3.1 11.4666C2.25844 10.272 1.88178 8.81127 2.0407 7.35866C2.19961 5.90604 2.88319 4.56134 3.96314 3.57693C5.04309 2.59252 6.44517 2.03606 7.90625 2.01198C9.36734 1.98791 10.787 2.49787 11.8988 3.44617C13.0106 4.39446 13.7381 5.7159 13.9448 7.1625C14.1515 8.60909 13.8231 10.0814 13.0214 11.3031C12.2197 12.5248 10.9996 13.4119 9.59026 13.798C8.1809 14.1841 6.67908 14.0425 5.36667 13.3999L2 13.9999" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
                                                     <path d="M6 6.66663C6 6.75503 6.03512 6.83982 6.09763 6.90233C6.16014 6.96484 6.24493 6.99996 6.33333 6.99996C6.42174 6.99996 6.50652 6.96484 6.56904 6.90233C6.63155 6.83982 6.66667 6.75503 6.66667 6.66663V5.99996C6.66667 5.91155 6.63155 5.82677 6.56904 5.76426C6.50652 5.70174 6.42174 5.66663 6.33333 5.66663C6.24493 5.66663 6.16014 5.70174 6.09763 5.76426C6.03512 5.82677 6 5.91155 6 5.99996V6.66663ZM6 6.66663C6 7.55068 6.35119 8.39853 6.97631 9.02365C7.60143 9.64877 8.44928 9.99996 9.33333 9.99996H10C10.0884 9.99996 10.1732 9.96484 10.2357 9.90233C10.2982 9.83982 10.3333 9.75503 10.3333 9.66663C10.3333 9.57822 10.2982 9.49344 10.2357 9.43092C10.1732 9.36841 10.0884 9.33329 10 9.33329H9.33333C9.24493 9.33329 9.16014 9.36841 9.09763 9.43092C9.03512 9.49344 9 9.57822 9 9.66663C9 9.75503 9.03512 9.83982 9.09763 9.90233C9.16014 9.96484 9.24493 9.99996 9.33333 9.99996" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-                                                Whatsapp
+                                                Email
                                             </p>
-                                            <h6>+7 929 184 84 43</h6>
+                                            <h6>{{ $ad->user->email }}</h6>
                                         </div>
                                     </div>
                                     <button class="writeMessage">
@@ -299,19 +190,39 @@
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6344 7.04413C11.6344 8.49913 10.4544 9.6783 8.99941 9.6783C7.5444 9.6783 6.36523 8.49913 6.36523 7.04413C6.36523 5.58829 7.5444 4.40912 8.99941 4.40912C10.4544 4.40912 11.6344 5.58829 11.6344 7.04413Z" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.9977 13.129C12.171 13.129 15.0735 10.8473 16.7077 7.04394C15.0735 3.2406 12.171 0.958923 8.9977 0.958923H9.00103C5.82769 0.958923 2.92519 3.2406 1.29102 7.04394C2.92519 10.8473 5.82769 13.129 9.00103 13.129H8.9977Z" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
-                                            224 просмотра
+                                            просмотров {{ $ad['show_count'] }}
                                         </p>
                                         <p class="saved">
                                             <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4491 4.128C14.4491 1.83559 12.8818 0.916626 10.6253 0.916626H5.32624C3.1391 0.916626 1.5 1.77294 1.5 3.97511V16.245C1.5 16.8498 2.1508 17.2308 2.67795 16.935L7.99626 13.9517L13.2686 16.93C13.7966 17.2274 14.4491 16.8465 14.4491 16.2408V4.128Z" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                                                 <path d="M4.89258 6.5233H10.9912" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
-                                            32 сохранения
+
+                                            пожелали:
+                                            @if ($inwishlist)
+                                            {{ $inwishlist }}
+                                            @else
+                                            0
+                                            @endif
+
                                         </p>
+                                        <p class="favorit">
+                                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4491 4.128C14.4491 1.83559 12.8818 0.916626 10.6253 0.916626H5.32624C3.1391 0.916626 1.5 1.77294 1.5 3.97511V16.245C1.5 16.8498 2.1508 17.2308 2.67795 16.935L7.99626 13.9517L13.2686 16.93C13.7966 17.2274 14.4491 16.8465 14.4491 16.2408V4.128Z" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M4.89258 6.5233H10.9912" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            в избранном:
+                                            @if ($infavorites)
+                                            {{ $infavorites }}
+                                            @else
+                                            0
+                                            @endif
+                                        </p>
+
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                     <div class="productInfo">
@@ -357,8 +268,17 @@
                             <div>
                                 <p>Время до метро</p>
                                 <h5>~15 минут</h5>
+
                             </div>
+                            <p class="productLocation">
+                                <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Дата создания: {{ $ad['created_at'] }}
+                            </p>
                         </div>
+
                     </div>
                     <div class="description">
                         <h2>Описание</h2>
