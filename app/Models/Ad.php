@@ -34,13 +34,15 @@ class Ad extends Model
         return $this->belongsTo(AdStatus::class, 'status_id', 'id');
     }
 
-    public function users()
+    public function usersWished()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'ad_user');
     }
 
     public function favoriteUsers()
     {
         return $this->belongsToMany(User::class, 'ad_user_favorites');
     }
+
+
 }
