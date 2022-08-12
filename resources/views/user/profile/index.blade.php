@@ -14,7 +14,7 @@
             <a href="{{route ('user.profile.listAds')}}">Мои обьявления</a>
         </li>
         <li>
-            <a href="#">Личные данные</a>
+            <a href="{{ route('user.profile.personalData') }}">Личные данные</a>
         </li>
         <li></li>
         <li></li>

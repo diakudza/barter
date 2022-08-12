@@ -57,4 +57,9 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect()->home()->with(['success' => 'Вы вышли!']);;
     }
+
+    public function update(User $user)
+    {
+        
+    }
 }

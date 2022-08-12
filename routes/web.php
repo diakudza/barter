@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
         Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad
         Route::get('/listAds', 'listAds')->name('user.profile.listAds'); // Personal area - view all ads for autorized user
         Route::get('/editAd', 'editAd')->name('user.profile.editAd'); // Personal area - edit ad
+        Route::get('personalData', 'personalData')->name('user.profile.personalData'); //Personal area - view and edit personal data
     });
     Route::resource('wishlist', WishlistController::class);
     Route::resource('favorite', AdUserFavorites::class);
