@@ -7,6 +7,7 @@
 @import "modules/vender";
 
 @import "blocks/global";
+@import "blocks/productCart";
 
 // Перебрать
 
@@ -1466,7 +1467,7 @@ a:hover {
 		left: -250px;
 		width: 600px;
 	}
-	
+
 	.header .decoration-star-2 {
 		top: 60px;
 		right: -300px;
