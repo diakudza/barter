@@ -9,6 +9,7 @@ use App\Models\AdUser;
 use App\Models\AdUserFavorite;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Image;
 use App\Models\User;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
@@ -49,11 +50,18 @@ class AdController extends Controller
             return abort(404);
         }
         $validated = $request->safe()->all();
-        if ($request->hasFile('image')) {
-            $validated['image'] = $uploadService->uploadImage($request->file('image'));
-        }
+
         $ad = new Ad($validated);
         if ($ad->save()) {
+            if ($request->hasFile('image')) {
+                $image = new Image([
+                    'user_id' => $validated['user_id'],
+                    'path' => $uploadService->uploadImage($request->file('image')),
+                    'image_type' => 1]);
+                $ad->images()->save($image);
+
+            }
+
             return redirect()->route('searchPage')->with('success', 'Объявление успешно добавлено!');
         } else {
             return back()->with('error');

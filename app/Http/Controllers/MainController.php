@@ -17,7 +17,7 @@ class MainController extends Controller
             'lastTenAds' => $ad->orderby('created_at', 'desc')->limit(10)->get(),
             'barter_types' => [
                 ['barter', 'Обмен'],
-                ['free','Даров']
+                ['free', 'Даром']
             ],
         ]);
     }
