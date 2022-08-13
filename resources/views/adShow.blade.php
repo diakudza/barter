@@ -38,6 +38,18 @@
                         </svg>
                         Город: {{ $ad->city->name }}
                     </p>
+                    <p class="productLocation">
+                        <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z"
+                                  stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z"
+                                  stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Дата создания: {{ $ad['created_at'] }}
+                    </p>
                 </div>
 
                 <div class="add">
@@ -111,15 +123,17 @@
                         @endif
                     @endif
                 </div>
-
             </div>
             <div id="productCart" class="productCart">
+
                 <div class="productView">
                     <div class="productImg">
+                        @if($ad->images && count($ad->images) == 1)
                         <div class="productViewBig">
-                            @if($ad->images && count($ad->images) == 1)
+
                                 <img src="{{ Storage::url($ad->imageMain[0]->path) }}" height="400" alt="image">
                         </div>
+
                         <div class="productViewSmall">
                             @foreach($ad->images as $image)
                                 <img src="{{ Storage::url($image->path) }}">
@@ -131,6 +145,7 @@
                             </div>
                         @endif
                     </div>
+
                     <div class="productContact">
                         <div class="status">
                             <svg style="margin-right: 9.67px" width="18" height="16" viewBox="0 0 18 16" fill="none"
@@ -282,9 +297,9 @@
                                 </p>
                             </div>
                         </div>
-
                     </div>
                 </div>
+
             </div>
             <div class="productInfo">
                 <div class="characteristic">
@@ -353,18 +368,7 @@
                     {{ $ad['text'] }}
                 </p>
             </div>
-            <p class="productLocation">
-                <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z"
-                          stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z"
-                          stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Дата создания: {{ $ad['created_at'] }}
-            </p>
+
         </div>
 
     </div>
