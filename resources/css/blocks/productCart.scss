@@ -49,6 +49,14 @@
     gap: 10px;
 }
 
+.adcart{
+    height: 300px;
+    width: 200px;
+    outline: 1px solid #0c63e4;
+    border-radius: 10px;
+    padding: 4px;
+}
+
 .addToFav{
     box-sizing: border-box;
     display: flex;
@@ -77,6 +85,7 @@
 
 .productView{
     display: flex;
+    justify-content: space-around;
     gap: 10px;
 }
 
