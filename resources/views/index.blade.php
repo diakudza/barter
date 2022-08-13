@@ -19,7 +19,7 @@
 
         <div class="d-flex flex-row justify-content-around">
             <!-- Блок поиска -->
-            <div class="d-flex flex-row justify-content-sm-evenly w-50 ">
+            <div id="search" class="d-flex flex-row justify-content-sm-evenly w-50 ">
 
                 @include('components.searchForm')
 

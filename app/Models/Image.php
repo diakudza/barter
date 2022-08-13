@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+
     protected $table = 'images';
+
+    protected $fillable = ['user_id', 'image_type', 'path'];
 
     public function ads()
     {
