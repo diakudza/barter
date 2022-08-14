@@ -17,28 +17,23 @@
             </p>
         </div>
 
-        <div class="d-flex flex-row justify-content-around">
-            <!-- Блок поиска -->
-            <div id="search" class="d-flex flex-row justify-content-sm-evenly w-50 ">
 
-                @include('components.searchForm')
+        <!-- Блок поиска -->
+        <div id="search" class="d-flex flex-column align-items-center ">
+            <h3>Искать без регистрации!</h3>
+            @include('components.searchForm')
+        </div>
 
-            </div>
-
-            <!-- Последние 10 объявлений -->
-            <div class="d-flex flex-column w-50 pl-3">
-                <h3>Последние 10 обьявлений</h3>
-                <div class="products-last__list">
-                    @foreach($lastTenAds as $ad)
-                        <div class="product-last__item">
-                            <a href="{{ route('ad.show', $ad['id']) }}">
-                                <h4 class="product__title">{{ $ad['title'] }}</h4>
-                            </a>
-                        </div>
-                    @endforeach()
-                </div>
+        <!-- Последние 10 объявлений -->
+        <div class="d-flex flex-column mt-5 ">
+            <h3>Последние 10 обьявлений</h3>
+            <div class="products-last__list d-flex flex-row flex-wrap gap-2">
+                @foreach($lastTenAds as $item)
+                    @include('components.adCart')
+                @endforeach()
             </div>
         </div>
+
     </div>
 
 @endsection
