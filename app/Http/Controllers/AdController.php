@@ -129,7 +129,7 @@ class AdController extends Controller
             }
         }
         $ad = $ad->fill($validated);
-        if ($ad->save()) {
+        if ($ad->update()) {
             return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно обновлено!');
         } else {
             return back()->with('fail', 'Ошибка обновления объявления!');

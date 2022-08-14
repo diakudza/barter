@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/about', function () {
-    return view ('about');
+    return view('about');
 });
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/search', [SearchController::class, 'index'])->name('searchPage');
@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
         Route::get('/listAds', 'listAds')->name('user.profile.listAds'); // Personal area - view all ads for autorized user
         Route::get('/editAd', 'editAd')->name('user.profile.editAd'); // Personal area - edit ad
         Route::get('personalData', 'personalData')->name('user.profile.personalData'); //Personal area - view and edit personal data
+        Route::get('resetPassword', 'resetPassword')->name('user.profile.resetPassword'); //Personal area - reset password
     });
     Route::resource('wishlist', WishlistController::class);
     Route::resource('favorite', AdUserFavorites::class);
@@ -57,7 +58,11 @@ Route::group(['middleware' => 'guest'], function () { //for not authorized users
 
 
 Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for authorized users
-    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/logout', 'logout')->name('logout');
+        Route::put('/updateUserData', 'updateUserData')->name('user.updateUserData');
+        Route::put('/updateUserPassword', 'updateUserPassword')->name('user.updateUserPassword');
+    });
     Route::controller(UserProfileController::class)->group(function () {
         Route::get('/personal', 'index')->name('user.profile'); // Personal area - main page
         Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad

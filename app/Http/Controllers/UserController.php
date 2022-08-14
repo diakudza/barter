@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\Profile\UpdateRequest;
+use App\Http\Requests\User\Profile\UpdatePasswordRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,8 +60,27 @@ class UserController extends Controller
         return redirect()->home()->with(['success' => 'Вы вышли!']);;
     }
 
-    public function update(User $user)
+    public function updateUserData(UpdateRequest $request, User $user)
     {
-        
+        $user = User::where($request->safe()->only(['id']))->get()->first();
+        $validated = $request->safe()->only(['name', 'email']);
+        $user = $user->fill($validated);
+        if ($user->save()) {
+            return redirect()->route('user.profile')->with('success', 'Данные профиля успешно обновлены');
+        } else {
+            return back()->with('fail', 'Ошибка обновления данных профиля!');
+        }
+    }
+
+    public function updateUserPassword(UpdatePasswordRequest $request, User $user)
+    {
+        $user = User::where($request->safe()->only(['id']))->get()->first();
+        $newPassword = Hash::make($request->safe()->only('newPassword')['newPassword']);
+        $user = $user->fill(['password' => $newPassword]);
+        if ($user->save()) {
+            return redirect()->route('user.profile')->with('success', 'Пароль успешно обновлен');
+        } else {
+            return back()->with('fail', 'Ошибка обновления пароля!');
+        }
     }
 }

@@ -50,4 +50,9 @@ class UserProfileController extends Controller
     {
         return view('user.profile.personalData');
     }
+
+    public function resetPassword()
+    {
+        return view('user.profile.resetPassword');
+    }
 }
