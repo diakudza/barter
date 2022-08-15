@@ -3,8 +3,8 @@
 @section('title',"Личный кабинет")
 
 @section('content')
-
-    <h3>Личный кабинет пользователя</h3>
+    <div class="container">
+        <h3>Личный кабинет пользователя</h3>
 
     <ul>
         <li>

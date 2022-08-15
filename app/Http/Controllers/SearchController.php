@@ -16,7 +16,7 @@ class SearchController extends Controller
             'categories' => $caterory->orderBy('title', 'asc')->get(),
             'cities' => $city->orderBy('name', 'asc')->get(),
             'statuses' => $status->getAllPublicStatuses(),
-            'barter_types' => ['barter', 'free'],
+            'barter_types' => [['barter' , 'Обмен'], ['free', 'Даром']],
             'barter_type_selected' => $request->input('barter_type') ?? NULL,
         ]);
     }

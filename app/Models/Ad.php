@@ -11,7 +11,7 @@ class Ad extends Model
 
     protected $fillable = [
         'title', 'text', 'user_id', 'category_id', 'city_id',
-        'barter_type', 'image', 'status_id'
+        'barter_type', 'status_id'
     ];
 
     public function Category()
@@ -44,5 +44,13 @@ class Ad extends Model
         return $this->belongsToMany(User::class, 'ad_user_favorites');
     }
 
+    public function images()
+    {
+        return $this->belongsToMany(Image::class, 'ad_images');
+    }
+    public function imageMain()
+    {
+        return $this->images()->where('image_type','=',0);
+    }
 
 }

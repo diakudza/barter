@@ -1,0 +1,281 @@
+.container p, h6{
+    margin-bottom: 0rem;
+}
+
+.productName{
+    margin-top: 84px;
+    margin-bottom: 22px;
+    max-height: 140px;
+    width: 100%;
+    font-family: Gilroy;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 70px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+.productHeader{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.location{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.productLocation{
+    height: 20px;
+    width: 350px;
+    left: 32px;
+    top: 2px;
+    font-family: Gilroy;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(35, 38, 47, 0.6);
+    margin-bottom: 50px
+}
+
+.add{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adcart{
+    height: 300px;
+    width: 200px;
+    outline: 1px solid #0c63e4;
+    border-radius: 10px;
+    padding: 6px;
+}
+.adcart_link{
+    text-decoration: none;
+}
+.adcart_link:hover{
+    text-decoration: none;
+}
+
+.addToFav{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 259px;
+    height: 58px;
+    border: 2px solid;
+    border-color: rgba(35, 38, 47, 0.1);
+    background-color: white;
+    border-radius: 33333px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    --bs-btn-hover-bg: #969392;
+    --bs-btn-hover-border-color: #969392;
+}
+
+.addToFav p {
+    min-width: 160px;
+    color: #34383c;
+}
+
+.productView{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.productViewBig img{
+    width: 100%;
+}
+
+.productViewSmall {
+    width: 101%;
+}
+
+.productViewSmall img{
+    width: 18%;
+}
+
+.productImg img{
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+
+.productContact{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 24px 24px;
+    gap: 24px;
+    width: 384px;
+    height: 558px;
+    background: #FFFFFF;
+    border: 2px solid rgba(35, 38, 47, 0.1);
+    border-radius: 20px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.status{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 20px;
+    width: 91px;
+    height: 40px;
+    background: rgba(151, 87, 215, 0.1);
+    backdrop-filter: blur(16px);
+    border-radius: 333px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    align-self: flex-start
+}
+
+.user{
+    align-items: flex-start;
+    padding: 24px 16px;
+    gap: 24px;
+    width: 336px;
+    height: 372px;
+    background: #F4F5F6;
+    border-radius: 8px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+}
+.user hr{
+    width: 304px;
+    color: darkgray;
+    size: 5px;
+    margin-top: 29px;
+    margin-bottom: 29px;
+}
+
+.userView{
+    display: flex;
+    align-items: center;
+}
+
+.userRating{
+    display: flex;
+    align-items: baseline;
+}
+
+.userName{
+    margin-left: 15px;
+    height: 48px;
+
+}
+.userName h5{
+    margin-bottom: 0;
+    min-width: 120px;
+}
+
+.contacts p{
+    display: flex;
+}
+.contacts div{
+    margin-bottom: 10px;
+}
+.contactsInfo{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.writeMessage{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 304px;
+    height: 58px;
+    background: #315DF7;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    color: white;
+    margin-bottom: 8px;
+    border-color: #315DF7;
+}
+
+.orderCall{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 304px;
+    height: 58px;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    border-color: rgb(35 38 47 / 29%);
+}
+
+.additionalInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 27px;
+}
+
+.productInfo{
+    display: flex;
+    margin-top: 50px;
+    gap: 25px;
+}
+
+.characteristic{
+    display: flex;
+    border: 1px solid rgba(35,38,47,.1);
+    border-radius: 8px;
+    height: 70px;
+    width: 230px;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+}
+.characteristic svg{
+    margin-right: 10px;
+}
+
+.description{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 880px;
+    max-height: 288px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 200%;
+    color: rgba(35, 38, 47, 0.75);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
