@@ -13,7 +13,7 @@
                 <label for="title">Название</label>
                 <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
                 <input type="text" id="title" name="title" placeholder="Название"
-                       value="@if (old('title')) {{ old('title') }}@else{{ $ad->title }} @endif" required>
+                    value="@if (old('title')) {{ old('title') }}@else{{ $ad->title }} @endif" required>
             </div>
             <div>
                 <label for="text">Описание</label>
@@ -25,7 +25,27 @@
             <div>
                 <label for="image">Загрузить фото</label>
                 <input type="file" name="image" id="image">
-                <img src="{{ Storage::url($ad->image) }}" alt="image" height=400>
+                <div class="container">
+                    <div class="row">
+                        @forelse ($ad->images as $image)
+                            <div class="col-sm-6">
+                                <img src="{{ Storage::url($image->path) }}" alt="image" height=400>
+                                <div class="form-group">
+                                    <label for="imageMain">Сделать главной</label>
+                                    <input type="radio" name="imageMain" id="imageMain" value="{{ $image->id }}"
+                                        @if ($image->image_type == 0) selected @endif>
+                                    <label for="">Удалить</label>
+                                    <input type="checkbox" name="removeImage[]" id="removeImage"
+                                        value="{{ $image->id }}">
+                                </div>
+                            </div>
+                        @empty
+                            <div class="col-sm-6">
+                                <img src="{{ Storage::url('images/clean.webp') }}" alt="image" height=400>
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
             </div>
             <div>
 
@@ -35,9 +55,9 @@
                 <select name="category_id" id="category_id" required>
                     @foreach ($categoriesList as $category)
                         <option value="{{ $category->id }}"
-                                @if (old('category_id')) @if (old('category_id') == $category->id) selected
-                                @endif @endif
-                                @if ($ad->category_id == $category->id) selected @endif>
+                            @if (old('category_id')) @if (old('category_id') == $category->id) selected @endif
+                            @endif
+                            @if ($ad->category_id == $category->id) selected @endif>
                             {{ $category->title }}
                         </option>
                     @endforeach
@@ -58,8 +78,9 @@
                 <select name="city_id" id="city_id" required>
                     @foreach ($citiesList as $city)
                         <option value="{{ $city->id }}"
-                                @if (old('city_id')) @if (old('city_id') == $city->id) selected @endif @endif
-                                @if ($ad->city_id == $city->id) selected @endif>
+                            @if (old('city_id')) @if (old('city_id') == $city->id) selected @endif
+                            @endif
+                            @if ($ad->city_id == $city->id) selected @endif>
                             {{ $city->name }}
                         </option>
                     @endforeach
@@ -70,10 +91,10 @@
                 <select name="status_id" id="status_id">
                     @foreach ($statusesList as $status)
                         <option value="{{ $status->id }}"
-                                @if (old('status_id')) @if (old('status_id') == $status->id)
+                            @if (old('status_id')) @if (old('status_id') == $status->id)
                                 selected @endif
-                                @endif
-                                @if ($ad->status_id == $status->id) selected @endif>
+                            @endif
+                            @if ($ad->status_id == $status->id) selected @endif>
                             {{ $status->description }}
                         </option>
                     @endforeach

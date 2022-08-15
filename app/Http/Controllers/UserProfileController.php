@@ -28,6 +28,7 @@ class UserProfileController extends Controller
 
     public function listAds(QueryBuilderAds $adsList)
     {
+        //dd($adsList->listAdsByUser(Auth::user()->id));
         return view('user.profile.listAds', ['ads' => $adsList->listAdsByUser(Auth::user()->id)]);
     }
 

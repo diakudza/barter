@@ -48,10 +48,9 @@ class Ad extends Model
     {
         return $this->hasMany(Image::class);
     }
-    
+
     public function imageMain()
     {
-        return $this->images()->where('image_type','=',0);
+        return $this->images()->where('image_type', '=', 0);
     }
-
 }
