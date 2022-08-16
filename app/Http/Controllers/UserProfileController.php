@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class UserProfileController extends Controller
 {
-    public function index()
+    public function index(QueryBuilderAds $adsList)
     {
-        return view('user.profile.index');
+        return view('user.profile.index', ['ads' => $adsList->listAdsByUser(Auth::user()->id)]);
     }
 
     public function createAd(
