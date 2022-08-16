@@ -1,8 +1,10 @@
 // Маленькая карточка
 .card {
     &__img {
-        width: 278px;
-        height: 278px;
+        position: relative;
+
+        min-width: 250px;
+        min-height: 250px;
 
         & img {
             width: 100%;
@@ -15,18 +17,121 @@
 
     &__body {
         margin-top: 32px;
+
+        &-top {
+            border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+        }
+
+        &-bottom {
+            padding-top: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    &__btn-fav {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+
+        width: 48px;
+        height: 48px;
+
+        background-color: #fff;
+
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: all 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(179, 179, 179);
+        }
     }
 
     &__title {
+        margin-bottom: 4px;
+
         font-weight: 500;
         font-size: 20px;
         line-height: 24px;
 
         color: $color-black;
+
+        transition: all 0.3s;
+
+        &:hover {
+            color: $color-black50;
+        }
     }
 
     &__location {
+        padding-bottom: 16px;
+
         display: flex;
         align-items: center;
+
+        &-icon {
+            margin-right: 10px;
+        }
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+
+        margin-right: 10px;
+
+        &-img {
+            margin-right: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .author-img {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+            }
+        }
+
+        &-name {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+
+            color: $color-black;
+            cursor: default;
+        }
+    }
+
+    &__add {
+        display: flex;
+        flex-direction: column;
+
+        &-text {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+
+            color: rgba(35, 38, 47, 0.6);
+
+            margin-bottom: 4px;
+        }
+
+        &-time {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+
+            color: $color-black;
+        }
     }
 }

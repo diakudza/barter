@@ -21,7 +21,7 @@
         @yield('content')
     </main>
 
-    @include('components.alert')
+    <!-- @include('components.alert') -->
 
     <x-footer></x-footer>
 
