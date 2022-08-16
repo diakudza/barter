@@ -1,0 +1,13 @@
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 58px;
+  height: 58px;
+  border: 2px solid rgba(35, 38, 47, 0.1);
+  border-radius: 32px;
+  background: #fff;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=ArrowLeft.module.css.map */
