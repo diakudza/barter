@@ -1,0 +1,47 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  background: #F4F5F6;
+  border-radius: 16px;
+  padding: 52px 100px 24px 24px;
+}
+
+.image {
+  width: 48px;
+  height: 48px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: #23262F;
+  margin: 28px 0 8px 0;
+}
+
+.desc {
+  width: 250px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: rgba(35, 38, 47, 0.75);
+}
+
+.badge {
+  margin: 24px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 176px;
+  height: 32px;
+  background: #FFFFFF;
+  border-radius: 32px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  color: #23262F;
+}
+
+/*# sourceMappingURL=AdCategory.module.css.map */

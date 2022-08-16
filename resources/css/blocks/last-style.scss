@@ -6,7 +6,11 @@
 Table Of Contents:
 - General Styles
 - Navigation
+<<<<<<< HEAD
 - Hero
+=======
+- Header
+>>>>>>> 3a709e7217c975d7078f70d9f75c88dd3b4dfb41
 - Statistics
 - Introduction
 - Details 1
@@ -35,6 +39,7 @@ Colors:
 /**************************/
 /*     General Styles     */
 /**************************/
+
 // body,
 // html {
 //     width: 100%;
@@ -988,6 +993,7 @@ a:hover {
         right: -200px;
         width: 400px;
     }
+
     /* end of hero */
 
     /* Statistics */
@@ -1452,16 +1458,20 @@ a:hover {
 @media (min-width: 1400px) {
     /* Hero */
     /*.hero .decoration-star {
+
 		top: 120px;
 		left: -250px;
 		width: 600px;
 	}
 	
+
 	.hero .decoration-star-2 {
+
 		top: 60px;
 		right: -300px;
 		width: 700px;
 	}*/
+
     /* end of hero */
 }
 /* end of min-width 1400px */
