@@ -13,7 +13,11 @@ class UserProfileController extends Controller
 {
     public function index(QueryBuilderAds $adsList)
     {
-        return view('user.profile.index', ['ads' => $adsList->listAdsByUser(Auth::user()->id)]);
+        return view('user.profile.index', [
+            'ads' => $adsList->listAdsByUser(Auth::user()->id),
+            'wishes' => Auth::user()->wishes,
+            'favorites' => Auth::user()->favoriteAds
+            ]);
     }
 
     public function createAd(
