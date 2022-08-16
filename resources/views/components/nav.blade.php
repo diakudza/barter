@@ -19,7 +19,7 @@
         </li>
 
         <li class="nav-menu__item">
-          <a href="{{ route('home') }}" class="nav-menu__link">О проекте</a>
+          <a href="/about" class="nav-menu__link">О проекте</a>
         </li>
       </ul>
 
