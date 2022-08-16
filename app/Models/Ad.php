@@ -46,11 +46,11 @@ class Ad extends Model
 
     public function images()
     {
-        return $this->belongsToMany(Image::class, 'ad_images');
-    }
-    public function imageMain()
-    {
-        return $this->images()->where('image_type','=',0);
+        return $this->hasMany(Image::class);
     }
 
+    public function imageMain()
+    {
+        return $this->images()->where('image_type', '=', 0);
+    }
 }

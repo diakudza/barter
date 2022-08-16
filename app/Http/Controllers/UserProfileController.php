@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ad;
+use App\Models\AdStatus;
 use App\Queries\QueryBuilderAds;
 use App\Queries\QueryBuilderCategories;
 use App\Queries\QueryBuilderCities;
-use App\Queries\QueryBuilderStatuses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +28,7 @@ class UserProfileController extends Controller
 
     public function listAds(QueryBuilderAds $adsList)
     {
+        //dd($adsList->listAdsByUser(Auth::user()->id));
         return view('user.profile.listAds', ['ads' => $adsList->listAdsByUser(Auth::user()->id)]);
     }
 
@@ -37,13 +37,23 @@ class UserProfileController extends Controller
         QueryBuilderAds $adsDetail,
         QueryBuilderCategories $categoriesList,
         QueryBuilderCities $citiesList,
-        QueryBuilderStatuses $statusesList
+        AdStatus $statusesList
     ) {
         return view('user.profile.editAd', [
             'ad' => $adsDetail->getAdDetailById($request->ad),
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
-            'statusesList' => $statusesList->listItems(['id', 'description'])
+            'statusesList' => $statusesList->getAllPublicStatuses()
         ]);
+    }
+
+    public function personalData()
+    {
+        return view('user.profile.personalData');
+    }
+
+    public function resetPassword()
+    {
+        return view('user.profile.resetPassword');
     }
 }

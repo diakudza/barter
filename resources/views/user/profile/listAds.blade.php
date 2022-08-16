@@ -17,9 +17,12 @@
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top"
-                                     data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-                                     alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                                     src="{{ Storage::url($ad->image) }}" data-holder-rendered="true">
+                                    data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+                                    alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+                                    src="
+                                        @if (count($ad->imageMain)) {{ Storage::url($ad->imageMain[0]->path) }}
+                                        @else {{ Storage::url('images/clean.webp') }} @endif"
+                                    data-holder-rendered="true">
                                 <div class="card-body">
                                     <p class="card-text">{{ $ad->title }}</p>
                                     <p class="card-text">Город подачи: {{ $ad->city->name }}</p>
@@ -27,9 +30,9 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="{{ route('ad.show', $ad->id) }}"
-                                               class="btn btn-sm btn-outline-secondary">Просмотреть</a>
+                                                class="btn btn-sm btn-outline-secondary">Просмотреть</a>
                                             <a href="{{ route('user.profile.editAd', ['ad' => $ad->id]) }}"
-                                               class="btn btn-sm btn-outline-secondary">Изменить</a>
+                                                class="btn btn-sm btn-outline-secondary">Изменить</a>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column ">
