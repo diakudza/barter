@@ -15,9 +15,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group ">
                     <a href="{{ route('ad.show', $ad->id) }}"
-                       class="btn btn-sm btn-outline-secondary">Просмотреть</a>
+                       class="btn  btn-outline-secondary">Просм.</a>
                     <a href="{{ route('user.profile.editAd', ['ad' => $ad->id]) }}"
-                       class="btn btn-sm btn-outline-secondary">Изменить</a>
+                       class="btn  btn-outline-secondary">Редак.</a>
                 </div>
             </div>
             <div class="d-flex flex-column ">

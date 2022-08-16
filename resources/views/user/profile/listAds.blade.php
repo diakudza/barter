@@ -14,7 +14,7 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
-                <div class="row">
+                <div class="row gap-5">
                     @forelse ($ads as $ad)
                         @include('components.adCartLK')
                     @empty
