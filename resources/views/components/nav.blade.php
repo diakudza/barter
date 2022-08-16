@@ -15,7 +15,7 @@
         </li>
 
         <li class="nav-menu__item">
-          <a href="{{ route('searchPage') }}" class="nav-menu__link">Каталог</a>
+          <a href="{{ route('searchPage') }}" class="nav-menu__link">Поиск</a>
         </li>
 
         <li class="nav-menu__item">
@@ -68,7 +68,7 @@
                   <li class="nav-profile__item">Посмотреть профиль</li>
                 </a>
 
-                <a href="#">
+              {{--  <a href="#">
                   <li class="nav-profile__item">
                     <span>
                       <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,9 +78,9 @@
                     </span>
                     Нужна помощь?
                   </li>
-                </a>
+                </a>--}}
 
-                <a href="#">
+                <a href="{{ route('user.profile.personalData')}} ">
                   <li class="nav-profile__item">
                     <span>
                       <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +92,7 @@
                   </li>
                 </a>
 
-                <a href="#">
+                <a href="{{route('user.profile.listAds')}}">
                   <li class="nav-profile__item">
                     <span>
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,7 +107,7 @@
                   </li>
                 </a>
 
-                <a href="#">
+             {{--   <a href="#">
                   <li class="nav-profile__item">
                     <span>
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +119,7 @@
                     </span>
                     Мои покупки
                   </li>
-                </a>
+                </a>--}}
 
                 <a href="{{ route('logout') }}">
                   <li class="nav-profile__item">
@@ -137,6 +137,7 @@
               </ul>
             </div>
           </div>
+                <a class="nav-menu__btn btn btn-blue" href="{{route('user.profile.createAd')}}">Выставить объявление</a>
           @endif
 
           @if(auth()->guest())
@@ -145,7 +146,7 @@
 
         </div>
 
-        <a class="nav-menu__btn btn btn-blue" href="#">Выставить объявление</a>
+
 
       </div>
     </div>
