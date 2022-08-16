@@ -28,9 +28,9 @@ p {
     padding: 0;
 }
 
-main {
-    margin-top: 150px;
-}
+// main {
+//     margin-top: 150px;
+// }
 
 .title {
     font-weight: 600;
@@ -44,4 +44,9 @@ main {
     @media (max-width: 990.98px) {
         font-size: 24px;
     }
+}
+
+.main {
+    padding-top: 124px;
+    padding-bottom: 184px;
 }

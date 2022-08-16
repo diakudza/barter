@@ -1,4 +1,4 @@
-<header id="header" class="header">
+<section id="hero" class="hero">
     <img class="decoration-star" src="images/decoration-star.svg" alt="alternative">
     <img class="decoration-star-2" src="images/decoration-star.svg" alt="alternative">
     <div class="container">
@@ -18,4 +18,4 @@
             </div> <!-- end of col -->
         </div> <!-- end of row -->
     </div> <!-- end of container -->
-</header>
+</section>

@@ -4,7 +4,15 @@
   <div class="products-last__card card">
 
     <div class="card__img">
-      <img src="@if ($ad['image']){{$ad['image']}} @else http://via.placeholder.com/400x400 @endif" alt="{{ $ad['title'] }}" title="{{ $ad['title'] }}">
+
+      @if ($ad['image'])
+
+      <img src="$ad['image']" alt="{{ $ad['title'] }}" title="{{ $ad['title'] }}">
+
+      @else
+      <img src="http://via.placeholder.com/400x400" alt="{{ $ad['title'] }}" title="{{ $ad['title'] }}">
+
+      @endif
     </div>
 
     <div class="card__body">

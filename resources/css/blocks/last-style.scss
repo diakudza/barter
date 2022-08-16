@@ -6,7 +6,7 @@
 Table Of Contents:
 - General Styles
 - Navigation
-- Header
+- Hero
 - Statistics
 - Introduction
 - Details 1
@@ -35,17 +35,17 @@ Colors:
 /**************************/
 /*     General Styles     */
 /**************************/
-body,
-html {
-    width: 100%;
-    height: 100%;
-}
+// body,
+// html {
+//     width: 100%;
+//     height: 100%;
+// }
 
-body,
-p {
-    color: #6c717b;
-    font: 400 1rem/1.625rem "Open Sans", sans-serif;
-}
+// body,
+// p {
+//     color: #6c717b;
+//     font: 400 1rem/1.625rem "Open Sans", sans-serif;
+// }
 
 h1 {
     color: #191e47;
@@ -422,9 +422,9 @@ a:hover {
 }
 
 /*****************/
-/*    Header     */
+/*    Hero     */
 /*****************/
-.header {
+.hero {
     position: relative;
     overflow: hidden;
     padding-top: 8rem;
@@ -433,7 +433,7 @@ a:hover {
     text-align: center;
 }
 
-.header .decoration-star {
+.hero .decoration-star {
     position: absolute;
     top: 80px;
     left: -100px;
@@ -441,7 +441,7 @@ a:hover {
     opacity: 0.7;
 }
 
-.header .decoration-star-2 {
+.hero .decoration-star-2 {
     position: absolute;
     top: 80px;
     right: -100px;
@@ -449,30 +449,30 @@ a:hover {
     opacity: 0.7;
 }
 
-.header div[class*="col"] {
+.hero div[class*="col"] {
     /* selects all elements which have classes starting with col */
     /* needed so that the absolute positioned decoration stays behind */
     position: relative;
 }
 
-.header .h1-large {
+.hero .h1-large {
     margin-bottom: 1.75rem;
     font-size: 3rem;
     line-height: 3.5rem;
 }
 
-.header .p-large {
+.hero .p-large {
     margin-bottom: 2.25rem;
 }
 
-.header .btn-solid-lg,
-.header .btn-outline-lg {
+.hero .btn-solid-lg,
+.hero .btn-outline-lg {
     margin-right: 0.25rem;
     margin-bottom: 1.25rem;
     margin-left: 0.25rem;
 }
 
-.header .image-container {
+.hero .image-container {
     margin-top: 5rem;
 }
 
@@ -916,7 +916,7 @@ a:hover {
 /***********************/
 /*     Extra Pages     */
 /***********************/
-.ex-header {
+.ex-hero {
     padding-top: 8.5rem;
     padding-bottom: 4rem;
 }
@@ -971,24 +971,24 @@ a:hover {
 /*************************/
 /* Min-width 768px */
 @media (min-width: 768px) {
-    /* Header */
-    .header {
+    /* Hero */
+    .hero {
         padding-top: 11rem;
         padding-bottom: 5em;
     }
 
-    .header .decoration-star {
+    .hero .decoration-star {
         top: 100px;
         left: -150px;
         width: 300px;
     }
 
-    .header .decoration-star-2 {
+    .hero .decoration-star-2 {
         top: 140px;
         right: -200px;
         width: 400px;
     }
-    /* end of header */
+    /* end of hero */
 
     /* Statistics */
     .counter .counter-cell {
@@ -1105,29 +1105,29 @@ a:hover {
     }
     /* end of navigation */
 
-    /* Header */
-    .header {
+    /* Hero */
+    .hero {
         text-align: left;
     }
 
-    .header .text-container {
+    .hero .text-container {
         margin-top: 4rem;
     }
 
-    .header .image-container {
+    .hero .image-container {
         margin-top: 0;
     }
 
-    .header .btn-solid-lg,
-    .header .btn-outline-lg {
+    .hero .btn-solid-lg,
+    .hero .btn-outline-lg {
         margin-right: 0;
         margin-left: 0;
     }
 
-    .header .btn-solid-lg {
+    .hero .btn-solid-lg {
         margin-right: 0.5rem;
     }
-    /* end of header */
+    /* end of hero */
 
     /* Statistics */
     .counter .purecounter {
@@ -1267,37 +1267,37 @@ a:hover {
     }
     /* end of general styles */
 
-    /* Header */
-    .header {
+    /* Hero */
+    .hero {
         padding-top: 12rem;
         padding-bottom: 6rem;
     }
 
-    .header .text-container {
+    .hero .text-container {
         margin-top: 6.5rem;
     }
 
-    .header .decoration-star {
+    .hero .decoration-star {
         top: 200px;
         left: -200px;
         width: 500px;
     }
 
-    .header .decoration-star-2 {
+    .hero .decoration-star-2 {
         top: 150px;
         right: -200px;
         width: 600px;
     }
 
-    .header .h1-large {
+    .hero .h1-large {
         font-size: 4.25rem;
         line-height: 4.875rem;
     }
 
-    .header .image-container {
+    .hero .image-container {
         text-align: right;
     }
-    /* end of header */
+    /* end of hero */
 
     /* Statistics */
     .counter .counter-cell {
@@ -1450,18 +1450,18 @@ a:hover {
 
 /* Min-width 1400px */
 @media (min-width: 1400px) {
-    /* Header */
-    /*.header .decoration-star {
+    /* Hero */
+    /*.hero .decoration-star {
 		top: 120px;
 		left: -250px;
 		width: 600px;
 	}
 	
-	.header .decoration-star-2 {
+	.hero .decoration-star-2 {
 		top: 60px;
 		right: -300px;
 		width: 700px;
 	}*/
-    /* end of header */
+    /* end of hero */
 }
 /* end of min-width 1400px */
