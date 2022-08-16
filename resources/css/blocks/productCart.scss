@@ -1,8 +1,9 @@
-.container p, h6{
+.container p,
+h6 {
     margin-bottom: 0rem;
 }
 
-.productName{
+.productName {
     margin-top: 84px;
     margin-bottom: 22px;
     max-height: 140px;
@@ -15,20 +16,20 @@
     text-align: left;
 }
 
-.productHeader{
+.productHeader {
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
     align-items: center;
 }
 
-.location{
+.location {
     display: flex;
     gap: 20px;
     flex-direction: column;
 }
 
-.productLocation{
+.productLocation {
     height: 20px;
     width: 350px;
     left: 32px;
@@ -40,16 +41,30 @@
     letter-spacing: 0em;
     text-align: left;
     color: rgba(35, 38, 47, 0.6);
-    margin-bottom: 50px
+    margin-bottom: 50px;
 }
 
-.add{
+.add {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.addToFav{
+.adcart {
+    height: 300px;
+    width: 200px;
+    outline: 1px solid #0c63e4;
+    border-radius: 10px;
+    padding: 6px;
+}
+.adcart_link {
+    text-decoration: none;
+}
+.adcart_link:hover {
+    text-decoration: none;
+}
+
+.addToFav {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -75,12 +90,13 @@
     color: #34383c;
 }
 
-.productView{
+.productView {
     display: flex;
+    justify-content: space-around;
     gap: 10px;
 }
 
-.productViewBig img{
+.productViewBig img {
     width: 100%;
 }
 
@@ -88,17 +104,16 @@
     width: 101%;
 }
 
-.productViewSmall img{
+.productViewSmall img {
     width: 18%;
 }
 
-.productImg img{
+.productImg img {
     margin-bottom: 5px;
     margin-right: 10px;
 }
 
-
-.productContact{
+.productContact {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -107,7 +122,7 @@
     gap: 24px;
     width: 384px;
     height: 558px;
-    background: #FFFFFF;
+    background: #ffffff;
     border: 2px solid rgba(35, 38, 47, 0.1);
     border-radius: 20px;
     flex: none;
@@ -115,7 +130,7 @@
     flex-grow: 0;
 }
 
-.status{
+.status {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -128,23 +143,22 @@
     flex: none;
     order: 0;
     flex-grow: 0;
-    align-self: flex-start
+    align-self: flex-start;
 }
 
-.user{
+.user {
     align-items: flex-start;
     padding: 24px 16px;
     gap: 24px;
     width: 336px;
     height: 372px;
-    background: #F4F5F6;
+    background: #f4f5f6;
     border-radius: 8px;
     flex: none;
     order: 1;
     flex-grow: 0;
-
 }
-.user hr{
+.user hr {
     width: 304px;
     color: darkgray;
     size: 5px;
@@ -152,39 +166,37 @@
     margin-bottom: 29px;
 }
 
-.userView{
+.userView {
     display: flex;
     align-items: center;
 }
 
-.userRating{
+.userRating {
     display: flex;
     align-items: baseline;
 }
 
-.userName{
+.userName {
     margin-left: 15px;
     height: 48px;
-
 }
-.userName h5{
+.userName h5 {
     margin-bottom: 0;
     min-width: 120px;
 }
 
-.contacts p{
+.contacts p {
     display: flex;
 }
-.contacts div{
+.contacts div {
     margin-bottom: 10px;
 }
-.contactsInfo{
+.contactsInfo {
     display: flex;
     justify-content: space-between;
-
 }
 
-.writeMessage{
+.writeMessage {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -194,7 +206,7 @@
     gap: 8px;
     width: 304px;
     height: 58px;
-    background: #315DF7;
+    background: #315df7;
     border-radius: 8px;
     flex: none;
     order: 0;
@@ -202,10 +214,10 @@
     flex-grow: 0;
     color: white;
     margin-bottom: 8px;
-    border-color: #315DF7;
+    border-color: #315df7;
 }
 
-.orderCall{
+.orderCall {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -223,22 +235,22 @@
     border-color: rgb(35 38 47 / 29%);
 }
 
-.additionalInfo{
+.additionalInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-top: 27px;
 }
 
-.productInfo{
+.productInfo {
     display: flex;
     margin-top: 50px;
     gap: 25px;
 }
 
-.characteristic{
+.characteristic {
     display: flex;
-    border: 1px solid rgba(35,38,47,.1);
+    border: 1px solid rgba(35, 38, 47, 0.1);
     border-radius: 8px;
     height: 70px;
     width: 230px;
@@ -246,11 +258,11 @@
     padding: 10px;
     justify-content: center;
 }
-.characteristic svg{
+.characteristic svg {
     margin-right: 10px;
 }
 
-.description{
+.description {
     margin-top: 50px;
     margin-bottom: 50px;
     width: 880px;

@@ -13,7 +13,6 @@ class UploadService implements Upload
     {
         if ($oldFile) $this->removeImage($oldFile);
         $path = $file->storeAs('images', $file->hashName(), 'upload');
-        #dd($path);
         if (!$path) {
             throw new UploadException('Ошибка загрузки файла');
         }

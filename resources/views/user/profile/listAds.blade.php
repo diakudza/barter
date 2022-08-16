@@ -14,6 +14,7 @@
             <div class="container">
                 <div class="row">
                     @forelse ($ads as $ad)
+<<<<<<< HEAD
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top"
@@ -42,6 +43,9 @@
                                 </div>
                             </div>
                         </div>
+=======
+                        @include('components.adCartLK')
+>>>>>>> 6b1efc58bfd1c26931ac144dd62a7b129b91e88a
                     @empty
                         <h3>Вы пока не разместили ни одного объявления</h3>
                     @endforelse

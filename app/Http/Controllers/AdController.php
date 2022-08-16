@@ -9,9 +9,13 @@ use App\Models\AdUser;
 use App\Models\AdUserFavorite;
 use App\Models\Category;
 use App\Models\City;
+
+use App\Models\Image;
 use App\Models\User;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+
 use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
@@ -49,12 +53,21 @@ class AdController extends Controller
             return abort(404);
         }
         $validated = $request->safe()->all();
-        if ($request->hasFile('image')) {
-            $validated['image'] = $uploadService->uploadImage($request->file('image'));
-        }
+
         $ad = new Ad($validated);
         if ($ad->save()) {
-            return redirect()->route('searchPage')->with('success', 'Объявление успешно добавлено!');
+
+            if ($request->hasFile('image')) {
+                $image = new Image([
+                    'user_id' => $validated['user_id'],
+                    'path' => $uploadService->uploadImage($request->file('image')),
+                    'image_type' => 0
+                ]);
+                $ad->images()->save($image);
+            }
+
+            return redirect()->route('searchPage')->with('success', 'Объявление успешно отправлено на модерацию. После одобрения модераторм его статус изменится на активно!');
+
         } else {
             return back()->with('error');
         }
@@ -74,7 +87,7 @@ class AdController extends Controller
 
         $user = User::find(Auth::id());
 
-        if(auth()->user()) {
+        if (auth()->user()) {
 
             if ($user->wishes()->where('ad_id', $ad->id)->first()) {
                 $thisUserWishes = true;
@@ -123,13 +136,33 @@ class AdController extends Controller
     public function update(UpdateRequest $request, Ad $ad, UploadService $uploadService)
     {
         $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id']);
-        if ($request->hasFile('image')) {
-            if ($uploadService->removeImage($ad->image)) {
-                $validated['image'] = $uploadService->uploadImage($request->file('image'));
+
+        $imageData = $request->safe()->only(['imageMain', 'removeImage']);
+        if (Arr::has($imageData, 'removeImage')) {
+            $imagesToRemove = Image::whereIn('id', $imageData['removeImage'])->get();
+            foreach ($imagesToRemove as $imageToRemove) {
+                $uploadService->removeImage($imageToRemove->path);
             }
+            Image::destroy($imageData['removeImage']);
+        }
+        if (Arr::has($imageData, 'imageMain')) {
+            $newMainImage = Image::findOrFail($imageData['imageMain']);
+            $newMainImage->image_type = 0;
+            $newMainImage->save();
+        }
+        if ($request->hasFile('image')) {
+            $image = new Image([
+                'user_id' => $ad->user_id,
+                'path' => $uploadService->uploadImage($request->file('image')),
+                'image_type' => 1
+            ]);
         }
         $ad = $ad->fill($validated);
-        if ($ad->save()) {
+        if ($ad->update()) {
+            if (isset($image)) {
+                $ad->images()->save($image);
+            }
+
             return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно обновлено!');
         } else {
             return back()->with('fail', 'Ошибка обновления объявления!');

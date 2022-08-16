@@ -34,7 +34,11 @@ class UpdateRequest extends FormRequest
             'barter_type' => ['required', 'in:free,barter'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
             'status_id' => ['required', 'integer', 'exists:ad_statuses,id'],
-            'image' => ['image']
+
+            'image' => ['image'],
+            'imageMain' => ['integer', 'exists:images,id'],
+            'removeImage' => ['array']
+
         ];
     }
 }
