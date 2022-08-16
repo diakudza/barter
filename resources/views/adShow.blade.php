@@ -128,23 +128,48 @@
 
                 <div class="productView">
                     <div class="productImg">
-                        @if($ad->images && count($ad->images) == 1)
-                        <div class="productViewBig">
-
-                                <img src="{{ Storage::url($ad->imageMain[0]->path) }}" height="400" alt="image">
-                        </div>
-
-                        <div class="productViewSmall">
-                            @foreach($ad->images as $image)
-                                <img src="{{ Storage::url($image->path) }}">
-                            @endforeach
-                        </div>
-                        @else
-                            <div class="productViewBig">
-                                <img src="{{ Storage::url('images/clean.webp') }}" height="400" alt="image">
+                        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></SCRIPT>
+                        @if($ad->images && count($ad->images) >= 1)
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-inner">
+                                <div class="productViewBig">
+                                    <div class="carousel-item active">
+                                        <img class="image modalWindow d-block w-100" src="{{ Storage::url($ad->images[0]->path) }}" alt="...">
+                                    </div>
+                                    @foreach($ad->images as $image)
+                                        @if ($loop->first) @continue @endif
+                                        <div class="carousel-item">
+                                            <img class="image modalWindow d-block w-100" src="{{ Storage::url($image->path) }}" alt="...">
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
+                            <div class="carousel-indicators productViewSmall">
+                                @foreach($ad->images as $image)
+                                    @if ($loop->first)
+                                        <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $loop->iteration }}">
+                                        @continue
+                                    @endif
+                                    <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $loop->iteration }}">
+                                @endforeach
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        @else
+                                    <div class="productViewBig">
+                                            <img class="image modalWindow" src="{{ Storage::url('images/clean.webp') }}" alt="...">
+                                    </div>
                         @endif
                     </div>
+
 
                     <div class="productContact">
                         <div class="status">
@@ -162,7 +187,7 @@
                         <div class="user">
                             <div class="userInfo">
                                 <div class="userView">
-                                    <img src="images/product/Afshin.png">
+                                    <img src="{{ Storage::url("images/ads/2/Afshin.png") }}">
                                     <div class="userName">
                                         <h5 class="">{{ $ad->user->name }}</h5>
                                         <div class="userRating">
