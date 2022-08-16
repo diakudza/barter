@@ -12,6 +12,7 @@
             {{ session('fail') }}
         </div>
         @endif
+
         <form method="post" action="{{ route('auth') }}">
             <legend>Login</legend>
             @csrf

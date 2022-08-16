@@ -25,6 +25,7 @@ class AdPolicy
         return $user->id === $ad->user_id;
     }
 
+
     public function store(User $user)
     {
         return !$user->isBlockedUser();

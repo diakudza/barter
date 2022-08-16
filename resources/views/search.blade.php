@@ -4,19 +4,22 @@
 
 @section('content')
 
-    <div class="mt-5 mb-5">
-    </div>
 
-    @include('components.searchForm')
+<div class="mt-5 mb-5">
+</div>
 
-    @if (isset($searchResult))
 
-        <div class="container mt-5 d-flex flex-row flex-wrap gap-2 justify-content-center">
+@include('components.searchForm')
 
-            @foreach ($searchResult as $item)
-                @include('components.adCart')
-            @endforeach
+@if (isset($searchResult))
 
-        </div>
-    @endif
+
+<div class="container mt-5 d-flex flex-row flex-wrap gap-2 justify-content-center">
+
+    @foreach ($searchResult as $item)
+    @include('components.adCart')
+    @endforeach
+
+</div>
+@endif
 @endsection
