@@ -1,0 +1,41 @@
+.footer {
+    padding: 64px 0;
+    background-color: #f4f5f6;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media (max-width: 990.98px) {
+            flex-direction: column;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+
+        &-link {
+            transition: all 0.4s ease-in;
+
+            &:hover {
+                color: $color-black;
+            }
+
+            &:not(:last-child) {
+                margin-right: 20px;
+            }
+        }
+
+        @media (max-width: 990.98px) {
+            display: none;
+        }
+    }
+
+    &__copy {
+        @media (max-width: 990.98px) {
+            margin-top: 15px;
+        }
+    }
+}

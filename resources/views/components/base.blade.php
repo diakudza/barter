@@ -17,12 +17,13 @@
 </head>
 
 <body>
+    <x-nav></x-nav>
 
-    @include('components.navigation')
+    <main id="main" class="main">
+        @yield('content')
+    </main>
 
     @include('components.alert')
-
-    @yield('content')
 
     <x-footer></x-footer>
 
