@@ -26,25 +26,25 @@ class ImageService
     }
 
     /**
-     * 
+     *
      */
     public function saveNewAdImage(int $userId, UploadedFile $file)
     {
-        $uploadService = New UploadService();
+        $uploadService = new UploadService();
         $path = $uploadService->uploadImage($file);
         return $this->imageRepository->store($userId, $path, 'ad_main');
     }
 
     public function saveExistingAdImage(int $userId, UploadedFile $file)
     {
-        $uploadService = New UploadService();
+        $uploadService = new UploadService();
         $path = $uploadService->uploadImage($file);
         return $this->imageRepository->store($userId, $path, 'ad');
     }
 
     public function updateExistingAdImage(array $imageData)
     {
-        $uploadService = New UploadService();
+        $uploadService = new UploadService();
         if (Arr::has($imageData, 'imageMain')) {
             $this->imageRepository->setNewMainImage($imageData['imageMain']);
         }
@@ -54,6 +54,9 @@ class ImageService
                 $uploadService->removeImage($imageToRemove->path);
             }
             $this->imageRepository->deleteImagesById($imageData['removeImage']);
+            $adId = $imagesToRemove[0]->ad_id;
+            $images = $this->imageRepository->getImagesByAdId($adId);
+            dd($images);
         }
     }
 }

@@ -48,4 +48,9 @@ class ImageRepository
         $image->image_type = 'ad_main';
         $image->save();
     }
+
+    public function getImagesByAdId(int $adId)
+    {
+        Image::where('ad_id', $adId)->get();
+    }
 }

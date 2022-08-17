@@ -8,16 +8,8 @@ use App\Models\Ad;
 use App\Models\AdStatus;
 use App\Models\AdUser;
 use App\Models\AdUserFavorite;
-use App\Models\Category;
-use App\Models\City;
-
-use App\Models\Image;
 use App\Models\User;
 use App\Services\ImageService;
-use App\Services\UploadService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-
 use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
@@ -64,7 +56,6 @@ class AdController extends Controller
             }
 
             return redirect()->route('searchPage')->with('success', 'Объявление успешно отправлено на модерацию. После одобрения модераторм его статус изменится на активно!');
-
         } else {
             return back()->with('error');
         }
@@ -97,7 +88,6 @@ class AdController extends Controller
             } else {
                 $thisUserFavoriteAd = false;
             }
-
         }
         $ad->update(['show_count' => ++$ad->show_count]);
         $inwishlist = $adUser->where('ad_id', $ad->id)->count();
@@ -159,7 +149,7 @@ class AdController extends Controller
     {
         $deletedStatus = AdStatus::where('title', 'deleted')->get()->first()->id;
         $ad->status_id = $deletedStatus;
-        if ($ad->save()){
+        if ($ad->save()) {
             return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно удалено!');
         } else {
             return back()->with('fail', 'Ошибка удаления объявления!');
