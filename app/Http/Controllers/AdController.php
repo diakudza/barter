@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Ads\StoreRequest;
 use App\Http\Requests\Ads\UpdateRequest;
 use App\Models\Ad;
+use App\Models\AdStatus;
 use App\Models\AdUser;
 use App\Models\AdUserFavorite;
 use App\Models\Category;
@@ -12,6 +13,7 @@ use App\Models\City;
 
 use App\Models\Image;
 use App\Models\User;
+use App\Services\ImageService;
 use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -47,22 +49,17 @@ class AdController extends Controller
      * @param  App\Services\UploadService $uploadService
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request, UploadService $uploadService)
+    public function store(StoreRequest $request, ImageService $imageService)
     {
         if (!Auth::check()) {
             return abort(404);
         }
         $validated = $request->safe()->all();
-
         $ad = new Ad($validated);
         if ($ad->save()) {
 
             if ($request->hasFile('image')) {
-                $image = new Image([
-                    'user_id' => $validated['user_id'],
-                    'path' => $uploadService->uploadImage($request->file('image')),
-                    'image_type' => 0
-                ]);
+                $image = $imageService->saveNewAdImage($validated['user_id'], $request->file('image'));
                 $ad->images()->save($image);
             }
 
@@ -133,36 +130,19 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, Ad $ad, UploadService $uploadService)
+    public function update(UpdateRequest $request, Ad $ad, ImageService $imageService)
     {
-        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id']);
-
+        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id', 'user_id']);
         $imageData = $request->safe()->only(['imageMain', 'removeImage']);
-        if (Arr::has($imageData, 'removeImage')) {
-            $imagesToRemove = Image::whereIn('id', $imageData['removeImage'])->get();
-            foreach ($imagesToRemove as $imageToRemove) {
-                $uploadService->removeImage($imageToRemove->path);
-            }
-            Image::destroy($imageData['removeImage']);
-        }
-        if (Arr::has($imageData, 'imageMain')) {
-            $newMainImage = Image::findOrFail($imageData['imageMain']);
-            $newMainImage->image_type = 0;
-            $newMainImage->save();
-        }
+        $imageService->updateExistingAdImage($imageData);
         if ($request->hasFile('image')) {
-            $image = new Image([
-                'user_id' => $ad->user_id,
-                'path' => $uploadService->uploadImage($request->file('image')),
-                'image_type' => 1
-            ]);
+            $image = $imageService->saveExistingAdImage($validated['user_id'], $request->file('image'));
         }
         $ad = $ad->fill($validated);
         if ($ad->update()) {
             if (isset($image)) {
                 $ad->images()->save($image);
             }
-
             return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно обновлено!');
         } else {
             return back()->with('fail', 'Ошибка обновления объявления!');
@@ -172,11 +152,17 @@ class AdController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Ad $ad
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Ad $ad)
     {
-        //
+        $deletedStatus = AdStatus::where('title', 'deleted')->get()->first()->id;
+        $ad->status_id = $deletedStatus;
+        if ($ad->save()){
+            return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно удалено!');
+        } else {
+            return back()->with('fail', 'Ошибка удаления объявления!');
+        }
     }
 }
