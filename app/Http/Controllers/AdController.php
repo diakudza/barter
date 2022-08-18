@@ -116,8 +116,9 @@ class AdController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Http\Requests\Ads\UpdateRequest  $request
+     * @param App\Models\Ad $ad
+     * @param  App\Services\ImageService $imageService
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Ad $ad, ImageService $imageService)
@@ -126,7 +127,7 @@ class AdController extends Controller
         $imageData = $request->safe()->only(['imageMain', 'removeImage']);
         $imageService->updateExistingAdImage($imageData);
         if ($request->hasFile('image')) {
-            $image = $imageService->saveExistingAdImage($validated['user_id'], $request->file('image'));
+            $image = $imageService->saveExistingAdImage($validated['user_id'], $request->file('image'), $ad->id);
         }
         $ad = $ad->fill($validated);
         if ($ad->update()) {

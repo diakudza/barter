@@ -26,6 +26,6 @@ class QueryBuilderAds extends QueryBuilderBase implements QueryBuilder
 
     public function getAdDetailById(int $adId): Ad
     {
-        return $this->model::with(['city', 'category', 'status', 'favoriteUsers', 'usersWished'])->findOrFail($adId);
+        return $this->model::with(['city', 'category', 'status', 'favoriteUsers', 'usersWished', 'images'])->findOrFail($adId);
     }
 }

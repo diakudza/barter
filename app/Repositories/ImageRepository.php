@@ -44,13 +44,13 @@ class ImageRepository
     public function setNewMainImage(int $id)
     {
         $image = Image::findOrFail($id);
-        Image::where('ad_id', $image->ad_id)->update(['image_type' => 'ad']);
+        Image::where('ad_id', $image->ad_id)->whereNot('id', $id)->update(['image_type' => 'ad']);
         $image->image_type = 'ad_main';
         $image->save();
     }
 
     public function getImagesByAdId(int $adId)
     {
-        Image::where('ad_id', $adId)->get();
+        return Image::where('ad_id', $adId)->get();
     }
 }

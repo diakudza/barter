@@ -35,11 +35,16 @@ class ImageService
         return $this->imageRepository->store($userId, $path, 'ad_main');
     }
 
-    public function saveExistingAdImage(int $userId, UploadedFile $file)
+    public function saveExistingAdImage(int $userId, UploadedFile $file, int $adId)
     {
         $uploadService = new UploadService();
         $path = $uploadService->uploadImage($file);
-        return $this->imageRepository->store($userId, $path, 'ad');
+        $newImage = $this->imageRepository->store($userId, $path, 'ad');
+        //If ad was created without image set current image as main
+        if(count($this->imageRepository->getImagesByAdId($adId)) == 0){
+            $newImage->image_type = 'ad_main';
+        }
+        return $newImage;
     }
 
     public function updateExistingAdImage(array $imageData)
@@ -54,9 +59,21 @@ class ImageService
                 $uploadService->removeImage($imageToRemove->path);
             }
             $this->imageRepository->deleteImagesById($imageData['removeImage']);
+            //If main image was removed and no new main image was set among remaining
+            //set first remaining image as main
             $adId = $imagesToRemove[0]->ad_id;
-            $images = $this->imageRepository->getImagesByAdId($adId);
-            dd($images);
+            $remainingImages = $this->imageRepository->getImagesByAdId($adId);
+            if (count($remainingImages) !== 0) {
+                foreach ($remainingImages as $image){
+                    if($image->image_type == 'ad_main'){
+                        $mainImageId = $image->id;
+                        break;
+                    }
+                }
+                if(!isset($mainImageId)){
+                    $this->imageRepository->setNewMainImage($remainingImages[0]->id);
+                }
+            }
         }
     }
 }
