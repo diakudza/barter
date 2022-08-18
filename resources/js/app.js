@@ -1,14 +1,15 @@
 import "./bootstrap";
 
-//Bootstrap
-import "/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-import "/node_modules/ellipsis.js/ellipsis.min.js";
+import "./venders";
 
 //Модули
 import { headerJS } from "./navbar";
 import cutText from "./cutText";
+import searchDropdown from "./searchDropdown";
 
 //Вызовы модулей
 
 cutText();
 headerJS();
+
+searchDropdown();

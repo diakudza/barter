@@ -8,8 +8,10 @@
 //Медия запросы
 @import "modules/mixMediaScreens";
 
+//Удалить после полного перестроения страницы
 @import "blocks/last-style";
 
+//Глобальные стили
 @import "blocks/btn";
 @import "blocks/alerts";
 @import "blocks/global";
@@ -22,9 +24,13 @@
 
 @import "blocks/actions";
 @import "blocks/products-last";
-
-@import "blocks/productCart";
-
 @import "blocks/card";
 
+//Блок поиска
+@import "blocks/searchBlock";
+
+//Стили большой карточки продукта
+@import "blocks/productCart";
+
+//Стили footer
 @import "blocks/footer";

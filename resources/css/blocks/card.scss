@@ -1,5 +1,10 @@
 // Маленькая карточка
 .card {
+    padding: 16px;
+
+    border: 2px solid rgba(35, 38, 47, 0.05);
+    border-radius: 16px;
+
     &__img {
         position: relative;
 

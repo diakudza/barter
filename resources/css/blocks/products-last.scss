@@ -14,13 +14,6 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         }
     }
-
-    &__card {
-        padding: 16px;
-
-        border: 2px solid rgba(35, 38, 47, 0.05);
-        border-radius: 16px;
-    }
 }
 
 // "id" => 20
