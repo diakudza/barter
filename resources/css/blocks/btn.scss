@@ -3,9 +3,9 @@
     font-size: 16px;
     line-height: 100%;
 
-    padding: 19px 12px;
+    padding: 19px 30px;
 
-    border-radius: 18px;
+    border-radius: 8px;
 
     color: $color-black;
 
@@ -28,13 +28,12 @@
         transition: all 0.4s ease-in-out;
 
         &:hover {
-            border: 2px solid $color-blue;
+            color: $color-blue;
             background-color: transparent;
         }
     }
 
     //Кнопка бургера
-
     &-toggel {
         position: relative;
         width: 48px;
@@ -98,8 +97,7 @@
         }
     }
 
-    &:hover {
-        color: $color-black;
-        text-decoration: none;
+    @include break992 {
+        font-size: 15px;
     }
 }

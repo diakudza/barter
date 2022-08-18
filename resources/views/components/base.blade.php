@@ -15,13 +15,13 @@
 </head>
 
 <body>
-    <x-nav></x-nav>
+    <x-header></x-header>
 
     <main id="main" class="main">
         @yield('content')
     </main>
 
-    <!-- @include('components.alert') -->
+    @include('components.alert')
 
     <x-footer></x-footer>
 

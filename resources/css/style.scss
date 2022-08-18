@@ -5,14 +5,21 @@
 @import "modules/vars";
 // venders
 @import "modules/vender";
+//Медия запросы
+@import "modules/mixMediaScreens";
 
 @import "blocks/last-style";
 
 @import "blocks/btn";
+@import "blocks/alerts";
 @import "blocks/global";
 
+//Стили шапки
+@import "blocks/header";
 @import "blocks/nav";
-@import "blocks/nav-profile";
+@import "blocks/top-profile";
+@import "blocks/profileMenu";
+
 @import "blocks/actions";
 @import "blocks/products-last";
 

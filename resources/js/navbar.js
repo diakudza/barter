@@ -1,8 +1,8 @@
 export const headerJS = () => {
     const burgerBtn = document.querySelector(".btn-toggel");
-    const navMenu = document.querySelector(".nav-menu__body");
+    const navMenu = document.querySelector(".header__content");
 
-    const profileBody = document.querySelector(".nav-profile__body");
+    const profileBody = document.querySelector(".top-profile__menu");
 
     document.addEventListener("click", (e) => {
         const target = e.target;
@@ -12,7 +12,7 @@ export const headerJS = () => {
             navMenu.classList.toggle("show");
         }
 
-        if (target.closest(".nav-profile__avatar")) {
+        if (target.closest(".top-profile__avatar")) {
             profileBody.classList.toggle("show");
         }
     });

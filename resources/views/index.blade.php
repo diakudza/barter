@@ -5,9 +5,9 @@
 @section('content')
 
 
-@include('components.header')
+@include('components.hero')
 
-<div class="container ">
+<section class="container ">
 
   <div id="howitwork" class="mb-5">
     <p>
@@ -18,7 +18,7 @@
     </p>
   </div>
 
-</div>
+</section>
 
 <!-- Блок поиска -->
 <section id="main-search" class="container d-flex flex-row justify-content-sm-evenly">

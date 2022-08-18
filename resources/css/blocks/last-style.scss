@@ -6,11 +6,7 @@
 Table Of Contents:
 - General Styles
 - Navigation
-<<<<<<< HEAD
-- Hero
-=======
 - Header
->>>>>>> 3a709e7217c975d7078f70d9f75c88dd3b4dfb41
 - Statistics
 - Introduction
 - Details 1
@@ -432,8 +428,6 @@ a:hover {
 .hero {
     position: relative;
     overflow: hidden;
-    padding-top: 8rem;
-    padding-bottom: 4em;
     background-color: #ffffff;
     text-align: center;
 }
@@ -477,9 +471,9 @@ a:hover {
     margin-left: 0.25rem;
 }
 
-.hero .image-container {
-    margin-top: 5rem;
-}
+// .hero .image-container {
+//     margin-top: 5rem;
+// }
 
 /**********************/
 /*     Statistics     */
@@ -977,10 +971,10 @@ a:hover {
 /* Min-width 768px */
 @media (min-width: 768px) {
     /* Hero */
-    .hero {
-        padding-top: 11rem;
-        padding-bottom: 5em;
-    }
+    // .hero {
+    //     padding-top: 11rem;
+    //     padding-bottom: 5em;
+    // }
 
     .hero .decoration-star {
         top: 100px;
@@ -1268,16 +1262,16 @@ a:hover {
 /* Min-width 1200px */
 @media (min-width: 1200px) {
     /* General Styles */
-    .container {
-        max-width: 1140px;
-    }
+    // .container {
+    //     max-width: 1140px;
+    // }
     /* end of general styles */
 
     /* Hero */
-    .hero {
-        padding-top: 12rem;
-        padding-bottom: 6rem;
-    }
+    // .hero {
+    //     padding-top: 12rem;
+    //     padding-bottom: 6rem;
+    // }
 
     .hero .text-container {
         margin-top: 6.5rem;
