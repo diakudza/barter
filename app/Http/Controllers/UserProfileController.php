@@ -35,9 +35,6 @@ class UserProfileController extends Controller
 
     public function listAds(QueryBuilderAds $adsList)
     {
-
-        //dd($adsList->listAdsByUser(Auth::user()->id));
-
         return view('user.profile.listAds', ['ads' => $adsList->listAdsByUser(Auth::user()->id)]);
     }
 
@@ -46,16 +43,19 @@ class UserProfileController extends Controller
         QueryBuilderAds $adsDetail,
         QueryBuilderCategories $categoriesList,
         QueryBuilderCities $citiesList,
-
         AdStatus $statusesList
-
     ) {
+        $ad = $adsDetail->getAdDetailById($request->ad);
+        $allowedStatuses = $statusesList->getAllPublicStatuses();
+        if($allowedStatuses->search($ad->status) === false){
+            $allowedStatuses = [];
+            $allowedStatuses[] = $ad->status;
+        }
         return view('user.profile.editAd', [
-            'ad' => $adsDetail->getAdDetailById($request->ad),
+            'ad' => $ad,
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
-
-            'statusesList' => $statusesList->getAllPublicStatuses()
+            'statusesList' => $allowedStatuses
         ]);
     }
 

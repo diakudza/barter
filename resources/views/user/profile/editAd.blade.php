@@ -19,8 +19,7 @@
                 <div>
                     <label for="text">Описание</label>
                     <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
-                    <textarea name="text" id="text" rows="5" required class="form-control">
-                    @if (old('text')){{ old('text') }}@else{{ $ad->text }}@endif
+                    <textarea name="text" id="text" rows="5" required class="form-control">@if (old('text')){{ old('text') }}@else{{ $ad->text }}@endif
                 </textarea>
                 </div>
                 <label for="image">Загрузить фото</label>
@@ -75,34 +74,42 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row mt-5">
-                @forelse ($ad->images as $image)
-                <div class="col-sm-4">
-                    <img src="{{ Storage::url($image->path) }}" alt="image" height=400>
-                    <div class="form-group d-flex justify-content-sm-evenly">
-                        <label for="imageMain">Сделать главной</label>
-                        <input type="radio" name="imageMain" id="imageMain" value="{{ $image->id }}" class="form-check" @if ($image->image_type == 0) checked @endif>
-                        <label for="">Удалить</label>
-                        <input type="checkbox" name="removeImage[]" id="removeImage" class="form-check" value="{{ $image->id }}">
-                    </div>
-                </div>
-                @empty
-                <div class="col-sm-6">
-                    <img src="{{ Storage::url('images/clean.webp') }}" alt="image" height=400>
+
+            </div>
+            <div class="container">
+                <div class="row mt-5">
+                    @forelse ($ad->images as $image)
+                        <div class="col-sm-4">
+                            <img src="{{ Storage::url($image->path) }}" alt="image" height=400>
+                            <div class="form-group d-flex justify-content-sm-evenly">
+                                <label for="imageMain">Сделать главной</label>
+                                <input type="radio" name="imageMain" id="imageMain" value="{{ $image->id }}"
+                                       class="form-check"
+                                       @if ($image->image_type == 'ad_main') checked @endif>
+                                <label for="">Удалить</label>
+                                <input type="checkbox" name="removeImage[]" id="removeImage" class="form-check"
+                                       value="{{ $image->id }}">
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-sm-6">
+                            <img src="{{ Storage::url('images/clean.webp') }}" alt="image" height=400>
+                        </div>
+                    @endforelse
+
                 </div>
                 @endforelse
             </div>
-        </div>
 
-
-
-        <div>
-            <button type="submit" class="btn btn-success">Сохранить</button>
-            <button type="reset" class="btn btn-danger">Отменить изменения</button>
-
-        </div>
-    </form>
-</div>
+            <div>
+                <button type="submit" class="btn btn-success">Сохранить</button>
+                <button type="reset" class="btn btn-danger">Отменить изменения</button>
+            </div>
+        </form>
+        <form action="{{ route('ad.destroy', $ad->id) }}" method="post">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-danger">Удалить объявление</button>
+        </form>
+    </div>
 @endsection
