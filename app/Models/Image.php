@@ -17,5 +17,4 @@ class Image extends Model
     {
         return $this->hasMany(Ad::class);
     }
-
 }

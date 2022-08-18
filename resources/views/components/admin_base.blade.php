@@ -20,7 +20,9 @@
 
     @include('components.alert')
 
-    @yield('content')
+    <main id="main" class="main">
+        @yield('content')
+    </main>
 
     <x-footer></x-footer>
 

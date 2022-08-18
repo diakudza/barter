@@ -1,4 +1,4 @@
-<div class="container mt-5 pt-5">
+<div class="alert container mt-5 pt-5">
     @if (session('success'))
     <div class="mt-5 alert alert-success">
         {{ session('success') }}

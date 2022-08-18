@@ -1,53 +1,27 @@
-<footer class="footer bg-gray">
+<footer id='footer' class="footer">
 
-    <div class="container">
+  <div class="container footer__container">
 
-        <div class="row">
+    <div class="footer__logo">
 
-            <div class="col-lg-12">
-                <div class="footer-col first">
-                    <h6>About Website</h6>
-                    <p class="p-small">He oppose at thrown desire of no. Announcing impression unaffected day his are unreserved indulgence. Him hard find read are you</p>
-                </div> <!-- end of footer-col -->
+      <a href="{{ route('home') }}">
+        <img src="{{ asset('images/logo.svg' )}}" alt="Лого" class="logo">
+      </a>
 
-                <div class="footer-col second">
-                    <h6>Links</h6>
-                    <ul class="list-unstyled li-space-lg p-small">
-                        <li>Important: <a href="terms.html">Terms &amp; Conditions</a>, <a href="privacy.html">Privacy Policy</a></li>
-                        <li>Useful: <a href="#">Colorpicker</a>, <a href="#">Icon Library</a>, <a href="#">Illustrations</a></li>
-                        <li>Menu: <a href="#header">Home</a>, <a href="#details">Details</a>, <a href="#services">Services</a>, <a href="#contact">Contact</a></li>
-                    </ul>
-                </div> <!-- end of footer-col -->
+    </div>
 
-                <div class="footer-col third">
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-facebook-f fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-twitter fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-pinterest-p fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-instagram fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <p class="p-small">We would love to hear from you <a href="mailto:contact@site.com"><strong>contact@site.com</strong></a></p>
-                </div> <!-- end of footer-col -->
+    <nav class="footer__menu">
+      <a href="{{ route('home') }}" class="footer__menu-link">Главная</a>
 
-            </div> <!-- end of col -->
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
+      <a href="{{ route('searchPage') }}" class="footer__menu-link">Поиск</a>
+
+      <a href="#" class="footer__menu-link">О проекте</a>
+    </nav>
+
+    <div class="footer__copy">
+      Copyright © <?php echo date("Y"); ?>. All rights reserved
+    </div>
+
+  </div>
+
 </footer>

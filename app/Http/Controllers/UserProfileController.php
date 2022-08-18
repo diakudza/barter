@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\AdStatus;
+
 use App\Queries\QueryBuilderAds;
 use App\Queries\QueryBuilderCategories;
 use App\Queries\QueryBuilderCities;
+use App\Queries\QueryBuilderStatuses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserProfileController extends Controller
 {
-    public function index()
+    public function index(QueryBuilderAds $adsList)
     {
-        return view('user.profile.index');
+        return view('user.profile.index', [
+            'ads' => $adsList->listAdsByUser(Auth::user()->id),
+            'wishes' => Auth::user()->wishes,
+            'favorites' => Auth::user()->favoriteAds
+            ]);
     }
 
     public function createAd(
@@ -28,7 +35,6 @@ class UserProfileController extends Controller
 
     public function listAds(QueryBuilderAds $adsList)
     {
-        //dd($adsList->listAdsByUser(Auth::user()->id));
         return view('user.profile.listAds', ['ads' => $adsList->listAdsByUser(Auth::user()->id)]);
     }
 
@@ -39,11 +45,17 @@ class UserProfileController extends Controller
         QueryBuilderCities $citiesList,
         AdStatus $statusesList
     ) {
+        $ad = $adsDetail->getAdDetailById($request->ad);
+        $allowedStatuses = $statusesList->getAllPublicStatuses();
+        if($allowedStatuses->search($ad->status) === false){
+            $allowedStatuses = [];
+            $allowedStatuses[] = $ad->status;
+        }
         return view('user.profile.editAd', [
-            'ad' => $adsDetail->getAdDetailById($request->ad),
+            'ad' => $ad,
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
-            'statusesList' => $statusesList->getAllPublicStatuses()
+            'statusesList' => $allowedStatuses
         ]);
     }
 
