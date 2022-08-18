@@ -1,70 +1,37 @@
 .nav-menu {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    background-color: white;
-    padding: 31px 0;
-    border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+    flex-grow: 1;
 
-    &__container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    padding: 0 30px;
+
+    @include break1200 {
+        padding: 0 20px;
     }
 
-    &__body {
-        display: flex;
-        justify-content: flex-end;
-
+    @include break992 {
         width: 100%;
+        padding: 0;
+        padding-top: 32px;
 
-        transition: all 0.4s ease-in;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: initial;
+        justify-content: initial;
 
-        @media (max-width: 990.98px) {
-            position: absolute;
-            z-index: 100;
-            top: 111px;
-
-            left: 0;
-            bottom: 0;
-            right: 0;
-
-            height: calc(100vh - 111px);
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-
-            transform: translateX(1000px);
-
-            &.show {
-                transform: translateX(0);
-            }
-        }
+        background-color: white;
     }
 
     &__list {
         display: flex;
         align-items: center;
+        justify-content: center;
 
-        // flex-basis: 35%;
-        flex-basis: 45%;
-
-        padding: 0 30px;
-
-        @media (max-width: 990.98px) {
-            width: 100%;
-            padding: 0;
-            padding-top: 32px;
-
-            flex-basis: 100%;
+        @include break992 {
+            align-items: inherit;
             flex-direction: column;
-            align-items: initial;
-
-            background-color: white;
         }
     }
 
@@ -74,12 +41,16 @@
         &:not(:last-child) {
             margin-right: 32px;
 
-            @media (max-width: 990.98px) {
+            @include break1200 {
+                margin-right: 22px;
+            }
+
+            @include break992 {
                 margin-right: 0;
             }
         }
 
-        @media (max-width: 990.98px) {
+        @include break992 {
             padding: 16px 32px;
 
             &:hover {
@@ -88,19 +59,18 @@
         }
 
         &.active {
-            @media (max-width: 990.98px) {
-                border-left: 3px solid $color-blue;
-            }
-
-            &.nav-menu__link {
+            & > .nav-menu__link {
                 font-weight: 600;
                 color: $color-black;
+            }
+
+            @include break992 {
+                border-left: 3px solid $color-blue;
             }
         }
     }
 
     &__link {
-        font-family: "Gilroy";
         font-weight: 500;
         font-size: 16px;
         line-height: 100%;
@@ -108,21 +78,15 @@
         color: $color-black40;
         transition: all 0.4s ease-in-out;
 
-        &:hover {
-            text-decoration: none;
+        @include break1200 {
+            font-size: 14px;
         }
 
-        @media (max-width: 990.98px) {
+        @include break992 {
             font-size: 32px;
             line-height: 100%;
 
             letter-spacing: -0.03em;
         }
-    }
-
-    &__profile {
-        display: flex;
-        align-items: center;
-        gap: 12px;
     }
 }

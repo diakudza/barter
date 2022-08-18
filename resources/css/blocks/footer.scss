@@ -7,7 +7,7 @@
         align-items: center;
         justify-content: space-between;
 
-        @media (max-width: 990.98px) {
+        @include break992 {
             flex-direction: column;
         }
     }
@@ -28,13 +28,13 @@
             }
         }
 
-        @media (max-width: 990.98px) {
+        @include break992 {
             display: none;
         }
     }
 
     &__copy {
-        @media (max-width: 990.98px) {
+        @include break992 {
             margin-top: 15px;
         }
     }
