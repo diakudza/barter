@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-$(document).ready(function() {
-
-	$(".modalWindow").click(function(){
-	  	var img = $(this);
-		var src = img.attr('src');
-		src = src.replace("small", "big");
-        $("body").append("<div class='popup'>"+
-						 "<div class='popup_bg'></div>"+
-						 "<img src='"+src+"' class='popup_img' />"+
-						 "</div>");
-		$(".popup").fadeIn(800);
-		$(".popup_bg").click(function(){
-			$(".popup").fadeOut(800);
-			setTimeout(function() {
-			  $(".popup").remove();
-			}, 800);
-		});
-	});
-
-=======
 $(document).ready(function () {
     $(".modalWindow").click(function () {
         var img = $(this);
@@ -40,5 +19,4 @@ $(document).ready(function () {
             }, 800);
         });
     });
->>>>>>> front
 });

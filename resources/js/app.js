@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import "./bootstrap";
-import "./modalWindowPopup";
-=======
 //Сторонние библиотеки
 import "./venders";
->>>>>>> front
 
 //Скрипты из шаблона (удалить после их переноса)
 import "./checkFile";

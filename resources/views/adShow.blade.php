@@ -40,7 +40,7 @@
             </div>
 
             <div class="add">
-                <!-- @if (auth()->user()) -->
+                @if (auth()->user())
                 @if (!$userFavorite)
 
                 <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
@@ -96,6 +96,7 @@
                         <p>Отказаться</p>
                     </button>
                 </form>
+                @endif
                 @endif
             </div>
 
