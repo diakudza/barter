@@ -15,7 +15,7 @@
 
       <a href="{{ route('searchPage') }}" class="footer__menu-link">Поиск</a>
 
-      <a href="#" class="footer__menu-link">О проекте</a>
+      <a href="/about" class="footer__menu-link">О проекте</a>
     </nav>
 
     <div class="footer__copy">

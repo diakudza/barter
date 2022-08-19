@@ -10,13 +10,17 @@
 
     </div>
 
-    <img @if(count($item->imageMain)) src="{{Storage::url($item->imageMain[0]->path)}}"
-    @elseif(count($item->images))
+    @if(count($item->imageMain))
 
-    src="{{Storage::url($item->images->path)}}"
+    <img src="{{Storage::url($item->imageMain[0]->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
+
+    @elseif(count($item->images))
+    <img src="{{Storage::url($item->images->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
+
     @else
-    src="https://via.placeholder.com/400x400"
-    @endif alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
+    <img src="{{ asset('images/product/placeholder400x400.png' )}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
+
+    @endif
   </div>
 
   <div class="card__body">
