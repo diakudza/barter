@@ -3,6 +3,7 @@
 @section('title', 'Редактировать объявление')
 
 @section('content')
+
 <div class="container">
     <h3>Страница редактирования объявления</h3>
 
@@ -109,4 +110,5 @@
         <button type="submit" class="btn btn-danger">Удалить объявление</button>
     </form>
 </div>
+
 @endsection
