@@ -16,9 +16,9 @@
 <section class="container">
     @if (isset($searchResult))
 
-
     @foreach ($searchResult as $item)
-    <!-- @include('components.adCart') -->
+
+    @include('components.adCart')
 
     @include('components.littelCard')
 
