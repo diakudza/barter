@@ -11,12 +11,27 @@
             @method('put')
             <div class="form-group">
                 <label for="name">Имя</label>
-                <input type="text" name="name" id="name" value="{{ Auth::user()->name }}" class="form-control">
+                <input type="text" name="name" id="name" value="{{ $user->name }}" class="form-control">
             </div>
-            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+            <input type="hidden" name="id" value="{{ $user->id }}">
             <div class="form-group">
                 <label for="email">Электронная почта</label>
-                <input type="email" name="email" id="email" value="{{ Auth::user()->email }}" class="form-control">
+                <input type="email" name="email" id="email" value="{{ $user->email }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="phone" name="phone" id="phone" value="{{ $user->phone }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <img src="
+                    @if($user->avatar))
+                        {{ Storage::url($user->avatar->path) }}
+                    @else
+                        {{ Storage::url(images/clean.webp) }}
+                    @endif
+                " alt="image">
+                <label for="image">Загрузить фото профиля</label>
+                <input type="file" name="image" id="image">
             </div>
             <button type="submit" class="btn btn-success">Сохранить изменения</button>
             <button type="reset" class="btn btn-danger">Отменить изменения</button>

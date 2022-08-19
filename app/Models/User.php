@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'role_id',
         'status_id'
@@ -85,4 +86,13 @@ class User extends Authenticatable
         return (in_array($this->getRole->id, [2,3,4])) ? true : false;
     }
 
+    public function image()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function avatar()
+    {
+        return $this->image()->where('image_type', 'avatar')->first();
+    }
 }
