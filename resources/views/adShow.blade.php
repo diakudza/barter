@@ -4,16 +4,16 @@
 
 @section('content')
 
-<div class="mt-5 mb-5">
-</div>
-
 <div class="container">
 
-    <div id="content" class="mb-5">
+    <div id="Product-big" class="mb-5">
 
         <h1 class="productName">{{ $ad->title }}</h1>
+
         <div class="productHeader">
+
             <div class="location">
+
                 <p class="productLocation">
                     <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -21,6 +21,7 @@
                     </svg>
                     Категория: {{ $ad->category->title }}
                 </p>
+
                 <p class="productLocation">
                     <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -28,6 +29,7 @@
                     </svg>
                     Город: {{ $ad->city->name }}
                 </p>
+
                 <p class="productLocation">
                     <svg style="margin-right: 12.5px" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -38,8 +40,9 @@
             </div>
 
             <div class="add">
-                @if (auth()->user())
+                <!-- @if (auth()->user()) -->
                 @if (!$userFavorite)
+
                 <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
                     @method('POST')
                     @csrf
@@ -52,10 +55,12 @@
                     </button>
                 </form>
                 @else
+
                 <form action="{{ route('favorite.destroy', $ad->id) }}" method="post">
                     @method('DELETE')
                     @csrf
                     <input type="hidden" name="ad_id" value="{{ $ad->id }}" />
+
                     <button class="addToFav btn btn-danger">
                         <svg style="margin-right: 10.84px" width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.159 3.10235C11.159 1.26844 9.90523 0.533264 8.10006 0.533264H3.86079C2.11108 0.533264 0.799805 1.21831 0.799805 2.98005V12.7959C0.799805 13.2798 1.32044 13.5846 1.74216 13.348L5.9968 10.9613L10.2147 13.344C10.6371 13.5819 11.159 13.2771 11.159 12.7926V3.10235Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
@@ -65,6 +70,7 @@
                     </button>
                 </form>
                 @endif
+
                 @if (!$userWishes)
                 <form action="{{ route('wishlist.store', ['ad_id' => $ad['id']]) }}" method="post">
                     @method('POST')
@@ -78,6 +84,7 @@
                     </button>
                 </form>
                 @else
+
                 <form action="{{ route('wishlist.destroy', $ad['id']) }}" method="post">
                     @method('DELETE')
                     @csrf
@@ -90,14 +97,13 @@
                     </button>
                 </form>
                 @endif
-                @endif
             </div>
 
             <div id="productCart" class="productCart">
 
                 <div class="productView">
                     <div class="productImg">
-                        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></SCRIPT>
+
                         @if($ad->images && count($ad->images) >= 1)
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                             <div class="carousel-inner">
@@ -105,6 +111,7 @@
                                     <div class="carousel-item active">
                                         <img class="image modalWindow d-block w-100" src="{{ Storage::url($ad->images[0]->path) }}" alt="...">
                                     </div>
+
                                     @foreach($ad->images as $image)
                                     @if ($loop->first) @continue @endif
                                     <div class="carousel-item">
@@ -113,6 +120,7 @@
                                     @endforeach
                                 </div>
                             </div>
+
                             <div class="carousel-indicators productViewSmall">
                                 @foreach($ad->images as $image)
                                 @if ($loop->first)
@@ -122,10 +130,12 @@
                                 <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $loop->iteration }}">
                                 @endforeach
                             </div>
+
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
+
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
@@ -134,17 +144,11 @@
 
                         @else
                         <div class="productViewBig">
-                            <img class="image modalWindow" src="{{ Storage::url('images/clean.webp') }}" alt="...">
+                            <img class="image modalWindow" src="{{ asset('images/150.png' )}}" alt="image">
                         </div>
                         @endif
                     </div>
-                    @else
-                    <div class="productViewBig">
-                        <img src="{{ Storage::url('images/clean.webp') }}" height="400" alt="image">
-                    </div>
-                    @endif
                 </div>
-
 
                 <div class="productContact">
                     <div class="status">
@@ -154,12 +158,17 @@
                         </svg>
                         <p>VIP</p>
                     </div>
+
                     <div class="user">
                         <div class="userInfo">
+
                             <div class="userView">
-                                <img src="{{ Storage::url("images/ads/2/Afshin.png") }}">
+
+                                <img src="{{ asset('images/product/Afshin.png' )}}" alt="photo-user">
+
                                 <div class="userName">
                                     <h5 class="">{{ $ad->user->name }}</h5>
+
                                     <div class="userRating">
                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M9.45203 7.35331C9.30094 7.49973 9.23153 7.71148 9.26594 7.91915L9.78453 10.7891C9.82828 11.0324 9.72561 11.2786 9.52203 11.4191C9.32253 11.565 9.05711 11.5825 8.83953 11.4658L6.25594 10.1183C6.16611 10.0705 6.06636 10.0448 5.96428 10.0419H5.80619C5.75136 10.0501 5.69769 10.0676 5.64869 10.0944L3.06453 11.4483C2.93678 11.5125 2.79211 11.5352 2.65036 11.5125C2.30503 11.4471 2.07461 11.1181 2.13119 10.7711L2.65036 7.90106C2.68478 7.69165 2.61536 7.47873 2.46428 7.32998L0.35786 5.28831C0.181693 5.1174 0.120443 4.86073 0.200943 4.62915C0.27911 4.39815 0.47861 4.22956 0.719527 4.19165L3.61869 3.77106C3.83919 3.74831 4.03286 3.61415 4.13203 3.41581L5.40953 0.796646C5.43986 0.738313 5.47894 0.684646 5.52619 0.639146L5.57869 0.598313C5.60611 0.56798 5.63761 0.542896 5.67261 0.52248L5.73619 0.499146L5.83536 0.458313H6.08094C6.30028 0.481063 6.49336 0.612313 6.59428 0.808313L7.88869 3.41581C7.98203 3.60656 8.16344 3.73898 8.37286 3.77106L11.272 4.19165C11.517 4.22665 11.7218 4.39581 11.8029 4.62915C11.8793 4.86306 11.8134 5.11973 11.6337 5.28831L9.45203 7.35331Z" fill="#F6BF4D" />
@@ -171,9 +180,12 @@
                             </div>
                         </div>
                     </div>
+
                     <hr>
 
                     <div class="contacts">
+
+
                         <div>
                             <svg style="margin-right: 6px" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1673 8.00024C14.1673 11.4062 11.4067 14.1669 8.00067 14.1669C4.59466 14.1669 1.83398 11.4062 1.83398 8.00024C1.83398 4.59423 4.59466 1.83356 8.00067 1.83356C11.4067 1.83356 14.1673 4.59423 14.1673 8.00024Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
@@ -181,6 +193,7 @@
                             </svg>
                             На сайте с {{ $ad->user->created_at }}
                         </div>
+
                         <div class="contactsInfo">
                             <p>
                                 <svg style="margin-right: 10px" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -190,6 +203,7 @@
                             </p>
                             <h6>+7 929 184 84 43</h6>
                         </div>
+
                         <div class="contactsInfo">
                             <p>
                                 <svg style="margin-right: 10px" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -201,6 +215,7 @@
                             <h6>{{ $ad->user->email }}</h6>
                         </div>
                     </div>
+
                     <button class="writeMessage">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.7139 12.7132C10.6765 14.7508 7.65952 15.191 5.19062 14.0493C4.82615 13.9025 4.52733 13.7839 4.24326 13.7839C3.452 13.7886 2.46712 14.5558 1.95525 14.0446C1.44338 13.5326 2.21118 12.547 2.21118 11.751C2.21118 11.4668 2.09728 11.1734 1.95056 10.8082C0.808228 8.33967 1.24908 5.32171 3.28651 3.28472C5.88741 0.682873 10.113 0.682873 12.7139 3.28405C15.3195 5.88992 15.3148 10.112 12.7139 12.7132Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
@@ -210,12 +225,14 @@
                         </svg>
                         Написать продавцу
                     </button>
+
                     <button class="orderCall">
                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8.18815 8.31488C10.8475 10.9735 11.4508 7.89777 13.1441 9.58983C14.7765 11.2218 15.7147 11.5488 13.6465 13.6164C13.3874 13.8246 11.7414 16.3295 5.95673 10.5464C0.17134 4.76263 2.67472 3.11492 2.88297 2.85593C4.95624 0.782523 5.27757 1.72621 6.90999 3.35818C8.60323 5.05096 5.52876 5.65624 8.18815 8.31488Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         Забронировать Звонок
                     </button>
+
                     <div class="additionalInfo">
                         <p class="review">
                             <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -224,11 +241,13 @@
                             </svg>
                             просмотров {{ $ad['show_count'] }}
                         </p>
+
                         <p class="saved">
                             <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4491 4.128C14.4491 1.83559 12.8818 0.916626 10.6253 0.916626H5.32624C3.1391 0.916626 1.5 1.77294 1.5 3.97511V16.245C1.5 16.8498 2.1508 17.2308 2.67795 16.935L7.99626 13.9517L13.2686 16.93C13.7966 17.2274 14.4491 16.8465 14.4491 16.2408V4.128Z" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M4.89258 6.5233H10.9912" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
+
 
                             пожелали:
                             @if ($inwishlist)
@@ -238,6 +257,7 @@
                             @endif
 
                         </p>
+
                         <p class="favorit">
                             <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4491 4.128C14.4491 1.83559 12.8818 0.916626 10.6253 0.916626H5.32624C3.1391 0.916626 1.5 1.77294 1.5 3.97511V16.245C1.5 16.8498 2.1508 17.2308 2.67795 16.935L7.99626 13.9517L13.2686 16.93C13.7966 17.2274 14.4491 16.8465 14.4491 16.2408V4.128Z" stroke="#23262F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
@@ -256,6 +276,7 @@
         </div>
 
     </div>
+
     <div class="productInfo">
         <div class="characteristic">
             <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -276,6 +297,7 @@
                 </h5>
             </div>
         </div>
+
         <div class="characteristic">
             <svg width="21" height="21" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.45203 7.35331C9.30094 7.49973 9.23153 7.71148 9.26594 7.91915L9.78453 10.7891C9.82828 11.0324 9.72561 11.2786 9.52203 11.4191C9.32253 11.565 9.05711 11.5825 8.83953 11.4658L6.25594 10.1183C6.16611 10.0705 6.06636 10.0448 5.96428 10.0419H5.80619C5.75136 10.0501 5.69769 10.0676 5.64869 10.0944L3.06453 11.4483C2.93678 11.5125 2.79211 11.5352 2.65036 11.5125C2.30503 11.4471 2.07461 11.1181 2.13119 10.7711L2.65036 7.90106C2.68478 7.69165 2.61536 7.47873 2.46428 7.32998L0.35786 5.28831C0.181693 5.1174 0.120443 4.86073 0.200943 4.62915C0.27911 4.39815 0.47861 4.22956 0.719527 4.19165L3.61869 3.77106C3.83919 3.74831 4.03286 3.61415 4.13203 3.41581L5.40953 0.796646C5.43986 0.738313 5.47894 0.684646 5.52619 0.639146L5.57869 0.598313C5.60611 0.56798 5.63761 0.542896 5.67261 0.52248L5.73619 0.499146L5.83536 0.458313H6.08094C6.30028 0.481063 6.49336 0.612313 6.59428 0.808313L7.88869 3.41581C7.98203 3.60656 8.16344 3.73898 8.37286 3.77106L11.272 4.19165C11.517 4.22665 11.7218 4.39581 11.8029 4.62915C11.8793 4.86306 11.8134 5.11973 11.6337 5.28831L9.45203 7.35331Z" fill="#F6BF4D" />
@@ -291,6 +313,7 @@
                 </h5>
             </div>
         </div>
+
         <div class="characteristic">
             <svg width="19" height="28" viewBox="0 0 19 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.04282 1.91566C7.95597 0.222991 11.5367 0.252576 14.4225 1.99315C17.28 3.76918 19.0166 6.93887 19.0005 10.3486C18.934 13.7359 17.0717 16.92 14.744 19.3814C13.4005 20.8085 11.8975 22.0704 10.2658 23.1414C10.0977 23.2386 9.91367 23.3036 9.72265 23.3333C9.5388 23.3255 9.35976 23.2712 9.20167 23.1753C6.71056 21.5661 4.52511 19.512 2.75043 17.1119C1.26544 15.1085 0.421765 12.688 0.333986 10.1792C0.332058 6.76296 2.12968 3.60832 5.04282 1.91566ZM6.72621 11.593C7.21624 12.8011 8.37291 13.5891 9.65614 13.5891C10.4968 13.5951 11.3049 13.2584 11.9004 12.6539C12.4959 12.0495 12.8293 11.2275 12.8263 10.3712C12.8308 9.06402 12.0613 7.88306 10.877 7.37967C9.69276 6.87628 8.32739 7.14977 7.41842 8.07244C6.50945 8.9951 6.23618 10.3849 6.72621 11.593Z" fill="#9757D7" />
@@ -302,14 +325,12 @@
             </div>
         </div>
     </div>
+
     <div class="description">
         <h2>Описание</h2>
-        <p>
-            {{ $ad['text'] }}
-        </p>
+        <p> {{ $ad['text'] }} </p>
     </div>
 
 </div>
 
-</div>
 @endsection

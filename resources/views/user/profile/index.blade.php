@@ -56,7 +56,6 @@
         <a href="{{route ('user.profile.createAd')}}" class="btn btn-info">Новое объявление</a>
         <a href="{{ route('user.profile.personalData') }}" class="btn btn-info">Изменить данные</a>
     </div>
-
 </div>
 
 <div class="mt-5">

@@ -1,15 +1,23 @@
+<<<<<<< HEAD
 import "./bootstrap";
 import "./modalWindowPopup";
+=======
+//Сторонние библиотеки
+import "./venders";
+>>>>>>> front
 
-//Bootstrap
-import "/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-import "/node_modules/ellipsis.js/ellipsis.min.js";
+//Скрипты из шаблона (удалить после их переноса)
+import "./checkFile";
 
 //Модули
 import { headerJS } from "./navbar";
 import cutText from "./cutText";
+import searchDropdown from "./searchDropdown";
 
+import "./modalWindowPopup";
 //Вызовы модулей
 
 cutText();
 headerJS();
+
+searchDropdown();

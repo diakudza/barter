@@ -4,22 +4,30 @@
 
 @section('content')
 
-
+<!-- 
 <div class="mt-5 mb-5">
-</div>
+</div> -->
+
+<section class="container">
+    @include('components.searchForm')
+</section>
 
 
-@include('components.searchForm')
+<section class="container">
+    @if (isset($searchResult))
 
-@if (isset($searchResult))
-
-
-<div class="container mt-5 d-flex flex-row flex-wrap gap-2 justify-content-center">
 
     @foreach ($searchResult as $item)
-    @include('components.adCart')
+    <!-- @include('components.adCart') -->
+
+    @include('components.littelCard')
+
     @endforeach
 
-</div>
-@endif
+    @else
+
+    <p>Ни чего не найдено!!</p>
+
+    @endif
+</section>
 @endsection
