@@ -17,7 +17,7 @@
       <img @if(count($ad->imageMain)) src="{{Storage::url($ad->imageMain[0]->path)}}"
       @elseif(count($ad->images))
 
-      src="{{Storage::url($ad->images->path)}}"
+      src="{{Storage::url($ad->images[0]->path)}}"
       @else
       src="https://via.placeholder.com/400x400"
       @endif alt="{{ $ad['title'] }}" title="{{ $ad['title'] }}">
@@ -47,7 +47,7 @@
             <img class="author-img" @if(count($ad->imageMain)) src="{{Storage::url($ad->imageMain[0]->path)}}"
             @elseif(count($ad->images))
 
-            src="{{Storage::url($ad->images->path)}}"
+            src="{{Storage::url($ad->images[0]->path)}}"
             @else
             src="https://via.placeholder.com/40x40"
             @endif alt="{{ $ad->user->name }}" title="{{ $ad->user->name }}">

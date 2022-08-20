@@ -92,93 +92,87 @@
                 @endif
                 @endif
             </div>
+        </div>
 
-            <div id="productCart" class="productCart">
+        <div id="productCart" class="productCart">
 
-                <div class="productView">
-                    <div class="productImg">
-                        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></SCRIPT>
-                        @if($ad->images && count($ad->images) >= 1)
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                            <div class="carousel-inner">
-                                <div class="productViewBig">
-                                    <div class="carousel-item active">
-                                        <img class="image modalWindow d-block w-100" src="{{ Storage::url($ad->images[0]->path) }}" alt="...">
-                                    </div>
-                                    @foreach($ad->images as $image)
-                                        @if ($loop->first) @continue @endif
-                                        <div class="carousel-item">
-                                            <img class="image modalWindow d-block w-100" src="{{ Storage::url($image->path) }}" alt="...">
-                                        </div>
-                                    @endforeach
+            <div class="productView">
+                <div class="productImg">
+                    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></SCRIPT>
+                    @if($ad->images && count($ad->images) >= 1)
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-inner">
+                            <div class="productViewBig">
+                                <div class="carousel-item active">
+                                    <img class="image modalWindow d-block w-100" src="{{ Storage::url($ad->images[0]->path) }}" alt="...">
                                 </div>
-                            </div>
-                            <div class="carousel-indicators productViewSmall">
                                 @foreach($ad->images as $image)
-                                    @if ($loop->first)
-                                        <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $loop->iteration }}">
-                                        @continue
-                                    @endif
-                                    <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $loop->iteration }}">
+                                    @if ($loop->first) @continue @endif
+                                    <div class="carousel-item">
+                                        <img class="image modalWindow d-block w-100" src="{{ Storage::url($image->path) }}" alt="...">
+                                    </div>
                                 @endforeach
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
+                        <div class="carousel-indicators productViewSmall">
+                            @foreach($ad->images as $image)
+                                @if ($loop->first)
+                                    <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" aria-label="Slide {{ $loop->iteration }}">
+                                    @continue
+                                @endif
+                                <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $loop->iteration }}">
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
 
-                        @else
-                                    <div class="productViewBig">
-                                            <img class="image modalWindow" src="{{ Storage::url('images/clean.webp') }}" alt="...">
-                                    </div>
-                        @endif
-                    </div>
                     @else
-                    <div class="productViewBig">
-                        <img src="{{ Storage::url('images/clean.webp') }}" height="400" alt="image">
-                    </div>
+                                <div class="productViewBig">
+                                        <img class="image modalWindow" src="{{ Storage::url('images/clean.webp') }}" alt="...">
+                                </div>
                     @endif
                 </div>
 
-
-                    <div class="productContact">
-                        <div class="status">
-                            <svg style="margin-right: 9.67px" width="18" height="16" viewBox="0 0 18 16" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path opacity="0.4"
-                                      d="M9.8139 0.594596L11.6693 4.32315C11.806 4.59329 12.0669 4.78089 12.3678 4.82258L16.5353 5.42955C16.7787 5.46373 16.9996 5.59213 17.1488 5.78806C17.2963 5.9815 17.3597 6.22662 17.3238 6.46758C17.2947 6.66768 17.2005 6.85277 17.0563 6.99451L14.0365 9.92183C13.8156 10.1261 13.7156 10.4288 13.7689 10.7247L14.5124 14.8402C14.5916 15.3371 14.2624 15.8056 13.7689 15.8999C13.5655 15.9324 13.3572 15.8982 13.1738 15.8048L9.45632 13.868C9.18043 13.7288 8.85453 13.7288 8.57864 13.868L4.86118 15.8048C4.40441 16.0474 3.83846 15.8824 3.58424 15.4321C3.49005 15.2529 3.45671 15.0486 3.48755 14.8493L4.23104 10.7331C4.28439 10.4379 4.18353 10.1336 3.96348 9.92933L0.943673 7.00368C0.584429 6.65684 0.573593 6.08572 0.919501 5.72637C0.927002 5.71886 0.935337 5.71053 0.943673 5.70219C1.08704 5.55628 1.27541 5.46373 1.47879 5.43955L5.64634 4.83175C5.94641 4.78922 6.2073 4.6033 6.34483 4.33149L8.13354 0.594596C8.29274 0.274434 8.62281 0.0751662 8.98122 0.0835038H9.09291C9.40381 0.121023 9.6747 0.313621 9.8139 0.594596Z"
-                                      fill="#9757D7"/>
-                                <path
-                                    d="M8.99366 13.7642C8.83224 13.7692 8.67498 13.8125 8.53354 13.8901L4.83425 15.8225C4.38162 16.0385 3.83996 15.8709 3.58618 15.438C3.49216 15.2612 3.45805 15.0586 3.48967 14.8601L4.22852 10.7525C4.27845 10.454 4.1786 10.1504 3.96144 9.9402L0.940273 7.01531C0.58166 6.66419 0.575004 6.08788 0.926128 5.72842C0.93112 5.72342 0.935281 5.71925 0.940273 5.71508C1.08339 5.57329 1.2681 5.47988 1.46696 5.45069L5.63801 4.83686C5.94005 4.79849 6.20214 4.61001 6.33527 4.33645L8.1483 0.552517C8.32053 0.247267 8.65086 0.0654511 9.00032 0.0846335C8.99366 0.332336 8.99366 13.5957 8.99366 13.7642Z"
-                                    fill="#9757D7"/>
-                            </svg>
-                            <p>VIP</p>
-                        </div>
-                        <div class="user">
-                            <div class="userInfo">
-                                <div class="userView">
-                                    <img src="{{ Storage::url("images/ads/2/Afshin.png") }}">
-                                    <div class="userName">
-                                        <h5 class="">{{ $ad->user->name }}</h5>
-                                        <div class="userRating">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M9.45203 7.35331C9.30094 7.49973 9.23153 7.71148 9.26594 7.91915L9.78453 10.7891C9.82828 11.0324 9.72561 11.2786 9.52203 11.4191C9.32253 11.565 9.05711 11.5825 8.83953 11.4658L6.25594 10.1183C6.16611 10.0705 6.06636 10.0448 5.96428 10.0419H5.80619C5.75136 10.0501 5.69769 10.0676 5.64869 10.0944L3.06453 11.4483C2.93678 11.5125 2.79211 11.5352 2.65036 11.5125C2.30503 11.4471 2.07461 11.1181 2.13119 10.7711L2.65036 7.90106C2.68478 7.69165 2.61536 7.47873 2.46428 7.32998L0.35786 5.28831C0.181693 5.1174 0.120443 4.86073 0.200943 4.62915C0.27911 4.39815 0.47861 4.22956 0.719527 4.19165L3.61869 3.77106C3.83919 3.74831 4.03286 3.61415 4.13203 3.41581L5.40953 0.796646C5.43986 0.738313 5.47894 0.684646 5.52619 0.639146L5.57869 0.598313C5.60611 0.56798 5.63761 0.542896 5.67261 0.52248L5.73619 0.499146L5.83536 0.458313H6.08094C6.30028 0.481063 6.49336 0.612313 6.59428 0.808313L7.88869 3.41581C7.98203 3.60656 8.16344 3.73898 8.37286 3.77106L11.272 4.19165C11.517 4.22665 11.7218 4.39581 11.8029 4.62915C11.8793 4.86306 11.8134 5.11973 11.6337 5.28831L9.45203 7.35331Z"
-                                                    fill="#F6BF4D"/>
-                                            </svg>
-                                            <p>4.9</p>
-                                            <p>(84 отзыва)</p>
-                                        </div>
+                <div class="productContact">
+                    <div class="status">
+                        <svg style="margin-right: 9.67px" width="18" height="16" viewBox="0 0 18 16" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4"
+                                  d="M9.8139 0.594596L11.6693 4.32315C11.806 4.59329 12.0669 4.78089 12.3678 4.82258L16.5353 5.42955C16.7787 5.46373 16.9996 5.59213 17.1488 5.78806C17.2963 5.9815 17.3597 6.22662 17.3238 6.46758C17.2947 6.66768 17.2005 6.85277 17.0563 6.99451L14.0365 9.92183C13.8156 10.1261 13.7156 10.4288 13.7689 10.7247L14.5124 14.8402C14.5916 15.3371 14.2624 15.8056 13.7689 15.8999C13.5655 15.9324 13.3572 15.8982 13.1738 15.8048L9.45632 13.868C9.18043 13.7288 8.85453 13.7288 8.57864 13.868L4.86118 15.8048C4.40441 16.0474 3.83846 15.8824 3.58424 15.4321C3.49005 15.2529 3.45671 15.0486 3.48755 14.8493L4.23104 10.7331C4.28439 10.4379 4.18353 10.1336 3.96348 9.92933L0.943673 7.00368C0.584429 6.65684 0.573593 6.08572 0.919501 5.72637C0.927002 5.71886 0.935337 5.71053 0.943673 5.70219C1.08704 5.55628 1.27541 5.46373 1.47879 5.43955L5.64634 4.83175C5.94641 4.78922 6.2073 4.6033 6.34483 4.33149L8.13354 0.594596C8.29274 0.274434 8.62281 0.0751662 8.98122 0.0835038H9.09291C9.40381 0.121023 9.6747 0.313621 9.8139 0.594596Z"
+                                  fill="#9757D7"/>
+                            <path
+                                d="M8.99366 13.7642C8.83224 13.7692 8.67498 13.8125 8.53354 13.8901L4.83425 15.8225C4.38162 16.0385 3.83996 15.8709 3.58618 15.438C3.49216 15.2612 3.45805 15.0586 3.48967 14.8601L4.22852 10.7525C4.27845 10.454 4.1786 10.1504 3.96144 9.9402L0.940273 7.01531C0.58166 6.66419 0.575004 6.08788 0.926128 5.72842C0.93112 5.72342 0.935281 5.71925 0.940273 5.71508C1.08339 5.57329 1.2681 5.47988 1.46696 5.45069L5.63801 4.83686C5.94005 4.79849 6.20214 4.61001 6.33527 4.33645L8.1483 0.552517C8.32053 0.247267 8.65086 0.0654511 9.00032 0.0846335C8.99366 0.332336 8.99366 13.5957 8.99366 13.7642Z"
+                                fill="#9757D7"/>
+                        </svg>
+                        <p>VIP</p>
+                    </div>
+                    <div class="user">
+                        <div class="userInfo">
+                            <div class="userView">
+                                <img src="{{ Storage::url("images/ads/2/Afshin.png") }}">
+                                <div class="userName">
+                                    <h5 class="">{{ $ad->user->name }}</h5>
+                                    <div class="userRating">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.45203 7.35331C9.30094 7.49973 9.23153 7.71148 9.26594 7.91915L9.78453 10.7891C9.82828 11.0324 9.72561 11.2786 9.52203 11.4191C9.32253 11.565 9.05711 11.5825 8.83953 11.4658L6.25594 10.1183C6.16611 10.0705 6.06636 10.0448 5.96428 10.0419H5.80619C5.75136 10.0501 5.69769 10.0676 5.64869 10.0944L3.06453 11.4483C2.93678 11.5125 2.79211 11.5352 2.65036 11.5125C2.30503 11.4471 2.07461 11.1181 2.13119 10.7711L2.65036 7.90106C2.68478 7.69165 2.61536 7.47873 2.46428 7.32998L0.35786 5.28831C0.181693 5.1174 0.120443 4.86073 0.200943 4.62915C0.27911 4.39815 0.47861 4.22956 0.719527 4.19165L3.61869 3.77106C3.83919 3.74831 4.03286 3.61415 4.13203 3.41581L5.40953 0.796646C5.43986 0.738313 5.47894 0.684646 5.52619 0.639146L5.57869 0.598313C5.60611 0.56798 5.63761 0.542896 5.67261 0.52248L5.73619 0.499146L5.83536 0.458313H6.08094C6.30028 0.481063 6.49336 0.612313 6.59428 0.808313L7.88869 3.41581C7.98203 3.60656 8.16344 3.73898 8.37286 3.77106L11.272 4.19165C11.517 4.22665 11.7218 4.39581 11.8029 4.62915C11.8793 4.86306 11.8134 5.11973 11.6337 5.28831L9.45203 7.35331Z"
+                                                fill="#F6BF4D"/>
+                                        </svg>
+                                        <p>4.9</p>
+                                        <p>(84 отзыва)</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <hr>
 
                         <div class="contacts">
@@ -262,7 +256,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="productInfo">
             <div class="characteristic">
