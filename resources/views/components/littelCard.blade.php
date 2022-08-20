@@ -18,6 +18,7 @@
     <img src="{{Storage::url($item->images->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
 
     @else
+
     <img src="{{ asset('images/product/placeholder400x400.png' )}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
 
     @endif
@@ -46,7 +47,6 @@
 
           <img class="author-img" @if(count($item->imageMain)) src="{{Storage::url($item->imageMain[0]->path)}}"
           @elseif(count($item->images))
-
           src="{{Storage::url($item->images->path)}}"
           @else
           src="https://via.placeholder.com/40x40"
