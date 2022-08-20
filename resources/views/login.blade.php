@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container authentication mt-5 pt-5 d-flex flex-row justify-content-between" id="authentication">
+<section class="container authentication mt-5 pt-5 d-flex flex-row justify-content-between" id="authentication">
 
     <div class="login">
 
@@ -54,6 +54,7 @@
             <button type="submit" class="btn bthEnter bth-login btn-primary">Войти</button>
         </form>
     </div>
+
     <div class="registration">
         <form method="post" action="{{ route('registration') }}" enctype="multipart/form-data">
             <legend>Создать акаунт</legend>
@@ -118,6 +119,6 @@
         </div>
     </div>
 
-</div>
+</section>
 
 @endsection

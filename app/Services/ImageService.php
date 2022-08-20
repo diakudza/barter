@@ -41,7 +41,7 @@ class ImageService
         $path = $uploadService->uploadImage($file);
         $newImage = $this->imageRepository->store($userId, $path, 'ad');
         //If ad was created without image set current image as main
-        if(count($this->imageRepository->getImagesByAdId($adId)) == 0){
+        if (count($this->imageRepository->getImagesByAdId($adId)) == 0) {
             $newImage->image_type = 'ad_main';
         }
         return $newImage;
@@ -64,13 +64,13 @@ class ImageService
             $adId = $imagesToRemove[0]->ad_id;
             $remainingImages = $this->imageRepository->getImagesByAdId($adId);
             if (count($remainingImages) !== 0) {
-                foreach ($remainingImages as $image){
-                    if($image->image_type == 'ad_main'){
+                foreach ($remainingImages as $image) {
+                    if ($image->image_type == 'ad_main') {
                         $mainImageId = $image->id;
                         break;
                     }
                 }
-                if(!isset($mainImageId)){
+                if (!isset($mainImageId)) {
                     $this->imageRepository->setNewMainImage($remainingImages[0]->id);
                 }
             }

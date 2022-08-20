@@ -1,23 +1,62 @@
 .search-form {
-    border: 2px solid red;
-    padding: 8px;
+    &__container {
+        padding: 8px;
 
-    // background: rgba(255, 255, 255, 0.9);
+        // background: rgba(255, 255, 255, 0.9);
 
-    background-color: rgb(189, 162, 162);
+        background-color: rgb(189, 162, 162);
+        border: 1px solid rgba(35, 38, 47, 0.05);
 
-    border: 1px solid rgba(35, 38, 47, 0.05);
+        border-radius: 3333px;
 
-    border-radius: 40px;
+        display: flex;
+        align-items: center;
+        gap: 36px;
+    }
+}
 
-    display: flex;
-    align-items: center;
+.search {
+    &__item {
+        &--cat {
+            width: 224px;
+            height: 72px;
+
+            background: $color-black;
+            border-radius: 333px;
+            color: #fff;
+        }
+
+        &--searching {
+            width: 351px;
+        }
+
+        &--price {
+            width: 214px;
+        }
+
+        &--local {
+            width: 153px;
+        }
+    }
+    &__btn {
+        width: 68px;
+        height: 68px;
+
+        background-color: $color-blue;
+        border-radius: 50%;
+
+        transition: all 0.4s ease-in;
+
+        &:hover {
+            background-color: $color-blue-hover;
+        }
+    }
 }
 
 .dropdown {
     position: relative;
-    width: 300px;
-    height: 72px;
+    // width: 300px;
+    // height: 72px;
 
     &::before {
         content: "";
@@ -46,12 +85,13 @@
         width: 100%;
         height: 100%;
         cursor: pointer;
-        background: #fff;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        padding: 12px 20px;
-        border-radius: 10px;
+        // background: #fff;
+        // box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        // padding: 12px 20px;
+        // border-radius: 10px;
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     & .option {
@@ -71,6 +111,7 @@
 
         & div {
             padding: 12px 20px;
+            color: $color-black;
             cursor: pointer;
             transition: 0.25s linear;
 

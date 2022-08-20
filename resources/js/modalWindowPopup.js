@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+//Jquery
+// import "../../node_modules/jquery/dist/jquery.min.js";
+import { $, jQuery } from "jquery";
+
+>>>>>>> front
 try {
     $(document).ready(function () {
         $(".modalWindow").click(function () {
