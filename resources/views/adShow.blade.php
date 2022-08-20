@@ -99,8 +99,10 @@
                 @endif
                 @endif
             </div>
+        </div>
 
-            <div id="productCart" class="productCart">
+        <div id="productCart" class="productCart">
+
 
                 <div class="productView">
                     <div class="productImg">
@@ -180,6 +182,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <hr>
