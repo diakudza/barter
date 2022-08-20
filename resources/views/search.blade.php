@@ -18,8 +18,6 @@
 
     @foreach ($searchResult as $item)
 
-    @include('components.adCart')
-
     @include('components.littelCard')
 
     @endforeach

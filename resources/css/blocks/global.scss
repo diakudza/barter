@@ -57,7 +57,7 @@ h6 {
 
     color: $color-black;
 
-    @media (max-width: 990.98px) {
+    @include break992 {
         font-size: 24px;
     }
 }
@@ -65,4 +65,9 @@ h6 {
 .main {
     padding-top: 124px;
     padding-bottom: 184px;
+    min-height: calc(100vh - 297px);
+
+    @include break992 {
+        min-height: calc(100vh - 326px);
+    }
 }

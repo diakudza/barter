@@ -10,8 +10,9 @@ import cutText from "./cutText";
 import searchDropdown from "./searchDropdown";
 
 import "./modalWindowPopup";
-//Вызовы модулей
+import "./login";
 
+//Вызовы модулей
 cutText();
 headerJS();
 
