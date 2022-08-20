@@ -14,18 +14,16 @@
                     <a class="nav-link" href="{{ route('role.index') }}">Роли</a>
                 </li>
                 @if(auth()->user())
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page"
-                           href="{{ route('logout') }}">{{ auth()->user()->name }}</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ route('logout') }}">{{ auth()->user()->name }}</a>
+                </li>
                 @endif
             </ul>
             @if(auth()->guest())
-                <span class="nav-item">
-        <a class="btn-outline-sm" href="{{ route('loginPage') }}">login</a>
-      </span>
+            <span class="nav-item">
+                <a class="btn-outline-sm" href="{{ route('loginPage') }}">login</a>
+            </span>
             @endif
         </div>
     </div>
 </nav>
-

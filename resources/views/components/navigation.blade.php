@@ -16,32 +16,30 @@
                 </li>
 
                 @if(auth()->user())
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ auth()->user()->name }}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('user.profile') }}">Личный кабинет</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ auth()->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{ route('user.profile') }}">Личный кабинет</a></li>
 
-                            @if (auth()->user() && auth()->user()->isUserHasAdminAccess())
-                                <li>
-                                    <a class="dropdown-item" href="{{route('adminmain')}}">Панель упраления сайтом</a>
-                                </li>
-                            @endif
+                        @if (auth()->user() && auth()->user()->isUserHasAdminAccess())
+                        <li>
+                            <a class="dropdown-item" href="{{route('adminmain')}}">Панель упраления сайтом</a>
+                        </li>
+                        @endif
 
-                            <li><a class="dropdown-item" href="{{ route('logout') }}">Выйти</a></li>
-                        </ul>
-                    </li>
+                        <li><a class="dropdown-item" href="{{ route('logout') }}">Выйти</a></li>
+                    </ul>
+                </li>
             </ul>
             @endif
             @if(auth()->guest())
-                <span class="nav-item">
-                        <a class="btn-outline-sm" href="{{ route('loginPage') }}">login</a>
-                    </span>
+            <span class="nav-item">
+                <a class="btn-outline-sm" href="{{ route('loginPage') }}">login</a>
+            </span>
             @endif
         </div>
 
     </div>
 </nav>
-

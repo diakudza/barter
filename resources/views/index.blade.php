@@ -21,7 +21,7 @@
 </section>
 
 <!-- Блок поиска -->
-<section id="main-search" class="container d-flex flex-row justify-content-sm-evenly">
+<section id="main-search" class="container">
 
   @include('components.searchForm')
 
