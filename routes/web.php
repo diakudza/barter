@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdController as AdminAdController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\AdUserFavorites;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\MainController;
@@ -50,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     });
     Route::resource('wishlist', WishlistController::class);
     Route::resource('favorite', AdUserFavorites::class);
+    Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
+    Route::resource('chat', ChatController::class);
 });
 
 

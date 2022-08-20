@@ -6,7 +6,7 @@
             <div class="col-lg-7 col-xl-5">
                 <div class="text-container">
                     <h1 class="h1-large">Сервис Обменка</h1>
-                    <p class="p-large">Сервис для обмена или пристравивания ненужных вещей</p>
+                    <p class="p-large">Сервис для обмена или пристраивания ненужных вещей</p>
                     <a class="btn-solid-lg" href="#howitwork">Как это работает</a>
                     <a class="btn-outline-lg" href="#search">Приступить</a>
                 </div> <!-- end of text-container -->

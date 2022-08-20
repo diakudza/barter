@@ -82,7 +82,17 @@ class User extends Authenticatable
 
     public function isUserHasAdminAccess()
     {
-        return (in_array($this->getRole->id, [2,3,4])) ? true : false;
+        return (in_array($this->getRole->id, [2, 3, 4])) ? true : false;
+    }
+
+    public function getChats()
+    {
+        return $this->belongsToMany(Chat::class,'chat_users');
+    }
+
+    public function getUnreadMessages()
+    {
+        return $this->hasMany(Message::class, )->where('read','=',0);
     }
 
 }
