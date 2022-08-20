@@ -7,9 +7,9 @@
 
 @include('components.hero')
 
-<section class="container ">
+<section id="howitwork" class="container ">
 
-  <div id="howitwork" class="mb-5">
+  <div class="mb-5">
     <p>
       Вы можете разместить обьявление с вашей ненужной вещью и кто-то обязательно ее найдет и откликнится.
       Или вы можете воспользоваться поиском и попробовать предложить кому-то обмен вашей вещи на найденную в
