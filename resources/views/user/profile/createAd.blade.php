@@ -20,9 +20,7 @@
             <label for="image">Загрузить фото</label>
             <input type="file" name="image" id="image">
         </div>
-        <div>
 
-        </div>
         <div>
             <label for="category_id">Категория</label>
             <select name="category_id" id="category_id" required>

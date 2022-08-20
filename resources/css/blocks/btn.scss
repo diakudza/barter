@@ -97,6 +97,11 @@
         }
     }
 
+    &-reset {
+        border: none;
+        background-color: transparent;
+    }
+
     @include break992 {
         font-size: 15px;
     }

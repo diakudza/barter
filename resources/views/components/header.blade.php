@@ -64,7 +64,6 @@
 
             <img src="{{ asset('images/icon-avatar.png' )}}" alt="Name" class="top-profile__img">
 
-
           </div>
           @endif
 
@@ -80,11 +79,18 @@
 
           <div class="profile-menu__content">
             <ul class="profile-menu__list">
+
               <a href="{{ route('user.profile') }}">
                 <li class="profile-menu__item">Посмотреть профиль</li>
               </a>
 
-              <a href="#">
+              @if (auth()->user() && auth()->user()->isUserHasAdminAccess())
+              <a href="{{route('adminmain')}}">
+                <li class="profile-menu__item">Панель упраления сайтом</li>
+              </a>
+              @endif
+
+              <!-- <a href="#">
                 <li class="profile-menu__item">
                   <span>
                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +100,7 @@
                   </span>
                   Нужна помощь?
                 </li>
-              </a>
+              </a> -->
 
               <a href="#">
                 <li class="profile-menu__item">

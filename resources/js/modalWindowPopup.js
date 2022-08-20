@@ -1,3 +1,7 @@
+//Jquery
+// import "../../node_modules/jquery/dist/jquery.min.js";
+import { $, jQuery } from "jquery";
+
 try {
     $(document).ready(function () {
         $(".modalWindow").click(function () {

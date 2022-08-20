@@ -17,15 +17,17 @@
                     <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
                     <input type="text" id="title" name="title" placeholder="Название" class="form-control" value="@if (old('title')) {{ old('title') }}@else{{ $ad->title }} @endif" required>
                 </div>
+
                 <div>
                     <label for="text">Описание</label>
                     <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
-                    <textarea name="text" id="text" rows="5" required class="form-control">@if (old('text')){{ old('text') }}@else{{ $ad->text }}@endif
-                </textarea>
+                    <textarea name="text" id="text" rows="5" required class="form-control">@if (old('text')){{ old('text') }}@else{{ $ad->text }}@endif</textarea>
                 </div>
+
                 <label for="image">Загрузить фото</label>
                 <input type="file" name="image" id="image" class="form-control">
             </div>
+
             <div class="w-50">
                 <div>
                     <label for="category_id">Категория</label>
@@ -39,6 +41,7 @@
                         @endforeach
                     </select>
                 </div>
+
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <div class="d-flex flex-column">
                     <label for="free">Отдам просто так</label>
@@ -49,6 +52,7 @@
                     <label for="barter_for">Обменяю на</label>
                     <input type="text" name="barter_for" id="barter_for" disabled class="form-control">
                 </div>
+
                 <div>
                     <label for="city_id">Город подачи</label>
                     <select name="city_id" id="city_id" required class="form-select">
@@ -61,6 +65,7 @@
                         @endforeach
                     </select>
                 </div>
+
                 <div>
                     <label for="status_id">Статус</label>
                     <select name="status_id" id="status_id" class="form-select">
@@ -76,13 +81,15 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
         </div>
+
         <div class="container">
             <div class="row mt-5">
                 @forelse ($ad->images as $image)
+
                 <div class="col-sm-4">
                     <img src="{{ Storage::url($image->path) }}" alt="image" height=400>
+
                     <div class="form-group d-flex justify-content-sm-evenly">
                         <label for="imageMain">Сделать главной</label>
                         <input type="radio" name="imageMain" id="imageMain" value="{{ $image->id }}" class="form-check" @if ($image->image_type == 'ad_main') checked @endif>
@@ -90,66 +97,30 @@
                         <input type="checkbox" name="removeImage[]" id="removeImage" class="form-check" value="{{ $image->id }}">
                     </div>
                 </div>
+
                 @empty
+
                 <div class="col-sm-6">
                     <img src="{{ Storage::url('images/clean.webp') }}" alt="image" height=400>
-=======
-            </div>
-            <div class="container">
-                <div class="row mt-5">
-                    @forelse ($ad->images as $image)
-                        <div class="col-sm-4">
-                            <img src="{{ Storage::url($image->path) }}" alt="image" height=400>
-                            <div class="form-group d-flex justify-content-sm-evenly">
-                                <label for="imageMain">Сделать главной</label>
-                                <input type="radio" name="imageMain" id="imageMain" value="{{ $image->id }}"
-                                       class="form-check"
-                                       @if ($image->image_type == 'ad_main') checked @endif>
-                                <label for="">Удалить</label>
-                                <input type="checkbox" name="removeImage[]" id="removeImage" class="form-check"
-                                       value="{{ $image->id }}">
-                            </div>
-                        </div>
-                    @empty
-                        <div class="col-sm-6">
-                            <img src="{{ Storage::url('images/clean.webp') }}" alt="image" height=400>
-                        </div>
-                    @endforelse
-
->>>>>>> front
                 </div>
                 @endforelse
 
+
             </div>
-<<<<<<< HEAD
-            @endforelse
         </div>
 
         <div>
             <button type="submit" class="btn btn-success">Сохранить</button>
             <button type="reset" class="btn btn-danger">Отменить изменения</button>
         </div>
+
     </form>
+
     <form action="{{ route('ad.destroy', $ad->id) }}" method="post">
         @csrf
         @method('delete')
         <button type="submit" class="btn btn-danger">Удалить объявление</button>
     </form>
+
 </div>
-
 @endsection
-=======
-
-            <div>
-                <button type="submit" class="btn btn-success">Сохранить</button>
-                <button type="reset" class="btn btn-danger">Отменить изменения</button>
-            </div>
-        </form>
-        <form action="{{ route('ad.destroy', $ad->id) }}" method="post">
-            @csrf
-            @method('delete')
-            <button type="submit" class="btn btn-danger">Удалить объявление</button>
-        </form>
-    </div>
-@endsection
->>>>>>> front

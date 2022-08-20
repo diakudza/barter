@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container">
+<section class="container">
 
     <div id="Product-big" class="mb-5">
 
@@ -332,6 +332,6 @@
         <p> {{ $ad['text'] }} </p>
     </div>
 
-</div>
+</section>
 
 @endsection

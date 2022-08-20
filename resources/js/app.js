@@ -8,6 +8,7 @@ import "./checkFile";
 import { headerJS } from "./navbar";
 import cutText from "./cutText";
 import searchDropdown from "./searchDropdown";
+import "./searchDropdown";
 
 import "./modalWindowPopup";
 import "./login";
@@ -15,5 +16,4 @@ import "./login";
 
 cutText();
 headerJS();
-
 searchDropdown();
