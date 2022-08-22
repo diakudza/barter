@@ -46,7 +46,7 @@
                             @endif
                         </a>
 
-                        {{-- <a class="actions__btn" href="#">--}}
+                        <!-- {{-- <a class="actions__btn" href="#">--}}
                         {{-- <svg class="actions__icon" width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
                         {{-- <path fill-rule="evenodd" clip-rule="evenodd" d="M10 16.8477C15.6392 16.8477 18.2481 16.1242 18.5 13.2205C18.5 10.3188 16.6812 10.5054 16.6812 6.94514C16.6812 4.16417 14.0452 1.00003 10 1.00003C5.95477 1.00003 3.31885 4.16417 3.31885 6.94514C3.31885 10.5054 1.5 10.3188 1.5 13.2205C1.75295 16.1352 4.36177 16.8477 10 16.8477Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />--}}
                         {{-- <path d="M12.3889 19.8572C11.0247 21.372 8.89672 21.3899 7.51953 19.8572" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />--}}
@@ -62,7 +62,7 @@
                         {{-- </svg>--}}
 
                         {{-- <span class="actions__notif"></span>--}}
-                        {{-- </a>--}}
+                        {{-- </a>--}} -->
                     </div>
 
                     <div class="top-profile__avatar">

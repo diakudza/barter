@@ -8,14 +8,10 @@ import "./checkFile";
 import { headerJS } from "./navbar";
 import cutText from "./cutText";
 import searchDropdown from "./searchDropdown";
-import "./searchDropdown";
 
 import "./modalWindowPopup";
-<<<<<<< HEAD
 
 //Вызовы модулей
-=======
->>>>>>> front
 import "./login";
 
 //Вызовы модулей

@@ -142,7 +142,6 @@
             <button type="reset" class="btn btn-danger">Отменить изменения</button>
         </div>
 
-
     </form>
 
     <form action="{{ route('ad.destroy', $ad->id) }}" method="post">
