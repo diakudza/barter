@@ -9,6 +9,7 @@ use App\Queries\QueryBuilderAds;
 use App\Queries\QueryBuilderCategories;
 use App\Queries\QueryBuilderCities;
 use App\Queries\QueryBuilderStatuses;
+use App\Queries\QueryBuilderUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,10 +60,12 @@ class UserProfileController extends Controller
         ]);
     }
 
-    public function personalData()
+    public function personalData(QueryBuilderUsers $usersDetail)
     {
-        $user = User::findOrFail(Auth::user()->id);
-        dd($user->has('avatar'));
+        $user = $usersDetail->getUserDetailById(Auth::user()->id);
+        //dd($user->has('avatar'));
+        //$user = $user->with(['avatar']);
+        //dd($user);
         return view('user.profile.personalData', ['user' => $user]);
     }
 

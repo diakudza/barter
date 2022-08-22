@@ -76,4 +76,12 @@ class ImageService
             }
         }
     }
+
+    public function saveExistingUserImage(int $userId, UploadedFile $file)
+    {
+        $uploadService = new UploadService();
+        $path = $uploadService->uploadImage($file);
+        $newImage = $this->imageRepository->store($userId, $path, 'avatar');
+        return $newImage;
+    }
 }

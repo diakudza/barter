@@ -96,13 +96,13 @@ class User extends Authenticatable
         return $this->hasMany(Message::class, )->where('read','=',0);
     }
 
-    public function image()
+    public function images()
     {
         return $this->hasMany(Image::class);
     }
 
     public function avatar()
     {
-        return $this->image()->where('image_type', 'avatar')->first();
+        return $this->images()->where('image_type', 'avatar');
     }
 }

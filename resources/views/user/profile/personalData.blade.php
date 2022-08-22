@@ -6,7 +6,7 @@
 
     <div class="container">
         <h3>Просмотр и редактирование личных данных</h3>
-        <form action="{{ route('user.updateUserData') }}" method="post" class="w-50">
+        <form action="{{ route('user.updateUserData') }}" method="post" class="w-50" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="form-group">
@@ -24,12 +24,14 @@
             </div>
             <div class="form-group">
                 <img src="
-                    @if($user->avatar))
-                        {{ Storage::url($user->avatar->path) }}
+                    @if(count($user->avatar))
+                        {{ Storage::url($user->avatar[0]->path) }}
                     @else
-                        {{ Storage::url(images/clean.webp) }}
+                        {{ Storage::url('images/clean.webp') }}
                     @endif
-                " alt="image">
+                " alt="image" height="400">
+                <label for="removeImage">Удалить фото</label>
+                <input type="checkbox" name="removeImage" id="removeImage" value="@if(count($user->avatar)){{ $user->avatar[0]->id }}@endif">
                 <label for="image">Загрузить фото профиля</label>
                 <input type="file" name="image" id="image">
             </div>

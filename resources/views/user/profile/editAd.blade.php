@@ -94,9 +94,7 @@
                     <img src="{{ Storage::url('images/clean.webp') }}" alt="image" height=400>
                 </div>
                 @endforelse
-
             </div>
-            @endforelse
         </div>
 
         <div>

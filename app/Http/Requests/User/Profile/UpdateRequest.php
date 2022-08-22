@@ -31,7 +31,9 @@ class UpdateRequest extends FormRequest
                 'regex:/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/',
                 'min:10',
                 'max:35',
-                \Illuminate\Validation\Rule::unique('users')->ignore($this->user()->id)]
+                \Illuminate\Validation\Rule::unique('users')->ignore($this->user()->id)],
+            'image' => ['image'],
+            'removeImage' => ['integer', 'exists:images,id']
         ];
     }
 }
