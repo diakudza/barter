@@ -99,5 +99,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class, )->where('read','=',0);
     }
-
 }
