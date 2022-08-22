@@ -4,10 +4,8 @@ h6 {
 }
 
 .productName {
-    margin-top: 84px;
     margin-bottom: 22px;
     max-height: 140px;
-    width: 100%;
     font-family: Gilroy;
     font-size: 64px;
     font-weight: 500;
@@ -31,7 +29,7 @@ h6 {
 
 .productLocation {
     height: 20px;
-    width: 350px;
+    width: 550px;
     left: 32px;
     top: 2px;
     font-family: Gilroy;
@@ -90,13 +88,21 @@ h6 {
     color: #34383c;
 }
 
-.productView {
+.productCart {
     display: flex;
     justify-content: space-between;
+    height: 558px;
+    gap: 10px;
+}
+
+.productImgCarousel {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .productViewBig img {
-    width: 100%;
+    border-radius: 20px;
 }
 
 .productViewSmall {
@@ -104,21 +110,14 @@ h6 {
 }
 
 .productViewSmall [data-bs-target]{
-    width: 25%;
-    height: 25%;
-}
-
-.productViewSmall img {
-    width: 18%;
+    width: 63px;
+    height: 63px;
 }
 
 .productImg {
-    margin-bottom: 5px;
-    margin-right: 10px;
-    min-height: 100px;
-    max-height: 600px;
-    min-width: 100px;
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .productContact {
@@ -129,7 +128,6 @@ h6 {
     padding: 24px 24px 24px;
     gap: 24px;
     width: 384px;
-    height: 558px;
     background: #ffffff;
     border: 2px solid rgba(35, 38, 47, 0.1);
     border-radius: 20px;
@@ -244,7 +242,7 @@ h6 {
 }
 
 .additionalInfo{
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .productInfo {
