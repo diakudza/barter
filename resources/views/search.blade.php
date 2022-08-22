@@ -13,18 +13,17 @@
 </section>
 
 
-<section class="container">
+<section class="container search-result">
     @if (isset($searchResult))
 
-    @foreach ($searchResult as $item)
+    <h3 class="search-result__title title">Результаты поиска</h3>
+    <div class="search-result__container">
+        @foreach ($searchResult as $item)
 
-    @include('components.littelCard')
+        @include('components.littelCard')
 
-    @endforeach
-
-    @else
-
-    <p>Ни чего не найдено!!</p>
+        @endforeach
+    </div>
 
     @endif
 </section>
