@@ -21,7 +21,7 @@ class UserProfileController extends Controller
             'ads' => $adsList->listAdsByUser(Auth::user()->id),
             'wishes' => Auth::user()->wishes,
             'favorites' => Auth::user()->favoriteAds
-            ]);
+        ]);
     }
 
     public function createAd(
@@ -48,7 +48,7 @@ class UserProfileController extends Controller
     ) {
         $ad = $adsDetail->getAdDetailById($request->ad);
         $allowedStatuses = $statusesList->getAllPublicStatuses();
-        if($allowedStatuses->search($ad->status) === false){
+        if ($allowedStatuses->search($ad->status) === false) {
             $allowedStatuses = [];
             $allowedStatuses[] = $ad->status;
         }
@@ -63,9 +63,6 @@ class UserProfileController extends Controller
     public function personalData(QueryBuilderUsers $usersDetail)
     {
         $user = $usersDetail->getUserDetailById(Auth::user()->id);
-        //dd($user->has('avatar'));
-        //$user = $user->with(['avatar']);
-        //dd($user);
         return view('user.profile.personalData', ['user' => $user]);
     }
 

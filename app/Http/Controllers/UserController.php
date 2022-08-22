@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\User\Profile\UpdateRequest;
 use App\Http\Requests\User\Profile\UpdatePasswordRequest;
 use App\Models\User;
+use App\Queries\QueryBuilderUsers;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,17 +62,21 @@ class UserController extends Controller
         return redirect()->home()->with(['success' => 'Вы вышли!']);;
     }
 
-    public function updateUserData(UpdateRequest $request, User $user, ImageService $imageService)
+    public function updateUserData(UpdateRequest $request, User $user, ImageService $imageService, QueryBuilderUsers $userDetail)
     {
-        $user = User::where($request->safe()->only(['id']))->get()->first();
+        $user = $userDetail->getItemDetailById($request->safe()->only(['id'])['id'])->first();
         $validated = $request->safe()->only(['name', 'email', 'phone']);
         $removeImage = $request->safe()->only(['removeImage']);
+        if ($removeImage) {
+            $imageService->removeUserImage($user->id);
+        }
         if ($request->hasFile('image')) {
+            $imageService->removeUserImage($user->id);
             $image = $imageService->saveExistingUserImage($user->id, $request->file('image'));
         }
         $user = $user->fill($validated);
         if ($user->update()) {
-            if(isset($image)) {
+            if (isset($image)) {
                 $user->images()->save($image);
             }
             return redirect()->route('user.profile')->with('success', 'Данные профиля успешно обновлены');

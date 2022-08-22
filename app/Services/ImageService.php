@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Image;
+use App\Models\User;
+use App\Queries\QueryBuilderUsers;
 use App\Repositories\ImageRepository;
-use Exception;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 
@@ -41,7 +40,7 @@ class ImageService
         $path = $uploadService->uploadImage($file);
         $newImage = $this->imageRepository->store($userId, $path, 'ad');
         //If ad was created without image set current image as main
-        if(count($this->imageRepository->getImagesByAdId($adId)) == 0){
+        if (count($this->imageRepository->getImagesByAdId($adId)) == 0) {
             $newImage->image_type = 'ad_main';
         }
         return $newImage;
@@ -64,13 +63,13 @@ class ImageService
             $adId = $imagesToRemove[0]->ad_id;
             $remainingImages = $this->imageRepository->getImagesByAdId($adId);
             if (count($remainingImages) !== 0) {
-                foreach ($remainingImages as $image){
-                    if($image->image_type == 'ad_main'){
+                foreach ($remainingImages as $image) {
+                    if ($image->image_type == 'ad_main') {
                         $mainImageId = $image->id;
                         break;
                     }
                 }
-                if(!isset($mainImageId)){
+                if (!isset($mainImageId)) {
                     $this->imageRepository->setNewMainImage($remainingImages[0]->id);
                 }
             }
@@ -83,5 +82,20 @@ class ImageService
         $path = $uploadService->uploadImage($file);
         $newImage = $this->imageRepository->store($userId, $path, 'avatar');
         return $newImage;
+    }
+
+    public function removeUserImage(int $userId)
+    {
+        $user = new QueryBuilderUsers(new User);
+        $images = $user->getUserDetailById($userId)->avatar;
+        $result = true;
+        if (count($images)) $image = $images[0];
+        if (isset($image->id)) {
+            $result = $this->imageRepository->deleteImagesById([$image->id]);
+            $uploadService = new UploadService();
+            $result = $result && $uploadService->removeImage($image->path);
+        }
+
+        return $result;
     }
 }

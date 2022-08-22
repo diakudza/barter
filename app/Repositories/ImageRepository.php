@@ -38,7 +38,7 @@ class ImageRepository
 
     public function deleteImagesById(array $images)
     {
-        Image::destroy($images);
+        return Image::destroy($images);
     }
 
     public function setNewMainImage(int $id)
