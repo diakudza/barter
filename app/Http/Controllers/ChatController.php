@@ -76,6 +76,7 @@ class ChatController extends Controller
     public function chatFormAd(Request $request)
     {
         $adUser = User::find($request->input('ad_user_id'));
+
         $chatsWithAdUser = $adUser->getChats();
         if (!$chatsWithAdUser->count()) {
             $chatsWithAdUser = $adUser->getChats()->create();
