@@ -49,7 +49,11 @@
   line-height: 100%
   color: #FFFFFF
 .category
-
+.searcher
+  display: flex
+  flex-direction: row
+  align-items: center
+  gap: 12px
 .search
   width: 498px
   height: 54px
@@ -86,3 +90,20 @@
   border: 1px solid #315DF6
   border-radius: 32px
   cursor: pointer
+
+@media screen and (min-width: 375px) and (max-width: 414px)
+  .heading
+    font-weight: 500
+    font-size: 48px
+    line-height: 100%
+    text-align: center
+    letter-spacing: -0.03em
+    color: #23262F
+  .container
+    width: 310px
+    padding: 0 20px
+  .search
+    width: 100%
+    border: none
+  .categories,.region_container
+    display: none

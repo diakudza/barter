@@ -18,7 +18,15 @@ const Search = () => {
                         Все категории
                     </option>
                 </select>
-                <input className={classes.search} type="text" placeholder='Например: Квартира в Эстонии...'/>
+
+                <div className={classes.searcher}>
+                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="6.84442" cy="6.84439" r="5.99237" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.0122 11.3234L13.3616 13.6667" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input className={classes.search} type="text" placeholder='Например: Квартира в Эстонии...'/>
+                </div>
+
                 <div className={classes.region_container}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 10.5005C14.5 9.11924 13.3808 8 12.0005 8C10.6192 8 9.5 9.11924 9.5 10.5005C9.5 11.8808 10.6192 13 12.0005 13C13.3808 13 14.5 11.8808 14.5 10.5005Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

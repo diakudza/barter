@@ -1,0 +1,327 @@
+.container
+  display: flex
+  flex-direction: column
+  gap: 600px
+.navigation
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  &_back
+    display: flex
+    gap: 8px
+    justify-content: center
+    align-items: center
+    width: 280px
+    height: 58px
+    border: 2px solid rgba(35, 38, 47, 0.1)
+    border-radius: 32px
+    font-weight: 500
+    font-size: 16px
+    line-height: 100%
+    color: #23262F
+  &_crumbs
+    display: flex
+    flex-direction: row
+    align-items: center
+    gap: 40px
+  &_crumb
+    font-weight: 600
+    font-size: 16px
+    line-height: 100%
+    color: rgba(35, 38, 47, 0.5)
+    position: relative
+    &_active
+      font-weight: 600
+      font-size: 16px
+      line-height: 100%
+      color: #23262F
+    &:not(:last-child):after
+      position: absolute
+      right: -20px
+      content: '>'
+.heading
+  width: 512px
+  display: flex
+  font-weight: 500
+  font-size: 64px
+  line-height: 110%
+  letter-spacing: -0.03em
+  color: #23262F
+  margin-top: 84px
+  margin-bottom: 22px
+.subNavigation
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-bottom: 50px
+  &_region
+    display: flex
+    gap: 8px
+    align-items: center
+    font-weight: 400
+    font-size: 20px
+    line-height: 100%
+    color: rgba(35, 38, 47, 0.6)
+  &_favorite
+    background: #fff
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 8px
+    width: 259px
+    height: 58px
+    border: 2px solid rgba(35, 38, 47, 0.1)
+    border-radius: 32px
+    font-weight: 500
+    font-size: 16px
+    line-height: 100%
+    color: #23262F
+    cursor: pointer
+.inner
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+.advertisement
+  width: 896px
+  display: flex
+  flex-direction: column
+  &_gallery
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    gap: 16px
+  &_bigPic
+    width: 896px
+    height: 544px
+    border-radius: 20px
+    & img
+      width: inherit
+      height: inherit
+  &_pictures
+    display: flex
+    flex-direction: row
+    gap: 16px
+  &_smallPic
+    width: 166px
+    height: 124px
+    border-radius: 8px
+    position: relative
+    overflow: hidden
+    & img
+      width: inherit
+      height: inherit
+  &_blured
+    filter: blur(16px)
+    &_block
+      position: absolute
+      height: inherit
+      width: inherit
+      top: 0
+      left: 0
+      display: flex
+      justify-content: center
+      align-items: center
+    &_text
+      font-weight: 500
+      font-size: 40px
+      line-height: 110%
+      letter-spacing: -0.03em
+      color: #FFFFFF
+  &_badges
+    margin: 64px 0
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    row-gap: 10px
+    column-gap: 24px
+  &_badge
+    width: 230px
+    padding: 26px 20px
+    border: 1.5px solid rgba(35, 38, 47, 0.1)
+    border-radius: 10px
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 16px
+    &_info
+      display: flex
+      flex-direction: column
+      gap: 8px
+    &_up
+      font-weight: 400
+      font-size: 14px
+      line-height: 100%
+      color: rgba(35, 38, 47, 0.6)
+    &_down
+      font-weight: 500
+      font-size: 20px
+      line-height: 100%
+      color: #23262F
+  &_heading
+    margin: 64px 0 24px 0
+    font-weight: 500
+    font-size: 32px
+    line-height: 38px
+    letter-spacing: -0.03em
+    color: #23262F
+  &_info
+    font-weight: 400
+    font-size: 16px
+    line-height: 200%
+    color: rgba(35, 38, 47, 0.75)
+    margin: 24px 0 64px 0
+  &_region
+    font-weight: 400
+    font-size: 20px
+    line-height: 23px
+    color: rgba(35, 38, 47, 0.6)
+    display: flex
+    gap: 8px
+    align-items: center
+.profile
+  width: 384px
+  height: 558px
+  background: #FFFFFF
+  border: 2px solid rgba(35, 38, 47, 0.1)
+  border-radius: 20px
+  display: flex
+  justify-content: center
+  &_inner
+    padding: 54px 24px 24px 24px
+    display: flex
+    flex-direction: column
+    gap: 24px
+  &_badges
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    gap: 8px
+  &_badge
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 8px
+    padding: 0 20px
+    font-weight: 700
+    font-size: 14px
+    line-height: 100%
+    letter-spacing: 0.05em
+    color: #23262F
+    height: 40px
+    background: rgba(151, 87, 215, 0.1)
+    backdrop-filter: blur(16px)
+    border-radius: 32px
+  &_info
+    background: #F4F5F6
+    border-radius: 8px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    &_inner
+      padding: 24px 16px
+      display: flex
+      flex-direction: column
+      gap: 20px
+    &_header
+      display: flex
+      gap: 15px
+    &_image
+      width: 48px
+      height: 48px
+      border-radius: 32px
+      display: flex
+    &_block
+      display: flex
+      flex-direction: column
+      gap: 4px
+    &_name
+      font-weight: 500
+      font-size: 20px
+      line-height: 24px
+      color: #23262F
+    &_rating
+      display: flex
+      flex-direction: row
+      align-items: center
+      gap: 8px
+    &_rank
+      font-weight: 500
+      font-size: 14px
+      line-height: 100%
+      color: #23262F
+      display: flex
+      gap: 8px
+    &_rewiews
+      font-weight: 500
+      font-size: 14px
+      line-height: 100%
+      color: rgba(35, 38, 47, 0.6)
+    &_line
+      border: 1px solid rgba(35, 38, 47, 0.05)
+    &_contacts
+      display: flex
+      flex-direction: column
+      gap: 16px
+      &_heading
+        display: flex
+        align-items: center
+        gap: 8px
+        font-weight: 400
+        font-size: 14px
+        line-height: 100%
+        color: rgba(35, 38, 47, 0.6)
+      &_contact
+        display: flex
+        align-items: center
+        justify-content: space-between
+      &_theme
+        display: flex
+        align-items: center
+        gap: 8px
+        font-weight: 400
+        font-size: 14px
+        line-height: 100%
+        color: rgba(35, 38, 47, 0.6)
+      &_body
+        font-weight: 500
+        font-size: 14px
+        line-height: 100%
+        color: #23262F
+    &_communication
+      display: flex
+      flex-direction: column
+      gap: 8px
+    &_write,&_call
+      display: flex
+      justify-content: center
+      align-items: center
+      gap: 8px
+    &_write
+      width: 304px
+      height: 58px
+      background: #315DF7
+      border: 2px solid #315DF7
+      border-radius: 8px
+      font-weight: 500
+      font-size: 16px
+      line-height: 100%
+      color: #FFFFFF
+    &_call
+      width: 304px
+      height: 58px
+      border: 2px solid rgba(35, 38, 47, 0.1)
+      border-radius: 8px
+      font-weight: 500
+      font-size: 16px
+      line-height: 100%
+      color: #23262F
+  &_status
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    gap: 20px
+    &_views,&_favorites
+      display: flex
+      align-items: center
+      gap: 8px

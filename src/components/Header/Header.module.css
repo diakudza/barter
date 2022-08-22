@@ -85,4 +85,13 @@
   color: #FFFFFF;
 }
 
+@media screen and (min-width: 375px) and (max-width: 414px) {
+  .header {
+    margin: 56px 0 64px 0;
+  }
+  .menu, .publish, .login {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=Header.module.css.map */

@@ -1,0 +1,54 @@
+[
+  {
+    "ad_id": 1,
+    "ad_image": "advertisement1.png",
+    "ad_title": "Apple Macbook Pro 16” 512GB 10 core",
+    "ad_region": "Россия, Москва",
+    "ad_date": "Сегодня, 21:54",
+    "ad_price": null,
+    "profile_id": 1,
+    "profile_image": "avatar.png",
+    "profile_name": "Ali M.",
+    "profile_rank": 4.9,
+    "profile_rewiews": 84
+  },
+  {
+    "ad_id": 2,
+    "ad_image": "advertisement2.png",
+    "ad_title": "Apple Macbook Pro 16” 512GB 10 core",
+    "ad_region": "Россия, Москва",
+    "ad_date": "Сегодня, 21:54",
+    "ad_price": null,
+    "profile_id": 1,
+    "profile_image": "avatar.png",
+    "profile_name": "Ali M.",
+    "profile_rank": 4.9,
+    "profile_rewiews": 84
+  },
+  {
+    "ad_id": 3,
+    "ad_image": "advertisement3.png",
+    "ad_title": "Apple Macbook Pro 16” 512GB 10 core",
+    "ad_region": "Россия, Москва",
+    "ad_date": "Сегодня, 21:54",
+    "ad_price": 2999,
+    "profile_id": 1,
+    "profile_image": "avatar.png",
+    "profile_name": "Ali M.",
+    "profile_rank": 4.9,
+    "profile_rewiews": 84
+  },
+  {
+    "ad_id": 4,
+    "ad_image": "advertisement4.png",
+    "ad_title": "Apple Macbook Pro 16” 512GB 10 core",
+    "ad_region": "Россия, Москва",
+    "ad_date": "Сегодня, 21:54",
+    "ad_price": 2999,
+    "profile_id": 1,
+    "profile_image": "avatar.png",
+    "profile_name": "Ali M.",
+    "profile_rank": 4.9,
+    "profile_rewiews": 84
+  }
+]

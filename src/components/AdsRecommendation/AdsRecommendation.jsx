@@ -3,9 +3,9 @@ import classes from './AdsRecommendation.module.css';
 
 const AdsRecommendation = ({ad}) => {
     return (
-        <div className={classes.ad}>
+        <div className={classes.ad} id={ad.ad_id}>
             <div className={classes.up}>
-                <div className={classes.image}><img src={'./images/advertisement/recommendations/'+ad.ad_image} alt={ad.ad_title} /></div>
+                <div className={classes.image}><img src={'/images/advertisement/recommendations/'+ad.ad_image} alt={ad.ad_title} /></div>
                 <p className={classes.title}>{ad.ad_title}</p>
                 <p className={classes.region}>
                     <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +21,7 @@ const AdsRecommendation = ({ad}) => {
             </div>
             <div className={classes.down}>
                 <div className={classes.profile}>
-                    <div className={classes.avatar}><img src={'./images/advertisement/recommendations/'+ad.profile_image} alt={ad.profile_name}/></div>
+                    <div className={classes.avatar}><img src={'/images/advertisement/recommendations/'+ad.profile_image} alt={ad.profile_name}/></div>
                     <div className={classes.info}>
                         <p className={classes.name}>{ad.profile_name}</p>
                         <div className={classes.status}>

@@ -1,5 +1,14 @@
 .home {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 414px) {
+  .home {
+    gap: 60px;
+  }
 }
 
 /*# sourceMappingURL=Home.module.css.map */

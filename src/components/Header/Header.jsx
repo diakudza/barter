@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <div className={classes.left}>
-                <div className={classes.logo}>
+                <Link to='/' className={classes.logo}>
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="46" height="46" rx="23" fill="#23262F"/>
                         <g filter="url(#filter0_d_1617_7216)">
@@ -49,7 +49,7 @@ const Header = () => {
                         </defs>
                     </svg>
                     <p><b>NOOMB</b>ADS</p>
-                </div>
+                </Link>
                 <div className={classes.languages}>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_1617_7221)">
@@ -71,9 +71,9 @@ const Header = () => {
             </div>
             <div className={classes.menu}>
                 <Link className={[classes.link, classes.active].join(' ')} to='/'>Объявления</Link>
-                <Link className={classes.link} to='/'>Магазины</Link>
-                <Link className={classes.link} to='/'>Услуги</Link>
-                <Link className={classes.link} to='/'>Блог</Link>
+                <Link className={classes.link} to='/shop'>Магазины</Link>
+                <Link className={classes.link} to='/services'>Услуги</Link>
+                <Link className={classes.link} to='/blog'>Блог</Link>
             </div>
             <div className={classes.auth}>
                 <Link className={classes.login} to='/Login/Email'>Войти</Link>

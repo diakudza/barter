@@ -44,4 +44,10 @@
   color: #23262F;
 }
 
+@media screen and (min-width: 375px) and (max-width: 414px) {
+  .category {
+    padding: 32px 30px 16px 16px;
+  }
+}
+
 /*# sourceMappingURL=AdCategory.module.css.map */

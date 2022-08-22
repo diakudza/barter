@@ -2,7 +2,6 @@
   display: flex
   align-items: center
   flex-direction: column
-  margin: 144px 0 150px 0
 .up
   width: 100%
   display: flex
@@ -24,3 +23,9 @@
   display: flex
   flex-direction: row
   gap: 20px
+
+@media screen and (min-width: 375px) and (max-width: 414px)
+  .ads,.down,.up
+    flex-direction: column
+  .buttons
+    display: none

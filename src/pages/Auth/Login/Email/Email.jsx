@@ -8,8 +8,8 @@ const LoginEmail = () => {
                 type='text'
                 placeholder='me@mail.com...'
                 icon={'email'}
-                visible={false}
-                remove={true}
+                visible={'false'}
+                remove={'true'}
             />
         </div>
     );

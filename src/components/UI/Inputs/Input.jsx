@@ -36,7 +36,7 @@ const Input = (props) => {
             />
             <div className={classes.buttons}>
                 {
-                    props.visible
+                    props.visible === 'true'
                     ?
                         <svg className={classes.visible} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M18.1077 16.0354C18.1077 17.1994 17.1637 18.1427 15.9997 18.1427C14.8357 18.1427 13.8923 17.1994 13.8923 16.0354C13.8923 14.8707 14.8357 13.9274 15.9997 13.9274C17.1637 13.9274 18.1077 14.8707 18.1077 16.0354Z" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round"/>
@@ -46,7 +46,7 @@ const Input = (props) => {
                     : null
                 }
                 {
-                    props.remove
+                    props.remove === 'true'
                     ?
                         <svg className={classes.remove} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 12L12 20" stroke="#23262F" stroke-linecap="round" stroke-linejoin="round"/>

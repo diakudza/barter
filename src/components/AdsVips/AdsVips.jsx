@@ -6,7 +6,7 @@ import AdVip from "../AdVip/AdVip";
 
 const AdsVips = ({heading, ads}) => {
     return (
-        <div className={classes.ads}>
+        <div className={classes.advertisements}>
             <div className={classes.up}>
                 <h3 className={classes.heading}>{heading}</h3>
                 <div className={classes.buttons}>
