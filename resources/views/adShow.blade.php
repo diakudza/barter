@@ -273,8 +273,12 @@
                         @endif
                     </p>
                 </div>
+                @else
+                <p>Это ваше объявление!</p>
+                @endif
             </div>
         </div>
+    </div>
 
     </div>
 
@@ -332,7 +336,6 @@
         <p> {{ $ad['text'] }} </p>
     </div>
 
-</section>
+    </div>
 
-
-@endsection
+    @endsection

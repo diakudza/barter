@@ -15,7 +15,7 @@
     <img src="{{Storage::url($item->imageMain[0]->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
 
     @elseif(count($item->images))
-    <img src="{{Storage::url($item->images->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
+    <img src="{{Storage::url($item->images)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
 
     @else
 
@@ -46,8 +46,8 @@
         <div class="card__author-img">
 
           <img class="author-img" @if(count($item->imageMain)) src="{{Storage::url($item->imageMain[0]->path)}}"
-          @elseif(count($item->images))
-          src="{{Storage::url($item->images->path)}}"
+
+          src="{{Storage::url($item->images)}}"
           @else
           src="https://via.placeholder.com/40x40"
           @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}">
