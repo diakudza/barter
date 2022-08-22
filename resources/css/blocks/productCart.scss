@@ -6,7 +6,6 @@ h6 {
 .productName {
     margin-bottom: 22px;
     max-height: 140px;
-    width: 100%;
     font-family: Gilroy;
     font-size: 64px;
     font-weight: 500;
@@ -98,7 +97,6 @@ h6 {
 
 .productImgCarousel {
     display: flex;
-    height: 100%;
     flex-direction: column;
     box-sizing: border-box;
 }
@@ -107,25 +105,13 @@ h6 {
     border-radius: 20px;
 }
 
-.productViewBig.h-165 {
-    height: 165%;
-}
-
-.productViewBig img {
-    height: 100%;
-}
-
 .productViewSmall {
     position: relative;
 }
 
 .productViewSmall [data-bs-target]{
-    width: 10%;
-    height: 100%;
-}
-
-.productViewSmall img {
-    width: 18%;
+    width: 63px;
+    height: 63px;
 }
 
 .productImg {
@@ -142,7 +128,6 @@ h6 {
     padding: 24px 24px 24px;
     gap: 24px;
     width: 384px;
-    height: 100%;
     background: #ffffff;
     border: 2px solid rgba(35, 38, 47, 0.1);
     border-radius: 20px;

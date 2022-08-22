@@ -8,7 +8,7 @@
 
     <div id="Product-big" class="mb-5">
 
-        <h1 class="productName">{{ Str::limit( $ad->title, 65) }}</h1>
+        <h2 class="productName">{{ Str::limit( $ad->title, 65) }}</h2>
 
         <div class="productHeader">
 
@@ -143,8 +143,8 @@
                 </div>
 
                 @else
-                <div class="productViewBig h-165">
-                    <img src="{{ asset('images/150.png' )}}" alt="no-image">
+                <div class="productViewBig h-100">
+                    <img class="h-100" src="{{ asset('images/150.png' )}}" alt="no-image">
                 </div>
                 @endif
             </div>
