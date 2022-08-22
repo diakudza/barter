@@ -63,7 +63,7 @@ class UserController extends Controller
     public function updateUserData(UpdateRequest $request, User $user)
     {
         $user = User::where($request->safe()->only(['id']))->get()->first();
-        $validated = $request->safe()->only(['name', 'email']);
+        $validated = $request->safe()->only(['name', 'email', 'phone']);
         $user = $user->fill($validated);
         if ($user->save()) {
             return redirect()->route('user.profile')->with('success', 'Данные профиля успешно обновлены');

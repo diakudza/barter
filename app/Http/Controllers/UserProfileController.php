@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\AdStatus;
-
+use App\Models\User;
 use App\Queries\QueryBuilderAds;
 use App\Queries\QueryBuilderCategories;
 use App\Queries\QueryBuilderCities;
@@ -61,7 +61,9 @@ class UserProfileController extends Controller
 
     public function personalData()
     {
-        return view('user.profile.personalData');
+        $user = User::findOrFail(Auth::user()->id);
+        dd($user->has('avatar'));
+        return view('user.profile.personalData', ['user' => $user]);
     }
 
     public function resetPassword()
