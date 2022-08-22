@@ -17,7 +17,7 @@ class ChatController extends Controller
      */
     public function index()
     {
-        return view('user.profile.chats', [
+        return view('user.chat.chats', [
             'chats' => auth()->user()->getChats
         ]);
     }
@@ -56,7 +56,7 @@ class ChatController extends Controller
     public function show(Chat $chat)
     {
         $chat->getMessages()->update(['read' => 1]);
-        return view('user.profile.chatSingle', [
+        return view('user.chat.chatSingle', [
             'chats' => auth()->user()->getChats,
             'messages' => $chat,
             'chatId' => $chat->id
@@ -70,15 +70,14 @@ class ChatController extends Controller
     public function chatFormAd(Request $request)
     {
         $adUser = User::find($request->input('ad_user_id'));
-        $chatsWithAdUser = $adUser->getChats()->where('user_id', $request->input('ad_user_id'));
-        $chatId = $chatsWithAdUser->first()->id;
-        if (!$chatsWithAdUser->count()) {
+        $hasChatsWithCurrentUses = $adUser->getChatsWithUser(auth()->user()->id);
+        if (!$hasChatsWithCurrentUses->count()) {
             $chatsWithAdUser = $adUser->getChats()->create();
             DB::table('chat_users')->insert(['chat_id' => $chatsWithAdUser->id,
-                'user_id' => auth()->user()->id ] );
+                'user_id' => auth()->user()->id]);
         }
 
-        return redirect()->route('chat.show', $chatId);
+        return redirect()->route('chat.show', $hasChatsWithCurrentUses->first()->id);
     }
 
     /**
