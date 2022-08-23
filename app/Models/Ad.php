@@ -53,6 +53,6 @@ class Ad extends Model
 
     public function imageMain()
     {
-        return $this->images()->where('image_type', '=','0');
+        return $this->images()->where('image_type', 'ad_main');
     }
 }
