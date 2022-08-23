@@ -1,19 +1,35 @@
+//Кастомные селекторы
+import Choices from "choices.js";
+import "simplebar";
+
 const searchDropdown = () => {
-    let box = document.querySelector(".textBox"),
-        dropdownItems = document.querySelectorAll(".dropdown"),
-        option = document.querySelectorAll(".option > div");
+    const elements = document.querySelectorAll(".form-control-input");
 
-    option.forEach((item) => {
-        item.addEventListener("click", (e) => {
-            let content = item.innerHTML;
-            box.innerHTML = content;
+    elements.forEach((element) => {
+        const choices = new Choices(element, {
+            searchEnabled: false,
+            itemSelectText: "",
+            noResultsText: "Ничего не найдено",
         });
-    });
 
-    dropdownItems.forEach((dropdown) => {
-        dropdown.addEventListener("click", () => {
-            dropdown.classList.toggle("active");
-        });
+        //Это назначение aril label на самый верх
+        let ariaLabel = element.getAttribute("aria-label");
+        element.closest(".choices").setAttribute("aria-label", ariaLabel);
+
+        let classElement = element.dataset.class;
+        element.closest(".choices__inner").classList.add(classElement);
+
+        if (classElement === "search__category") {
+            element.closest(".choices").setAttribute("data-elem", classElement);
+        } else {
+            element.closest(".choices").setAttribute("data-elem", "gray-arrow");
+        }
+
+        //Подключение simplebar
+        element
+            .closest(".choices")
+            .querySelector(".choices__list--dropdown > .choices__list")
+            .setAttribute("data-simplebar", "");
     });
 };
 

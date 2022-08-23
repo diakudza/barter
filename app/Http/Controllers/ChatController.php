@@ -17,7 +17,7 @@ class ChatController extends Controller
      */
     public function index()
     {
-        return view('user.profile.chats', [
+        return view('user.chat.chats', [
             'chats' => auth()->user()->getChats
         ]);
     }
@@ -53,14 +53,20 @@ class ChatController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function show(Chat $chat)
+    public function show($id)
     {
-        $chat->getMessages()->update(['read' => 1]);
-        return view('user.profile.chatSingle', [
-            'chats' => auth()->user()->getChats,
-            'messages' => $chat,
-            'chatId' => $chat->id
-        ]);
+        $chat = Chat::find($id);
+        $user = User::find(auth()->user()->id);
+        $currentUserchat = $user->getChats()->pluck('chat_id')->toArray();
+        if (in_array($id, $currentUserchat)) {
+            $chat->getMessages()->update(['read' => 1]);
+            return view('user.chat.chatSingle', [
+                'chats' => auth()->user()->getChats,
+                'messages' => $chat,
+                'chatId' => $chat->id
+            ]);
+        }
+        return abort(404);
     }
 
     /**
@@ -70,15 +76,15 @@ class ChatController extends Controller
     public function chatFormAd(Request $request)
     {
         $adUser = User::find($request->input('ad_user_id'));
-        $chatsWithAdUser = $adUser->getChats()->where('user_id', $request->input('ad_user_id'));
-        $chatId = $chatsWithAdUser->first()->id;
+
+        $chatsWithAdUser = $adUser->getChats();
         if (!$chatsWithAdUser->count()) {
             $chatsWithAdUser = $adUser->getChats()->create();
             DB::table('chat_users')->insert(['chat_id' => $chatsWithAdUser->id,
-                'user_id' => auth()->user()->id ] );
+                'user_id' => auth()->user()->id]);
+            return redirect()->route('chat.show', $chatsWithAdUser->id);
         }
-
-        return redirect()->route('chat.show', $chatId);
+        return redirect()->route('chat.show', $chatsWithAdUser->value('chat_id'));
     }
 
     /**

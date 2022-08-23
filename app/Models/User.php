@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use phpDocumentor\Reflection\Types\Boolean;
 
@@ -89,6 +90,10 @@ class User extends Authenticatable
     public function getChats()
     {
         return $this->belongsToMany(Chat::class,'chat_users');
+    }
+    public function getChatsWithUser(int $user_id)
+    {
+        return DB::table('chat_users')->where('user_id', $user_id);
     }
 
     public function getUnreadMessages()

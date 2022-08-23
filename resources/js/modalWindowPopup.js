@@ -1,3 +1,6 @@
+//Jquery
+import $ from "jquery";
+
 try {
     $(document).ready(function () {
         $(".modalWindow").click(function () {
