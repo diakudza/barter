@@ -11,9 +11,7 @@ class Ad extends Model
 
     protected $fillable = [
         'title', 'text', 'user_id', 'category_id', 'city_id',
-
         'barter_type', 'status_id'
-
     ];
 
     public function Category()
@@ -53,6 +51,6 @@ class Ad extends Model
 
     public function imageMain()
     {
-        return $this->images()->where('image_type', '=','0');
+        return $this->images()->where('image_type', 'ad_main');
     }
 }

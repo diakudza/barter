@@ -26,7 +26,16 @@ class UpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email'],
-            'id' => ['required', 'integer', 'exists:users,id']
+            'id' => ['required', 'integer', 'exists:users,id'],
+            'phone' => [
+                'nullable',
+                'regex:/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/',
+                'min:10',
+                'max:35',
+                \Illuminate\Validation\Rule::unique('users')->ignore($this->user()->id)
+            ],
+            'image' => ['image'],
+            'removeImage' => ['nullable', 'integer', 'exists:images,id']
         ];
     }
 }

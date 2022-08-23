@@ -66,7 +66,10 @@
                     </div>
 
                     <div class="top-profile__avatar">
-                        <img src="{{ asset('images/icon-avatar.png' )}}" alt="Name" class="top-profile__img">
+                        <img
+                            @if(auth()->user() && auth()->user()->avatar()->first()) src="{{ Storage::url(auth()->user()->avatar()->first()->path )}}"
+                            @else src="{{ asset('images/icon-avatar.png' )}}"
+                            @endif alt="Name" class="top-profile__img">
                     </div>
                     @endif
 

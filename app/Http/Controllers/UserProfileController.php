@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 
 use App\Models\AdStatus;
-
+use App\Models\User;
 use App\Queries\QueryBuilderAds;
 use App\Queries\QueryBuilderCategories;
 use App\Queries\QueryBuilderCities;
 use App\Queries\QueryBuilderStatuses;
+use App\Queries\QueryBuilderUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,7 @@ class UserProfileController extends Controller
             'ads' => $adsList->listAdsByUser(Auth::user()->id),
             'wishes' => Auth::user()->wishes,
             'favorites' => Auth::user()->favoriteAds
-            ]);
+        ]);
     }
 
     public function createAd(
@@ -47,7 +48,7 @@ class UserProfileController extends Controller
     ) {
         $ad = $adsDetail->getAdDetailById($request->ad);
         $allowedStatuses = $statusesList->getAllPublicStatuses();
-        if($allowedStatuses->search($ad->status) === false){
+        if ($allowedStatuses->search($ad->status) === false) {
             $allowedStatuses = [];
             $allowedStatuses[] = $ad->status;
         }
@@ -59,9 +60,10 @@ class UserProfileController extends Controller
         ]);
     }
 
-    public function personalData()
+    public function personalData(QueryBuilderUsers $usersDetail)
     {
-        return view('user.profile.personalData');
+        $user = $usersDetail->getUserDetailById(Auth::user()->id);
+        return view('user.profile.personalData', ['user' => $user]);
     }
 
     public function resetPassword()
