@@ -17,7 +17,7 @@
       @if(count($item->imageMain))
       <img src="{{Storage::url($item->imageMain[0]->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
       @elseif(count($item->images))
-      <img src="{{Storage::url($item->images->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
+      <img src="{{Storage::url($item->images[0]->path)}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
       @else
       <img src="{{ asset('images/product/placeholder400x400.png' )}}" alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
       @endif
@@ -45,7 +45,7 @@
 
             <img class="author-img" @if(count($item->imageMain)) src="{{Storage::url($item->imageMain[0]->path)}}"
             @elseif(count($item->images))
-            src="{{Storage::url($item->images->path)}}"
+            src="{{Storage::url($item->images[0]->path)}}"
             @else
             src="https://via.placeholder.com/40x40"
             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}">
