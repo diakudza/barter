@@ -22,6 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'role_id',
         'status_id'
@@ -98,5 +99,15 @@ class User extends Authenticatable
     public function getUnreadMessages()
     {
         return $this->hasMany(Message::class, )->where('read','=',0);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function avatar()
+    {
+        return $this->images()->where('image_type', 'avatar');
     }
 }

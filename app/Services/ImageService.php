@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Image;
+use App\Models\User;
+use App\Queries\QueryBuilderUsers;
 use App\Repositories\ImageRepository;
-use Exception;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 
@@ -75,5 +74,28 @@ class ImageService
                 }
             }
         }
+    }
+
+    public function saveExistingUserImage(int $userId, UploadedFile $file)
+    {
+        $uploadService = new UploadService();
+        $path = $uploadService->uploadImage($file);
+        $newImage = $this->imageRepository->store($userId, $path, 'avatar');
+        return $newImage;
+    }
+
+    public function removeUserImage(int $userId)
+    {
+        $user = new QueryBuilderUsers(new User);
+        $images = $user->getUserDetailById($userId)->avatar;
+        $result = true;
+        if (count($images)) $image = $images[0];
+        if (isset($image->id)) {
+            $result = $this->imageRepository->deleteImagesById([$image->id]);
+            $uploadService = new UploadService();
+            $result = $result && $uploadService->removeImage($image->path);
+        }
+
+        return $result;
     }
 }
