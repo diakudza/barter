@@ -2,8 +2,14 @@
 <div class="d-flex flex-column">
 
     @forelse($chats as $chat)
-        <div>
+        <div class="flex flex-row">
             <a href="{{ route('chat.show', $chat->id) }}">
+                <img class="top-profile__avatar"
+                @if($chat->getUser()->avatar()->first())
+                    src="{{Storage::url($chat->getUser()->avatar()->first()->path)}}"
+                @else
+                    src="{{ asset('images/icon-avatar.png')}}"
+                @endif alt="photo-user">
                 <p @if (isset($chatId) && $chat->id == $chatId) class="fw-bold"@endif>
 
                     @if( $chat->getUser())
