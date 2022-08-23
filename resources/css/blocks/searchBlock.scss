@@ -4,6 +4,7 @@
 
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 34px;
 
         background: #f4f5f6;
@@ -44,50 +45,53 @@
 
     //Стили стрелок
     //белые стрелки
+    &[data-elem="search__category"] {
+        &:after {
+            right: 42px;
+            height: 12px;
+            width: 12px;
+            border-width: 0px;
+            border-right: 2px solid #fff;
+            border-top: 2px solid #fff;
+            transform: rotate(135deg);
+            margin-top: -9px;
+            transition: all 0.4s ease-in;
+        }
 
-    &[data-elem="search__category"]:after {
-        right: 42px;
-        height: 12px;
-        width: 12px;
-        border-width: 0px;
-        border-right: 2px solid #fff;
-        border-top: 2px solid #fff;
-        transform: rotate(135deg);
-        margin-top: -9px;
-        transition: all 0.4s ease-in;
-    }
-
-    &[data-elem="search__category"].is-open:after {
-        border-width: 0px;
-        border-left: 2px solid #fff;
-        border-bottom: 2px solid #fff;
-        margin-top: -2px;
+        &.is-open:after {
+            border-width: 0px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            margin-top: -2px;
+        }
     }
 
     //черные стрелки
-    &[data-elem="gray-arrow"]:after {
-        right: 42px;
-        height: 12px;
-        width: 12px;
-        border-width: 0px;
-        border-right: 2px solid $color-black;
-        border-top: 2px solid $color-black;
-        transform: rotate(135deg);
-        margin-top: -9px;
-        transition: all 0.4s ease-in;
-    }
+    &[data-elem="gray-arrow"] {
+        &:after {
+            right: 15px;
+            height: 12px;
+            width: 12px;
+            border-width: 0px;
+            border-right: 2px solid $color-black;
+            border-top: 2px solid $color-black;
+            transform: rotate(135deg);
+            margin-top: -9px;
+            transition: all 0.4s ease-in;
+        }
 
-    &[data-elem="gray-arrow"].is-open:after {
-        border-width: 0px;
-        border-left: 2px solid $color-black;
-        border-bottom: 2px solid $color-black;
-        margin-top: -2px;
+        &.is-open:after {
+            border-width: 0px;
+            border-left: 2px solid $color-black;
+            border-bottom: 2px solid $color-black;
+            margin-top: -2px;
+        }
     }
 }
 
 .search {
     &__category {
-        width: 225px;
+        width: 250px;
 
         background: #23262f;
         border-radius: 333px;
@@ -101,13 +105,19 @@
         overflow: hidden;
     }
 
+    &__type {
+        width: 150px;
+        background: none;
+    }
+
+    &__city {
+        background: none;
+        width: 150px;
+    }
+
     &__item {
         display: flex;
         align-items: center;
-
-        &-icon > svg {
-            display: block;
-        }
 
         &-input {
             width: 100%;
@@ -126,7 +136,6 @@
 
         &--type {
             height: 54px;
-            width: 215px;
             padding: 0 36px;
 
             border-left: 1px solid rgba($color-black, 0.1);
@@ -135,6 +144,10 @@
 
         &-icon {
             margin-right: 8px;
+
+            & > svg {
+                display: block;
+            }
         }
     }
 
@@ -167,10 +180,36 @@
 .choices__list--dropdown,
 .choices__list[aria-expanded] {
     z-index: 101;
-    width: 300px;
+    width: 250px;
 
     margin-top: 15px;
     border-radius: 8px;
 
     // word-break: inherit;
+}
+
+.is-flipped .choices__list--dropdown,
+.is-flipped .choices__list[aria-expanded] {
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+//Блок результатов поиска
+.search-result {
+    margin-top: 32px;
+
+    &__title {
+        margin-bottom: 32px;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        column-gap: 16px;
+        row-gap: 16px;
+
+        @include break375 {
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    }
 }

@@ -39,7 +39,7 @@
                 </svg>
             </div>
 
-            <select class="form-control-input" name="barter_type" aria-label="Тип обмена" data-class="search__barter-type">
+            <select class="form-control-input" name="barter_type" aria-label="Тип обмена" data-class="search__type">
                 <option value="" selected>Тип обмена</option>
                 @foreach($barter_types as $barter_type)
                 <option value="{{ $barter_type[0] }}" @if(isset($barter_type_selected) && $barter_type_selected==$barter_type[0]) selected @endif>{{ $barter_type[1] }}</option>
@@ -84,63 +84,10 @@
         <span>искать Архивные</span>
     </label>
 
-    <!-- arrow down -->
-    <!-- <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12.8327 1.08334L6.99935 6.91668L1.16602 1.08334" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-    </svg> -->
-
-
     <!-- @if(session('alert'))
     <div class="alert-danger">
         {{ session('alert') }}
     </div>
     @endif -->
 
-    <!-- Поиск -->
-    <!-- <div class="form-group">
-        <input type="text" class="form-control-input" @if(isset($searchWord)) value="{{$searchWord}}" @endif placeholder="Наименование" >
-    </div> -->
-
-    <!-- город -->
-    <!-- <div class="form-group">
-        <select class="form-control-input" name="city">
-            <option value="" selected>город не выбран</option>
-            @foreach($cities as $city)
-            <option value="{{ $city['id'] }}" @if(isset($city_selected) && $city_selected==$city['id']) selected @endif>{{ $city['name'] }}</option>
-            @endforeach
-        </select>
-    </div> -->
-
-    <!-- Категория -->
-    <!-- тип обмена -->
-    <!-- <div class="d-flex justify-content-between ">
-
-        <div class="form-group">
-            <select class="form-control-input" name="category">
-                <option value="" selected>категория не выбрана</option>
-                @foreach($categories as $category)
-                <option value="{{ $category['id'] }}" @if(isset($categorise_selected) && $categorise_selected==$category['id']) selected @endif>{{ $category['title'] }}</option>
-                @endforeach
-            </select>
-        </div>
-
-
-        <div class="form-group w-50">
-            <select class="form-control-input" name="barter_type">
-                <option value="" selected>Тип обмена не учитывать</option>
-                @foreach($barter_types as $barter_type)
-                <option value="{{ $barter_type[0] }}" @if(isset($barter_type_selected) && $barter_type_selected==$barter_type[0]) selected @endif>{{ $barter_type[1] }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-
-    <div class="d-flex flex-row">
-        <button class="form-control-submit-button" type="submit">Поиск</button>
-        <div class="d-flex flex-row">
-
-            <input class="form-control-checkbox" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif>
-        </div>
-        <p>искать Архивные</p>
-    </div> -->
 </form>
