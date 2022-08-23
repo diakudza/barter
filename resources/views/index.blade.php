@@ -4,10 +4,9 @@
 
 @section('content')
 
-
 @include('components.hero')
 
-<section id="howitwork" class="container ">
+<section id="howitwork" class="container">
 
   <div class="mb-5">
     <p>

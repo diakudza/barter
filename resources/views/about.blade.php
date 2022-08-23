@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+<section class="container">
 
     <h1> Привет! Мы - команда студентов GeekBrains</h1>
     <p> В рамках курсового проекта разрабатываем приложение для обмена ненужными вещами - Бартер</p>
@@ -14,6 +14,6 @@
     <p> Никита Циунель - frontend разработчик</p>
     <p> Кирилл Новичков - backend разработчик</p>
 
-</div>
+</section>
 
 @endsection

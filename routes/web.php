@@ -28,14 +28,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/about', function () {
-
     return view('about');
 });
+
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/search', [SearchController::class, 'index'])->name('searchPage');
 Route::post('/search', [SearchController::class, 'search'])->name('search');
 Route::resource('ad', AdController::class);
-
 
 Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
@@ -55,13 +54,11 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::resource('chat', ChatController::class);
 });
 
-
 Route::group(['middleware' => 'guest'], function () { //for not authorized users
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
     Route::post('/registration', [UserController::class, 'registration'])->name('registration');
     Route::get('/login', [UserController::class, 'index'])->name('loginPage');
 });
-
 
 Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for authorized users
 
@@ -76,7 +73,6 @@ Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for a
         Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad
     });
 });
-
 
 Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']], function () { //for admin users (and moderators)
     Route::resource('category', CategoryController::class);
