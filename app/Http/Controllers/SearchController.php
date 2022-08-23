@@ -65,7 +65,7 @@ class SearchController extends Controller
             'archived_checked' => $request->input('status') ?? NULL,
             'barter_types' => [
                 ['barter', 'Обмен'],
-                ['free', 'Даров']
+                ['free', 'Даром']
             ],
             'barter_type_selected' => $request->input('barter_type') ?? NULL,
         ]);

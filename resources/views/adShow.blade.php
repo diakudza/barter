@@ -256,8 +256,13 @@
                     <ellipse opacity="0.4" cx="9.66766" cy="26" rx="6.66668" ry="1.33334" fill="#9757D7"/>
                 </svg>
                 <div>
-                    <p>Время до метро</p>
-                    <h5>~15 минут</h5>
+                    <p>Просмотров</p>
+                    <h5>@if ($ad['show_count'])
+                            {{ $ad['show_count'] }}
+                        @else
+                            0
+                        @endif
+                    </h5>
                 </div>
             </div>
         </div>
