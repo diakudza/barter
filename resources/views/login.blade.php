@@ -16,7 +16,7 @@
 
         <form method="post" action="{{ route('auth') }}">
             <legend>Войти</legend>
-            <div class="social">
+            <!--div class="social">
                 <a href="#" class="social"><svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_707_15884)">
                             <path d="M19 10.2226C19 9.56371 18.9465 8.90129 18.8326 8.25311H9.69043V11.9855H14.9257C14.7085 13.1892 14.0104 14.2541 12.9883 14.9308V17.3525H16.1117C17.9458 15.6644 19 13.1714 19 10.2226Z" fill="#4285F4" />
@@ -40,15 +40,15 @@
                         <path d="M12 21.5C12 21.7761 12.2241 22.0013 12.4999 21.9877C17.7905 21.7272 22 17.3552 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 16.6251 5.13989 20.5168 9.40433 21.6598C9.70966 21.7417 10 21.5044 10 21.1883V14H9C8.44771 14 8 13.5523 8 13C8 12.4477 8.44772 12 9 12H10V10C10 8.34315 11.3431 7 13 7H14C14.5523 7 15 7.44772 15 8C15 8.55229 14.5523 9 14 9H13C12.4477 9 12 9.44772 12 10V12H14C14.5523 12 15 12.4477 15 13C15 13.5523 14.5523 14 14 14H12V21.5Z" fill="#315DF7" />
                     </svg>
                 </a>
-            </div>
+            </div-->
             @csrf
-            <span>or use your account</span>
+            <span>Используйте свой аккаунт</span>
             <div class="mb-3 email">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}" class="@error('email') is-invalid @enderror">
             </div>
 
             <div class="mb-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" class="@error('password') is-invalid @enderror">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" class="@error('password') is-invalid @enderror">
             </div>
             <a href="#">Забыли пароль?</a>
             <button type="submit" class="btn bthEnter bth-login btn-primary">Войти</button>
@@ -58,7 +58,7 @@
     <div class="registration">
         <form method="post" action="{{ route('registration') }}" enctype="multipart/form-data">
             <legend>Создать акаунт</legend>
-            <div class="social">
+            <!--div class="social">
                 <a href="#" class="social"><svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_707_15884)">
                             <path d="M19 10.2226C19 9.56371 18.9465 8.90129 18.8326 8.25311H9.69043V11.9855H14.9257C14.7085 13.1892 14.0104 14.2541 12.9883 14.9308V17.3525H16.1117C17.9458 15.6644 19 13.1714 19 10.2226Z" fill="#4285F4" />
@@ -82,10 +82,10 @@
                         <path d="M12 21.5C12 21.7761 12.2241 22.0013 12.4999 21.9877C17.7905 21.7272 22 17.3552 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 16.6251 5.13989 20.5168 9.40433 21.6598C9.70966 21.7417 10 21.5044 10 21.1883V14H9C8.44771 14 8 13.5523 8 13C8 12.4477 8.44772 12 9 12H10V10C10 8.34315 11.3431 7 13 7H14C14.5523 7 15 7.44772 15 8C15 8.55229 14.5523 9 14 9H13C12.4477 9 12 9.44772 12 10V12H14C14.5523 12 15 12.4477 15 13C15 13.5523 14.5523 14 14 14H12V21.5Z" fill="#315DF7" />
                     </svg>
                 </a>
-            </div>
+            </div-->
             @csrf
             <div class="mb-3">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{old('name')}}" class="@error('name') is-invalid @enderror">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Имя" value="{{old('name')}}" class="@error('name') is-invalid @enderror">
             </div>
 
             <div class="mb-3">
@@ -93,11 +93,11 @@
             </div>
 
             <div class="mb-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" class="@error('password') is-invalid @enderror">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" class="@error('password') is-invalid @enderror">
             </div>
 
             <div class="mb-3">
-                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm the password" class="@error('password_confirmation') is-invalid @enderror">
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Подтвердите пароль" class="@error('password_confirmation') is-invalid @enderror">
             </div>
 
             <button type="submit" class="btn bthEnter bth-reg btn-primary">Зарегистрироваться</button>
@@ -107,13 +107,13 @@
     <div class="overlap-container">
         <div class="overlap">
             <div class="overlap-panel overlap-left">
-                <h1 class="overlap-title">С возвращением!</h1>
-                <p class="overlap-content">Чтобы оставаться на связи с нами, пожалуйста, войдите под своей учеткой</p>
+                <h2 class="overlap-title overlap-title-reg">С возвращением!</h2>
+                <p class="overlap-content">У вас уже есть аккаунт? <br> Нажмите "войти"!</p>
                 <button class="overlap-button overlapEnt" id="signIn">Войти</button>
             </div>
             <div class="overlap-panel overlap-right">
-                <h1 class="overlap-title">Привет!</h1>
-                <p class="overlap-content">Введите свои личные данные и начните путешествие с нами</p>
+                <h2 class="overlap-title overlap-title-login">Привет!</h2>
+                <p class="overlap-content">Нет аккаунта? <br> Нажмите "зарегистрироваться"!</p>
                 <button class="overlap-button overlapReg" id="signUp">Зарегистрироваться</button>
             </div>
         </div>
