@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
         Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad
         Route::get('/listAds', 'listAds')->name('user.profile.listAds'); // Personal area - view all ads for autorized user
         Route::get('/editAd', 'editAd')->name('user.profile.editAd'); // Personal area - edit ad
+        Route::get('/publicInfo/{id}', 'publicInfo')->name('user.public'); // Users public info
 
         Route::get('personalData', 'personalData')->name('user.profile.personalData'); //Personal area - view and edit personal data
         Route::get('resetPassword', 'resetPassword')->name('user.profile.resetPassword'); //Personal area - reset password

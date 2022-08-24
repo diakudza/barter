@@ -14,6 +14,11 @@ class Ad extends Model
         'barter_type', 'status_id'
     ];
 
+    public function getCreatedDate()
+    {
+        return $this->created_at->format('d/m/Y');
+    }
+
     public function Category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');

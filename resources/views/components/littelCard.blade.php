@@ -1,11 +1,11 @@
 <div class="card">
-
+    @if($item['status_id'] == 4)<p >в архиве!</p>@endif
     <a href="{{ route('ad.show', $item['id']) }}" class="card__link"></a>
 
     <div class="card__content">
         <div class="card__img">
 
-            @if(auth()->user())
+            @if(auth()->user() && $item['status_id'] !== 4)
                 <div class="card__btn-fav">
                     <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -56,13 +56,11 @@
                 <div class="card__author">
                     <div class="card__author-img">
                         <img class="author-img"
-                             @if($item->user->avatar()->first())
-                             src="{{Storage::url($item->user->avatar()->first()->path)}}"
-                             @elseif(count($item->images))
-                             src="{{Storage::url($item->images[0]->path)}}"
-                             @else
-                             src="https://via.placeholder.com/40x40"
-                             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}">
+                             @if($item->user->avatar()->first()) src="{{Storage::url($item->user->avatar()->first()->path)}}"
+                             @elseif(count($item->images)) src="{{Storage::url($item->images[0]->path)}}"
+                             @else src="https://via.placeholder.com/40x40"
+                             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}"
+                        >
                     </div>
 
                     <p class="card__author-name">{{ $item->user->name }}</p>
@@ -70,7 +68,7 @@
 
                 <div class="card__add">
                     <p class="card__add-text">Опубликовано:</p>
-                    <p class="card__add-time">{{ $item['created_at']  }}</p>
+                    <p class="card__add-time">{{ $item->getCreatedDate() }}</p>
                 </div>
             </div>
 

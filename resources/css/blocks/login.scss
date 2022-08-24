@@ -17,13 +17,13 @@
 
 .login legend{
     height: 48px;
-    font-family: 'Gilroy';
+    font-family: "Gilroy";
     font-style: normal;
     font-weight: 600;
     font-size: 48px;
     line-height: 100%;
     letter-spacing: -0.04em;
-    color: #23262F;
+    color: #23262f;
     margin-bottom: 20px;
     margin-top: 103px;
     @include break768 {
@@ -35,25 +35,25 @@
     }
 }
 
-.login input:focus{
-    border-color: #315DF7;
+.login input:focus {
+    border-color: #315df7;
     box-shadow: none;
 }
 
-.login label{
+.login label {
     width: 112px;
     height: 14px;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 100%;
-    color: #272A32;
+    color: #272a32;
     flex: none;
     order: 0;
     flex-grow: 0;
 }
 
-.login a{
+.login a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
@@ -69,7 +69,13 @@
     }
 }
 
-.authentication{
+.login form {
+    @include break768 {
+        margin-top: 35px;
+    }
+}
+
+.authentication {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
@@ -78,7 +84,7 @@
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    padding-top: 0px!important;
+    padding-top: 0px !important;
     padding: 0;
     z-index: 0;
 
@@ -92,7 +98,13 @@
     }
 }
 
-.registration{
+    @include break768 {
+        width: 95vw;
+        flex-direction: column !important;
+    }
+}
+
+.registration {
     width: 50%;
     display: flex;
     align-items: center;
@@ -101,7 +113,7 @@
     padding: 0 40px;
     text-align: center;
     top: 0;
-    max-width: 50%;
+    max-max-width: 50%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
     @include break768 {
@@ -110,13 +122,13 @@
     }
 }
 
-.social{
+.social {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
-.social a{
+.social a {
     border: 1px solid #dddddd;
     border-radius: 50%;
     display: inline-flex;
@@ -134,7 +146,7 @@
     }
 }
 
-.bthEnter{
+.bthEnter {
     border-radius: 20px;
     border: 1px solid #0d6efd;
     background-color: #0d6efd;
@@ -162,7 +174,35 @@
     }
 }
 
-.registration legend{
+.bth-login {
+    margin-top: 45px;
+    @include break768 {
+        margin-top: unset;
+    }
+}
+
+.bth-reg {
+    @include break768 {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+}
+
+.bth-login {
+    margin-top: 45px;
+    @include break768 {
+        margin-top: unset;
+    }
+}
+
+.bth-reg {
+    @include break768 {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+}
+
+.registration legend {
     display: block;
     font-size: 39px;
     margin-block-start: 0.67em;
@@ -180,12 +220,12 @@
     }
 }
 
-.registration input:focus{
-    border-color: #315DF7;
+.registration input:focus {
+    border-color: #315df7;
     box-shadow: none;
 }
 
-.bthEnter:hover{
+.bthEnter:hover {
     color: #343a40;
 }
 
@@ -206,9 +246,9 @@
 }
 
 .overlap {
-    background: #23262F;
-    background: -webkit-linear-gradient(to right, #23262F, #315DF7);
-    background: linear-gradient(to right,#0c163a,#1a338a,#1a338a,#0c163a);
+    background: #23262f;
+    background: -webkit-linear-gradient(to right, #23262f, #315df7);
+    background: linear-gradient(to right, #0c163a, #1a338a, #1a338a, #0c163a);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -342,11 +382,11 @@
     }
 }
 
-.overlap-content{
-    color: #F4F5F6
+.overlap-content {
+    color: #f4f5f6;
 }
 
-.overlap-button{
+.overlap-button {
     border-radius: 20px;
     border: 1px solid #0d6efd;
     background-color: #0d6efd;

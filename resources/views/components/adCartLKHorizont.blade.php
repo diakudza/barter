@@ -1,7 +1,14 @@
-<div class="border row mb-4 bg-light" style="height: 70px;">
-    <img class="col-3" style="height: 100%" src="@if (count($ad->imageMain)) {{ Storage::url($ad->imageMain[0]->path) }}
-         @else {{ Storage::url('images/clean.webp') }} @endif">
-    <div class="col-9">
+<div class="border d-flex mb-4 bg-light" style="height: 50px;">
+    <div class="card__author-img">
+        <img class="author-img"
+             @if(count($ad->imageMain)) src="{{Storage::url($ad->imageMain[0]->path)}}"
+             @elseif(count($ad->images)) src="{{Storage::url($ad->images[0]->path)}}"
+             @else src="{{ asset('images/product/placeholder400x400.png' )}}"
+             @endif title="{{ $ad['title'] }}" alt="{{ $ad['title'] }}"
+        >
+    </div>
+
+    <div class="overflow-auto">
         <a href="{{ route('ad.show', $ad->id) }}">
             <p> {{ $ad->title }} </p>
         </a>
