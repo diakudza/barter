@@ -56,13 +56,11 @@
                 <div class="card__author">
                     <div class="card__author-img">
                         <img class="author-img"
-                             @if($item->user->avatar()->first())
-                             src="{{Storage::url($item->user->avatar()->first()->path)}}"
-                             @elseif(count($item->images))
-                             src="{{Storage::url($item->images[0]->path)}}"
-                             @else
-                             src="https://via.placeholder.com/40x40"
-                             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}">
+                             @if($item->user->avatar()->first()) src="{{Storage::url($item->user->avatar()->first()->path)}}"
+                             @elseif(count($item->images)) src="{{Storage::url($item->images[0]->path)}}"
+                             @else src="https://via.placeholder.com/40x40"
+                             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}"
+                        >
                     </div>
 
                     <p class="card__author-name">{{ $item->user->name }}</p>
