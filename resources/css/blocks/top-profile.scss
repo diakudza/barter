@@ -37,40 +37,8 @@
         height: 58px;
 
         border-radius: 50%;
+        object-fit: cover;
     }
-
-    // &__menu {
-    //     position: absolute;
-    //     top: 73px;
-    //     right: 0;
-
-    //     z-index: 100;
-
-    //     width: 370px;
-
-    //     background: white;
-    //     box-shadow: 0px 4px 250px rgba(0, 0, 0, 0.15);
-    //     border-radius: 12px;
-
-    //     padding: 8px 0;
-
-    //     opacity: 0;
-    //     visibility: hidden;
-    //     transform: scale(0);
-    //     transition: all 0.4s ease-in;
-
-    //     &.show {
-    //         opacity: 1;
-    //         transform: scale(1);
-    //         visibility: visible;
-    //     }
-
-    //     @include break992 {
-    //         top: initial;
-    //         bottom: 85px;
-    //         width: 310px;
-    //     }
-    // }
 
     &__img {
         width: 100%;
@@ -80,39 +48,4 @@
 
         cursor: pointer;
     }
-
-    // &__item {
-    //     font-family: "Gilroy";
-    //     font-weight: 500;
-    //     font-size: 16px;
-    //     line-height: 100%;
-
-    //     color: rgba(35, 38, 47, 0.6);
-
-    //     display: flex;
-    //     align-items: center;
-
-    //     padding: 24px 12px;
-    //     cursor: pointer;
-
-    //     transition: all 0.4s ease-in;
-
-    //     &:first-child {
-    //         margin-bottom: 12px;
-    //         border-bottom: 1px solid rgba(35, 38, 47, 0.05);
-    //     }
-
-    //     &:last-child {
-    //         margin-top: 12px;
-    //         border-top: 1px solid rgba(35, 38, 47, 0.05);
-    //     }
-
-    //     &:hover {
-    //         background: #f4f5f6;
-    //     }
-
-    //     & span {
-    //         margin-right: 14px;
-    //     }
-    // }
 }

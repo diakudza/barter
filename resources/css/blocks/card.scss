@@ -70,6 +70,7 @@
         background-color: #fff;
 
         border-radius: 50%;
+        box-shadow: 0px 0px 5px 3px rgba($color-black, 0.1);
 
         display: flex;
         align-items: center;
@@ -78,8 +79,25 @@
         transition: all 0.5s;
         cursor: pointer;
 
+        svg > path {
+            transition: all 0.5s;
+            stroke: $color-black;
+        }
+
+        &.add {
+            background-color: $color-blue;
+
+            svg > path {
+                stroke: #fff;
+            }
+        }
+
         &:hover {
             background-color: rgb(179, 179, 179);
+
+            svg > path {
+                stroke: $color-black;
+            }
         }
     }
 
@@ -119,16 +137,23 @@
         margin-right: 10px;
 
         &-img {
+            width: 32px;
+            height: 32px;
+
             margin-right: 8px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            .author-img {
+            border-radius: 50%;
+
+            & .author-img {
                 width: 32px;
                 height: 32px;
                 border-radius: 50%;
+
+                object-fit: cover;
             }
         }
 
@@ -138,7 +163,17 @@
             line-height: 19px;
 
             color: $color-black;
-            cursor: default;
+
+            transition: color 0.4s ease-in;
+
+            &:hover {
+                color: rgba($color-black, 0.5);
+            }
+        }
+
+        &-link {
+            position: relative;
+            z-index: 5;
         }
     }
 

@@ -1,6 +1,7 @@
 .search-form {
     &__container {
         padding: 8px;
+        margin-bottom: 25px;
 
         display: flex;
         align-items: center;
@@ -11,6 +12,10 @@
 
         border: 1px solid rgba(35, 38, 47, 0.05);
         border-radius: 3333px;
+    }
+
+    &__bottom-container {
+        display: flex;
     }
 }
 
@@ -93,7 +98,7 @@
     &__category {
         width: 250px;
 
-        background: #23262f;
+        background-color: #23262f;
         border-radius: 333px;
 
         padding-top: 0px;
@@ -103,6 +108,12 @@
 
         color: #fff;
         overflow: hidden;
+
+        transition: background-color 0.4s ease-in;
+
+        &:hover {
+            background-color: rgba($color-black, 0.8);
+        }
     }
 
     &__type {
@@ -162,6 +173,17 @@
 
         &:hover {
             background-color: $color-blue-hover;
+        }
+    }
+
+    &__checkbox {
+        display: inline-flex;
+        align-items: center;
+
+        cursor: pointer;
+
+        & span {
+            margin-left: 15px;
         }
     }
 }
