@@ -1,11 +1,11 @@
 <div class="card">
-
+    @if($item['status_id'] == 4)<p >в архиве!</p>@endif
     <a href="{{ route('ad.show', $item['id']) }}" class="card__link"></a>
 
     <div class="card__content">
         <div class="card__img">
 
-            @if(auth()->user())
+            @if(auth()->user() && $item['status_id'] !== 4)
                 <div class="card__btn-fav">
                     <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
