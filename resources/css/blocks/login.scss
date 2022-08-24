@@ -6,8 +6,13 @@
     flex-direction: column;
     padding: 0 50px;
     text-align: center;
-    max-width: 50%;
+    width: 50%;
     justify-content: normal;
+    @include break768 {
+        width: 100%;
+        padding: 0px 25px;
+    }
+
 }
 
 .login legend{
@@ -21,6 +26,13 @@
     color: #23262F;
     margin-bottom: 20px;
     margin-top: 103px;
+    @include break768 {
+        height: 30px;
+        font-size: 40px;
+        line-height: 60%;
+        margin-bottom: 5px;
+        margin-top: 20px;
+    }
 }
 
 .login input:focus{
@@ -46,6 +58,15 @@
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
+    @include break768 {
+        margin: 5px 0;
+    }
+}
+
+.login form{
+    @include break768 {
+        margin-top: 35px;
+    }
 }
 
 .authentication{
@@ -60,6 +81,15 @@
     padding-top: 0px!important;
     padding: 0;
     z-index: 0;
+
+    @include break1200 {
+        width: 95vw;
+    }
+
+    @include break768 {
+        width: 95vw;
+        flex-direction: column!important;
+    }
 }
 
 .registration{
@@ -74,6 +104,10 @@
     max-width: 50%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
+    @include break768 {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 .social{
@@ -95,6 +129,9 @@
 
 .form-control{
     background-color: #F4F5F7;
+    @include break768 {
+        padding: 2px 4px;
+    }
 }
 
 .bthEnter{
@@ -113,6 +150,16 @@
 
 .bth-login{
     margin-top: 45px;
+    @include break768 {
+        margin-top: unset;
+    }
+}
+
+.bth-reg{
+    @include break768 {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
 }
 
 .registration legend{
@@ -125,6 +172,12 @@
     font-weight: bold;
     color: #23262f;
     margin-top: 90px;
+    @include break1200 {
+        font-size: 38px;
+    }
+    @include break768 {
+        font-size: 32px;
+    }
 }
 
 .registration input:focus{
@@ -145,6 +198,11 @@
     overflow: hidden;
     transition: transform 0.6s ease-in-out;
     z-index: 100;
+    @include break768 {
+        top: 50%;
+        width: 100%;
+        left: 0;
+    }
 }
 
 .overlap {
@@ -161,6 +219,12 @@
     width: 200%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
+    @include break768 {
+        display: flex;
+        flex-direction: column-reverse;
+        width: unset;
+        left: unset;
+    }
 }
 
 .overlap-panel {
@@ -175,6 +239,10 @@
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
     justify-content: normal;
+    @include break768 {
+        position: unset;
+        width: 100%;
+    }
 }
 
 .overlap-left {
@@ -188,6 +256,9 @@
 
 .authentication.right-panel-active .sign-in-container {
     transform: translateX(100%);
+    @include break768 {
+        transform: translateY(-100%);
+    }
 }
 
 .authentication.right-panel-active .sign-up-container {
@@ -195,22 +266,37 @@
     opacity: 1;
     z-index: 5;
     animation: show 0.6s;
+    @include break768 {
+        transform: translateY(-100%);
+    }
 }
 
 .authentication.right-panel-active .overlap-container {
     transform: translateX(-100%);
+    @include break768 {
+        transform: translateY(-100%);
+    }
 }
 
 .authentication.right-panel-active .overlap {
     transform: translateX(50%);
+    @include break768 {
+        transform: translateY(0%);
+    }
 }
 
 .authentication.right-panel-active .overlap-left {
     transform: translateX(0);
+    @include break768 {
+        transform: translateY(0);
+    }
 }
 
 .authentication.right-panel-active .overlap-right {
     transform: translateX(20%);
+    @include break768 {
+        transform: translateY(20%);
+    }
 }
 
 .overlap-title{
@@ -222,17 +308,38 @@
     font-size: 48px;
     line-height: 100%;
     letter-spacing: -.04em;
+    @include break768 {
+        font-size: 29px;
+    }
+}
+
+.overlap-right p{
+    margin-top: 20px;
+    @include break768 {
+        margin-top: 20px;
+    }
 }
 
 .overlap-title-login{
     margin-top: 103px;
     margin-bottom: 55px;
+    @include break768 {
+        margin-top: 30px;
+        margin-bottom: -10px;
+    }
 }
 
 .overlap-title-reg{
     font-size: 39px;
     margin-top: 96px;
     margin-bottom: 88px;
+    @include break1200 {
+        font-size: 36px;
+    }
+    @include break768 {
+        padding-top: 20px;
+        font-size: 29px;
+    }
 }
 
 .overlap-content{
@@ -253,166 +360,24 @@
 }
 
 .overlapReg{
-    margin-top: 130px;
+    margin-top: 110px;
+    @include break768 {
+        margin-top: 45px;
+        margin-bottom: -15px;
+    }
 }
 
 .overlapEnt{
     margin-top: 105px;
+    @include break768 {
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
 }
 
 .overlap-button:hover{
     color: #343a40;
 }
 
-@media (min-width: 1400px){
-    .login{
-        width: 50%;
-    }
-}
-
-@media (min-width: 768px) and (min-width: 1399px){
-
-    .authentication{
-        width: 95vw;
-    }
-
-    .overlap-title-reg{
-        font-size: 36px;
-    }
-
-    .registration legend{
-        font-size: 38px;
-
-    }
-
-}
-
-@media (min-width: 320px) and (max-width:767px) {
-
-    .authentication{
-        width: 95vw;
-        flex-direction: column!important;
-    }
-
-    .authentication.right-panel-active .sign-in-container {
-        transform: translateY(-100%);
-    }
-
-    .authentication.right-panel-active .sign-up-container {
-        transform: translateY(-100%);
-        opacity: 1;
-        z-index: 5;
-        animation: show 0.6s;
-    }
-
-    .authentication.right-panel-active .overlap-container {
-        transform: translateY(-100%);
-    }
-
-    .authentication.right-panel-active .overlap {
-        transform: translateY(0%);
-    }
-
-    .authentication.right-panel-active .overlap-left {
-        transform: translateY(0);
-    }
-
-    .authentication.right-panel-active .overlap-right {
-        transform: translateY(20%);
-    }
-
-    .overlap-container{
-        top: 50%;
-        width: 100%;
-        left: 0;
-    }
-    .overlapReg{
-        margin-top: 45px;
-        margin-bottom: -15px;
-    }
-
-    .login{
-        max-width: 100%;
-        padding: 0px 25px;
-    }
-
-    .registration{
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .overlap-panel{
-        position: unset;
-        width: 100%;
-    }
-
-    .overlap{
-        display: flex;
-        flex-direction: column-reverse;
-        width: unset;
-        left: unset;
-    }
-
-    .login legend{
-        height: 30px;
-        font-size: 40px;
-        line-height: 60%;
-        margin-bottom: 5px;
-        margin-top: 20px;
-    }
-
-    .bth-login{
-        margin-top: unset;
-    }
-
-    .login a{
-        margin: 5px 0;
-    }
-
-    .login form{
-        margin-top: 35px;
-    }
-
-    .form-control{
-        padding: 2px 4px;
-    }
-
-    .overlap-title{
-        font-size: 29px;
-    }
-
-    .overlap-title-login{
-       // margin-top: 0px;
-       // margin-bottom: 20px;
-        margin-top: 30px;
-        margin-bottom: -10px;
-    }
-
-    .bth-reg{
-        margin-top: 0px;
-        margin-bottom: 20px;
-    }
-
-    .overlap-title-reg{
-        padding-top: 20px;
-    }
-
-    .overlapEnt{
-        margin-top: 30px;
-        margin-bottom: 50px;
-    }
-
-    .registration legend{
-        font-size: 32px;
-    }
-
-    .overlap-right button{
-
-    }
-
-    .overlap-right p{
-        margin-top: 20px;
-    }
-}
 
 
