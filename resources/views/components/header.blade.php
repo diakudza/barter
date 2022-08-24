@@ -20,6 +20,13 @@
                     <li class="nav-menu__item">
                         <a href="/about" class="nav-menu__link">О проекте</a>
                     </li>
+
+                    @if(auth()->user() && in_array(auth()->user()->getRole->role , ['admin', 'developer']))
+                    <li class="nav-menu__item">
+                        <a href="{{route('adminmain')}}" class="nav-menu__link">Админ панель</a>
+                    </li>
+                    @endif
+
                 </ul>
 
             </nav>
@@ -79,7 +86,7 @@
 
                 </div>
                 @if(auth()->user())
-                <a class="nav-menu__btn btn btn-blue" href="#">Выставить объявление</a>
+                <a class="nav-menu__btn btn btn-blue" href="{{route('user.profile.createAd')}}">Выставить объявление</a>
 
                 <div class="top-profile__menu profile-menu">
 
