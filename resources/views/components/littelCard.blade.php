@@ -68,7 +68,7 @@
 
                 <div class="card__add">
                     <p class="card__add-text">Опубликовано:</p>
-                    <p class="card__add-time">{{ $item['created_at']  }}</p>
+                    <p class="card__add-time">{{ $item->getCreatedDate() }}</p>
                 </div>
             </div>
 

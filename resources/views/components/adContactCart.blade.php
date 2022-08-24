@@ -40,7 +40,7 @@
                 <path d="M10.2878 9.96182L7.77441 8.46248V5.23114" stroke="#23262F"
                       stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            На сайте с {{ $ad->user->created_at }}
+            На сайте с {{ $ad->user->getRegistrationDate() }}
         </div>
     </div>
     @auth

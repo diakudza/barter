@@ -110,4 +110,8 @@ class User extends Authenticatable
     {
         return $this->images()->where('image_type', 'avatar');
     }
+    public function getRegistrationDate()
+    {
+        return $this->created_at->format('d/m/Y');
+    }
 }

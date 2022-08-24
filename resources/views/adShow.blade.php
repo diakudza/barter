@@ -50,7 +50,7 @@
                                   d="M11.9995 21C10.801 21 4.5 15.8984 4.5 10.5633C4.5 6.38664 7.8571 3 11.9995 3C16.1419 3 19.5 6.38664 19.5 10.5633C19.5 15.8984 13.198 21 11.9995 21Z"
                                   stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        Дата создания: {{ $ad['created_at'] }}
+                        Дата создания: {{ $ad->getCreatedDate() }}
                     </p>
                 </div>
 
