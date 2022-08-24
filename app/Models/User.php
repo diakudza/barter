@@ -114,4 +114,9 @@ class User extends Authenticatable
     {
         return $this->created_at->format('d/m/Y');
     }
+
+    public function getRating()
+    {
+        return (5+4+3+5)/4; //заглушка
+    }
 }
