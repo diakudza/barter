@@ -70,12 +70,10 @@
         </div>
 
         <button class="search__btn btn-reset" type="submit">
-
             <svg class="search__btn-icon" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="8.80492" cy="8.8055" r="7.49047" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M14.0156 14.4043L16.9523 17.3333" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-
         </button>
     </div>
 
@@ -84,9 +82,15 @@
             <label for="check" class="search__checkbox">
                 <label class="checkbox ">
                     <input id="check" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif />
-                    <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                         <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
                         <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+
+                        <filter id="goo-light" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="1.25" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" />
+                        </filter>
                     </svg>
                 </label>
                 <span class="search__checkbox-text">искать архивные</span>
