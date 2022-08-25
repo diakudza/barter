@@ -25,7 +25,9 @@ class User extends Authenticatable
         'phone',
         'password',
         'role_id',
-        'status_id'
+        'status_id',
+        'rating',
+        'voters_count'
     ];
 
     /**
@@ -89,7 +91,7 @@ class User extends Authenticatable
 
     public function getChats()
     {
-        return $this->belongsToMany(Chat::class,'chat_users');
+        return $this->belongsToMany(Chat::class, 'chat_users');
     }
     public function getChatsWithUser(int $user_id)
     {
@@ -98,7 +100,7 @@ class User extends Authenticatable
 
     public function getUnreadMessages()
     {
-        return $this->hasMany(Message::class, )->where('read','=',0);
+        return $this->hasMany(Message::class,)->where('read', '=', 0);
     }
 
     public function images()
@@ -117,6 +119,6 @@ class User extends Authenticatable
 
     public function getRating()
     {
-        return (5+4+3+5)/4; //заглушка
+        return $this->rating * 1;
     }
 }

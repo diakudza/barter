@@ -74,9 +74,14 @@ class UserProfileController extends Controller
     public function publicInfo($id)
     {
         $user = User::find($id);
-        return view('user.profile.publicUserInfo',[
-            'user' => $user->where('id', $id)->select('id','name', 'created_at')->first(),
+        return view('user.profile.publicUserInfo', [
+            'user' => $user->where('id', $id)->select('id', 'name', 'created_at')->first(),
             'ads' => $user->ads
         ]);
+    }
+
+    public function rateUser(Request $request)
+    {
+        return view('user.profile.rateUser', ['votedId'=>$request->route('id'), 'voterId'=>Auth::user()->id]);
     }
 }
