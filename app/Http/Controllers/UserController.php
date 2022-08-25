@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\Profile\UpdateRequest;
 use App\Http\Requests\User\Profile\UpdatePasswordRequest;
+use App\Http\Requests\User\UpdateRatingRequest;
 use App\Models\User;
 use App\Queries\QueryBuilderUsers;
 use App\Services\ImageService;
@@ -94,6 +95,22 @@ class UserController extends Controller
             return redirect()->route('user.profile')->with('success', 'Пароль успешно обновлен');
         } else {
             return back()->with('fail', 'Ошибка обновления пароля!');
+        }
+    }
+
+    public function updateUserRating(UpdateRatingRequest $request, User $user)
+    {
+        $user = User::where('id', $request->safe()->only(['voted_id']))->get()->first();
+        $oldRating = $user->rating * $user->voters_count;
+        $newRating = ($oldRating + $request->safe()->only(['rating'])['rating']) / ($user->voters_count + 1);
+        $user->fill(['rating' => $newRating, 'voters_count' => $user->voters_count + 1]);
+        if ($user->save()) {
+            return redirect()->
+                route('user.public', 
+                    ['id' => $request->safe()->only(['voted_id'])['voted_id']])->
+                with('success', 'Ваша оценка учтена!');
+        } else {
+            return back()->with('fail', 'Ошибка выставления оценки!');
         }
     }
 }

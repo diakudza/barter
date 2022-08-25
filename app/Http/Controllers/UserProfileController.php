@@ -80,8 +80,8 @@ class UserProfileController extends Controller
         ]);
     }
 
-    public function rateUser($userId)
+    public function rateUser(Request $request)
     {
-        return view('user.profile.rateUser');
+        return view('user.profile.rateUser', ['votedId'=>$request->route('id'), 'voterId'=>Auth::user()->id]);
     }
 }
