@@ -79,10 +79,23 @@
         </button>
     </div>
 
-    <label for="check">
+    <div class="seacrh-from__bottom-container">
+
+        <label class="checkbox search__checkbox">
+            <input id="check" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif />
+            <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+            </svg>
+
+            <span>искать архивные</span>
+        </label>
+    </div>
+
+    <!-- <label for="check">
         <input id="check" class="checkbox search-form__checkbox" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif>
-        <span>искать Архивные</span>
-    </label>
+
+    </label> -->
 
     <!-- @if(session('alert'))
     <div class="alert-danger">
