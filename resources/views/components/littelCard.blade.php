@@ -59,7 +59,7 @@
                         >
                     </div>
 
-                    <a href="{{ route('ad.show', $item['id']) }}" class="card__author-link">
+                    <a href="{{ route('user.public', $item->user->id) }}" class="card__author-link">
                         <p class="card__author-name">{{ $item->user->name }}</p>
                     </a>
                 </div>

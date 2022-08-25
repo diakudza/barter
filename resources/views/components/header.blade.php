@@ -35,6 +35,28 @@
             <div class="header__profile top-profile">
                 <div class="top-profile__content">
 
+                    @if(auth()->user())
+                        <div class="top-profile__actions actions">
+
+                            {{--                            Иконка чатов--}}
+                            <a class="actions__btn" href=" {{ route('chat.index') }}" title="Ваши чаты">
+                                <svg class="actions__icon" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M18.0714 18.0699C15.0152 21.1264 10.4898 21.7867 6.78642 20.074C6.23971 19.8539 5.79148 19.676 5.36537 19.676C4.17849 19.6831 2.70117 20.8339 1.93336 20.067C1.16555 19.2991 2.31726 17.8206 2.31726 16.6266C2.31726 16.2004 2.14642 15.7602 1.92632 15.2124C0.212831 11.5097 0.874109 6.98272 3.93026 3.92724C7.8316 0.0244625 14.17 0.0244627 18.0714 3.92623C21.9797 7.83504 21.9727 14.1681 18.0714 18.0699Z"
+                                          stroke="#23262F" stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    @if (!auth()->user()->getUnreadMessages->count())
+                                        <path d="M14.9398 11.4131H14.9488" stroke="#23262F" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10.9301 11.4131H10.9391" stroke="#23262F" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M6.92128 11.413H6.93028" stroke="#23262F" stroke-width="2"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                    @else
+                                        <span> {{ auth()->user()->getUnreadMessages->count() }} </span>
+                                    @endif
+                                </svg>
                     @if (auth()->user())
                         <div class="top-profile__actions actions">
                             <a class="actions__btn" href=" {{ route('chat.index') }}">
@@ -61,38 +83,59 @@
                                 @endif
                             </a>
 
-                            <!-- {{-- <a class="actions__btn" href="#"> --}}
-                        {{-- <svg class="actions__icon" width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg"> --}}
-                        {{-- <path fill-rule="evenodd" clip-rule="evenodd" d="M10 16.8477C15.6392 16.8477 18.2481 16.1242 18.5 13.2205C18.5 10.3188 16.6812 10.5054 16.6812 6.94514C16.6812 4.16417 14.0452 1.00003 10 1.00003C5.95477 1.00003 3.31885 4.16417 3.31885 6.94514C3.31885 10.5054 1.5 10.3188 1.5 13.2205C1.75295 16.1352 4.36177 16.8477 10 16.8477Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /> --}}
-                        {{-- <path d="M12.3889 19.8572C11.0247 21.372 8.89672 21.3899 7.51953 19.8572" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /> --}}
-                        {{-- </svg> --}}
+                            {{--                            Иконка объявлений, на которые вы откликнулись--}}
+                            <a class="actions__btn" href="{{ route('user.wishlist') }}" title="Ваши добавления">
+                                <svg class="actions__icon" width="18" height="22" viewBox="0 0 18 22" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M16.739 5.15367C16.739 2.40279 14.8583 1.30003 12.1506 1.30003H5.79167C3.16711 1.30003 1.2002 2.3276 1.2002 4.97021V19.694C1.2002 20.4198 1.98115 20.877 2.61373 20.5221L8.99568 16.9421L15.3225 20.5161C15.9561 20.873 16.739 20.4158 16.739 19.689V5.15367Z"
+                                          stroke="#23262F" stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M5.27148 8.02806H12.5898" stroke="#23262F" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                @if(auth()->user()->yourAddedUnreadAds()->count())
+                                    <span class="actions__notif"></span>
+                                @endif
+                            </a>
 
-                        {{-- <span class="actions__notif"></span> --}}
-                        {{-- </a> --}}
-
-                        {{-- <a class="actions__btn" href="#"> --}}
-                        {{-- <svg class="actions__icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg"> --}}
-                        {{-- <path fill-rule="evenodd" clip-rule="evenodd" d="M16.739 5.15367C16.739 2.40279 14.8583 1.30003 12.1506 1.30003H5.79167C3.16711 1.30003 1.2002 2.3276 1.2002 4.97021V19.694C1.2002 20.4198 1.98115 20.877 2.61373 20.5221L8.99568 16.9421L15.3225 20.5161C15.9561 20.873 16.739 20.4158 16.739 19.689V5.15367Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /> --}}
-                        {{-- <path d="M5.27148 8.02806H12.5898" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /> --}}
-                        {{-- </svg> --}}
-
-                        {{-- <span class="actions__notif"></span> --}}
-                        {{-- </a> --}} -->
+                            {{--                            Иконка уведомлений о том, что кто-то пожелал ваше объявление--}}
+                            @if (auth()->user()->someoneAddedUnreadAds->sum('adcount'))
+                                <a class="actions__btn" href="{{route('user.profile.listAds')}}">
+                                    <svg class="actions__icon" width="20" height="22" viewBox="0 0 20 22" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                              d="M10 16.8477C15.6392 16.8477 18.2481 16.1242 18.5 13.2205C18.5 10.3188 16.6812 10.5054 16.6812 6.94514C16.6812 4.16417 14.0452 1.00003 10 1.00003C5.95477 1.00003 3.31885 4.16417 3.31885 6.94514C3.31885 10.5054 1.5 10.3188 1.5 13.2205C1.75295 16.1352 4.36177 16.8477 10 16.8477Z"
+                                              stroke="#23262F" stroke-width="1.5" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                        <path d="M12.3889 19.8572C11.0247 21.372 8.89672 21.3899 7.51953 19.8572"
+                                              stroke="#23262F" stroke-width="1.5" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                    </svg>
+                                    <p>{{ auth()->user()->someoneAddedUnreadAds->sum('adcount')}}</p>
+                                    <span class="actions__notif"></span>
+                                </a>
+                            @endif
                         </div>
 
                         <div class="top-profile__avatar">
                             <img @if (auth()->user() &&
-                                auth()->user()->avatar()->first()) src="{{ Storage::url(auth()->user()->avatar()->first()->path) }}"
-                        @else src="{{ asset('images/icon-avatar.png') }}" @endif
+                                    auth()->user()->avatar()->first()) src="{{ Storage::url(auth()->user()->avatar()->first()->path) }}"
+                                 @else src="{{ asset('images/icon-avatar.png') }}" @endif
                                 alt="Name" class="top-profile__img">
                         </div>
                     @endif
 
+                    @if(auth()->guest())
+                        <a class="nav-menu__btn btn btn-white" href="{{ route('loginPage') }}">Войти</a>
                     @if (auth()->guest())
                         <a class="nav-menu__btn btn btn-white" href="{{ route('loginPage') }}">Войти</a>
                     @endif
 
                 </div>
+                @if(auth()->user())
+                    <a class="nav-menu__btn btn btn-blue" href="{{route('user.profile.createAd')}}">Выставить
+                        объявление</a>
                 @if (auth()->user())
                     <a class="nav-menu__btn btn btn-blue" href="{{ route('user.profile.createAd') }}">Выставить
                         объявление</a>
@@ -138,58 +181,44 @@
                                     </li>
                                 </a>
 
-                                <a href="{{ route('user.profile.listAds') }}">
-                                    <li class="profile-menu__item">
-                                        <span>
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M1.5 4.41648C1.5 2.22881 1.52342 1.49982 4.41666 1.49982C7.3099 1.49982 7.33332 2.22881 7.33332 4.41648C7.33332 6.60415 7.34255 7.33314 4.41666 7.33314C1.49077 7.33314 1.5 6.60415 1.5 4.41648Z"
-                                                    stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M10.6665 4.41648C10.6665 2.22881 10.6899 1.49982 13.5832 1.49982C16.4764 1.49982 16.4998 2.22881 16.4998 4.41648C16.4998 6.60415 16.5091 7.33314 13.5832 7.33314C10.6573 7.33314 10.6665 6.60415 10.6665 4.41648Z"
-                                                    stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M1.5 13.5831C1.5 11.3955 1.52342 10.6665 4.41666 10.6665C7.3099 10.6665 7.33332 11.3955 7.33332 13.5831C7.33332 15.7708 7.34255 16.4998 4.41666 16.4998C1.49077 16.4998 1.5 15.7708 1.5 13.5831Z"
-                                                    stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M10.6665 13.5831C10.6665 11.3955 10.6899 10.6665 13.5832 10.6665C16.4764 10.6665 16.4998 11.3955 16.4998 13.5831C16.4998 15.7708 16.5091 16.4998 13.5832 16.4998C10.6573 16.4998 10.6665 15.7708 10.6665 13.5831Z"
-                                                    stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
+                            <a href="{{route('user.profile.listAds')}}">
+                                <li class="profile-menu__item">
+                                    <span>
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 4.41648C1.5 2.22881 1.52342 1.49982 4.41666 1.49982C7.3099 1.49982 7.33332 2.22881 7.33332 4.41648C7.33332 6.60415 7.34255 7.33314 4.41666 7.33314C1.49077 7.33314 1.5 6.60415 1.5 4.41648Z" stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6665 4.41648C10.6665 2.22881 10.6899 1.49982 13.5832 1.49982C16.4764 1.49982 16.4998 2.22881 16.4998 4.41648C16.4998 6.60415 16.5091 7.33314 13.5832 7.33314C10.6573 7.33314 10.6665 6.60415 10.6665 4.41648Z" stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 13.5831C1.5 11.3955 1.52342 10.6665 4.41666 10.6665C7.3099 10.6665 7.33332 11.3955 7.33332 13.5831C7.33332 15.7708 7.34255 16.4998 4.41666 16.4998C1.49077 16.4998 1.5 15.7708 1.5 13.5831Z" stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6665 13.5831C10.6665 11.3955 10.6899 10.6665 13.5832 10.6665C16.4764 10.6665 16.4998 11.3955 16.4998 13.5831C16.4998 15.7708 16.5091 16.4998 13.5832 16.4998C10.6573 16.4998 10.6665 15.7708 10.6665 13.5831Z" stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
 
                                         </span>
                                         Мои объявления
                                     </li>
                                 </a>
 
-                                <a href="#">
+                                <a href="{{route('user.wishlist')}}">
                                     <li class="profile-menu__item">
-                                        <span>
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M1.2915 1.70798L3.02484 2.00798L3.82733 11.5688C3.8915 12.3496 4.544 12.9488 5.32733 12.9463H14.4182C15.1657 12.948 15.7998 12.398 15.9057 11.658L16.6965 6.19297C16.7848 5.58214 16.3607 5.01547 15.7507 4.92714C15.6973 4.91964 3.30317 4.91547 3.30317 4.91547"
-                                                    stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M10.7705 7.9954H13.0813" stroke="#23262F"
-                                                    stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M4.96163 15.8351C5.21247 15.8351 5.41497 16.0384 5.41497 16.2884C5.41497 16.5393 5.21247 16.7426 4.96163 16.7426C4.7108 16.7426 4.5083 16.5393 4.5083 16.2884C4.5083 16.0384 4.7108 15.8351 4.96163 15.8351Z"
-                                                    fill="#23262F" fill-opacity="0.5" stroke="#23262F"
-                                                    stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                    d="M14.362 15.8351C14.6129 15.8351 14.8162 16.0384 14.8162 16.2884C14.8162 16.5393 14.6129 16.7426 14.362 16.7426C14.1112 16.7426 13.9087 16.5393 13.9087 16.2884C13.9087 16.0384 14.1112 15.8351 14.362 15.8351Z"
-                                                    fill="#23262F" fill-opacity="0.5" stroke="#23262F"
-                                                    stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </span>
+                                    <span>
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M1.2915 1.70798L3.02484 2.00798L3.82733 11.5688C3.8915 12.3496 4.544 12.9488 5.32733 12.9463H14.4182C15.1657 12.948 15.7998 12.398 15.9057 11.658L16.6965 6.19297C16.7848 5.58214 16.3607 5.01547 15.7507 4.92714C15.6973 4.91964 3.30317 4.91547 3.30317 4.91547"
+                                                stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M10.7705 7.9954H13.0813" stroke="#23262F" stroke-opacity="0.5"
+                                                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M4.96163 15.8351C5.21247 15.8351 5.41497 16.0384 5.41497 16.2884C5.41497 16.5393 5.21247 16.7426 4.96163 16.7426C4.7108 16.7426 4.5083 16.5393 4.5083 16.2884C4.5083 16.0384 4.7108 15.8351 4.96163 15.8351Z"
+                                                  fill="#23262F" fill-opacity="0.5" stroke="#23262F"
+                                                  stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round"
+                                                  stroke-linejoin="round"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M14.362 15.8351C14.6129 15.8351 14.8162 16.0384 14.8162 16.2884C14.8162 16.5393 14.6129 16.7426 14.362 16.7426C14.1112 16.7426 13.9087 16.5393 13.9087 16.2884C13.9087 16.0384 14.1112 15.8351 14.362 15.8351Z"
+                                                  fill="#23262F" fill-opacity="0.5" stroke="#23262F"
+                                                  stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round"
+                                                  stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
                                         Мои покупки
                                     </li>
                                 </a>

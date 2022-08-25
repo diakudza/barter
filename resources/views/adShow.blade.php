@@ -1,6 +1,6 @@
 @extends('components.base')
 
-@section('title', 'Просмотр обьявления')
+@section('title', 'Просмотр объявления')
 
 @section('content')
 
