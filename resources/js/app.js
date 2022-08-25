@@ -8,6 +8,7 @@ import "./checkFile";
 import { headerJS } from "./navbar";
 import cutText from "./cutText";
 import searchDropdown from "./searchDropdown";
+import customCheckbox from "./customCheckbox";
 
 import "./modalWindowPopup";
 
@@ -18,3 +19,4 @@ import "./login";
 cutText();
 headerJS();
 searchDropdown();
+customCheckbox();

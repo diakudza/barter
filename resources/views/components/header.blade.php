@@ -14,7 +14,7 @@
                     </li>
 
                     <li class="nav-menu__item">
-                        <a href="{{ route('searchPage') }}" class="nav-menu__link">Каталог</a>
+                        <a href="{{ route('searchPage') }}" class="nav-menu__link">Поиск</a>
                     </li>
 
                     <li class="nav-menu__item">
@@ -73,10 +73,9 @@
                     </div>
 
                     <div class="top-profile__avatar">
-                        <img
-                            @if(auth()->user() && auth()->user()->avatar()->first()) src="{{ Storage::url(auth()->user()->avatar()->first()->path )}}"
-                            @else src="{{ asset('images/icon-avatar.png' )}}"
-                            @endif alt="Name" class="top-profile__img">
+                        <img @if(auth()->user() && auth()->user()->avatar()->first()) src="{{ Storage::url(auth()->user()->avatar()->first()->path )}}"
+                        @else src="{{ asset('images/icon-avatar.png' )}}"
+                        @endif alt="Name" class="top-profile__img">
                     </div>
                     @endif
 
@@ -96,7 +95,7 @@
                                 <li class="profile-menu__item">Посмотреть профиль</li>
                             </a>
 
-                            <a href="#">
+                            <!-- <a href="#">
                                 <li class="profile-menu__item">
                                     <span>
                                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +105,7 @@
                                     </span>
                                     Нужна помощь?
                                 </li>
-                            </a>
+                            </a> -->
 
                             <a href="{{route('user.profile.personalData')}}">
                                 <li class="profile-menu__item">

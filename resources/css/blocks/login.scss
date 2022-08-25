@@ -6,49 +6,72 @@
     flex-direction: column;
     padding: 0 50px;
     text-align: center;
-    max-width: 50%;
+    width: 50%;
     justify-content: normal;
+
+    @include break768 {
+        width: 100%;
+        padding: 0px 25px;
+    }
 }
 
-.login legend{
+.login legend {
     height: 48px;
-    font-family: 'Gilroy';
+    font-family: "Gilroy";
     font-style: normal;
     font-weight: 600;
     font-size: 48px;
     line-height: 100%;
     letter-spacing: -0.04em;
-    color: #23262F;
+    color: #23262f;
     margin-bottom: 20px;
     margin-top: 103px;
+
+    @include break768 {
+        height: 30px;
+        font-size: 40px;
+        line-height: 60%;
+        margin-bottom: 5px;
+        margin-top: 20px;
+    }
 }
 
-.login input:focus{
-    border-color: #315DF7;
+.login input:focus {
+    border-color: #315df7;
     box-shadow: none;
 }
 
-.login label{
+.login label {
     width: 112px;
     height: 14px;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 100%;
-    color: #272A32;
+    color: #272a32;
     flex: none;
     order: 0;
     flex-grow: 0;
 }
 
-.login a{
+.login a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
+
+    @include break768 {
+        margin: 5px 0;
+    }
 }
 
-.authentication{
+.login form {
+    @include break768 {
+        margin-top: 35px;
+    }
+}
+
+.authentication {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
@@ -57,12 +80,20 @@
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    padding-top: 0px!important;
+    padding-top: 0px !important;
     padding: 0;
     z-index: 0;
+
+    @include break1200 {
+        width: 95vw;
+    }
+
+    @include break768 {
+        flex-direction: column !important;
+    }
 }
 
-.registration{
+.registration {
     width: 50%;
     display: flex;
     align-items: center;
@@ -74,15 +105,20 @@
     max-width: 50%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
+
+    @include break768 {
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
-.social{
+.social {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
-.social a{
+.social a {
     border: 1px solid #dddddd;
     border-radius: 50%;
     display: inline-flex;
@@ -93,11 +129,15 @@
     width: 40px;
 }
 
-.form-control{
-    background-color: #F4F5F7;
+.form-control {
+    background-color: #f4f5f7;
+
+    @include break768 {
+        padding: 2px 4px;
+    }
 }
 
-.bthEnter{
+.bthEnter {
     border-radius: 20px;
     border: 1px solid #0d6efd;
     background-color: #0d6efd;
@@ -111,11 +151,22 @@
     margin-top: 19px;
 }
 
-.bth-login{
-    margin-top: 45px;
+.bth-reg {
+    @include break768 {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
 }
 
-.registration legend{
+.bth-login {
+    margin-top: 45px;
+
+    @include break768 {
+        margin-top: unset;
+    }
+}
+
+.registration legend {
     display: block;
     font-size: 39px;
     margin-block-start: 0.67em;
@@ -125,14 +176,22 @@
     font-weight: bold;
     color: #23262f;
     margin-top: 90px;
+
+    @include break1200 {
+        font-size: 38px;
+    }
+
+    @include break768 {
+        font-size: 32px;
+    }
 }
 
-.registration input:focus{
-    border-color: #315DF7;
+.registration input:focus {
+    border-color: #315df7;
     box-shadow: none;
 }
 
-.bthEnter:hover{
+.bthEnter:hover {
     color: #343a40;
 }
 
@@ -145,12 +204,18 @@
     overflow: hidden;
     transition: transform 0.6s ease-in-out;
     z-index: 100;
+
+    @include break768 {
+        top: 50%;
+        width: 100%;
+        left: 0;
+    }
 }
 
 .overlap {
-    background: #23262F;
-    background: -webkit-linear-gradient(to right, #23262F, #315DF7);
-    background: linear-gradient(to right,#0c163a,#1a338a,#1a338a,#0c163a);
+    background: #23262f;
+    background: -webkit-linear-gradient(to right, #23262f, #315df7);
+    background: linear-gradient(to right, #0c163a, #1a338a, #1a338a, #0c163a);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -161,6 +226,13 @@
     width: 200%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
+
+    @include break768 {
+        display: flex;
+        flex-direction: column-reverse;
+        width: unset;
+        left: unset;
+    }
 }
 
 .overlap-panel {
@@ -175,6 +247,11 @@
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
     justify-content: normal;
+
+    @include break768 {
+        position: unset;
+        width: 100%;
+    }
 }
 
 .overlap-left {
@@ -188,6 +265,10 @@
 
 .authentication.right-panel-active .sign-in-container {
     transform: translateX(100%);
+
+    @include break768 {
+        transform: translateY(-100%);
+    }
 }
 
 .authentication.right-panel-active .sign-up-container {
@@ -195,51 +276,96 @@
     opacity: 1;
     z-index: 5;
     animation: show 0.6s;
+
+    @include break768 {
+        transform: translateY(-100%);
+    }
 }
 
 .authentication.right-panel-active .overlap-container {
     transform: translateX(-100%);
+
+    @include break768 {
+        transform: translateY(-100%);
+    }
 }
 
 .authentication.right-panel-active .overlap {
     transform: translateX(50%);
+
+    @include break768 {
+        transform: translateY(0%);
+    }
 }
 
 .authentication.right-panel-active .overlap-left {
     transform: translateX(0);
+
+    @include break768 {
+        transform: translateY(0);
+    }
 }
 
 .authentication.right-panel-active .overlap-right {
     transform: translateX(20%);
+
+    @include break768 {
+        transform: translateY(20%);
+    }
 }
 
-.overlap-title{
-    color: #F4F5F6;
+.overlap-title {
+    color: #f4f5f6;
     height: 48px;
     font-family: Gilroy;
     font-style: normal;
     font-weight: 600;
     font-size: 48px;
     line-height: 100%;
-    letter-spacing: -.04em;
+    letter-spacing: -0.04em;
+
+    @include break768 {
+        font-size: 29px;
+    }
 }
 
-.overlap-title-login{
+.overlap-right p {
+    margin-top: 20px;
+    @include break768 {
+        margin-top: 20px;
+    }
+}
+
+.overlap-title-login {
     margin-top: 103px;
     margin-bottom: 55px;
+
+    @include break768 {
+        margin-top: 30px;
+        margin-bottom: -10px;
+    }
 }
 
-.overlap-title-reg{
+.overlap-title-reg {
     font-size: 39px;
     margin-top: 96px;
     margin-bottom: 88px;
+
+    @include break1200 {
+        font-size: 36px;
+    }
+
+    @include break768 {
+        padding-top: 20px;
+        font-size: 29px;
+    }
 }
 
-.overlap-content{
-    color: #F4F5F6
+.overlap-content {
+    color: #f4f5f6;
 }
 
-.overlap-button{
+.overlap-button {
     border-radius: 20px;
     border: 1px solid #0d6efd;
     background-color: #0d6efd;
@@ -252,167 +378,24 @@
     transition: transform 80ms ease-in;
 }
 
-.overlapReg{
-    margin-top: 130px;
-}
+.overlapReg {
+    margin-top: 110px;
 
-.overlapEnt{
-    margin-top: 105px;
-}
-
-.overlap-button:hover{
-    color: #343a40;
-}
-
-@media (min-width: 1400px){
-    .login{
-        width: 50%;
-    }
-}
-
-@media (min-width: 768px) and (min-width: 1399px){
-
-    .authentication{
-        width: 95vw;
-    }
-
-    .overlap-title-reg{
-        font-size: 36px;
-    }
-
-    .registration legend{
-        font-size: 38px;
-
-    }
-
-}
-
-@media (min-width: 320px) and (max-width:767px) {
-
-    .authentication{
-        width: 95vw;
-        flex-direction: column!important;
-    }
-
-    .authentication.right-panel-active .sign-in-container {
-        transform: translateY(-100%);
-    }
-
-    .authentication.right-panel-active .sign-up-container {
-        transform: translateY(-100%);
-        opacity: 1;
-        z-index: 5;
-        animation: show 0.6s;
-    }
-
-    .authentication.right-panel-active .overlap-container {
-        transform: translateY(-100%);
-    }
-
-    .authentication.right-panel-active .overlap {
-        transform: translateY(0%);
-    }
-
-    .authentication.right-panel-active .overlap-left {
-        transform: translateY(0);
-    }
-
-    .authentication.right-panel-active .overlap-right {
-        transform: translateY(20%);
-    }
-
-    .overlap-container{
-        top: 50%;
-        width: 100%;
-        left: 0;
-    }
-    .overlapReg{
+    @include break768 {
         margin-top: 45px;
         margin-bottom: -15px;
     }
+}
 
-    .login{
-        max-width: 100%;
-        padding: 0px 25px;
-    }
+.overlapEnt {
+    margin-top: 105px;
 
-    .registration{
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .overlap-panel{
-        position: unset;
-        width: 100%;
-    }
-
-    .overlap{
-        display: flex;
-        flex-direction: column-reverse;
-        width: unset;
-        left: unset;
-    }
-
-    .login legend{
-        height: 30px;
-        font-size: 40px;
-        line-height: 60%;
-        margin-bottom: 5px;
-        margin-top: 20px;
-    }
-
-    .bth-login{
-        margin-top: unset;
-    }
-
-    .login a{
-        margin: 5px 0;
-    }
-
-    .login form{
-        margin-top: 35px;
-    }
-
-    .form-control{
-        padding: 2px 4px;
-    }
-
-    .overlap-title{
-        font-size: 29px;
-    }
-
-    .overlap-title-login{
-       // margin-top: 0px;
-       // margin-bottom: 20px;
-        margin-top: 30px;
-        margin-bottom: -10px;
-    }
-
-    .bth-reg{
-        margin-top: 0px;
-        margin-bottom: 20px;
-    }
-
-    .overlap-title-reg{
-        padding-top: 20px;
-    }
-
-    .overlapEnt{
+    @include break768 {
         margin-top: 30px;
         margin-bottom: 50px;
     }
-
-    .registration legend{
-        font-size: 32px;
-    }
-
-    .overlap-right button{
-
-    }
-
-    .overlap-right p{
-        margin-top: 20px;
-    }
 }
 
-
+.overlap-button:hover {
+    color: #343a40;
+}
