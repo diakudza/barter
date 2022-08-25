@@ -1,4 +1,4 @@
-<svg style="display: none;" width="0" height="0">
+<svg width="0" height="0">
   <defs>
     <filter id="goo" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />

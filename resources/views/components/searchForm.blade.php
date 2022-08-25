@@ -60,7 +60,7 @@
 
             <select class="form-control-input" name="city" aria-label="Выбор города" data-class="search__city">
 
-                <option value="" selected>Все город</option>
+                <option value="" selected>Все города</option>
 
                 @foreach($cities as $city)
                 <option value="{{ $city['id'] }}" @if(isset($city_selected) && $city_selected==$city['id']) selected @endif>{{ $city['name'] }}</option>
@@ -80,22 +80,19 @@
     </div>
 
     <div class="seacrh-from__bottom-container">
-
-        <label class="checkbox search__checkbox">
-            <input id="check" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif />
-            <svg viewBox="0 0 24 24" filter="url(#goo-light)">
-                <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
-                <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
-            </svg>
-
-            <span>искать архивные</span>
-        </label>
+        <div class="search-from__item">
+            <label for="check" class="search__checkbox">
+                <label class="checkbox ">
+                    <input id="check" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif />
+                    <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                        <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                        <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+                    </svg>
+                </label>
+                <span class="search__checkbox-text">искать архивные</span>
+            </label>
+        </div>
     </div>
-
-    <!-- <label for="check">
-        <input id="check" class="checkbox search-form__checkbox" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif>
-
-    </label> -->
 
     <!-- @if(session('alert'))
     <div class="alert-danger">
