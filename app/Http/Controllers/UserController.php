@@ -8,6 +8,7 @@ use App\Http\Requests\User\UpdateRatingRequest;
 use App\Models\User;
 use App\Queries\QueryBuilderUsers;
 use App\Services\ImageService;
+use App\Services\RatingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -98,17 +99,18 @@ class UserController extends Controller
         }
     }
 
-    public function updateUserRating(UpdateRatingRequest $request, User $user)
+    public function updateUserRating(UpdateRatingRequest $request, User $user, RatingService $ratingService)
     {
-        $user = User::where('id', $request->safe()->only(['voted_id']))->get()->first();
-        $oldRating = $user->rating * $user->voters_count;
-        $newRating = ($oldRating + $request->safe()->only(['rating'])['rating']) / ($user->voters_count + 1);
-        $user->fill(['rating' => $newRating, 'voters_count' => $user->voters_count + 1]);
+        $user = $ratingService->updateUserRating(
+            $request->safe()->only(['voted_id'])['voted_id'],
+            $request->safe()->only(['voter_id'])['voter_id'],
+            $request->safe()->only(['rating'])['rating']
+        );
         if ($user->save()) {
-            return redirect()->
-                route('user.public', 
-                    ['id' => $request->safe()->only(['voted_id'])['voted_id']])->
-                with('success', 'Ваша оценка учтена!');
+            return redirect()->route(
+                'user.public',
+                ['id' => $request->safe()->only(['voted_id'])['voted_id']]
+            )->with('success', 'Ваша оценка учтена!');
         } else {
             return back()->with('fail', 'Ошибка выставления оценки!');
         }
