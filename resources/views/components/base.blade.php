@@ -15,7 +15,6 @@
 </head>
 
 <body>
-    <x-spritesSvg></x-spritesSvg>
     <x-header></x-header>
 
     <main id="main" class="main">

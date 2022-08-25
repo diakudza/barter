@@ -157,3 +157,8 @@
         transform: translateX(var(--dot-x)) scale(var(--dot-s)) translateZ(0);
     }
 }
+
+.checkbox input svg {
+    width: 24px !important;
+    height: 24px !important;
+}
