@@ -177,13 +177,12 @@
     }
 
     &__checkbox {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-
         cursor: pointer;
 
-        & span {
-            margin-left: 15px;
+        &-text {
+            margin-left: 12px;
         }
     }
 }
