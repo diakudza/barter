@@ -62,12 +62,27 @@ h6 {
     }
 }
 
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.footer {
+    margin-top: auto;
+}
+
 .main {
-    padding-top: 124px;
-    padding-bottom: 184px;
-    min-height: calc(100vh - 297px);
+    padding-top: 60px;
+    padding-bottom: 60px;
 
     @include break992 {
-        min-height: calc(100vh - 326px);
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
