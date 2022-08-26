@@ -23,7 +23,7 @@ class RatingService
         $this->ratingRepository = $ratingRepository;
     }
 
-    public function updateUserRating(int $votedId, int $voterId, int $rating)
+    public function updateUserRating(int $votedId, int $voterId, int $rating, string $text)
     {
         $user = $this->ratingRepository->getUserRating($votedId);
         $oldRating = $user->rating * $user->voters_count;
@@ -33,7 +33,9 @@ class RatingService
             'voters_count' => $user->voters_count + 1
         ]);
         if ($this->ratingRepository->createVotedVoter($votedId, $voterId)) {
-            return $user;
+            if($this->ratingRepository->createReview($votedId, $voterId, $text)){
+                return $user;
+            }
         }
         return false;
     }

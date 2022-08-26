@@ -23,7 +23,7 @@
                                 fill="#F6BF4D"/>
                         </svg>
                         <p>{{ $ad->user->getrating() }}</p>
-                        <p>(84 отзыва)</p>
+                        <p>(Всего отзывов: {{ $ad->user->getReviewsCount() }})</p>
                     </div>
                 </div>
             </div>

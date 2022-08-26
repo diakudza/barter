@@ -101,10 +101,12 @@ class UserController extends Controller
 
     public function updateUserRating(UpdateRatingRequest $request, User $user, RatingService $ratingService)
     {
+        //dd($request->safe()->only(['text'])['text']);
         $user = $ratingService->updateUserRating(
             $request->safe()->only(['voted_id'])['voted_id'],
             $request->safe()->only(['voter_id'])['voter_id'],
-            $request->safe()->only(['rating'])['rating']
+            $request->safe()->only(['rating'])['rating'],
+            $request->safe()->only(['text'])['text'],
         );
         if ($user->save()) {
             return redirect()->route(
