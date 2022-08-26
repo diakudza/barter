@@ -21,16 +21,14 @@
 
 <!-- Блок поиска -->
 <section id="main-search" class="container">
-
   @include('components.searchForm')
-
 </section>
 
 <!-- Последние 10 объявлений -->
 <section id="products-last" class="products-last container">
   <h3 class="products-last__title title">Последние 10 объявлений</h3>
 
-  @include('components.products-last')
+  @include('components.productsLast')
 
 </section>
 

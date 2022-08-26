@@ -1,3 +1,9 @@
+@mixin break1400 {
+    @media (max-width: (1400px)) {
+        @content;
+    }
+}
+
 @mixin break1200 {
     @media (max-width: (1199.98px)) {
         @content;

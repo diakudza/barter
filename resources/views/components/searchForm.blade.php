@@ -4,7 +4,7 @@
     <div class="search-form__container search">
 
         <!-- Категории -->
-        <div class="search__item">
+        <div class="search__item search__item--category">
             <select class="form-control-input category" name="category" aria-label="Категория" data-class="search__category">
                 <option value="" selected>Все категории</option>
 
@@ -18,16 +18,16 @@
 
         <!-- Поиск -->
         <div class="search__item search__item--searching">
-            <label for="search-input">
-                <div class="search__item-icon">
-                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10.4319" cy="9.7666" r="8.98856" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M16.6836 16.4851L20.2076 20" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
 
-                </div>
+            <label class="search__item-label" for="search-input">
+                <svg class="search__item-icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10.4319" cy="9.7666" r="8.98856" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16.6836 16.4851L20.2076 20" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                <input class="search__item-input" type="text" placeholder="Например: Рюкзак" name="name" id="search-input">
+
             </label>
-            <input class="search__item-input" type="text" placeholder="Например: Рюкзак" name="name" id="search-input">
         </div>
 
         <!-- Тип обмена -->
@@ -49,7 +49,7 @@
         </div>
 
         <!-- город -->
-        <div class="search__item">
+        <div class="search__item search__item--city">
             <div class="search__item-icon">
                 <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.834 8.50051C10.834 7.11924 9.71475 6 8.33449 6C6.95322 6 5.83398 7.11924 5.83398 8.50051C5.83398 9.88076 6.95322 11 8.33449 11C9.71475 11 10.834 9.88076 10.834 8.50051Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
