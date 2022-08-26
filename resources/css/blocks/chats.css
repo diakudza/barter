@@ -1,0 +1,43 @@
+.chats__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.chats__list_info-heading {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 110%;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #23262F;
+}
+.chats__list_info-desc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: rgba(35, 38, 47, 0.6);
+}
+.chats__list_search {
+  width: 392px;
+  height: 54px;
+  background: #F4F5F6;
+  border: 1px solid rgba(35, 38, 47, 0.05);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+.chats__list_search svg {
+  padding-right: 16px;
+  border-right: 1px solid rgba(35, 38, 47, 0.05);
+}
+.chats__list_search input {
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: rgba(35, 38, 47, 0.4);
+}
+
+/*# sourceMappingURL=chats.css.map */
