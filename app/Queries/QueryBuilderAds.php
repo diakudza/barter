@@ -25,5 +25,4 @@ class QueryBuilderAds extends QueryBuilderBase implements QueryBuilder
     {
         return $this->model::with(['city', 'category', 'status', 'favoriteUsers', 'usersWished', 'images'])->findOrFail($adId);
     }
-
 }
