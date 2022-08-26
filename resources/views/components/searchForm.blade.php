@@ -92,6 +92,7 @@
                             <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" />
                         </filter>
                     </svg>
+
                 </label>
                 <span class="search__checkbox-text">искать архивные</span>
             </label>
