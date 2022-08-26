@@ -59,7 +59,7 @@ class ChatController extends Controller
         $user = User::find(auth()->user()->id);
         $currentUserchat = $user->getChats()->pluck('chat_id')->toArray();
         if (in_array($id, $currentUserchat)) {
-            $chat->getMessages()->update(['read' => 1]);
+            $chat->getMessages()->where('user_id','!=', auth()->user()->id)->update(['read' => 1]);
             return view('user.chat.chatSingle', [
                 'chats' => auth()->user()->getChats,
                 'messages' => $chat,

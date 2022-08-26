@@ -42,7 +42,7 @@
                     @if(auth()->user())
                         <div class="top-profile__actions actions">
                             {{--Иконка чатов--}}
-                            @if(auth()->user()->getChats->count())
+                            @if(auth()->user()->getUnreadMessages()->count())
                                 <a class="actions__btn" href=" {{ route('chat.index') }}">
                                     <svg class="actions__icon" width="22" height="22" viewBox="0 0 22 22"
                                          fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +51,7 @@
                                               stroke="#23262F" stroke-width="1.5" stroke-linecap="round"
                                               stroke-linejoin="round"/>
 
-                                        @if (!auth()->user()->getUnreadMessages->count())
+                                    @if (!auth()->user()->getUnreadMessages()->count())
                                             <path d="M14.9398 11.4131H14.9488" stroke="#23262F" stroke-width="2"
                                                   stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M10.9301 11.4131H10.9391" stroke="#23262F" stroke-width="2"
@@ -59,11 +59,11 @@
                                             <path d="M6.92128 11.413H6.93028" stroke="#23262F" stroke-width="2"
                                                   stroke-linecap="round" stroke-linejoin="round"/>
                                         @else
-                                            <span> {{ auth()->user()->getUnreadMessages->count() }} </span>
+                                            <span> {{ auth()->user()->getUnreadMessages()->count() }} </span>
                                         @endif
                                     </svg>
 
-                                    @if (auth()->user()->getUnreadMessages->count())
+                                    @if (auth()->user()->getUnreadMessages()->count())
                                         <span class="actions__notif"></span>
                                     @endif
                                 </a>

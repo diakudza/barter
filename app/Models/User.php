@@ -103,7 +103,13 @@ class User extends Authenticatable
 
     public function getUnreadMessages()
     {
-        return $this->hasMany(Message::class,)->where('read', '=', 0);
+            return DB::table('messages')
+            ->where([
+                ['read', '=', 0],
+                ['user_id', '!=', auth()->user()->id ]
+            ]);
+
+
     }
 
     public function images()
