@@ -61,7 +61,7 @@
                 12 мая
             </div>
             <div class="chats__chat_messages">
-                @include('components.chats.chatMessageList')
+                @include('components.chats.chatMessageList', ['messages' => $chats])
             </div>
             <div class="chats__chat_write">
                 <div class="chats__chat_write-attach">

@@ -75,15 +75,15 @@ class ChatController extends Controller
      */
     public function chatFormAd(Request $request)
     {
-        $adUser = User::find($request->input('ad_user_id'));
-
-        $chatsWithAdUser = $adUser->getChats();
+        $adUser = User::find($request->input('ad_user_id')); //хозяин объявления
+        $chatsWithAdUser = $adUser->getChatsWithUser(auth()->user()->id); //чаты у запрошенного юзера
         if (!$chatsWithAdUser->count()) {
             $chatsWithAdUser = $adUser->getChats()->create();
             DB::table('chat_users')->insert(['chat_id' => $chatsWithAdUser->id,
                 'user_id' => auth()->user()->id]);
             return redirect()->route('chat.show', $chatsWithAdUser->id);
         }
+
         return redirect()->route('chat.show', $chatsWithAdUser->value('chat_id'));
     }
 

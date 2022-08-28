@@ -98,7 +98,8 @@ class User extends Authenticatable
 
     public function getChatsWithUser(int $user_id)
     {
-        return DB::table('chat_users')->where('user_id', $user_id);
+        return $this->belongsToMany(Chat::class, 'chat_users')
+            ->whereRelation('users', 'user_id', '=', $user_id);
     }
 
     public function getUnreadMessages()
