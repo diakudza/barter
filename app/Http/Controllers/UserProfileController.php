@@ -76,7 +76,8 @@ class UserProfileController extends Controller
         $user = User::find($id);
         return view('user.profile.publicUserInfo', [
             'user' => $user->where('id', $id)->select('id', 'name', 'created_at')->first(),
-            'ads' => $user->ads
+            'ads' => $user->ads,
+            'reviews'=> $user->reviews
         ]);
     }
 

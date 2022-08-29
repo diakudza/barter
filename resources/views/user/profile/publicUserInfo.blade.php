@@ -34,9 +34,15 @@
             </form>
             <a href="{{ route('user.profile.rateUser', $user->id) }}">Оценить продавца</a>
         @endauth
-        <div>
-            <p>Объявления: </p>
-            @include('components.products-last', ['lastTenAds' => $ads])
+        <div class="d-flex justify-content-around">
+            <div>
+                <p>Объявления: </p>
+                @include('components.products-last', ['lastTenAds' => $ads])
+            </div>
+            <div>
+                <p>Отзывы:</p>
+                @include('components.reviews', ['reviews' => $reviews])
+            </div>
         </div>
 
     </div>
