@@ -27,6 +27,10 @@
                 <label for="5">5</label>
                 <input type="radio" name="rating" id="5" value="5">
             </div>
+            <label for="text">Оставьте отзыв (по желанию)</label>
+            <div class="form-control">
+                <textarea name="text" id="text" cols="30" rows="10"></textarea>
+            </div>
             <input type="hidden" name="voter_id" value="{{ $voterId }}">
             <input type="hidden" name="voted_id" value="{{ $votedId }}">
             <button type="submit">Поставить оценку</button>
