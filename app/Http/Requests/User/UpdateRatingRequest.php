@@ -27,7 +27,7 @@ class UpdateRatingRequest extends FormRequest
             'rating' => ['required', 'integer', 'min:1', 'max:10'],
             'voter_id' => ['required', 'integer', 'exists:users,id'],
             'voted_id' => ['required', 'integer', 'exists:users,id'],
-            'text' => ['string', 'min:3', 'max:255'],
+            'text' => ['string', 'min:3', 'max:255', 'nullable'],
         ];
     }
 }

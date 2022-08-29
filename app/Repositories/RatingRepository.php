@@ -38,7 +38,7 @@ class RatingRepository
 
     public function getUserRating(int $userId): User
     {
-        return $this->user->select(['rating', 'voters_count'])->where('id', $userId)->get()->first();
+        return $this->user->select(['rating', 'voters_count', 'id'])->where('id', $userId)->get()->first();
     }
 
     public function createVotedVoter(int $votedId, int $voterId): bool
@@ -50,8 +50,11 @@ class RatingRepository
         return $result->save();
     }
 
-    public function createReview(int $userId, int $reviewerId, string $text): bool
+    public function createReview(int $userId, int $reviewerId, $text): bool
     {
+        if (!isset($text)){
+            return true;
+        }
         $result = new $this->review([
             'user_id' => $userId,
             'reviewer_id' => $reviewerId,

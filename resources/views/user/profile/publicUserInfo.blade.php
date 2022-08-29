@@ -6,7 +6,6 @@
 
 <div class="container">
     <h3>{{ $user->name }}</h3>
-
     <div>
         <p> Дата регистрации: {{ $user->created_at }}</p>
     </div>
@@ -30,9 +29,9 @@
     <a href="{{ route('user.profile.rateUser', $user->id) }}">Оценить продавца</a>
     @endauth
         <div class="d-flex justify-content-around">
-        <div>
-            <p>Объявления: </p>
-            @include('components.productsLast', ['lastTenAds' => $ads])
+            <div>
+                <p>Объявления: </p>
+                @include('components.productsLast', ['lastTenAds' => $ads])
             </div>
             <div>
                 <p>Отзывы:</p>
