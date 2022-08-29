@@ -26,26 +26,31 @@ class UserProfileController extends Controller
 
     public function createAd(
         QueryBuilderCategories $categoriesList,
-        QueryBuilderCities $citiesList
-    ) {
+        QueryBuilderCities     $citiesList
+    )
+    {
         return view('user.profile.createAd', [
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name'])
         ]);
     }
 
-    public function listAds(QueryBuilderAds $adsList)
+    public function listAds()
     {
-        return view('user.profile.listAds', ['ads' => $adsList->listAdsByUser(Auth::user()->id)]);
+        Auth::user()->changeAdRead();
+        return view('user.profile.listAds', [
+            'ads' => Auth::user()->ads
+        ]);
     }
 
     public function editAd(
-        Request $request,
-        QueryBuilderAds $adsDetail,
+        Request                $request,
+        QueryBuilderAds        $adsDetail,
         QueryBuilderCategories $categoriesList,
-        QueryBuilderCities $citiesList,
-        AdStatus $statusesList
-    ) {
+        QueryBuilderCities     $citiesList,
+        AdStatus               $statusesList
+    )
+    {
         $ad = $adsDetail->getAdDetailById($request->ad);
         $allowedStatuses = $statusesList->getAllPublicStatuses();
         if ($allowedStatuses->search($ad->status) === false) {
@@ -78,6 +83,15 @@ class UserProfileController extends Controller
             'user' => $user->where('id', $id)->select('id', 'name', 'created_at')->first(),
             'ads' => $user->ads,
             'reviews'=> $user->reviews
+        ]);
+    }
+
+    public function wishlist(User $user)
+    {
+        $user = $user->find(auth()->user()->id);
+        $user->wishes()->update(['read' => 1]);
+        return view('user.profile.yourAdsWishList', [
+            'ads' => $user->wishes
         ]);
     }
 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="container authentication mt-5 pt-5 d-flex flex-row justify-content-between" id="authentication">
+<section class="container authentication pt-5 d-flex flex-row justify-content-between" id="authentication">
 
     <div class="login">
 
@@ -43,6 +43,7 @@
             </div-->
             @csrf
             <span>Используйте свой аккаунт</span>
+
             <div class="mb-3 email">
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{old('email')}}" class="@error('email') is-invalid @enderror">
             </div>
@@ -111,6 +112,7 @@
                 <p class="overlap-content">У вас уже есть аккаунт? <br> Нажмите "войти"!</p>
                 <button class="overlap-button overlapEnt" id="signIn">Войти</button>
             </div>
+
             <div class="overlap-panel overlap-right">
                 <h2 class="overlap-title overlap-title-login">Привет!</h2>
                 <p class="overlap-content">Нет аккаунта? <br> Нажмите "зарегистрироваться"!</p>

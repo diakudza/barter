@@ -14,8 +14,6 @@
 //Глобальные стили
 @import "blocks/btn";
 @import "blocks/alerts";
-@import "blocks/customCheckbox";
-
 @import "blocks/global";
 
 //Стили шапки
@@ -28,6 +26,9 @@
 @import "blocks/productsLast";
 @import "blocks/card";
 
+//Стили чекбокса
+@import "blocks/customCheckbox";
+
 //Блок поиска
 @import "blocks/searchBlock";
 
@@ -36,6 +37,9 @@
 
 //Стили страницы авторизации и регистрации
 @import "blocks/login";
+
+//Стили чата
+@import "blocks/chats";
 
 //Стили footer
 @import "blocks/footer";

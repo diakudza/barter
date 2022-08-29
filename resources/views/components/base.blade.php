@@ -15,15 +15,16 @@
 </head>
 
 <body>
-    <x-header></x-header>
+    <div class="page">
+        @include('components.header')
 
-    <main id="main" class="main">
-        @yield('content')
-    </main>
+        <main id="main" class="main">
+            @yield('content')
+        </main>
 
-    @include('components.alert')
-
-    <x-footer></x-footer>
+        @include('components.footer')
+        @include('components.alert')
+    </div>
 
     @vite(['resources/js/app.js'])
 </body>

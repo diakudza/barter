@@ -59,7 +59,7 @@ class ChatController extends Controller
         $user = User::find(auth()->user()->id);
         $currentUserchat = $user->getChats()->pluck('chat_id')->toArray();
         if (in_array($id, $currentUserchat)) {
-            $chat->getMessages()->update(['read' => 1]);
+            $chat->getMessages()->where('user_id','!=', auth()->user()->id)->update(['read' => 1]);
             return view('user.chat.chatSingle', [
                 'chats' => auth()->user()->getChats,
                 'messages' => $chat,
@@ -75,15 +75,15 @@ class ChatController extends Controller
      */
     public function chatFormAd(Request $request)
     {
-        $adUser = User::find($request->input('ad_user_id'));
-
-        $chatsWithAdUser = $adUser->getChats();
+        $adUser = User::find($request->input('ad_user_id')); //хозяин объявления
+        $chatsWithAdUser = $adUser->getChatsWithUser(auth()->user()->id); //чаты у запрошенного юзера
         if (!$chatsWithAdUser->count()) {
             $chatsWithAdUser = $adUser->getChats()->create();
             DB::table('chat_users')->insert(['chat_id' => $chatsWithAdUser->id,
                 'user_id' => auth()->user()->id]);
             return redirect()->route('chat.show', $chatsWithAdUser->id);
         }
+
         return redirect()->route('chat.show', $chatsWithAdUser->value('chat_id'));
     }
 
