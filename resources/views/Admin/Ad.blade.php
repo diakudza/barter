@@ -14,7 +14,13 @@
             <p>Текс обьявления: {{ $ad->text }} </p>
         </div>
         <div>
-            <img src="{{ asset('storage/'.$ad->image) }}" height="400" alt="Картинка">
+            @foreach($ad->images as $image)
+                @if ($loop->first)
+                    <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true" height="200" aria-label="Slide {{ $loop->iteration }}">
+                    @continue
+                @endif
+                <img src="{{ Storage::url($image->path) }}" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" height="200" aria-label="Slide {{ $loop->iteration }}">
+            @endforeach
         </div>
     </div>
 </div>

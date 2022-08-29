@@ -20,15 +20,15 @@ class Chat extends Model
             ->where('user_id', '!=', auth()->user()->id)->first();
     }
 
-    public function getMessages()
+    public function messages()
     {
         return $this->hasMany(Message::class);
     }
 
-    public function getUnreadMessages()
+    public function getUnreadMessages() //for notify in contaclist
     {
         return $this->hasMany(Message::class)
-            ->where('user_id', '=', auth()->user()->id)
-            ->where('read', '!=', '1');
+            ->where('user_id', '!=', auth()->user()->id)
+            ->where('read', '=', '0');
     }
 }

@@ -42,7 +42,7 @@ class ChatController extends Controller
     {
         $message = new Message($request->all());
         $chat = Chat::find($request->input('chat_id'));
-        $chat->getMessages()->save($message);
+        $chat->messages()->save($message);
 
         return redirect()->back();
     }
@@ -59,8 +59,8 @@ class ChatController extends Controller
         $user = User::find(auth()->user()->id);
         $currentUserchat = $user->getChats()->pluck('chat_id')->toArray();
         if (in_array($id, $currentUserchat)) {
-            $chat->getMessages()->where('user_id','!=', auth()->user()->id)->update(['read' => 1]);
-            return view('user.chat.chatSingle', [
+            $chat->messages()->where('user_id','!=', auth()->user()->id)->update(['read' => 1]);
+            return view('user.chat.chats', [
                 'chats' => auth()->user()->getChats,
                 'messages' => $chat,
                 'chatId' => $chat->id
