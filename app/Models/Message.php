@@ -11,7 +11,7 @@ class Message extends Model
 
     protected $fillable = ['user_id', 'chat_id', 'text'];
 
-    public function getUserName()
+    public function user()
     {
         return $this->hasOne(User::class);
     }
