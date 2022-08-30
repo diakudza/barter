@@ -14,12 +14,20 @@ class AdController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index(Ad $ad, AdStatus $statuses, \App\Models\Category $categories)
+    public function index(Ad $ad, AdStatus $statuses, \App\Models\Category $categories, Request $request)
     {
+        $status = $request->input('status');
+        $ads = $ad
+            ->when($status, function($query, $status){
+                $query->whereIn('status_id', $status);
+            })
+            ->paginate(20)
+            ->withQueryString();
         return view('Admin.Ads', [
-            'ads' => $ad->paginate(20),
+            'ads' => $ads,
             'statuses' => $statuses->all(),
-            'categories' => $categories->all()
+            'categories' => $categories->all(),
+            'filterStatuses' => $status,
         ]);
     }
 

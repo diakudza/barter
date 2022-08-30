@@ -5,6 +5,55 @@
 @section('content')
 
 <div class="container mt-5 pt-5">
+    <p>Фильтровать сообщения по:</p>
+    <form action="{{ route('adIndex') }}" method="get">
+        @csrf
+        <p>Статус</p>
+        <div class="form-control d-flex flex-column">
+            <div>
+                <label for="status1">Активно</label>
+                <input type="checkbox" name="status[]" id="status1" value="1"
+                    @if(isset($filterStatuses) && in_array(1, $filterStatuses))
+                        checked
+                    @endif
+                >
+            </div>
+            <div>
+                <label for="status2">Заблокировано</label>
+                <input type="checkbox" name="status[]" id="status2" value="2"
+                    @if(isset($filterStatuses) && in_array(2, $filterStatuses))
+                        checked
+                    @endif
+                >
+            </div>
+            <div>
+                <label for="status3">Удалено</label>
+                <input type="checkbox" name="status[]" id="status3" value="3"
+                    @if(isset($filterStatuses) && in_array(3, $filterStatuses))
+                        checked
+                    @endif
+                >
+            </div>
+            <div>
+                <label for="status4">В архиве</label>
+                <input type="checkbox" name="status[]" id="status4" value="4"
+                    @if(isset($filterStatuses) && in_array(4, $filterStatuses))
+                        checked
+                    @endif
+                >
+            </div>
+            <div>
+                <label for="status5">На модерации</label>
+                <input type="checkbox" name="status[]" id="status5" value="5"
+                    @if(isset($filterStatuses) && in_array(5, $filterStatuses))
+                        checked
+                    @endif
+                >
+            </div>
+        </div>
+        <button type="submit" class="btn btn-danger">Применить фильтр</button>
+    </form>
+    <a href="{{ route('adIndex') }}" class="btn btn-secondary" >Сбросить фильтры</a>
     <table class="table mt-5 w-auto table-bordered">
         <thead>
             <td>id</td>
