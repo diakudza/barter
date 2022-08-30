@@ -12,6 +12,10 @@
 
         border: 1px solid rgba(35, 38, 47, 0.05);
         border-radius: 3333px;
+
+        @include break1400 {
+            gap: 5px;
+        }
     }
 
     &__bottom-container {
@@ -130,6 +134,11 @@
         display: flex;
         align-items: center;
 
+        &-label {
+            display: flex;
+            align-items: center;
+        }
+
         &-input {
             width: 100%;
 
@@ -139,10 +148,25 @@
             font-weight: 500;
             font-size: 20px;
             line-height: 100%;
+
+            @include break1400 {
+                font-size: 14px;
+            }
+        }
+
+        &--category {
+            @include break1400 {
+                display: none;
+            }
         }
 
         &--searching {
             width: 350px;
+
+            @include break1400 {
+                width: 100%;
+                margin-left: 20px;
+            }
         }
 
         &--type {
@@ -151,6 +175,16 @@
 
             border-left: 1px solid rgba($color-black, 0.1);
             border-right: 1px solid rgba($color-black, 0.1);
+
+            @include break1400 {
+                display: none;
+            }
+        }
+
+        &--city {
+            @include break1400 {
+                display: none;
+            }
         }
 
         &-icon {
@@ -169,21 +203,34 @@
         background-color: $color-blue;
         border-radius: 50%;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         transition: all 0.4s ease-in;
 
         &:hover {
             background-color: $color-blue-hover;
         }
+
+        @include break1400 {
+            width: 48px;
+            height: 48px;
+
+            & svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
     }
 
     &__checkbox {
-        display: inline-flex;
+        display: flex;
         align-items: center;
-
         cursor: pointer;
 
-        & span {
-            margin-left: 15px;
+        &-text {
+            margin-left: 12px;
         }
     }
 }

@@ -3,26 +3,31 @@
     font-size: 16px;
     line-height: 100%;
 
-    padding: 19px 30px;
+    padding: 20px 31px;
 
-    border-radius: 8px;
+    border-radius: 16px;
 
     color: $color-black;
 
+    &-reset {
+        border: none;
+        background-color: transparent;
+    }
+
     &-white {
         background-color: white;
-        border: 2px solid rgba(35, 38, 47, 0.1);
+        border: 1px solid rgba($color-black, 0.1);
         transition: all 0.4s ease-in-out;
 
         &:hover {
-            border: 2px solid rgba(35, 38, 47, 0.5);
+            border: 1px solid rgba($color-black, 0.5);
         }
     }
 
     &-blue {
         color: white;
 
-        border: 2px solid $color-blue;
+        border: 1px solid $color-blue;
         background-color: $color-blue;
 
         transition: all 0.4s ease-in-out;
@@ -95,11 +100,6 @@
         @media (max-width: 990.98px) {
             display: flex;
         }
-    }
-
-    &-reset {
-        border: none;
-        background-color: transparent;
     }
 
     @include break992 {

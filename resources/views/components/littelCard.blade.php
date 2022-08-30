@@ -1,9 +1,15 @@
 <div class="card">
-    @if($item['status_id'] == 4)<p>в архиве!</p>@endif
+
     <a href="{{ route('ad.show', $item['id']) }}" class="card__link"></a>
 
     <div class="card__content">
         <div class="card__img">
+
+            @if($item['status_id'] == 4)
+            <div class="card__img-info">
+                <span>в архиве!</span>
+            </div>
+            @endif
 
             @if(auth()->user() && $item['status_id'] !== 4)
             <div class="card__btn-fav">
@@ -53,7 +59,7 @@
                         >
                     </div>
 
-                    <a href="{{ route('ad.show', $item['id']) }}" class="card__author-link">
+                    <a href="{{ route('user.public', $item->user->id) }}" class="card__author-link">
                         <p class="card__author-name">{{ $item->user->name }}</p>
                     </a>
                 </div>

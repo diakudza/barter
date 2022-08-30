@@ -4,7 +4,7 @@
     <div class="search-form__container search">
 
         <!-- Категории -->
-        <div class="search__item">
+        <div class="search__item search__item--category">
             <select class="form-control-input category" name="category" aria-label="Категория" data-class="search__category">
                 <option value="" selected>Все категории</option>
 
@@ -18,16 +18,16 @@
 
         <!-- Поиск -->
         <div class="search__item search__item--searching">
-            <label for="search-input">
-                <div class="search__item-icon">
-                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="10.4319" cy="9.7666" r="8.98856" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M16.6836 16.4851L20.2076 20" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
 
-                </div>
+            <label class="search__item-label" for="search-input">
+                <svg class="search__item-icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10.4319" cy="9.7666" r="8.98856" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16.6836 16.4851L20.2076 20" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+                <input class="search__item-input" type="text" placeholder="Например: Рюкзак" name="name" id="search-input">
+
             </label>
-            <input class="search__item-input" type="text" placeholder="Например: Рюкзак" name="name" id="search-input">
         </div>
 
         <!-- Тип обмена -->
@@ -49,7 +49,7 @@
         </div>
 
         <!-- город -->
-        <div class="search__item">
+        <div class="search__item search__item--city">
             <div class="search__item-icon">
                 <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.834 8.50051C10.834 7.11924 9.71475 6 8.33449 6C6.95322 6 5.83398 7.11924 5.83398 8.50051C5.83398 9.88076 6.95322 11 8.33449 11C9.71475 11 10.834 9.88076 10.834 8.50051Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -60,7 +60,7 @@
 
             <select class="form-control-input" name="city" aria-label="Выбор города" data-class="search__city">
 
-                <option value="" selected>Все город</option>
+                <option value="" selected>Все города</option>
 
                 @foreach($cities as $city)
                 <option value="{{ $city['id'] }}" @if(isset($city_selected) && $city_selected==$city['id']) selected @endif>{{ $city['name'] }}</option>
@@ -70,32 +70,34 @@
         </div>
 
         <button class="search__btn btn-reset" type="submit">
-
             <svg class="search__btn-icon" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="8.80492" cy="8.8055" r="7.49047" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M14.0156 14.4043L16.9523 17.3333" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-
         </button>
     </div>
 
     <div class="seacrh-from__bottom-container">
+        <div class="search-from__item">
+            <label for="check" class="search__checkbox">
+                <label class="checkbox ">
+                    <input id="check" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif />
 
-        <label class="checkbox search__checkbox">
-            <input id="check" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif />
-            <svg viewBox="0 0 24 24" filter="url(#goo-light)">
-                <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
-                <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
-            </svg>
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                        <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                        <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
 
-            <span>искать архивные</span>
-        </label>
+                        <filter id="goo-light" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="1.25" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" />
+                        </filter>
+                    </svg>
+
+                </label>
+                <span class="search__checkbox-text">искать архивные</span>
+            </label>
+        </div>
     </div>
-
-    <!-- <label for="check">
-        <input id="check" class="checkbox search-form__checkbox" type="checkbox" name="status" @if(isset($archived_checked)) checked @endif>
-
-    </label> -->
 
     <!-- @if(session('alert'))
     <div class="alert-danger">

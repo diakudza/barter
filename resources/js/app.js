@@ -9,14 +9,13 @@ import { headerJS } from "./navbar";
 import cutText from "./cutText";
 import searchDropdown from "./searchDropdown";
 import customCheckbox from "./customCheckbox";
-
 import "./modalWindowPopup";
-
-//Вызовы модулей
 import "./login";
+import chats from "./chats";
 
 //Вызовы модулей
 cutText();
 headerJS();
 searchDropdown();
 customCheckbox();
+chats();
