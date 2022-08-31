@@ -18,12 +18,18 @@ class AdController extends Controller
     {
         $status = $request->input('status');
         $sortByDate = $request->input('sort_by_date');
+        $author = $request->input('author');
         $ads = $ad
-            ->when($status, function($query, $status){
+            ->when($status, function ($query, $status) {
                 $query->whereIn('status_id', $status);
             })
-            ->when($sortByDate, function($query, $sortByDate){
+            ->when($sortByDate, function ($query, $sortByDate) {
                 $query->orderBy('created_at', $sortByDate);
+            })
+            ->when($author, function ($query, $author) {
+                $query
+                    ->whereRelation('user', 'email', 'like', '%' . $author . '%')
+                    ->orWhereRelation('user', 'name', 'like', '%' . $author . '%');
             })
             ->paginate(20)
             ->withQueryString();
@@ -33,6 +39,7 @@ class AdController extends Controller
             'categories' => $categories->all(),
             'filterStatuses' => $status,
             'sortByDate' => $sortByDate,
+            'searchString' => $author,
         ]);
     }
 

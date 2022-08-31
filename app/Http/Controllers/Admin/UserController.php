@@ -15,12 +15,32 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, UserRole $roles, UserStatus $statuses)
+    public function index(User $user, UserRole $roles, UserStatus $statuses, Request $request)
     {
+        $status = $request->input('status');
+        $role = $request->input('role');
+        $searchUser = $request->input('user');
+        $users = $user
+            ->when($status, function ($query, $status) {
+                $query->whereIn('status_id', $status);
+            })
+            ->when($role, function ($query, $role) {
+                $query->whereIn('role_id', $role);
+            })
+            ->when($searchUser, function ($query, $searchUser) {
+                $query
+                    ->where('email', 'like', '%' . $searchUser . '%')
+                    ->orWhere('name', 'like', '%' . $searchUser . '%');
+            })
+            ->paginate(20)
+            ->withQueryString();
         return view('Admin.Users', [
-            'users' => $user->paginate(20),
+            'users' => $users/*$user->paginate(20)*/,
             'roles' => $roles->all(),
-            'statuses' => $statuses->all()
+            'statuses' => $statuses->all(),
+            'filterStatuses' => $status,
+            'filterRoles' => $role,
+            'searchString' => $searchUser,
         ]);
     }
 
