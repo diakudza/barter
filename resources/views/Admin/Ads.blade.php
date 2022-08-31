@@ -4,10 +4,10 @@
 
 @section('content')
 
-<div class="container mt-5 pt-5">
-    <p>Фильтровать сообщения по:</p>
+<div class="container mt-5 pt-5">    
     <form action="{{ route('adIndex') }}" method="get">
         @csrf
+        <p>Фильтровать сообщения по:</p>
         <p>Статус</p>
         <div class="form-control d-flex flex-column">
             <div>
@@ -52,8 +52,27 @@
             </div>
         </div>
         <button type="submit" class="btn btn-danger">Применить фильтр</button>
+        <p>Сортировать по:</p>
+        <label for="sortByDate">Дате</label>
+        <select name="sort_by_date" id="sortByDate">
+            <option value="desc"
+                @if(isset($sortByDate) && $sortByDate == "desc")
+                    selected
+                @elseif(!isset($sortByDate))
+                    selected
+                @endif
+            >Сначала новые</option>
+            <option value="asc"
+                @if(isset($sortByDate) && $sortByDate == "asc")
+                    selected
+                @endif
+            >Сначала старые</option>
+        </select>
+        <div>
+            <button type="submit" class="btn btn-danger">Отсортировать</button>
+        </div>
     </form>
-    <a href="{{ route('adIndex') }}" class="btn btn-secondary" >Сбросить фильтры</a>
+    <a href="{{ route('adIndex') }}" class="btn btn-secondary" >Сбросить фильтры и сортировку</a>
     <table class="table mt-5 w-auto table-bordered">
         <thead>
             <td>id</td>

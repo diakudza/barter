@@ -17,9 +17,13 @@ class AdController extends Controller
     public function index(Ad $ad, AdStatus $statuses, \App\Models\Category $categories, Request $request)
     {
         $status = $request->input('status');
+        $sortByDate = $request->input('sort_by_date');
         $ads = $ad
             ->when($status, function($query, $status){
                 $query->whereIn('status_id', $status);
+            })
+            ->when($sortByDate, function($query, $sortByDate){
+                $query->orderBy('created_at', $sortByDate);
             })
             ->paginate(20)
             ->withQueryString();
@@ -28,6 +32,7 @@ class AdController extends Controller
             'statuses' => $statuses->all(),
             'categories' => $categories->all(),
             'filterStatuses' => $status,
+            'sortByDate' => $sortByDate,
         ]);
     }
 
