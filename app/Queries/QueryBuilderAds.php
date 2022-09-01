@@ -25,4 +25,26 @@ class QueryBuilderAds extends QueryBuilderBase implements QueryBuilder
     {
         return $this->model::with(['city', 'category', 'status', 'favoriteUsers', 'usersWished', 'images'])->findOrFail($adId);
     }
+
+    public function getAdminAdsByFilter(Ad $ad, $status, $author, $sortByDate): LengthAwarePaginator
+    {
+        $ads = $ad
+            ->when($author, function ($query, $author) {
+// In order to place OR statement in brackets use this subclosure
+                $query->where(function($query) use($author){
+                    $query
+                        ->whereRelation('user', 'email', 'like', '%' . $author . '%')
+                        ->orWhereRelation('user', 'name', 'like', '%' . $author . '%');
+                });                  
+            })
+            ->when($status, function ($query, $status) {
+                $query->whereIn('status_id', $status);
+            })
+            ->when($sortByDate, function ($query, $sortByDate) {
+                $query->orderBy('created_at', $sortByDate);
+            })
+            ->paginate(20)
+            ->withQueryString();
+        return $ads;
+    }
 }
