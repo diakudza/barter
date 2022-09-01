@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Ad;
 use App\Models\AdStatus;
+use App\Queries\QueryBuilderAds;
 use Illuminate\Http\Request;
 
 class AdController extends Controller
@@ -14,25 +15,16 @@ class AdController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index(Ad $ad, AdStatus $statuses, \App\Models\Category $categories, Request $request)
+    public function index(Ad $ad, 
+        AdStatus $statuses, 
+        \App\Models\Category $categories, 
+        Request $request,
+        QueryBuilderAds $adsList)
     {
         $status = $request->input('status');
         $sortByDate = $request->input('sort_by_date');
         $author = $request->input('author');
-        $ads = $ad
-            ->when($status, function ($query, $status) {
-                $query->whereIn('status_id', $status);
-            })
-            ->when($sortByDate, function ($query, $sortByDate) {
-                $query->orderBy('created_at', $sortByDate);
-            })
-            ->when($author, function ($query, $author) {
-                $query
-                    ->whereRelation('user', 'email', 'like', '%' . $author . '%')
-                    ->orWhereRelation('user', 'name', 'like', '%' . $author . '%');
-            })
-            ->paginate(20)
-            ->withQueryString();
+        $ads = $adsList->getAdminAdsByFilter($ad, $status, $author, $sortByDate);
         return view('Admin.Ads', [
             'ads' => $ads,
             'statuses' => $statuses->all(),
