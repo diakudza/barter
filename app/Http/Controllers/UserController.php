@@ -20,9 +20,8 @@ class UserController extends Controller
         return view('login');
     }
 
-    public function login(Request $request)
+    public function login(Request $request, User $user)
     {
-
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -32,13 +31,14 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ])) {
-
+            $user = Auth::user();
+            $user->update(['login_time' => now(),'ip' => $request->ip()]);
             if (Auth::user()->status_id == 2) {
+                $user->update(['logout_time' => now()]);
                 Auth::logout();
                 return redirect()->route('home')
                     ->with('fail', 'Данный пользователь не может войти в системы, так-как был заблокирован!');
             }
-
             return redirect()->route('home')->with(['success' => 'Привет, Вы успешно вошли в систему!']);
         }
         return redirect()->to(route('loginPage'))->with(['fail' => 'Неверная пара логин\пароль!']);
@@ -56,8 +56,10 @@ class UserController extends Controller
         return redirect()->route('user.profile')->with('success', "User $request->input('name') was registered!");
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request, User $user)
     {
+        $user = Auth::user();
+        $user->update(['logout_time' => now()]);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -104,7 +106,8 @@ class UserController extends Controller
         $user = $ratingService->updateUserRating(
             $request->safe()->only(['voted_id'])['voted_id'],
             $request->safe()->only(['voter_id'])['voter_id'],
-            $request->safe()->only(['rating'])['rating']
+            $request->safe()->only(['rating'])['rating'],
+            $request->safe()->only(['text'])['text'],
         );
         if ($user->save()) {
             return redirect()->route(

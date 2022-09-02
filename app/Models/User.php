@@ -29,7 +29,10 @@ class User extends Authenticatable
         'role_id',
         'status_id',
         'rating',
-        'voters_count'
+        'voters_count',
+        'login_time',
+        'logout_time',
+        'ip',
     ];
 
     /**
@@ -96,20 +99,23 @@ class User extends Authenticatable
         return $this->belongsToMany(Chat::class, 'chat_users');
     }
 
-    public function getChatsWithUser(int $user_id)
+    public function messages()
     {
-        return DB::table('chat_users')->where('user_id', $user_id);
+        return $this->belongsToMany(Message::class, 'messages');
     }
 
-    public function getUnreadMessages()
+    public function getChatsWithUser(int $user_id)
     {
-            return DB::table('messages')
-            ->where([
-                ['read', '=', 0],
-                ['user_id', '!=', auth()->user()->id ]
-            ]);
+        return $this->belongsToMany(Chat::class, 'chat_users')
+            ->whereRelation('users', 'user_id', '=', $user_id);
+    }
 
-
+    public function getUnreadMessages() //for notify in navbar
+    {
+        return $this->getChats()
+            ->whereRelation('messages', 'read', '=' , 0)
+            ->whereRelation('messages', 'user_id', '!=' , \auth()->user()->id)
+            ;
     }
 
     public function images()
@@ -167,6 +173,21 @@ class User extends Authenticatable
         foreach ($ads->get() as $ad) {
             (new AdUser())->changeRead($ad);
         }
-
     }
+
+    public function lastSessionDurationAttribute()
+    {
+//        return $this->logout_time
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function getReviewsCount()
+    {
+        return $this->reviews()->count();
+    }
+
 }

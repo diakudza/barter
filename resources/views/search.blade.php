@@ -4,9 +4,6 @@
 
 @section('content')
 
-<!-- 
-<div class="mt-5 mb-5">
-</div> -->
 
 <section class="container">
     @include('components.searchForm')
@@ -18,13 +15,27 @@
 
     <h3 class="search-result__title title">Результаты поиска</h3>
     <div class="search-result__container">
+
         @foreach ($searchResult as $item)
 
-        @include('components.littelCard')
+            @include('components.littelCard')
 
         @endforeach
-    </div>
 
+    </div>
+    @elseif($adsByUserCity)
+        <div>
+            <p class="search-result__title title">Возможно вас заинтересуют объявления в Вашем городе</p>
+            <div class="search-result__container">
+            @foreach ($adsByUserCity as $item)
+
+                @include('components.littelCard')
+
+            @endforeach
+                </div>
+        </div>
     @endif
+
+
 </section>
 @endsection

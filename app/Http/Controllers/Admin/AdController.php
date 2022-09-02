@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Ad;
 use App\Models\AdStatus;
+use App\Queries\QueryBuilderAds;
 use Illuminate\Http\Request;
 
 class AdController extends Controller
@@ -14,12 +15,23 @@ class AdController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index(Ad $ad, AdStatus $statuses, \App\Models\Category $categories)
+    public function index(Ad $ad, 
+        AdStatus $statuses, 
+        \App\Models\Category $categories, 
+        Request $request,
+        QueryBuilderAds $adsList)
     {
+        $status = $request->input('status');
+        $sortByDate = $request->input('sort_by_date');
+        $author = $request->input('author');
+        $ads = $adsList->getAdminAdsByFilter($ad, $status, $author, $sortByDate);
         return view('Admin.Ads', [
-            'ads' => $ad->paginate(20),
+            'ads' => $ads,
             'statuses' => $statuses->all(),
-            'categories' => $categories->all()
+            'categories' => $categories->all(),
+            'filterStatuses' => $status,
+            'sortByDate' => $sortByDate,
+            'searchString' => $author,
         ]);
     }
 

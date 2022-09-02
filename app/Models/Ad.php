@@ -29,7 +29,7 @@ class Ad extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function City()
+    public function city()
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
@@ -57,5 +57,10 @@ class Ad extends Model
     public function imageMain()
     {
         return $this->images()->where('image_type', 'ad_main');
+    }
+
+    public function getLastAdsByCity($city)
+    {
+        return $city ? $this->whereRelation('city', 'name', 'LIKE', $city . '%')->orderBy('updated_at', 'DESC')->limit(10)->get() : null;
     }
 }
