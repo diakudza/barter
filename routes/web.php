@@ -94,5 +94,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain');
     Route::get('/system', [SysController::class, 'index'])->name('admin.system');
     Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action');
-
 });
