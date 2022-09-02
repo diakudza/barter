@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::resource('wishlist', WishlistController::class);
     Route::resource('favorite', AdUserFavorites::class);
     Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
+    Route::post('storeAdComplain', [ChatController::class, 'storeAdComplain'])->name('storeAdComplain');
     Route::resource('chat', ChatController::class);
 });
 
