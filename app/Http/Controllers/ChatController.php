@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
@@ -119,6 +120,15 @@ class ChatController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function storeAdComplain(Request $request)
+    {
+        //$user = User::findOrFail(Auth::user()->id);
+        $ids = [];
+        $ids[] = Auth::user()->id;
+        $moderators = User::whereRelation('getRole', 'role', 'moderator')->get();
+        dd($moderators);
     }
 
 }
