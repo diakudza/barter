@@ -9,6 +9,8 @@ import { headerJS } from "./navbar";
 import cutText from "./cutText";
 import searchDropdown from "./searchDropdown";
 import customCheckbox from "./customCheckbox";
+import notification from "./notification";
+
 import "./modalWindowPopup";
 import "./login";
 import chats from "./chats";
@@ -19,3 +21,4 @@ headerJS();
 searchDropdown();
 customCheckbox();
 chats();
+notification();
