@@ -25,7 +25,7 @@
     </div>
     @elseif($adsByUserCity)
         <div>
-            <p class="search-result__title title">Возможно вас заинтересуют объявления в Вашем гороре</p>
+            <p class="search-result__title title">Возможно вас заинтересуют объявления в Вашем городе</p>
             <div class="search-result__container">
             @foreach ($adsByUserCity as $item)
 

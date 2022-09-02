@@ -61,6 +61,6 @@ class Ad extends Model
 
     public function getLastAdsByCity($city)
     {
-        return $city ? $this->whereRelation('city', 'name', 'LIKE', $city . '%')->limit(10)->get() : null;
+        return $city ? $this->whereRelation('city', 'name', 'LIKE', $city . '%')->orderBy('updated_at', 'DESC')->limit(10)->get() : null;
     }
 }
