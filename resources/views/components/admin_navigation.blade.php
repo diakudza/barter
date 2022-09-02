@@ -12,6 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.index') }}">Пользователи</a>
                     <a class="nav-link" href="{{ route('role.index') }}">Роли</a>
+                    <a class="nav-link" href="{{ route('admin.system') }}">Системный</a>
                 </li>
                 @if(auth()->user())
                 <li class="nav-item">

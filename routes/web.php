@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
+use App\Http\Controllers\Admin\SysController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\AdUserFavorites;
 use App\Http\Controllers\ChatController;
@@ -91,4 +92,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
     Route::resource('role', UserRoleController::class);
     Route::resource('comment', AdminCommentController::class);
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain');
+    Route::get('/system', [SysController::class, 'index'])->name('admin.system');
+    Route::post('/system', [SysController::class, 'git'])->name('admin.system.git');
 });

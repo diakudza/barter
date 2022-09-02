@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "ext-curl": "*",
-        "doctrine/dbal": "^3.3",
+        "doctrine/dbal": "^3.4",
         "guzzlehttp/guzzle": "^7.2",
         "hflabs/dadata": "^22.3",
         "laravel/framework": "^9.19",
