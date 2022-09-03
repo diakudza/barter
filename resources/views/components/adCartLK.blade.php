@@ -1,14 +1,13 @@
 <div class="card mb-4 box-shadow bg-light w-25">
-    <img
-        @if(count($ad->imageMain))  src="{{Storage::url($ad->imageMain[0]->path)}}"
-        @elseif(count($ad->images)) src="{{Storage::url($ad->images[0]->path)}}"
-        @else src="{{ asset('images/product/placeholder400x400.png' )}}"
-        @endif
-        alt="{{ $ad['title'] }}" title="{{ $ad['title'] }}"
+    <img @if(count($ad->imageMain)) src="{{Storage::url($ad->imageMain[0]->path)}}"
+    @elseif(count($ad->images)) src="{{Storage::url($ad->images[0]->path)}}"
+    @else src="{{ asset('images/product/placeholder400x400.png' )}}"
+    @endif
+    alt="{{ $ad['title'] }}" title="{{ $ad['title'] }}"
     >
 
     @if ( $ad->status->title == 'archived')
-        <h1 class="position-absolute start-50 top-50 opacity-50 text-danger">в архиве</h1>
+    <h1 class="position-absolute start-50 top-50 opacity-50 text-danger">в архиве</h1>
     @endif
 
     <div class="card-body">

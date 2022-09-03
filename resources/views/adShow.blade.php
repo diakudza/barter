@@ -6,7 +6,7 @@
 
 <section class="container productCartContainer">
 
-    <div id="Product-big" class="mb-5">
+    <div id="product-big" class="mb-5">
 
         @include('components.productNameCart')
 
@@ -57,17 +57,16 @@
                 </div>
                 @endif
             </div>
-                        <div class="productCartInfo">
-                            @include('components.adContactCart')
-                            @if (auth()->user())
-                                @include('components.addToFavCart')
-                                @include('components.productInfo')
-                            @endif
-                        </div>
+            <div class="productCartInfo">
+                @include('components.adContactCart')
+                @if (auth()->user())
+                @include('components.addToFavCart')
+                @include('components.productInfo')
+                @endif
+            </div>
 
         </div>
     </div>
-
 
     <div class="description">
         <h2>Описание</h2>
