@@ -3,7 +3,7 @@ h6 {
     margin-bottom: 0rem;
 }
 
-.productCartContainer{
+.productCartContainer {
     @include break768 {
         width: 880px;
     }
@@ -18,6 +18,7 @@ h6 {
     line-height: 70px;
     letter-spacing: -0.03em;
     text-align: left;
+
     @include break1200 {
         font-size: 55px;
     }
@@ -34,6 +35,7 @@ h6 {
     display: flex;
     gap: 10px;
     flex-direction: column;
+
     @include break1200 {
         gap: 5px;
         width: 285px;
@@ -45,14 +47,16 @@ h6 {
     width: 385px;
     left: 32px;
     top: 2px;
-    font-family: Gilroy;
+
     font-size: 20px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0em;
+
     text-align: left;
     color: rgba(35, 38, 47, 0.6);
     margin-bottom: 50px;
+
     @include break1200 {
         font-size: 17px;
     }
@@ -65,9 +69,11 @@ h6 {
     border-radius: 10px;
     padding: 6px;
 }
+
 .adcart_link {
     text-decoration: none;
 }
+
 .adcart_link:hover {
     text-decoration: none;
 }
@@ -96,7 +102,7 @@ h6 {
     position: relative;
 }
 
-.productViewSmall [data-bs-target]{
+.productViewSmall [data-bs-target] {
     width: 63px;
     height: 63px;
 }
@@ -257,8 +263,8 @@ h6 {
     }
 }
 
-.contactsButton svg{
-    @include break768{
+.contactsButton svg {
+    @include break768 {
         width: 30px;
         height: 30px;
     }
@@ -282,7 +288,7 @@ h6 {
     border-color: rgb(35 38 47 / 29%);
 }
 
-.additionalInfo{
+.additionalInfo {
     margin-top: 25px;
 }
 
@@ -291,7 +297,7 @@ h6 {
     margin-top: 20px;
     gap: 10px;
     flex-direction: column;
-    border: 2px solid rgba(35,38,47,.1);
+    border: 2px solid rgba(35, 38, 47, 0.1);
     border-radius: 20px;
     padding: 25px;
     align-content: center;
@@ -335,7 +341,7 @@ h6 {
     }
 }
 
-.characteristic h5{
+.characteristic h5 {
     @include break768 {
         font-size: 40px;
         padding-top: 19px;
@@ -363,7 +369,7 @@ h6 {
     }
 }
 
-.description p{
+.description p {
     width: 640px;
 }
 
@@ -397,7 +403,6 @@ h6 {
     width: 100%;
 }
 
-
 .popup_img {
     position: relative;
     margin: 0 auto;
@@ -407,7 +412,7 @@ h6 {
     margin: 1% 0 0 0;
 }
 
-.characteristicBorder{
+.characteristicBorder {
     align-items: center;
     padding: 17px 16px;
     width: 336px;
@@ -421,7 +426,7 @@ h6 {
     flex-direction: column;
     gap: 8px;
     @include break1200 {
-        width: 245px
+        width: 245px;
     }
     @include break768 {
         width: 790px;
@@ -430,12 +435,12 @@ h6 {
     }
 }
 
-.addToFav{
+.addToFav {
     display: flex;
     margin-top: 20px;
     gap: 10px;
     flex-direction: column;
-    border: 2px solid rgba(35,38,47,.1);
+    border: 2px solid rgba(35, 38, 47, 0.1);
     border-radius: 20px;
     padding: 25px;
     align-content: center;
@@ -451,16 +456,16 @@ h6 {
     }
 }
 
-.addToFav button{
+.addToFav button {
     @include break1200 {
         margin-left: 14px;
     }
-    @include break768{
+    @include break768 {
         margin-left: 30px;
     }
 }
 
-.productCartInfo{
+.productCartInfo {
     @include break1200 {
         width: 285px;
     }
@@ -469,18 +474,16 @@ h6 {
     }
 }
 
-.userAvatar{
+.userAvatar {
     @include break768 {
         width: 80px;
         height: 80px;
     }
 }
 
-.characteristicContent{
+.characteristicContent {
     @include break768 {
         display: flex;
         gap: 10px;
     }
 }
-
-
