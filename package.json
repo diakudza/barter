@@ -24,6 +24,7 @@
         "test": "tests"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
         "asynckit": "^0.4.0",
         "bootstrap": "^5.2.0",
         "choices.js": "^10.1.0",
