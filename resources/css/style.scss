@@ -1,9 +1,9 @@
 //Fonts
 @import "fonts";
 
-// vars
+//Vars
 @import "modules/vars";
-// venders
+//Vendors
 @import "modules/vender";
 //Медия запросы
 @import "modules/mixMediaScreens";
@@ -23,8 +23,9 @@
 @import "blocks/profileMenu";
 
 @import "blocks/actions";
+@import "blocks/hero";
 //Блок как это работает
-@import "blocks/howItWork";
+@import "blocks/steps";
 @import "blocks/productsLast";
 @import "blocks/card";
 

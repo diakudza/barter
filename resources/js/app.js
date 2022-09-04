@@ -6,6 +6,7 @@ import "./checkFile";
 
 //Модули
 import { headerJS } from "./navbar";
+import scrollingTop from "./scrollingTop";
 import cutText from "./cutText";
 import searchDropdown from "./searchDropdown";
 import customCheckbox from "./customCheckbox";
@@ -16,6 +17,7 @@ import "./login";
 import chats from "./chats";
 
 //Вызовы модулей
+scrollingTop('.btn-top', '#main');
 cutText();
 headerJS();
 searchDropdown();
