@@ -5,58 +5,73 @@
 @section('content')
 
     <div class="container mt-5 pt-5">
-        <form action="{{ route('adIndex') }}" method="get">
-            @csrf
-            <p>Фильтровать сообщения по:</p>
-            <p>Статус</p>
-            <div class="form-control d-flex flex-column">
-                <div>
-                    <label for="status1">Активно</label>
-                    <input type="checkbox" name="status[]" id="status1" value="1"
-                        @if (isset($filterStatuses) && in_array(1, $filterStatuses)) checked @endif>
+        <div class="row">
+            <form action="{{ route('adIndex') }}" method="get" class="col-9">
+                @csrf
+                <div class="d-flex justify-content-between form-control">
+                    <div class="form-control">
+                        <div class="d-flex flex-column justify-content-between">
+                            <p>Фильтровать сообщения по:</p>
+                            <p>Статус</p>
+                            <div class="d-flex flex-column">
+                                <div>
+                                    <label for="status1">Активно</label>
+                                    <input type="checkbox" name="status[]" id="status1" value="1"
+                                           @if (isset($filterStatuses) && in_array(1, $filterStatuses)) checked @endif>
+                                </div>
+                                <div>
+                                    <label for="status2">Заблокировано</label>
+                                    <input type="checkbox" name="status[]" id="status2" value="2"
+                                           @if (isset($filterStatuses) && in_array(2, $filterStatuses)) checked @endif>
+                                </div>
+                                <div>
+                                    <label for="status3">Удалено</label>
+                                    <input type="checkbox" name="status[]" id="status3" value="3"
+                                           @if (isset($filterStatuses) && in_array(3, $filterStatuses)) checked @endif>
+                                </div>
+                                <div>
+                                    <label for="status4">В архиве</label>
+                                    <input type="checkbox" name="status[]" id="status4" value="4"
+                                           @if (isset($filterStatuses) && in_array(4, $filterStatuses)) checked @endif>
+                                </div>
+                                <div>
+                                    <label for="status5">На модерации</label>
+                                    <input type="checkbox" name="status[]" id="status5" value="5"
+                                           @if (isset($filterStatuses) && in_array(5, $filterStatuses)) checked @endif>
+                                </div>
+                            </div>
+                            <div class="">
+                                <label for="author">Автору (Имя, e-mail)</label>
+                                <input type="text" name="author" id="author"
+                                       @if (isset($searchString)) value="{{ $searchString }}" @endif>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Применить фильтр</button>
+                    </div>
+                    <div class="form-control d-flex flex-column justify-content-between">
+                        <div>
+                            <p>Сортировать по:</p>
+                            <label for="sortByDate">Дате</label>
+                            <select name="sort_by_date" id="sortByDate">
+                                <option value="desc"
+                                        @if (isset($sortByDate) && $sortByDate == 'desc') selected
+                                        @elseif(!isset($sortByDate))
+                                        selected @endif>
+                                    Сначала новые</option>
+                                <option value="asc" @if (isset($sortByDate) && $sortByDate == 'asc') selected @endif>Сначала старые</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-danger">Отсортировать</button>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label for="status2">Заблокировано</label>
-                    <input type="checkbox" name="status[]" id="status2" value="2"
-                        @if (isset($filterStatuses) && in_array(2, $filterStatuses)) checked @endif>
-                </div>
-                <div>
-                    <label for="status3">Удалено</label>
-                    <input type="checkbox" name="status[]" id="status3" value="3"
-                        @if (isset($filterStatuses) && in_array(3, $filterStatuses)) checked @endif>
-                </div>
-                <div>
-                    <label for="status4">В архиве</label>
-                    <input type="checkbox" name="status[]" id="status4" value="4"
-                        @if (isset($filterStatuses) && in_array(4, $filterStatuses)) checked @endif>
-                </div>
-                <div>
-                    <label for="status5">На модерации</label>
-                    <input type="checkbox" name="status[]" id="status5" value="5"
-                        @if (isset($filterStatuses) && in_array(5, $filterStatuses)) checked @endif>
-                </div>
+            </form>
+            <div class="col-3">
+                <a href="{{ route('adIndex') }}" class="btn btn-secondary">Сбросить фильтры и сортировку</a>
             </div>
-            <div class="form-control">
-                <label for="author">Автору (Имя, e-mail)</label>
-                <input type="text" name="author" id="author"
-                    @if (isset($searchString)) value="{{ $searchString }}" @endif>>
-            </div>
-            <button type="submit" class="btn btn-danger">Применить фильтр</button>
-            <p>Сортировать по:</p>
-            <label for="sortByDate">Дате</label>
-            <select name="sort_by_date" id="sortByDate">
-                <option value="desc"
-                    @if (isset($sortByDate) && $sortByDate == 'desc') selected
-                @elseif(!isset($sortByDate))
-                    selected @endif>
-                    Сначала новые</option>
-                <option value="asc" @if (isset($sortByDate) && $sortByDate == 'asc') selected @endif>Сначала старые</option>
-            </select>
-            <div>
-                <button type="submit" class="btn btn-danger">Отсортировать</button>
-            </div>
-        </form>
-        <a href="{{ route('adIndex') }}" class="btn btn-secondary">Сбросить фильтры и сортировку</a>
+
+        </div>
         <table class="table mt-5 w-auto table-bordered">
             <thead>
                 <td>id</td>
