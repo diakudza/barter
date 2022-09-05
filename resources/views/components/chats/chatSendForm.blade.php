@@ -1,15 +1,3 @@
-<!--
-<form class="chats__chat_write" action="{{route('chat.store')}}" method="post">
-    @csrf
-    @method('POST')
-    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-    <input type="hidden" name="chat_id" value="{{ $chatId }}">
-    <input type="hidden" name="destination_id" value="{{$destination_id}}">
-    <input type="text" class="form-control" name="text" placeholder="Введите ваше сообщение">
-    <button class="btn btn-success">отправить</button>
-</form>
--->
-
 <form action="{{route('chat.store')}}" method="POST" class="chats__chat_write">
     @csrf
     @method('POST')
@@ -22,7 +10,6 @@
     </button>
     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
     <input type="hidden" name="chat_id" value="{{ $chatId }}">
-    <input type="hidden" name="destination_id" value="{{$destination_id}}">
     <input class="chats__chat_write-input" type="text" class="form-control" name="text" placeholder="Введите ваше сообщение"/>
     <button class="chats__chat_write-send" type="submit">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
