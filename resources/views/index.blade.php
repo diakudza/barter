@@ -4,7 +4,7 @@
 
 @section('content')
 
-@include('components.hero')
+@include('components.headers.hero')
 
 {{-- Блок как это работает --}}
 {{-- @include('components.headers.steps') --}}

@@ -1,0 +1,13 @@
+.create-ad {
+    &__content {
+      display: grid;
+        grid-template-columns: 900px 310px;
+        column-gap: 64px;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 84px;
+    }
+}
