@@ -43,8 +43,8 @@
                 <ellipse opacity="0.4" cx="9.66766" cy="26" rx="6.66668" ry="1.33334" fill="#9757D7" />
             </svg>
             <div class="characteristicContent">
-                <p>Время до метро</p>
-                <h5>~15 минут</h5>
+                <p>Просмотров:</p>
+                <h5>{{$ad->show_count}}</h5>
             </div>
         </div>
     </div>
