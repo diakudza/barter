@@ -12,7 +12,7 @@
         <div class="change-product__wrapper">
 
             <form action="{{ route('ad.store') }}" class="change-product__form change-form" method="post"
-                  enctype="multipart/form-data">
+                  enctype="multipart/form-data"> @csrf
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                 <div class="change-form__group change-item">
