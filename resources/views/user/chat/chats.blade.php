@@ -3,38 +3,40 @@
 @section('title', 'Ваши сообщения')
 
 @section('content')
-<section class="container">
-    <div class="chats">
-        <div class="chats__back" onclick="closeChat()">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3.54166 10.2287L16.0417 10.2287" stroke="#23262F" stroke-width="1.25001" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M8.58325 15.249L3.54155 10.229L8.58325 5.20813" stroke="#23262F" stroke-width="1.25001" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </div>
-        <div class="chats__list">
-            <div class="chats__list_info">
-                <h3 class="chats__list_info-heading">Чаты <p class="chats__list_info-count">({{$chats->count()}})</p>
-                </h3>
-                <p class="chats__list_info-desc">Здесь находятся все ваши переписки</p>
+    <section class="container">
+        <div class="chats">
+            <div class="chats__back" onclick="closeChat()">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.54166 10.2287L16.0417 10.2287" stroke="#23262F" stroke-width="1.25001" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M8.58325 15.249L3.54155 10.229L8.58325 5.20813" stroke="#23262F" stroke-width="1.25001" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
             </div>
-            <div class="chats__list_search">
-                <div class="chats__list_search-svg"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="9.80548" cy="9.80554" r="7.49048" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M15.0153 15.4043L17.952 18.3334" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg></div>
-                <input class="chats__list_search-input" type="text" placeholder="Люди, чаты, ключевые слова... ">
+            <div class="chats__list">
+                <div class="chats__list_info">
+                    <h3 class="chats__list_info-heading">Чаты <p class="chats__list_info-count">({{$chats->count()}})</p>
+                    </h3>
+                    <p class="chats__list_info-desc">Здесь находятся все ваши переписки</p>
+                </div>
+                <div class="chats__list_search">
+                    <div class="chats__list_search-svg">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="9.80548" cy="9.80554" r="7.49048" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M15.0153 15.4043L17.952 18.3334" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <input class="chats__list_search-input" type="text" placeholder="Люди, чаты, ключевые слова... ">
+                </div>
+                <div class="chats__list_chats">
+                    @if($chats !== null)
+                        @include('components.chats.chatContactList')
+                    @else
+                        <p>Чатов нет</p>
+                    @endif
+                </div>
             </div>
-            <div class="chats__list_chats">
-                @if($chats !== null)
-                    @include('components.chats.chatContactList')
-                @else
-                    <p>Чатов нет</p>
-                @endif
-            </div>
-        </div>
-        <div class="chats__chat">
-            @if(isset($messages))
-                <div class="chats__chat_heading">
+            <div class="chats__chat">
+                @if(isset($messages))
+                    <div class="chats__chat_heading">
 
                         <div class="chats__chat_heading-item">
                             <div class="chats__chat_heading-item_photo">
@@ -59,17 +61,16 @@
                             </div>
                         </div>
 
-                </div>
-                <div class="chats__chat_date">
-                    12 мая
-                </div>
-                <div class="chats__chat_messages">
-                    @include('components.chats.chatMessageList', ['messages' => $messages->messages])
-                </div>
+                    </div>
+                    <div class="chats__chat_date">
+                        12 мая
+                    </div>
+                    <div class="chats__chat_messages">
+                        @include('components.chats.chatMessageList', ['messages' => $messages->messages])
+                    </div>
                     @include('components.chats.chatSendForm')
-            @endif
+                @endif
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 @endsection
