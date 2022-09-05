@@ -60,7 +60,7 @@ class ChatController extends Controller
         $user = User::find(auth()->user()->id);
         $currentUserchat = $user->getChats()->pluck('chat_id')->toArray();
         if (in_array($id, $currentUserchat)) {
-            $chat->messages()->where('user_id','!=', auth()->user()->id)->update(['read' => 1]);
+            $chat->messages()->where('user_id', '!=', auth()->user()->id)->update(['read' => 1]);
             return view('user.chat.chats', [
                 'chats' => auth()->user()->getChats,
                 'messages' => $chat,
@@ -80,8 +80,10 @@ class ChatController extends Controller
         $chatsWithAdUser = $adUser->getChatsWithUser(auth()->user()->id); //чаты у запрошенного юзера
         if (!$chatsWithAdUser->count()) {
             $chatsWithAdUser = $adUser->getChats()->create();
-            DB::table('chat_users')->insert(['chat_id' => $chatsWithAdUser->id,
-                'user_id' => auth()->user()->id]);
+            DB::table('chat_users')->insert([
+                'chat_id' => $chatsWithAdUser->id,
+                'user_id' => auth()->user()->id
+            ]);
             return redirect()->route('chat.show', $chatsWithAdUser->id);
         }
 
@@ -124,11 +126,22 @@ class ChatController extends Controller
 
     public function storeAdComplain(Request $request)
     {
-        //$user = User::findOrFail(Auth::user()->id);
         $ids = [];
         $ids[] = Auth::user()->id;
         $moderators = User::whereRelation('getRole', 'role', 'moderator')->get();
-        dd($moderators);
+        foreach ($moderators as $moderator) {
+            $ids[] = $moderator->id;
+        }
+        //dd($ids);
+        $chats = Chat::whereRelation('users', function ($query) use ($ids) {
+            $query->whereIn('users.id', $ids);
+        })->get();
+        foreach ($chats as $chat) {
+            $tempIds = [];
+            foreach ($chat->users()->select('users.id')->get() as $user) {
+                $tempIds[] = $user->id;
+            };
+            if ($tempIds == $ids) dd($chat->id);
+        }
     }
-
 }
