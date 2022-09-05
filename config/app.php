@@ -55,6 +55,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'dir' => env('APP_DIR', '/var/www/html/barter/'),
 
     'asset_url' => env('ASSET_URL'),
     'data_api' => env('DATA_API'),

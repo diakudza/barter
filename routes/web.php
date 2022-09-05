@@ -93,5 +93,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
     Route::resource('comment', AdminCommentController::class);
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain');
     Route::get('/system', [SysController::class, 'index'])->name('admin.system');
-    Route::post('/system', [SysController::class, 'git'])->name('admin.system.git');
+    Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action');
+
 });
