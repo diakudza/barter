@@ -4,36 +4,40 @@
 
 @section('content')
 
-<section class="container">
-    @include('components.searchForm')
-</section>
+    <section class="container">
+        @include('components.searchForm')
+    </section>
 
-<section class="container search-result">
-    @if (isset($searchResult))
-    <h3 class="search-result__title title">Результаты поиска</h3>
+    <section class="container search-result">
 
-    <div class="search-result__container">
+        @if(!isset($searchResult))
+            <h3 class="search-result__title title">Давайте что-нибудь поищем!</h3>
 
-        @foreach ($searchResult as $item)
+        @elseif(isset($searchResult))
+            <h3 class="search-result__title title">Результаты поиска</h3>
 
-        @include('components.littelCard')
+            <div class="search-result__container">
 
-        @endforeach
+                @foreach ($searchResult as $item)
 
-    </div>
+                    @include('components.cardsTemplate.littelCard')
 
-    @elseif($adsByUserCity)
-    <div>
-        <p class="search-result__title title">Возможно вас заинтересуют объявления в Вашем городе</p>
-        <div class="search-result__container">
-            @foreach ($adsByUserCity as $item)
+                @endforeach
 
-            @include('components.littelCard')
+            </div>
 
-            @endforeach
-        </div>
-    </div>
-    @endif
+        @elseif($adsByUserCity)
 
-</section>
+            <div class="search-result__city">
+                <h3 class="search-result__title title">Возможно вас заинтересуют объявления в Вашем городе</h3>
+
+                <div class="search-result__container">
+                    @foreach ($adsByUserCity as $item)
+                        @include('components.cardsTemplate.littelCard')
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
+    </section>
 @endsection

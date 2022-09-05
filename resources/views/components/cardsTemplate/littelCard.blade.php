@@ -12,12 +12,13 @@
             @endif
 
             @if(auth()->user() && $item['status_id'] !== 4)
-            <div class="card__btn-fav">
+
+            <button class="card__btn-fav btn-reset">
                 <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M14.449 4.1281C14.449 1.83571 12.8818 0.916748 10.6253 0.916748H5.32622C3.13909 0.916748 1.5 1.77305 1.5 3.97522V16.245C1.5 16.8499 2.15079 17.2308 2.67794 16.9351L7.99623 13.9518L13.2686 16.9301C13.7965 17.2275 14.449 16.8465 14.449 16.2409V4.1281Z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M4.89258 6.52342H10.9911" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-            </div>
+            </button>
             @endif
 
             @if(count($item->imageMain))
