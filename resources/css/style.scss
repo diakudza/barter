@@ -27,7 +27,7 @@
 //Блок как это работает
 @import "blocks/steps";
 @import "blocks/productsLast";
-@import "blocks/card";
+@import "blocks/cards/card";
 
 //Стили чекбокса
 @import "blocks/customCheckbox";
@@ -43,6 +43,12 @@
 
 //Стили чата
 @import "blocks/chats";
+//Стили страницы добавления и редактировнаия объявления
+@import "blocks/cards/addAndEditProduct/changeProduct";
+//Стили страницы добавления, превьюха
+@import "blocks/cards/previewCard";
+//Страница избранного
+@import "blocks/wishList";
 
 //Стили footer
 @import "blocks/footer";

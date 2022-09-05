@@ -1,0 +1,48 @@
+.change-product {
+
+    &__heading {
+
+    }
+
+    &__sub-heading {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 110%;
+
+        letter-spacing: -0.03em;
+
+        color: $color-black;
+    }
+
+    &__wrapper {
+       display: grid;
+        grid-template-columns: 1fr 315px;
+        column-gap: 64px;
+    }
+
+    &__form {}
+}
+
+.change-form {
+    &__group{}
+
+    &__btn {
+        width: 100%
+    }
+}
+
+.change-item {
+    margin-bottom: 84px;
+
+    &:last-of-type{
+        margin-bottom: 40px;
+    }
+
+    &__heading {
+        margin-bottom: 24px;
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+    }
+}

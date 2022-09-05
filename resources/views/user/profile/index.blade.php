@@ -13,9 +13,9 @@
             <div class="row gap-5 w-100" style="height: 300px;">
                 <div class="col">
                     <p>Вам понравилось:</p>
-                    <div >
+                    <div>
                         @forelse($wishes as $ad)
-                            @include('components.adCartLKHorizont')
+                            @include('components.cardsTemplate.adCartLKHorizont')
                         @empty
                             Вы пока ничего не добавили
                         @endforelse
@@ -25,7 +25,7 @@
                     <p>В избранном:</p>
                     <div class="overflow-hidden">
                         @forelse($favorites as $ad)
-                            @include('components.adCartLKHorizont')
+                            @include('components.cardsTemplate.adCartLKHorizont')
                         @empty
                             Пока ничего
                         @endforelse
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col d-flex flex-column gap-1">
                     <p>Действия</p>
-                    <a href="{{route ('user.profile.createAd')}}" class="btn btn-info">Новое объявление</a>
+                    <a href="{{ route ('user.profile.createAd' )}}" class="btn btn-info">Новое объявление</a>
                     <a href="{{ route('user.profile.personalData') }}" class="btn btn-info">Изменить данные</a>
                 </div>
 
