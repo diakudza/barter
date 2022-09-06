@@ -6,7 +6,12 @@
                  @endif alt="avatar"
             >
             <div class="chats__list_chats-chat_info">
-                <p class="chats__list_chats-chat_info_name">{{$chat->getUser()->name }}</p>
+                <p class="chats__list_chats-chat_info_name">
+                @if($chat->getUser()->getRole->role == 'moderator')
+                    Переписка с модераторами</p>
+                @else
+                    {{$chat->getUser()->name }}</p>
+                @endif    
                 <p class="chats__list_chats-chat_info_last">
                     Последнее сообщение
                 </p>
