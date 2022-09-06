@@ -1,49 +1,46 @@
-.chats {
+.chats{
     display: flex;
     flex-direction: row;
     gap: 24px;
-
-    &__back {
+    padding: 24px;
+    border: 1px solid rgba(35, 38, 47, 0.05);
+    &__back{
         display: none;
     }
-
-    &__list {
+    &__list{
         display: flex;
         flex-direction: column;
         gap: 24px;
-        border: 1px solid rgba(35, 38, 47, 0.05);
+        padding-right: 24px;
+        border-right: 1px solid rgba(35, 38, 47, 0.05);
         min-height: 500px;
-
-        &_info {
-            &-heading {
+        &_info{
+            &-heading{
                 font-weight: 500;
                 font-size: 48px;
                 line-height: 110%;
                 text-align: center;
                 letter-spacing: -0.03em;
-                color: #23262f;
+                color: #23262F;
                 display: flex;
                 flex-direction: row;
-                gap: 8px;
+                gap: 8px
             }
-
-            &-count {
+            &-count{
                 color: rgba(35, 38, 47, 0.6);
             }
-
-            &-desc {
+            &-desc{
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 19px;
                 color: rgba(35, 38, 47, 0.6);
             }
         }
-
-        &_search {
+        &_search{
             width: 100%;
             max-width: 392px;
             height: 54px;
-            background: #f4f5f6;
+            background: #F4F5F6;
             border: 1px solid rgba(35, 38, 47, 0.05);
             border-radius: 8px;
             display: flex;
@@ -52,103 +49,89 @@
             justify-content: center;
             gap: 16px;
             padding: 0 16px;
-
-            &-svg {
+            &-svg{
                 padding-right: 16px;
                 border-right: 1px solid rgba(35, 38, 47, 0.05);
             }
-
-            &-input {
+            &-input{
                 width: 100%;
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 100%;
-                color: #23262f;
-                background-color: rgba(0, 0, 0, 0);
+                color: #23262F;
+                background-color: rgba(0,0,0,0);
                 border: none;
                 outline: none;
             }
         }
-
-        &_chats {
+        &_chats{
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
-
-            &-chat {
+            &-chat{
                 cursor: pointer;
                 width: 392px;
                 height: 80px;
                 padding: 0 12px;
                 display: flex;
-                justify-content: center;
                 align-items: center;
                 gap: 12px;
-
-                &:not(last-child) {
+                &:not(last-child){
                     border-bottom: 1px solid rgba(35, 38, 47, 0.05);
                 }
-
-                &_avatar {
+                &_avatar{
                     height: 48px;
                     width: 48px;
                     border-radius: 32px;
                     background-color: gray;
                 }
-
-                &_info {
+                &_info{
                     display: flex;
                     flex-direction: column;
                     gap: 8px;
-
-                    &_name {
+                    width: 100%;
+                    max-width: 296px;
+                    &_name{
                         font-weight: 500;
                         font-size: 20px;
                         line-height: 100%;
-                        color: #23262f;
+                        color: #23262F;
                     }
-
-                    &_last {
+                    &_last{
                         font-weight: 400;
                         font-size: 14px;
                         line-height: 100%;
                         color: rgba(35, 38, 47, 0.6);
                     }
                 }
-
-                &_check {
+                &_check{
                     display: flex;
                     flex-direction: column;
                     gap: 8px;
                     justify-content: right;
                     align-items: end;
-
-                    &_time {
+                    &_time{
                         font-weight: 500;
                         font-size: 14px;
                         line-height: 100%;
                         letter-spacing: 0.05em;
                         color: rgba(35, 38, 47, 0.6);
                     }
+                    &_read{
 
-                    // &_read{
-
-                    // }
+                    }
                 }
             }
         }
     }
-
-    &__chat {
-        border: 1px solid rgba(35, 38, 47, 0.05);
+    &__chat{
         width: 100%;
         display: flex;
         flex-direction: column;
         gap: 12px;
         justify-content: space-between;
-
-        &_heading {
+        &_heading{
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -156,67 +139,57 @@
             height: 64px;
             padding: 16px 24px;
             border-bottom: 1px solid rgba(35, 38, 47, 0.05);
-
-            &-item {
+            &-item{
                 display: flex;
                 flex-direction: row;
                 gap: 20px;
                 align-items: center;
-
-                &_photo {
+                &_photo{
                     width: 64px;
                     height: 64px;
                     border-radius: 4px;
                     background-color: grey;
                 }
-
-                &_info {
+                &_info{
                     display: flex;
                     flex-direction: column;
                     gap: 4px;
                 }
-
-                &_cost {
+                &_cost{
                     font-weight: 500;
                     font-size: 20px;
                     line-height: 100%;
-                    color: #23262f;
+                    color: #23262F;
                 }
-
-                &_title {
+                &_title{
                     font-weight: 400;
                     font-size: 14px;
                     line-height: 100%;
                     color: rgba(35, 38, 47, 0.6);
                 }
             }
-
-            &-profile {
+            &-profile{
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 gap: 12px;
-
-                &_avatar {
+                &_avatar{
                     height: 48px;
                     width: 48px;
                     border-radius: 32px;
                     background-color: grey;
                 }
-
-                &_info {
+                &_info{
                     display: flex;
                     flex-direction: column;
                     gap: 4px;
-
-                    &_name {
+                    &_name{
                         font-weight: 500;
                         font-size: 20px;
                         line-height: 100%;
-                        color: #23262f;
+                        color: #23262F;
                     }
-
-                    &_online {
+                    &_online{
                         font-weight: 400;
                         font-size: 14px;
                         line-height: 100%;
@@ -225,8 +198,7 @@
                 }
             }
         }
-
-        &_date {
+        &_date{
             width: 100%;
             font-weight: 500;
             font-size: 14px;
@@ -234,47 +206,46 @@
             text-align: center;
             color: rgba(35, 38, 47, 0.6);
         }
-
-        &_messages {
+        &_messages{
             display: flex;
             flex-direction: column;
             gap: 32px;
             padding: 24px;
-
             &-item {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
                 width: 100%;
                 align-items: start;
-
                 &_heading {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
                     gap: 12px;
                 }
-
                 &_avatar {
                     width: 48px;
                     height: 48px;
                     border-radius: 32px;
                     background-color: grey;
                 }
-
                 &_info {
                     display: flex;
                     flex-direction: column;
                     gap: 8px;
+                    padding: 16px 24px;
+                    &-row{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
                 }
-
                 &_name {
                     font-weight: 400;
                     font-size: 18px;
                     line-height: 100%;
                     color: #000000;
                 }
-
                 &_time {
                     font-weight: 400;
                     font-size: 12px;
@@ -285,39 +256,29 @@
 
                 &_message {
                     width: 403px;
-                    background: #f4f5f6;
+                    background: #F4F5F6;
                     border-radius: 24px;
                     font-weight: 500;
                     font-size: 14px;
                     line-height: 24px;
                     color: #000;
-
-                    & p {
-                        padding: 16px 24px;
-                    }
                 }
-
                 &_i {
                     display: flex;
                     flex-direction: column;
                     gap: 8px;
                     width: 100%;
                     align-items: end;
-
                     &_message {
                         width: 403px;
-                        background: #315df7;
+                        background: #315DF7;
                         border-radius: 24px;
                         color: #fff;
-                        & p {
-                            padding: 16px 24px;
-                        }
                     }
                 }
             }
         }
-
-        &_write {
+        &_write{
             height: 64px;
             background: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(35, 38, 47, 0.05);
@@ -328,31 +289,30 @@
             align-items: center;
             justify-content: space-between;
             gap: 32px;
-
-            &-attach,
-            &-send {
+            &-attach,&-send{
+                border: none;
+                outline: none;
                 cursor: pointer;
-                transition: transform 0.3s linear;
-                &:hover {
-                    transition: transform 0.3s linear;
+                transition: transform .3s linear;
+                &:hover{
+                    transition: transform .3s linear;
                     transform: scale(1.1);
                 }
             }
-
-            &-input {
+            &-input{
                 width: 100%;
                 border: none;
                 outline: none;
-                background-color: rgba(0, 0, 0, 0);
+                background-color: rgba(0,0,0,0);
             }
         }
     }
 }
 
-@media screen and (min-width: 320px) and (max-width: 1140px) {
-    .chats {
+@media screen and (min-width: 320px) and (max-width: 1140px){
+    .chats{
         flex-direction: column;
-        &__back {
+        &__back{
             cursor: pointer;
             height: 48px;
             width: 48px;
@@ -361,18 +321,15 @@
             justify-content: center;
             align-items: center;
         }
-
-        &__list {
+        &__list{
             align-items: center;
-
-            &_info {
-                &-heading {
+            &_info{
+                &-heading{
                     font-size: 32px;
                 }
             }
-
-            &_chats {
-                &-chat {
+            &_chats{
+                &-chat{
                     width: 100%;
                     max-width: 390px;
                     padding: 0 6px;
@@ -380,27 +337,22 @@
                 }
             }
         }
-
-        &__chat {
+        &__chat{
             display: none;
-
-            &_heading {
+            &_heading{
                 padding: 0;
             }
-
-            &_messages {
+            &_messages{
                 padding: 0;
                 align-items: center;
                 gap: 16px;
-
-                &-item {
-                    &_message {
+                &-item{
+                    &_message{
                         width: 100%;
                         max-width: 350px;
                     }
-
-                    &_i {
-                        &_message {
+                    &_i{
+                        &_message{
                             width: 100%;
                             max-width: 350px;
                         }
@@ -410,13 +362,12 @@
         }
     }
 }
-
-@media screen and (min-width: 320px) and (max-width: 389px) {
-    .chats {
-        &__list {
-            &_chats {
-                &-chat {
-                    &_avatar {
+@media screen and (min-width: 320px) and (max-width: 389px){
+    .chats{
+        &__list{
+            &_chats{
+                &-chat{
+                    &_avatar{
                         display: none;
                     }
                 }
@@ -433,3 +384,7 @@
         }
     }
 }
+
+
+
+

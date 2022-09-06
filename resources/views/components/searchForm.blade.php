@@ -77,7 +77,7 @@
         </button>
     </div>
 
-    <div class="seacrh-from__bottom-container">
+    <div class="search-from__bottom-container">
         <div class="search-from__item">
             <label for="check" class="search__checkbox">
                 <label class="checkbox ">
@@ -99,10 +99,10 @@
         </div>
     </div>
 
-    <!-- @if(session('alert'))
-    <div class="alert-danger">
-        {{ session('alert') }}
-    </div>
-    @endif -->
+{{--     @if(session('alert'))--}}
+{{--        <div class="alert-danger">--}}
+{{--            {{ session('alert') }}--}}
+{{--        </div>--}}
+{{--    @endif--}}
 
 </form>

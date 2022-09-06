@@ -4,9 +4,9 @@
 
 @section('content')
 
-    <section class="container">
+    <section class="container productCartContainer">
 
-        <div id="Product-big" class="mb-5">
+            <div id="product-big" class="mb-5">
 
             <h2 class="productName">{{ Str::limit($ad->title, 65) }}</h2>
 
@@ -132,136 +132,71 @@
             <div id="productCart" class="productCart">
 
                 <div class="productImg">
-                    @if ($ad->images && count($ad->images) >= 1)
+                    @if($ad->images && count($ad->images) >= 1)
                         <div id="carouselExampleIndicators" class="carousel slide productImgCarousel h-100"
-                            data-bs-ride="true">
+                             data-bs-ride="true">
                             <div class="carousel-inner h-100">
                                 <div class="productViewBig h-100">
                                     <div class="carousel-item active h-100">
                                         <img class="image modalWindow d-block w-100"
-                                            src="{{ Storage::url($ad->images[0]->path) }}" alt="...">
+                                             src="{{ Storage::url($ad->images[0]->path) }}" alt="...">
                                     </div>
 
-                                    @foreach ($ad->images as $image)
+                                    @foreach($ad->images as $image)
                                         @if ($loop->first)
                                             @continue
                                         @endif
                                         <div class="carousel-item h-100">
                                             <img class="image modalWindow d-block w-100"
-                                                src="{{ Storage::url($image->path) }}" alt="...">
+                                                 src="{{ Storage::url($image->path) }}" alt="...">
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
 
                             <div class="carousel-indicators productViewSmall">
-                                @foreach ($ad->images as $image)
+                                @foreach($ad->images as $image)
                                     @if ($loop->first)
                                         <img src="{{ Storage::url($image->path) }}"
-                                            data-bs-target="#carouselExampleIndicators"
-                                            data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true"
-                                            aria-label="Slide {{ $loop->iteration }}">
+                                             data-bs-target="#carouselExampleIndicators"
+                                             data-bs-slide-to="{{ $loop->index }}" class="active" aria-current="true"
+                                             aria-label="Slide {{ $loop->iteration }}">
                                         @continue
                                     @endif
                                     <img src="{{ Storage::url($image->path) }}"
-                                        data-bs-target="#carouselExampleIndicators"
-                                        data-bs-slide-to="{{ $loop->index }}"
-                                        aria-label="Slide {{ $loop->iteration }}">
+                                         data-bs-target="#carouselExampleIndicators"
+                                         data-bs-slide-to="{{ $loop->index }}"
+                                         aria-label="Slide {{ $loop->iteration }}">
                                 @endforeach
                             </div>
 
                             <button class="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
 
                             <button class="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
                     @else
+
                         <div class="productViewBig h-100">
-                            <img class="h-100" src="{{ asset('images/150.png') }}" alt="no-image">
+                            <img class="h-100" src="{{ asset('images/150.png' )}}" alt="no-image">
                         </div>
                     @endif
                 </div>
-
-                @include('components.adContactCart')
-
-            </div>
-        </div>
-
-        <div class="productInfo">
-
-            <div class="characteristic">
-                <svg width="30" height="22" viewBox="0 0 30 22" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M14.9325 14.3866C10.3325 14.3866 6.45117 15.1383 6.45117 18.0393C6.45117 20.9415 10.3575 21.6667 14.9325 21.6667C19.5325 21.6667 23.4138 20.9151 23.4138 18.0141C23.4138 15.1118 19.5074 14.3866 14.9325 14.3866Z"
-                        fill="#315DF7" />
-                    <path opacity="0.4"
-                        d="M14.9317 11.6228C18.0466 11.6228 20.5442 9.11083 20.5442 5.97808C20.5442 2.84413 18.0466 0.333374 14.9317 0.333374C11.8169 0.333374 9.31934 2.84413 9.31934 5.97808C9.31934 9.11083 11.8169 11.6228 14.9317 11.6228Z"
-                        fill="#315DF7" />
-                    <path opacity="0.4"
-                        d="M27.1171 7.29233C27.923 4.12236 25.5603 1.27539 22.5517 1.27539C22.2246 1.27539 21.9118 1.31141 21.6062 1.37265C21.5656 1.38226 21.5202 1.40267 21.4964 1.43869C21.4689 1.48432 21.4892 1.54556 21.519 1.58518C22.4228 2.86038 22.9421 4.41294 22.9421 6.07958C22.9421 7.67657 22.4658 9.1655 21.6301 10.4011C21.5441 10.5283 21.6205 10.7 21.7721 10.7265C21.9823 10.7637 22.1972 10.7829 22.4168 10.7889C24.6076 10.8465 26.5739 9.42846 27.1171 7.29233Z"
-                        fill="#315DF7" />
-                    <path
-                        d="M29.4135 14.756C29.0124 13.8963 28.0442 13.3067 26.5721 13.0173C25.8773 12.8468 23.9969 12.6067 22.2479 12.6391C22.2216 12.6427 22.2073 12.6607 22.2049 12.6727C22.2013 12.6895 22.2085 12.7183 22.2431 12.7363C23.0514 13.1386 26.1758 14.8881 25.783 18.578C25.7663 18.7377 25.894 18.8758 26.0528 18.8517C26.8216 18.7413 28.7999 18.3138 29.4135 16.9822C29.7526 16.2785 29.7526 15.4608 29.4135 14.756Z"
-                        fill="#315DF7" />
-                    <path opacity="0.4"
-                        d="M8.39411 1.37302C8.08967 1.31058 7.77568 1.27576 7.44856 1.27576C4.43999 1.27576 2.07732 4.12273 2.88437 7.2927C3.42639 9.42883 5.39271 10.8469 7.58347 10.7893C7.80314 10.7833 8.01923 10.7629 8.22816 10.7268C8.37978 10.7004 8.45619 10.5287 8.37023 10.4014C7.53452 9.16466 7.05816 7.67694 7.05816 6.07994C7.05816 4.41211 7.57869 2.85954 8.48246 1.58555C8.51111 1.54592 8.5326 1.48469 8.50395 1.43906C8.48007 1.40184 8.43589 1.38262 8.39411 1.37302Z"
-                        fill="#315DF7" />
-                    <path
-                        d="M3.4294 13.0171C1.95736 13.3064 0.990317 13.896 0.589175 14.7557C0.248921 15.4606 0.248921 16.2783 0.589175 16.9831C1.20283 18.3135 3.18108 18.7422 3.94993 18.8515C4.10872 18.8755 4.23527 18.7386 4.21856 18.5777C3.82577 14.889 6.95014 13.1395 7.75959 12.7373C7.79302 12.7181 7.80018 12.6905 7.7966 12.6724C7.79421 12.6604 7.78108 12.6424 7.75481 12.64C6.00459 12.6064 4.12543 12.8466 3.4294 13.0171Z"
-                        fill="#315DF7" />
-                </svg>
-                <div>
-                    <p>Пожелали:</p>
-                    <h5>
-                        @if ($inwishlist)
-                            {{ $inwishlist }}
-                        @else
-                            0
-                        @endif
-                    </h5>
+                <div class="productCartInfo">
+                    @include('components.productCartBig.adContactCart')
+                    @if (auth()->user())
+                        @include('components.productCartBig.addToFavCart')
+                        @include('components.productCartBig.productInfo')
+                    @endif
                 </div>
-            </div>
 
-            <div class="characteristic">
-                <svg width="21" height="21" viewBox="0 0 12 12" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M9.45203 7.35331C9.30094 7.49973 9.23153 7.71148 9.26594 7.91915L9.78453 10.7891C9.82828 11.0324 9.72561 11.2786 9.52203 11.4191C9.32253 11.565 9.05711 11.5825 8.83953 11.4658L6.25594 10.1183C6.16611 10.0705 6.06636 10.0448 5.96428 10.0419H5.80619C5.75136 10.0501 5.69769 10.0676 5.64869 10.0944L3.06453 11.4483C2.93678 11.5125 2.79211 11.5352 2.65036 11.5125C2.30503 11.4471 2.07461 11.1181 2.13119 10.7711L2.65036 7.90106C2.68478 7.69165 2.61536 7.47873 2.46428 7.32998L0.35786 5.28831C0.181693 5.1174 0.120443 4.86073 0.200943 4.62915C0.27911 4.39815 0.47861 4.22956 0.719527 4.19165L3.61869 3.77106C3.83919 3.74831 4.03286 3.61415 4.13203 3.41581L5.40953 0.796646C5.43986 0.738313 5.47894 0.684646 5.52619 0.639146L5.57869 0.598313C5.60611 0.56798 5.63761 0.542896 5.67261 0.52248L5.73619 0.499146L5.83536 0.458313H6.08094C6.30028 0.481063 6.49336 0.612313 6.59428 0.808313L7.88869 3.41581C7.98203 3.60656 8.16344 3.73898 8.37286 3.77106L11.272 4.19165C11.517 4.22665 11.7218 4.39581 11.8029 4.62915C11.8793 4.86306 11.8134 5.11973 11.6337 5.28831L9.45203 7.35331Z"
-                        fill="#F6BF4D" />
-                </svg>
-                <div>
-                    <p>Добавили в избранное:</p>
-                    <h5>
-                        @if ($infavorites)
-                            {{ $infavorites }}
-                        @else
-                            0
-                        @endif
-                    </h5>
-                </div>
-            </div>
-
-            <div class="characteristic">
-                <svg width="19" height="28" viewBox="0 0 19 28" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M5.04282 1.91566C7.95597 0.222991 11.5367 0.252576 14.4225 1.99315C17.28 3.76918 19.0166 6.93887 19.0005 10.3486C18.934 13.7359 17.0717 16.92 14.744 19.3814C13.4005 20.8085 11.8975 22.0704 10.2658 23.1414C10.0977 23.2386 9.91367 23.3036 9.72265 23.3333C9.5388 23.3255 9.35976 23.2712 9.20167 23.1753C6.71056 21.5661 4.52511 19.512 2.75043 17.1119C1.26544 15.1085 0.421765 12.688 0.333986 10.1792C0.332058 6.76296 2.12968 3.60832 5.04282 1.91566ZM6.72621 11.593C7.21624 12.8011 8.37291 13.5891 9.65614 13.5891C10.4968 13.5951 11.3049 13.2584 11.9004 12.6539C12.4959 12.0495 12.8293 11.2275 12.8263 10.3712C12.8308 9.06402 12.0613 7.88306 10.877 7.37967C9.69276 6.87628 8.32739 7.14977 7.41842 8.07244C6.50945 8.9951 6.23618 10.3849 6.72621 11.593Z"
-                        fill="#9757D7" />
-                    <ellipse opacity="0.4" cx="9.66766" cy="26" rx="6.66668" ry="1.33334"
-                        fill="#9757D7" />
-                </svg>
-                <div>
-                    <p>Время до метро</p>
-                    <h5>~15 минут</h5>
-                </div>
             </div>
         </div>
 
@@ -269,8 +204,7 @@
             <h2>Описание</h2>
             <p> {{ $ad['text'] }} </p>
         </div>
-        <a href="{{ route('complainAd', $ad->id) }}" class="link-danger fs-4">Пожаловаться на это
-            объявление</a>
-        </div>
 
-    @endsection
+    </section>
+
+@endsection

@@ -55,7 +55,7 @@ class AdController extends Controller
                 $ad->images()->save($image);
             }
 
-            return redirect()->route('searchPage')->with('success', 'Объявление успешно отправлено на модерацию. После одобрения модераторм его статус изменится на активно!');
+            return redirect()->route('user.profile.listAds')->with('success', 'Объявление успешно отправлено на модерацию. После одобрения модераторм его статус изменится на активно!');
         } else {
             return back()->with('error');
         }
