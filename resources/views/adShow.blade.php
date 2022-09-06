@@ -85,6 +85,7 @@
             <h2>Описание</h2>
             <p> {{ $ad['text'] }} </p>
         </div>
+        <a href="{{ route('complainAd', $ad->id) }}" class="link-danger fs-4">Пожаловаться на это объявление</a>
 
     </section>
 
