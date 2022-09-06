@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Services\ChatService;
 
 class ChatController extends Controller
 {
@@ -124,24 +125,39 @@ class ChatController extends Controller
         //
     }
 
-    public function storeAdComplain(Request $request)
+    public function storeAdComplain(Request $request, ChatService $chatService)
     {
-        $ids = [];
-        $ids[] = Auth::user()->id;
-        $moderators = User::whereRelation('getRole', 'role', 'moderator')->get();
-        foreach ($moderators as $moderator) {
-            $ids[] = $moderator->id;
-        }
-        //dd($ids);
-        $chats = Chat::whereRelation('users', function ($query) use ($ids) {
-            $query->whereIn('users.id', $ids);
-        })->get();
-        foreach ($chats as $chat) {
-            $tempIds = [];
-            foreach ($chat->users()->select('users.id')->get() as $user) {
-                $tempIds[] = $user->id;
-            };
-            if ($tempIds == $ids) dd($chat->id);
-        }
+        $chatId = $chatService->getChatWithModerators(Auth::user()->id);
+        $message = new Message([
+            'chat_id' => $chatId,
+            'user_id' => Auth::user()->id,
+            'text' => 'Пользователь '.Auth::user()->name.' создал жалобу на объявление с номером '.$request->ad_id.' следующего содержания: "'.$request->text.'"',
+        ]);
+        $message->save();
+        return redirect()->route('chat.index');
+    }
+
+    public function storeUserComplain(Request $request, ChatService $chatService)
+    {
+        $chatId = $chatService->getChatWithModerators(Auth::user()->id);
+        $message = new Message([
+            'chat_id' => $chatId,
+            'user_id' => Auth::user()->id,
+            'text' => 'Пользователь '.Auth::user()->name.' создал жалобу на пользователя с номером '.$request->user_id.' следующего содержания: "'.$request->text.'"',
+        ]);
+        $message->save();
+        return redirect()->route('chat.index');
+    }
+
+    public function storeSupportTicket(Request $request, ChatService $chatService)
+    {
+        $chatId = $chatService->getChatWithModerators(Auth::user()->id);
+        $message = new Message([
+            'chat_id' => $chatId,
+            'user_id' => Auth::user()->id,
+            'text' => 'Пользователь '.Auth::user()->name.' создал заявку в техподдержку следующего содержания: "'.$request->text.'"',
+        ]);
+        $message->save();
+        return redirect()->route('chat.index');
     }
 }

@@ -12,7 +12,10 @@
                 <p @if (isset($chatId) && $chat->id == $chatId) class="fw-bold"@endif>
 
                     @if( $chat->getUser())
-                        {{$chat->getUser()->name }}
+                        @if($chat->getUser()->getRole->role == 'moderator')
+                            Переписка с модераторами
+                        @else {{$chat->getUser()->name }}
+                        @endif
 
                         @if (count($chat->getUnreadMessages))
                             <span>NEW</span>

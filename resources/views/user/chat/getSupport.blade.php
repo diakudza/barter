@@ -7,7 +7,7 @@
     <div class="container">
         <h3>Обращение в службу поддержки</h3>
         @include('components.chats.complainForm', [
-            'route' => '#',
+            'route' => route('storeSupportTicket'),
             'inputName' => '',
             'inputValue' => '',
         ])
