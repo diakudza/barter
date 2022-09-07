@@ -14,42 +14,61 @@ class SysController extends Controller
 
     public function index(Request $request)
     {
-        return view('Admin.System');
+        $process = Process::fromShellCommandline("git ls-remote | awk '{print $2}'");
+        $process->run();
+        $currentBranch = Process::fromShellCommandline("git branch | awk '/^\*/{print $2}' | tr -d '[:space:]' ");
+        $currentBranch->run();
+        $currentBranch = $currentBranch->getOutput();
+        $filtered = array_filter(explode("\n", $process->getOutput()), function ($s) {
+            return strripos($s, 'refs/heads/') === 0;
+        });
+        $branchList = array_map(fn ($s) =>mb_substr($s, 11), $filtered);
+
+        return view('Admin.System', [
+            'branchList' => $branchList,
+            'currentBranch' => $currentBranch,
+            ]);
     }
 
-    public function action($action)
+    public function action($action, Request $request)
     {
         echo $dir = config('app.dir');
 
         switch ($action) {
             case ('git'):
-                $process = Process::fromShellCommandline('/usr/bin/git pull');
+                $process = Process::fromShellCommandline('../bash/git.sh');
+                session(['git' => 1]);
                 break;
+            case ('gitcheckout'):
+                $branch = $request->input('branch');
+                $process = Process::fromShellCommandline("git checkout ${branch}");
+                return redirect()->back();
+
             case  ('migrate'):
-//                $process = Process::fromShellCommandline('/var/www/html/barter/vendor/bin/sail');
-                $process = new Process(["whoami"]);
-                // session(['migrate' => Artisan::call('migrate') ? 0 : 1]);
-                break;
-            case  ('composer'):
-                $process = Process::fromShellCommandline('/usr/bin/composer');
-//                session(['migrate' => Artisan::call('custom:composer') ? 0 : 1]);
+                $process = Process::fromShellCommandline('../bash/migrate.sh');
                 session(['migrate' => 1]);
                 break;
-            case  ('npmbuild'):
-                session(['migrate' => Artisan::call('custom:npmbuild') ? 0 : 1]);
+            case  ('composer'):
+                $process = Process::fromShellCommandline('../bash/composer.sh');
+                session(['composer' => 1]);
                 break;
+            case  ('npmbuild'):
+                $process = Process::fromShellCommandline('../bash/npmbuild.sh');
+                break;
+            case  ('maintenance'):
+                $a = app()->isDownForMaintenance();
+                $action = (app()->isDownForMaintenance()) ? 'up' : 'down';
+                Artisan::call($action);
+                return redirect()->back();
         }
 
         try {
             $process->mustRun();
-
-            dd($process->getOutput());
+            return redirect()->back()->with('text', $process->getOutput());
 
         } catch (ProcessFailedException $exception) {
-            dd($exception->getMessage());
+            return redirect()->back()->with('text', $exception->getMessage());;
         }
-
-        return redirect()->back();
     }
 
 }
