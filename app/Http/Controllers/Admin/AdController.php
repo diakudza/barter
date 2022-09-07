@@ -15,9 +15,9 @@ class AdController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index(Ad $ad, 
-        AdStatus $statuses, 
-        \App\Models\Category $categories, 
+    public function index(Ad $ad,
+        AdStatus $statuses,
+        \App\Models\Category $categories,
         Request $request,
         QueryBuilderAds $adsList)
     {
@@ -89,7 +89,7 @@ class AdController extends Controller
     {
         $ad->fill($request->all());
         $ad->update();
-        return redirect()->back()->with('success', 'Обновил обьявление');
+        return redirect()->back()->with('success', 'Обновил объявление');
     }
 
     /**
@@ -101,6 +101,6 @@ class AdController extends Controller
     public function destroy(Ad $ad)
     {
         $ad->deleteOrFail();
-        return redirect()->back()->with('success', 'Обьявление удалено!');
+        return redirect()->back()->with('success', 'Объявление удалено!');
     }
 }

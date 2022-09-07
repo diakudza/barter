@@ -32,18 +32,17 @@ class SysController extends Controller
 
     public function action($action, Request $request)
     {
-        echo $dir = config('app.dir');
+        $dir = config('app.dir');
 
         switch ($action) {
             case ('git'):
-                $process = Process::fromShellCommandline('../bash/git.sh');
+                $process = Process::fromShellCommandline("../bash/git.sh ${dir}");
                 session(['git' => 1]);
                 break;
             case ('gitcheckout'):
                 $branch = $request->input('branch');
                 $process = Process::fromShellCommandline("git checkout ${branch}");
-                return redirect()->back();
-
+                break;
             case  ('migrate'):
                 $process = Process::fromShellCommandline('../bash/migrate.sh');
                 session(['migrate' => 1]);
