@@ -10,6 +10,7 @@ use App\Http\Controllers\AdUserFavorites;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserProfileController;
@@ -52,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::resource('wishlist', WishlistController::class);
     Route::resource('favorite', AdUserFavorites::class);
     Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
+    Route::post('storeAdComplain', [ChatController::class, 'storeAdComplain'])->name('storeAdComplain');
+    Route::post('storeUserComplain', [ChatController::class, 'storeUserComplain'])->name('storeUserComplain');
+    Route::post('storeSupportTicket', [ChatController::class, 'storeSupportTicket'])->name('storeSupportTicket');
     Route::resource('chat', ChatController::class);
 });
 
@@ -73,6 +77,12 @@ Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for a
     Route::controller(UserProfileController::class)->group(function () {
         Route::get('/personal', 'index')->name('user.profile'); // Personal area - main page
         Route::get('/createAd', 'createAd')->name('user.profile.createAd'); // Personal area - create ad
+    });
+
+    Route::controller(ComplainController::class)->group(function () {
+        Route::get('/complainAd/{id}', 'createAdComplain')->name('complainAd');
+        Route::get('/complainUser/{id}', 'createUserComplain')->name('complainUser');
+        Route::get('/getSupport', 'createSupportTicket')->name('getSupport');
     });
 });
 
