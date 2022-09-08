@@ -23,7 +23,7 @@ class MainController extends Controller
             session(['userCity' => $userCity]);
         }
 
-        if (!session()->has('showCityChoice') && !session('showCityChoice')) {
+        if (!session()->has('showCityChoice') && !session('showCityChoice') && $userCity) {
             if (stripos(Auth::user()->city()->first()->name, 'Москва') === false) {
                 session(['showCityChoice'=> true]);
             } else {
