@@ -190,4 +190,9 @@ class User extends Authenticatable
         return $this->reviews()->count();
     }
 
+    public function commands()
+    {
+        return $this->hasMany(AdminCommand::class);
+    }
+
 }
