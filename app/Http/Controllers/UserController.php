@@ -32,7 +32,10 @@ class UserController extends Controller
             'password' => $request->password
         ])) {
             $user = Auth::user();
-            $user->update(['login_time' => now(),'ip' => $request->ip()]);
+            $user->update(['login_time' => now(), 'ip' => $request->ip()]);
+            if (app()->isDownForMaintenance() && in_array(Auth::user()->getRole->role, ['admin', 'developer'])) {
+                return redirect()->route('adminmain');
+            }
             if (Auth::user()->status_id == 2) {
                 $user->update(['logout_time' => now()]);
                 Auth::logout();

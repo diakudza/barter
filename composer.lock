@@ -232,6 +232,7 @@
         },
         {
             "name": "doctrine/dbal",
+
             "version": "3.4.4",
             "source": {
                 "type": "git",
