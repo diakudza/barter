@@ -36,7 +36,29 @@ class UpdateRequest extends FormRequest
             'status_id' => ['required', 'integer', 'exists:ad_statuses,id'],
             'image' => ['image'],
             'imageMain' => ['integer', 'exists:images,id'],
-            'removeImage' => ['array']
+            'removeImage' => ['array'],
+            'barter_title' => [
+                'required_if:barter_type,barter',
+                'prohibited_if:barter_type,free',
+                'string',
+                'min:3',
+                'max:255',
+                'nullable',
+            ],
+            'barter_text' => [
+                'required_if:barter_type,barter',
+                'prohibited_if:barter_type,free',
+                'string',
+                'min:3',
+                'nullable',
+            ],
+            'barter_category_id' => [
+                'required_if:barter_type,barter',
+                'prohibited_if:barter_type,free',
+                'integer',
+                'exists:categories,id',
+                'nullable',
+            ],
         ];
     }
 }

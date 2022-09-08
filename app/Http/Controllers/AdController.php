@@ -123,7 +123,7 @@ class AdController extends Controller
      */
     public function update(UpdateRequest $request, Ad $ad, ImageService $imageService)
     {
-        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id', 'user_id']);
+        $validated = $request->safe()->except(['imageMain', 'removeImage', 'image']);
         $imageData = $request->safe()->only(['imageMain', 'removeImage']);
         $imageService->updateExistingAdImage($imageData);
         if ($request->hasFile('image')) {
