@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\ProcessService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -13,20 +14,17 @@ class SysController extends Controller
 
     public function index(Request $request)
     {
-        $process = Process::fromShellCommandline("git ls-remote | awk '{print $2}'");
-        $process->run();
-        $currentBranch = Process::fromShellCommandline("git branch | awk '/^\*/{print $2}' | tr -d '[:space:]' ");
-        $currentBranch->run();
-        $currentBranch = $currentBranch->getOutput();
-        $filtered = array_filter(explode("\n", $process->getOutput()), function ($s) {
-            return strripos($s, 'refs/heads/') === 0;
+        $dir = config('app.dir');
+        $allBranch = ProcessService::run("git branch -r", $dir);
+        $currentBranch = ProcessService::run("git branch | awk '/^\*/{print $2}' | tr -d '[:space:]' ", $dir);
+        $filtered = array_filter(explode("\n", $allBranch[0]), function ($s) {
+            return strripos($s, '  origin/') === 0;
         });
-        $branchList = array_map(fn ($s) =>mb_substr($s, 11), $filtered);
-
+        $branchList = array_map(fn($s) => mb_substr($s, 9), $filtered);
         return view('Admin.System', [
             'branchList' => $branchList,
-            'currentBranch' => $currentBranch,
-            ]);
+            'currentBranch' => $currentBranch[0],
+        ]);
     }
 
     public function action($action, Request $request)
@@ -63,7 +61,6 @@ class SysController extends Controller
                 $process = Process::fromShellCommandline("bash/npminstall.sh", $dir);
                 break;
             case  ('maintenance'):
-                $a = app()->isDownForMaintenance();
                 $action = (app()->isDownForMaintenance()) ? 'up' : 'down';
                 Artisan::call($action);
                 return redirect()->back();
