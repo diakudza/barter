@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="change-form__group change-item">
-                    <h4 class="change-item__heading change-product__sub-heading">Тип объявление</h4>
+                    <h4 class="change-item__heading change-product__sub-heading">Тип объявления</h4>
 
                     <div class="change-item__type item-type__list">
                         <div class="item-type__item">
@@ -66,10 +66,29 @@
                                    value="barter">
                         </div>
 
-                        <div class="item-type__item">
+                        <div class="change-item__item">
                             <label class="change-item__label" for="barter_for">Обменяю на</label>
-                            <input class="change-item__input input" type="text" name="barter_for"
+                            <input class="change-item__input input" type="text" name="barter_title"
                                    id="barter_for" placeholder="Пример: Поменять на стол">
+                        </div>
+                        <div class="change-item__item">
+                            <label class="change-item__label" for="barter_text">Описание того, что Вы бы хотели</label>
+                            <textarea class="change-item__input input input__textarea" name="barter_text" id="barter_text" rows="3">{{ old('barter_text') }}</textarea>
+                        </div>
+                        <div class="change-item__item">
+                            <label class="change-item__label" for="barter_category_id">Категория обменивамого</label>
+                            <select class="change-item__create-select" aria-label="категория вещей"
+                                    data-class="change-item__category" name="barter_category_id" id="barter_category_id">
+                                <option value="" selected>Выберите категорию</option>
+
+                                @foreach ($categoriesList as $category)
+                                    <option value="{{ $category->id }}"
+                                            @if (old('barter_category_id')) @if (old('barter_category_id')==$category->id) selected @endif @endif>
+                                        {{ $category->title }}
+                                    </option>
+                                @endforeach
+
+                            </select>
                         </div>
                     </div>
                 </div>
