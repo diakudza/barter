@@ -17,7 +17,7 @@ class AdminCommand extends Model
 
     public function getLastCommands()
     {
-        return $this->with('user')->limit(10)->get();
+        return $this->with('user')->orderBy('created_at', 'DESC')->limit(10)->get();
     }
 
     public function user()
