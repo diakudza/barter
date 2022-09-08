@@ -11,7 +11,6 @@ use Symfony\Component\Process\Process;
 class SysController extends Controller
 {
 
-
     public function index(Request $request)
     {
         $process = Process::fromShellCommandline("git ls-remote | awk '{print $2}'");
@@ -33,26 +32,35 @@ class SysController extends Controller
     public function action($action, Request $request)
     {
         $dir = config('app.dir');
-
         switch ($action) {
             case ('git'):
-                $process = Process::fromShellCommandline("../bash/git.sh ${dir}");
+                $process = Process::fromShellCommandline("git pull", $dir);
                 session(['git' => 1]);
                 break;
             case ('gitcheckout'):
                 $branch = $request->input('branch');
-                $process = Process::fromShellCommandline("git checkout ${branch}");
+                $process = Process::fromShellCommandline("git checkout ${branch}", $dir);
+                break;
+            case ('gitreset'):
+                $process = Process::fromShellCommandline("git reset --hard HEAD", $dir);
                 break;
             case  ('migrate'):
-                $process = Process::fromShellCommandline('../bash/migrate.sh');
+                $process = Process::fromShellCommandline("php artisan migrate", $dir);
                 session(['migrate' => 1]);
                 break;
-            case  ('composer'):
-                $process = Process::fromShellCommandline('../bash/composer.sh');
-                session(['composer' => 1]);
+            case  ('composerinstall'):
+                $process = Process::fromShellCommandline("/usr/bin/composer install", $dir);
+                session(['composerinstall' => 1]);
+                break;
+            case  ('composerupdate'):
+                $process = Process::fromShellCommandline("/usr/bin/composer update", $dir);
+                session(['composerupdate' => 1]);
                 break;
             case  ('npmbuild'):
-                $process = Process::fromShellCommandline('../bash/npmbuild.sh');
+                $process = Process::fromShellCommandline("bash/npmbuild.sh", $dir);
+                break;
+            case  ('npminstall'):
+                $process = Process::fromShellCommandline("bash/npminstall.sh", $dir);
                 break;
             case  ('maintenance'):
                 $a = app()->isDownForMaintenance();

@@ -25,6 +25,9 @@
                         <a href="{{route('admin.system.action', 'git')}}"
                            class="btn @if((session()->has('git') && session()->get('git'))) btn-success @else btn-blue @endif">git
                             pull</a>
+                        <a href="{{route('admin.system.action', 'gitreset')}}"
+                           class="btn @if((session()->has('git') && session()->get('git'))) btn-success @else btn-blue @endif">git
+                            reset</a>
                     </div>
                     <div class="form-control">
                         <p>Миграции</p>
@@ -36,11 +39,11 @@
                     <div class="form-control">
                         <p>Composer</p>
                         <div>
-                            <a href="{{route('admin.system.action', 'composer')}}"
-                               class="btn @if((session()->has('composer') && session()->get('composer'))) btn-success @else btn-blue @endif">composer
+                            <a href="{{route('admin.system.action', 'composerinstall')}}"
+                               class="btn @if((session()->has('composerinstall') && session()->get('composerinstall'))) btn-success @else btn-blue @endif">composer
                                 install</a>
-                            <a href="{{route('admin.system.action', 'composer')}}"
-                               class="btn @if((session()->has('composer') && session()->get('composer'))) btn-success @else btn-blue @endif">composer
+                            <a href="{{route('admin.system.action', 'composerupdate')}}"
+                               class="btn @if((session()->has('composerupdate') && session()->get('composerupdate'))) btn-success @else btn-blue @endif">composer
                                 update</a>
                         </div>
                     </div>
