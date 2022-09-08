@@ -195,4 +195,9 @@ class User extends Authenticatable
         return $this->belongsTo(City::class);
     }
 
+    public function commands()
+    {
+        return $this->hasMany(AdminCommand::class);
+    }
+
 }
