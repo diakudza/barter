@@ -52,6 +52,13 @@
                         </svg>
                         Дата создания: {{ $ad->getCreatedDate() }}
                     </p>
+                    @if ($ad->barter_type == 'barter')
+                    <div>
+                        <p>Обмен на {{$ad->barter_title}}</p>
+                        <p>Комментарии к обмену: {{$ad->barter_text}}</p>
+                        <p>Категория обмениваемого: {{$ad->barterCategory->title}}</p>
+                    </div>
+                    @endif
                 </div>
 
                 <div class="add">

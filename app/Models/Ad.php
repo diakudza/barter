@@ -25,6 +25,12 @@ class Ad extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function barterCategory()
+    {
+        return $this->belongsTo(Category::class, 'barter_category_id', 'id');
+    }
+
+
     public function User()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
