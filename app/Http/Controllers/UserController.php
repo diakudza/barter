@@ -32,12 +32,14 @@ class UserController extends Controller
             'password' => $request->password
         ])) {
             $user = Auth::user();
-            $user->update(['login_time' => now(), 'ip' => $request->ip()]);
+
+
+            $user->update(['login_time' => now(), 'ip' => $request->ip(), 'online' => 1]);
             if (app()->isDownForMaintenance() && in_array(Auth::user()->getRole->role, ['admin', 'developer'])) {
                 return redirect()->route('adminmain');
             }
             if (Auth::user()->status_id == 2) {
-                $user->update(['logout_time' => now()]);
+                $user->update(['logout_time' => now(), 'online' => 0]);
                 Auth::logout();
                 return redirect()->route('home')
                     ->with('fail', 'Данный пользователь не может войти в системы, так-как был заблокирован!');
@@ -62,7 +64,7 @@ class UserController extends Controller
     public function logout(Request $request, User $user)
     {
         $user = Auth::user();
-        $user->update(['logout_time' => now()]);
+        $user->update(['logout_time' => now(), 'online' => 0]);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
