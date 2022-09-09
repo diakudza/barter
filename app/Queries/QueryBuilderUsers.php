@@ -21,7 +21,7 @@ class QueryBuilderUsers extends QueryBuilderBase implements QueryBuilder
         return $this->model::with(['avatar'])->findOrFail($userId);
     }
 
-    public function getAdminUsersByFilter(User $user, $status, $role, $searchUser, $isOnline): LengthAwarePaginator
+    public function getAdminUsersByFilter(User $user, $status, $role, $searchUser, $online): LengthAwarePaginator
     {
         $users = $user
             ->when($searchUser, function ($query, $searchUser) {
@@ -38,8 +38,8 @@ class QueryBuilderUsers extends QueryBuilderBase implements QueryBuilder
             ->when($role, function ($query, $role) {
                 $query->whereIn('role_id', $role);
             })
-            ->when($role, function ($query, $isOnline) {
-                $query->whereIn('online', $isOnline);
+            ->when($online, function ($query, $online) {
+                $query->where('online', $online);
             })
             ->paginate(20)
             ->withQueryString();

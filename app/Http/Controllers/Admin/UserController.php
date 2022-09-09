@@ -22,7 +22,7 @@ class UserController extends Controller
         $role = $request->input('role');
         $searchUser = $request->input('user');
         $online = $request->input('online');
-        $users = $usersList->getAdminUsersByFilter($user, $status, $role, $searchUser,$online);
+        $users = $usersList->getAdminUsersByFilter($user, $status, $role, $searchUser, $online);
 
         return view('Admin.Users', [
             'users' => $users,
