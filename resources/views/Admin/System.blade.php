@@ -8,7 +8,7 @@
         <div class="d-flex flex-column ">
 
             <p>Раздел администрирование сайта</p>
-            <div class="d-flex justify-content-between">
+            <div style="height: 650px;" class="d-flex justify-content-between">
                 <div class="d-flex flex-column">
                     <div class="form-control">
                         <p>репозиторий</p>
@@ -58,15 +58,28 @@
                             session()->get('npmbuild'))) btn-success @else btn-blue @endif">npm_install</a>
                         </div>
                     </div>
+                    <div class="form-control d-flex justify-content-center">
+                        <a href="{{route('admin.system.action', 'maintenance')}}" class="btn btn-danger">
+                            @if(!app()->isDownForMaintenance())Включить @else Выключить @endif режим
+                            обслуживания</a>
+                    </div>
                 </div>
-                <div class="d-flex flex-column col-6">
-                    <textarea class="w-100" rows="20"> @if (session('text')) {{session('text')}} @endif</textarea>
+                <div class="d-flex flex-column col-8  overflow-scroll">
+                    <div class="w-100" >
+                        @forelse($consoleHistory as $command)
+                            <div class="border border-1 @if($command->status) bg-light bg-gradient @else bg-danger bg-gradient @endif">
+                                <p>{{$command->created_at}} </p>
+                                <p>{{$command->user->name}}$ {{$command->command}}</p>
+                                <p>{{$command->output}}</p>
+                            </div>
+                        @empty
+                            <div>
+                                <p>Команды не выполнялись!</p>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
-                <div class="d-flex flex-column">
-                    <a href="{{route('admin.system.action', 'maintenance')}}" class="btn btn-danger">
-                        @if(!app()->isDownForMaintenance())Включить @else Выключить @endif режим
-                        обслуживания</a>
-                </div>
+
             </div>
         </div>
 
