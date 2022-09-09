@@ -33,6 +33,7 @@ class User extends Authenticatable
         'login_time',
         'logout_time',
         'ip',
+        'online'
     ];
 
     /**
