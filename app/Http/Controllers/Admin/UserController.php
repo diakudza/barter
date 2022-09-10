@@ -24,7 +24,7 @@ class UserController extends Controller
         $online = $request->input('online');
         $users = $usersList->getAdminUsersByFilter($user, $status, $role, $searchUser, $online);
 
-        return view('Admin.Users', [
+        return view('admin.users', [
             'users' => $users,
             'roles' => $roles->all(),
             'statuses' => $statuses->all(),
@@ -64,7 +64,7 @@ class UserController extends Controller
      */
     public function show(User $user, UserRole $roles)
     {
-        return view('Admin.User', [
+        return view('admin.user', [
             'user' => $user,
             'roles' => $roles->all()
         ]);

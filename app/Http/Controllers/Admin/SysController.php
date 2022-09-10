@@ -23,7 +23,7 @@ class SysController extends Controller
             return strripos($s, '  origin/') === 0;
         });
         $branchList = array_map(fn($s) => mb_substr($s, 9), $filtered);
-        return view('Admin.System', [
+        return view('admin.system', [
             'consoleHistory' => $adminCommand->getLastCommands(),
             'branchList' => $branchList,
             'currentBranch' => $currentBranch[0],

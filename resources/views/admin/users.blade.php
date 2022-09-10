@@ -8,35 +8,8 @@
 
         <form class="formFilter" action="{{ route('user.index') }}" method="get">
             @csrf
-<<<<<<< HEAD
-            <h5>Фильтровать пользователей по:</h5>
-            <p>Статус</p>
-            <div class="form-control d-flex flex-column">
-                <div>
-                    <label for="status1">Активен</label>
-                    <input type="checkbox" name="status[]" id="status1" value="1"
-                        @if (isset($filterStatuses) && in_array(1, $filterStatuses)) checked @endif>
-                </div>
-                <div>
-                    <label for="status2">Заблокирован</label>
-                    <input type="checkbox" name="status[]" id="status2" value="2"
-                        @if (isset($filterStatuses) && in_array(2, $filterStatuses)) checked @endif>
-                </div>
-            </div>
-            <p>Роль</p>
-            <div class="form-control d-flex flex-column">
-                <div>
-                    <label for="role1">Пользователь</label>
-                    <input type="checkbox" name="role[]" id="role1" value="1"
-                        @if (isset($filterRoles) && in_array(1, $filterRoles)) checked @endif>
-                </div>
-                <div>
-                    <label for="role2">Модератор</label>
-                    <input type="checkbox" name="role[]" id="role2" value="2"
-                        @if (isset($filterRoles) && in_array(2, $filterRoles)) checked @endif>
-=======
-            <p>Фильтровать пользователей по:</p>
 
+            <p>Фильтровать пользователей по:</p>
 
             <div class="d-flex w-100">
                 <div class="form-control d-flex flex-column">
@@ -62,7 +35,7 @@
                         <input type="text" name="user" id="user"
                                @if (isset($searchString)) value="{{ $searchString }}" @endif>
                     </div>
->>>>>>> dev
+
                 </div>
 
                 <div class="form-control d-flex flex-column ">
@@ -94,7 +67,7 @@
                     <a href="{{ route('user.index') }}" class="btn btn-secondary">Сбросить фильтры</a>
                 </div>
             </div>
-<<<<<<< HEAD
+
             <div class="form-control">
                 <label for="user">Имя, e-mail</label>
                 <input type="text" name="user" id="user"
@@ -106,30 +79,19 @@
             <a href="{{ route('user.index') }}" class="btn btn-secondary bthChange">
                 <p>Сбросить фильтры</p>
             </a>
-=======
 
-
->>>>>>> dev
         </form>
 
         <table class="table mt-5 w-100 table-bordered">
             <thead>
-<<<<<<< HEAD
+
                 <td>id</td>
                 <td>Имя</td>
                 <td>Почта</td>
                 <td>Действия</td>
                 <td>Статус</td>
                 <td>Действие</td>
-=======
-            <td>id</td>
-            <td>Имя</td>
-            <td>Почта</td>
-            <td>Действия</td>
-            <td>статус</td>
-            <td></td>
 
->>>>>>> dev
             </thead>
             @foreach ($users as $user)
                 <tr @if ($user->status_id == 2) class='border-danger' @endif>

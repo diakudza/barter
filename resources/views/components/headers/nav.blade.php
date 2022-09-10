@@ -14,12 +14,6 @@
       <a href="{{ route('about') }}" class="nav-menu__link">О проекте</a>
     </li>
 
-    @if(auth()->user() && in_array(auth()->user()->getRole->role , ['admin', 'developer']))
-    <li @if (Route::currentRouteNamed("adminmain")) class="nav-menu__item active" @endif class="nav-menu__item">
-      <a href="{{ route('adminmain') }}" class="nav-menu__link">Админ панель</a>
-    </li>
-    @endif
-
   </ul>
 
 </nav>

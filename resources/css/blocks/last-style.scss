@@ -425,51 +425,51 @@ a:hover {
 /*****************/
 /*    Hero     */
 /*****************/
-.hero {
-    position: relative;
-    overflow: hidden;
-    background-color: #ffffff;
-    text-align: center;
-}
+//.hero {
+//    position: relative;
+//    overflow: hidden;
+//    background-color: #ffffff;
+//    text-align: center;
+//}
 
-.hero .decoration-star {
-    position: absolute;
-    top: 80px;
-    left: -100px;
-    width: 200px;
-    opacity: 0.7;
-}
+//.hero .decoration-star {
+//    position: absolute;
+//    top: 80px;
+//    left: -100px;
+//    width: 200px;
+//    opacity: 0.7;
+//}
 
-.hero .decoration-star-2 {
-    position: absolute;
-    top: 80px;
-    right: -100px;
-    width: 200px;
-    opacity: 0.7;
-}
+//.hero .decoration-star-2 {
+//    position: absolute;
+//    top: 80px;
+//    right: -100px;
+//    width: 200px;
+//    opacity: 0.7;
+//}
 
-.hero div[class*="col"] {
-    /* selects all elements which have classes starting with col */
-    /* needed so that the absolute positioned decoration stays behind */
-    position: relative;
-}
-
-.hero .h1-large {
-    margin-bottom: 1.75rem;
-    font-size: 3rem;
-    line-height: 3.5rem;
-}
-
-.hero .p-large {
-    margin-bottom: 2.25rem;
-}
-
-.hero .btn-solid-lg,
-.hero .btn-outline-lg {
-    margin-right: 0.25rem;
-    margin-bottom: 1.25rem;
-    margin-left: 0.25rem;
-}
+//.hero div[class*="col"] {
+//    /* selects all elements which have classes starting with col */
+//    /* needed so that the absolute positioned decoration stays behind */
+//    position: relative;
+//}
+//
+//.hero .h1-large {
+//    margin-bottom: 1.75rem;
+//    font-size: 3rem;
+//    line-height: 3.5rem;
+//}
+//
+//.hero .p-large {
+//    margin-bottom: 2.25rem;
+//}
+//
+//.hero .btn-solid-lg,
+//.hero .btn-outline-lg {
+//    margin-right: 0.25rem;
+//    margin-bottom: 1.25rem;
+//    margin-left: 0.25rem;
+//}
 
 // .hero .image-container {
 //     margin-top: 5rem;
@@ -1457,7 +1457,7 @@ a:hover {
 		left: -250px;
 		width: 600px;
 	}
-	
+
 
 	.hero .decoration-star-2 {
 

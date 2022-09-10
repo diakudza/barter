@@ -8,8 +8,14 @@
 
         <h2 class="change-product__heading heading">Добавить новое объявление</h2>
         <div class="line"></div>
+{{--{{dd() }}--}}
 
+{{--        @if($ad->user->avatar()->first())--}}
+{{--            src="{{Storage::url($user->avatar()->first()->path)}}"--}}
+{{--        @else--}}
         <div class="change-product__wrapper">
+
+{{--            <img src="{{Storage::url($user->avatar()->first()->path)}}" alt="">--}}
 
             <form action="{{ route('ad.store') }}" class="change-product__form change-form" method="post"
                   enctype="multipart/form-data"> @csrf
@@ -140,11 +146,11 @@
                         <div class="preview-card__bottom">
                             <div class="preview-card__author">
                                 <div class="preview-card__author-img">
-                                    <img class="author-img" src="https://via.placeholder.com/40x40" alt="Автор"
-                                         title="Автор">
+{{--                                    Добавить если нет фото аватарки--}}
+                                    <img class="author-img" src="{{ Storage::url(auth()->user()->avatar()->first()->path) }}" alt="{{ Auth::user()->name }}" title="{{ Auth::user()->name }}">
                                 </div>
 
-                                <p class="preview-card__author-name">Автор</p>
+                                <p class="preview-card__author-name">{{ Auth::user()->name }}</p>
                             </div>
 
                             <div class="preview-card__add">
