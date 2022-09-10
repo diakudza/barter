@@ -85,7 +85,13 @@
             @foreach ($ads as $ad)
                 <tr>
                     <td class="">{{ $ad['id'] }}</td>
-                    <td><a href="{{ route('ad.show', $ad['id']) }}"> {{ $ad['title'] }}</td>
+                    <td><a href="{{ route('ad.show', $ad['id']) }}"> {{ $ad['title'] }}
+                            @if(count($ad->imageMain))
+                                <div class="productViewBig">
+                                    <img src="{{ Storage::url($ad->imageMain[0]->path) }}" height="50" alt="image">
+                                </div>
+                        @endif
+                    </td>
                     <td>{{ $ad['text'] }}</td>
                     <td>{{ $ad->user->name }}</td>
                     <td>
@@ -132,6 +138,7 @@
                             @csrf
                             <Button class="btn btn-danger">Удалить</Button>
                         </form>
+                        <a href="{{ route('user.profile.editAd', ['ad' => $ad->id , 'fromadmin' => 1]) }}" class="btn  btn-outline-secondary">Редак.</a>
                     </td>
 
                 </tr>
