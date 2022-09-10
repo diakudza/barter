@@ -32,8 +32,8 @@
                     <div class="form-control">
                         <p>Миграции</p>
                         <div>
-                        <a href="{{route('admin.system.action', 'migrate')}}"
-                           class="btn @if((session()->has('migrate') && session()->get('migrate'))) btn-success @else btn-blue @endif">migrate</a>
+                            <a href="{{route('admin.system.action', 'migrate')}}"
+                               class="btn @if((session()->has('migrate') && session()->get('migrate'))) btn-success @else btn-blue @endif">migrate</a>
                         </div>
                     </div>
                     <div class="form-control">
@@ -58,6 +58,24 @@
                             session()->get('npmbuild'))) btn-success @else btn-blue @endif">npm_install</a>
                         </div>
                     </div>
+                    <div class="form-control">
+                        <p>Бэкапы</p>
+                        <div>
+                            <div class="d-flex">
+                                <a href="{{route('admin.system.action', 'mysqldump')}}"
+                                   class="btn @if((session()->has('mysqldump') &&
+                            session()->get('mysqldump'))) btn-success @else btn-blue @endif">make dump</a>
+
+                                <a href="{{Storage::url('backup/dump.sql')}}" class="btn">get dump.sql</a>
+                            </div>
+                            <div>
+                                <a href="{{route('admin.system.action', 'backupstorage')}}"
+                                   class="btn @if((session()->has('backupstorage') &&
+                            session()->get('backupstorage'))) btn-success @else btn-blue @endif">backupstorage</a>
+                                <a href=" {{ Storage::url('backup/backupstorage.tar.gz')}}" class="btn">get backup</a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-control d-flex justify-content-center">
                         <a href="{{route('admin.system.action', 'maintenance')}}" class="btn btn-danger">
                             @if(!app()->isDownForMaintenance())Включить @else Выключить @endif режим
@@ -65,9 +83,10 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column col-8  overflow-scroll">
-                    <div class="w-100" >
+                    <div class="w-100">
                         @forelse($consoleHistory as $command)
-                            <div class="border border-1 @if($command->status) bg-light bg-gradient @else bg-danger bg-gradient @endif">
+                            <div
+                                class="border border-1 @if($command->status) bg-light bg-gradient @else bg-danger bg-gradient @endif">
                                 <p>{{$command->created_at}} </p>
                                 <p>{{$command->user->name}}$ {{$command->command}}</p>
                                 <p>{{$command->output}}</p>
