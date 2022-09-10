@@ -7,11 +7,11 @@
             >
             <div class="chats__list_chats-chat_info">
                 <p class="chats__list_chats-chat_info_name">
-                @if($chat->getUser()->getRole->role == 'moderator')
+                @if($chat->getUser()->getRole() == 'moderator')
                     Переписка с модераторами</p>
                 @else
                     {{$chat->getUser()->name }}</p>
-                @endif    
+                @endif
                 <p class="chats__list_chats-chat_info_last">
                     Последнее сообщение
                 </p>

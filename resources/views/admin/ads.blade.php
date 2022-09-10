@@ -93,7 +93,13 @@
             @foreach ($ads as $ad)
                 <tr>
                     <td class="">{{ $ad['id'] }}</td>
-                    <td><a href="{{ route('ad.show', $ad['id']) }}"> {{ $ad['title'] }}</td>
+                    <td><a href="{{ route('ad.show', $ad['id']) }}"> {{ $ad['title'] }}
+                            @if(count($ad->imageMain))
+                                <div class="productViewBig">
+                                    <img src="{{ Storage::url($ad->imageMain[0]->path) }}" height="50" alt="image">
+                                </div>
+                        @endif
+                    </td>
                     <td>{{ $ad['text'] }}</td>
                     <td>{{ $ad->user->name }}</td>
                     <td>
@@ -155,6 +161,7 @@
                                 <svg class="svgAdmin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><path xmlns="http://www.w3.org/2000/svg" d="M21,4H17.9A5.009,5.009,0,0,0,13,0H11A5.009,5.009,0,0,0,6.1,4H3A1,1,0,0,0,3,6H4V19a5.006,5.006,0,0,0,5,5h6a5.006,5.006,0,0,0,5-5V6h1a1,1,0,0,0,0-2ZM11,2h2a3.006,3.006,0,0,1,2.829,2H8.171A3.006,3.006,0,0,1,11,2Zm7,17a3,3,0,0,1-3,3H9a3,3,0,0,1-3-3V6H18Z" fill="#f9fcff" data-original="#000000"/><path xmlns="http://www.w3.org/2000/svg" d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18Z" fill="#f9fcff" data-original="#000000"/><path xmlns="http://www.w3.org/2000/svg" d="M14,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z" fill="#f9fcff" data-original="#000000"/></g></svg>
                             </Button>
                         </form>
+                        <a href="{{ route('user.profile.editAd', ['ad' => $ad->id , 'fromadmin' => 1]) }}" class="btn  btn-outline-secondary">Редак.</a>
                     </td>
                 </tr>
             @endforeach
