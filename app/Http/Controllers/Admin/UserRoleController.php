@@ -20,7 +20,7 @@ class UserRoleController extends Controller
 
             $usersByRole = $user->getByRole($request->input('role_id'));
 
-        return view('Admin.Roles', [
+        return view('admin.roles', [
             'roles' => $roles->all(),
             'usersByRole' => $usersByRole ?? null
         ]);

@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index(\App\Models\Category $category)
     {
-        return view('Admin.Categories', ['categories' => $category->all()]);
+        return view('admin.categories', ['categories' => $category->all()]);
     }
 
     /**
@@ -59,11 +59,10 @@ class CategoryController extends Controller
      */
     public function edit(\App\Models\Category $category)
     {
-        return view('Admin.Categories', [
+        return view('admin.categories', [
             'categories' => $category->all(),
             'editedCategory' => $category->id,
             'route' => route('category.update', $category->id),
-
         ]);
     }
 

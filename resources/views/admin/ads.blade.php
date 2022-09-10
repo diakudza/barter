@@ -1,6 +1,6 @@
-@extends('components.admin_base')
+{{--@extends('components.admin_base')--}}
 
-@section('title', 'Объявления')
+{{--@section('title', 'Объявления')--}}
 
 @section('content')
 
@@ -78,6 +78,7 @@
             </div>
 
         </div>
+
         <table class="table mt-5 w-auto table-bordered">
             <thead class="tableHeader">
                 <td>id</td>
@@ -88,6 +89,7 @@
                 <td>Статус</td>
                 <td>Действия</td>
             </thead>
+
             @foreach ($ads as $ad)
                 <tr>
                     <td class="">{{ $ad['id'] }}</td>
@@ -145,7 +147,6 @@
                             </form>
                         @endif
                     </td>
-
                     <td class="d-flex flex-row">
                         <form action="{{ route('adDestroy', $ad['id']) }}" method="post">
                             @method('DELETE')
@@ -155,10 +156,10 @@
                             </Button>
                         </form>
                     </td>
-
                 </tr>
             @endforeach
         </table>
+
         <div class="d-flex">
             {!! $ads->links() !!}
         </div>
