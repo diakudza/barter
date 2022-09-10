@@ -13,7 +13,7 @@
             <p>Дата регистрации: {{ $user->created_at }} </p>
             <p>Последний раз был в сети: {{ $user->login_time }} </p>
             <p>IP: {{ $user->ip }} </p>
-            <p>Роль: {{ $user->getRole->role }} </p>
+            <p>Роль: {{ $user->getRole() }} </p>
 
             <p>Обьявления: </p>
         </div>

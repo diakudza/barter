@@ -6,10 +6,12 @@
 
 <div class="container">
     <h3>Страница редактирования объявления</h3>
-
     <form action="{{ route('ad.update', $ad->id) }}" method="post" enctype="multipart/form-data" class="form-1">
         @csrf
         @method('put')
+        @if($fromAdmin)
+            <input type="hidden" name="fromAdmin" value="1">
+        @endif
         <div class="row">
             <div class="w-50">
                 <div class="form-group">

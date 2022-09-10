@@ -37,8 +37,8 @@ class AdController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\Ads\StoreRequest  $request
-     * @param  App\Services\UploadService $uploadService
+     * @param App\Http\Requests\Ads\StoreRequest $request
+     * @param App\Services\UploadService $uploadService
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request, ImageService $imageService)
@@ -64,7 +64,7 @@ class AdController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Ad $ad, AdUser $adUser, AdUserFavorite $favorite)
@@ -105,7 +105,7 @@ class AdController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -116,14 +116,14 @@ class AdController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  App\Http\Requests\Ads\UpdateRequest  $request
+     * @param App\Http\Requests\Ads\UpdateRequest $request
      * @param App\Models\Ad $ad
-     * @param  App\Services\ImageService $imageService
+     * @param App\Services\ImageService $imageService
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Ad $ad, ImageService $imageService)
     {
-        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id', 'user_id']);
+        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id', 'user_id', 'fromAdmin']);
         $imageData = $request->safe()->only(['imageMain', 'removeImage']);
         $imageService->updateExistingAdImage($imageData);
         if ($request->hasFile('image')) {
@@ -134,7 +134,12 @@ class AdController extends Controller
             if (isset($image)) {
                 $ad->images()->save($image);
             }
-            return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно обновлено!');
+            if ($validated['fromAdmin']) {
+                $route = 'adIndex';
+            } else {
+                $route = 'user.profile.listAds';
+            }
+            return redirect()->route($route)->with('success', 'Объявление успешно обновлено!');
         } else {
             return back()->with('fail', 'Ошибка обновления объявления!');
         }
@@ -143,7 +148,7 @@ class AdController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Ad $ad
+     * @param Ad $ad
      * @return \Illuminate\Http\Response
      */
     public function destroy(Ad $ad)
@@ -151,7 +156,7 @@ class AdController extends Controller
         $deletedStatus = AdStatus::where('title', 'deleted')->get()->first()->id;
         $ad->status_id = $deletedStatus;
         if ($ad->save()) {
-            return redirect()->route('user.profile.listAds')->with('success', 'Обявление успешно удалено!');
+            return redirect()->route('user.profile.listAds')->with('success', 'Объявление успешно удалено!');
         } else {
             return back()->with('fail', 'Ошибка удаления объявления!');
         }

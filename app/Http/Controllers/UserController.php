@@ -35,7 +35,7 @@ class UserController extends Controller
 
 
             $user->update(['login_time' => now(), 'ip' => $request->ip(), 'online' => 1]);
-            if (app()->isDownForMaintenance() && in_array(Auth::user()->getRole->role, ['admin', 'developer'])) {
+            if (app()->isDownForMaintenance() && in_array(Auth::user()->getRole(), ['admin', 'developer'])) {
                 return redirect()->route('adminmain');
             }
             if (Auth::user()->status_id == 2) {
