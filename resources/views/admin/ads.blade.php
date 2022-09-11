@@ -1,6 +1,6 @@
-{{--@extends('components.admin_base')--}}
+@extends('components.admin_base')
 
-{{--@section('title', 'Объявления')--}}
+@section('title', 'Объявления')
 
 @section('content')
 
