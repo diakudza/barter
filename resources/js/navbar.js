@@ -7,8 +7,6 @@ export const headerJS = () => {
     document.addEventListener("click", (e) => {
         const target = e.target;
 
-        console.log(target);
-
         if (target.closest(".btn-toggel")) {
             burgerBtn.classList.toggle("active");
             navMenu.classList.toggle("show");
@@ -24,3 +22,4 @@ export const headerJS = () => {
         // }
     });
 };
+

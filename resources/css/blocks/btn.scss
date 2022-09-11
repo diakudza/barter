@@ -38,6 +38,43 @@
         }
     }
 
+    &-del {
+        color: $color-red;
+
+        border: 1px solid $color-red;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg > path {
+            stroke: $color-red;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-red;
+
+            svg > path {
+                stroke: white;
+            }
+        }
+    }
+
+    &-black {
+        color: white;
+
+        border: 1px solid $color-black;
+        background-color: $color-black;
+
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            color: $color-black;
+            background-color: white;
+        }
+    }
+
     //Кнопка бургера
     &-toggel {
         position: relative;
@@ -150,7 +187,6 @@
             }
         }
     }
-
 
     @include break992 {
         font-size: 15px;
