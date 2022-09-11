@@ -59,6 +59,12 @@ class SysController extends Controller
             case ('npminstall'):
                 $cmd = "bash/npminstall.sh";
                 break;
+            case ('mysqldump'):
+                $cmd = "bash/mysqldump.sh";
+                break;
+            case ('backupstorage'):
+                $cmd = "bash/storagebackup.sh";
+                break;
             case ('maintenance'):
                 $action = (app()->isDownForMaintenance()) ? 'up' : 'down';
                 Artisan::call($action);

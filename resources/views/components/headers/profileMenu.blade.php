@@ -4,7 +4,7 @@
             <li class="profile-menu__item">Посмотреть профиль</li>
         </a>
 
-        @if(auth()->user() && in_array(auth()->user()->getRole->role , ['admin', 'developer']))
+        @if(auth()->user() && in_array(auth()->user()->getRole() , ['admin', 'developer']))
             <a href="{{ route('adminmain') }}">
                 <li class="profile-menu__item profile-menu__item--admin">
                 <span>
