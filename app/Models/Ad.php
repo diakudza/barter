@@ -16,7 +16,7 @@ class Ad extends Model
 
     public function getCreatedDate()
     {
-        return $this->created_at->format('d/m/Y');
+        return $this->created_at->format('d.m.Y');
     }
 
     public function Category()

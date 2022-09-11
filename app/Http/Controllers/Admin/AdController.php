@@ -25,7 +25,7 @@ class AdController extends Controller
         $sortByDate = $request->input('sort_by_date');
         $author = $request->input('author');
         $ads = $adsList->getAdminAdsByFilter($ad, $status, $author, $sortByDate);
-        return view('Admin.Ads', [
+        return view('admin.ads', [
             'ads' => $ads,
             'statuses' => $statuses->all(),
             'categories' => $categories->all(),
@@ -64,7 +64,7 @@ class AdController extends Controller
      */
     public function show(Ad $ad)
     {
-        return view('Admin.Ad', ['ad' => $ad]);
+        return view('admin.ad', ['ad' => $ad]);
     }
 
     /**

@@ -15,5 +15,11 @@ export const headerJS = () => {
         if (target.closest(".top-profile__avatar")) {
             profileBody.classList.toggle("show");
         }
+
+        // if (target.closest('#main') || target.closest('#header')) {
+        //     console.log(target);
+        //     profileBody.classList.remove("show");
+        // }
     });
 };
+

@@ -75,8 +75,12 @@
         font-size: 16px;
         line-height: 100%;
 
-        color: $color-black40;
+        color: rgba($color-black, 0.4);
         transition: all 0.4s ease-in-out;
+
+        &:hover{
+            color: rgba($color-black, 0.6);
+        }
 
         @include break1200 {
             font-size: 14px;

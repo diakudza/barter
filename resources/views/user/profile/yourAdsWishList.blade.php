@@ -9,13 +9,12 @@
 
             <h2 class="wish-list__title">То что вам приглянулось</h2>
 
+            <div class="wish-list__list">
            @foreach($ads as $item)
-                <div class="wish-list__list">
-                    @include('components.cardsTemplate.littelCard')
-                    {{-- @include('components.cardsTemplate.adCartLKHorizont')--}}
-                </div>
-
+                    {{--@include('components.cardsTemplate.littelCard')--}}
+                @include('components.cardsTemplate.littelCardHorizontal')
             @endforeach
+            </div>
 
         @else
             <div class="wish-list__empty">

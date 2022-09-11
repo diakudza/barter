@@ -1,5 +1,5 @@
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
 
     z-index: 10;
@@ -36,14 +36,14 @@
 
         @include break992 {
             position: absolute;
-            top: 111px;
+            top: 89px;
             left: 0;
             bottom: 0;
             right: 0;
 
             z-index: 100;
 
-            height: calc(100vh - 111px);
+            height: calc(100vh - 89px);
 
             flex-direction: column;
             transform: translateX(-1000px);

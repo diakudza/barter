@@ -9,12 +9,17 @@
 @import "modules/mixMediaScreens";
 
 //Удалить после полного перестроения страницы
-@import "blocks/last-style";
+//@import "blocks/last-style";
 
 //Глобальные стили
+@import "blocks/global";
 @import "blocks/btn";
 @import "blocks/alerts";
-@import "blocks/global";
+//Стили чекбокса
+@import "blocks/customCheckbox";
+
+//Все стили для Админки
+@import "blocks/admin/admineStyles";
 
 //Стили шапки
 @import "blocks/header";
@@ -29,9 +34,6 @@
 @import "blocks/productsLast";
 @import "blocks/cards/card";
 
-//Стили чекбокса
-@import "blocks/customCheckbox";
-
 //Блок поиска
 @import "blocks/searchBlock";
 
@@ -43,12 +45,15 @@
 
 //Стили чата
 @import "blocks/chats";
+
 //Стили страницы добавления и редактировнаия объявления
 @import "blocks/cards/addAndEditProduct/changeProduct";
+
 //Стили страницы добавления, превьюха
 @import "blocks/cards/previewCard";
+
 //Страница избранного
-@import "blocks/wishList";
+@import "blocks/wishList/wishList";
 
 //Стили footer
 @import "blocks/footer";
