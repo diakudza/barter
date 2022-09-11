@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\Profile\UpdateRequest;
 use App\Http\Requests\User\Profile\UpdatePasswordRequest;
+use App\Http\Requests\User\RegistrationRequest;
 use App\Http\Requests\User\UpdateRatingRequest;
 use App\Models\User;
 use App\Queries\QueryBuilderUsers;
@@ -46,10 +47,10 @@ class UserController extends Controller
             }
             return redirect()->route('home')->with(['success' => 'Привет, Вы успешно вошли в систему!']);
         }
-        return redirect()->to(route('loginPage'))->with(['fail' => 'Неверная пара логин\пароль!']);
+        return redirect()->to(route('loginPage'))->with(['fail' => 'Не верная пара логин\пароль!']);
     }
 
-    public function registration(Request $request)
+    public function registration(RegistrationRequest $request)
     {
         $user = User::create([
             'name' => $request->input('name'),
@@ -58,7 +59,7 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         Auth::login($user);
-        return redirect()->route('user.profile')->with('success', "User $request->input('name') was registered!");
+        return redirect()->route('home')->with('success', "Пользователь ". $request->input('name') . " зарегистрирован!");
     }
 
     public function logout(Request $request, User $user)
