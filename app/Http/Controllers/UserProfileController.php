@@ -29,7 +29,7 @@ class UserProfileController extends Controller
         QueryBuilderCities     $citiesList
     )
     {
-        return view('user.profile.createAd', [
+        return view('user.productCart.createAd', [
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name'])
         ]);
@@ -57,7 +57,7 @@ class UserProfileController extends Controller
             $allowedStatuses = [];
             $allowedStatuses[] = $ad->status;
         }
-        return view('user.profile.editAd', [
+        return view('user.productCart.editAd', [
             'ad' => $ad,
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),

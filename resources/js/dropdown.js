@@ -4,8 +4,7 @@ import "simplebar";
 
 const dropdown = () => {
     const searchElements = document.querySelectorAll(".form-control-input");
-    const createElements = document.querySelectorAll(".form-group__create-select");
-
+    const changeElements = document.querySelectorAll(".change-item__create-select");
 
     searchElements.forEach((element) => {
         const choices = new Choices(element, {
@@ -34,7 +33,7 @@ const dropdown = () => {
             .setAttribute("data-simplebar", "");
     });
 
-    createElements.forEach((element) => {
+    changeElements.forEach((element) => {
         const choices = new Choices(element, {
             searchEnabled: false,
             itemSelectText: "",
@@ -47,12 +46,7 @@ const dropdown = () => {
 
         let classElement = element.dataset.class;
         element.closest(".choices__inner").classList.add(classElement);
-
-        // if (classElement === "search__category") {
-        //     element.closest(".choices").setAttribute("data-elem", classElement);
-        // } else {
-        //     element.closest(".choices").setAttribute("data-elem", "gray-arrow");
-        // }
+        element.closest(".choices").setAttribute("data-elem", "gray-arrow");
 
         //Подключение simplebar
         element

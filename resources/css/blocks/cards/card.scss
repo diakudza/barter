@@ -28,6 +28,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        &--horizontal {
+            flex-direction: row;
+            justify-content: initial;
+        }
     }
 
     &__img {
@@ -37,6 +42,11 @@
         max-height: 385px;
         min-width: 278px;
         border-radius: 16px;
+
+        &--horizontal {
+            max-height: 280px;
+            max-width: 280px;
+        }
 
         @include break375 {
             min-width: 100%;
@@ -79,8 +89,23 @@
     &__body {
         margin-top: 32px;
 
+        &--horizontal {
+            margin-top: 17px;
+            margin-bottom: 17px;
+            margin-left: 32px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         &-top {
             border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+
+            &--horizontal {
+                max-width: 290px;
+                border-bottom: none;
+            }
         }
 
         &-bottom {
@@ -151,6 +176,10 @@
 
         transition: all 0.3s;
 
+        &--horizontal {
+            margin-bottom: 8px;
+        }
+
         &:hover {
             color: $color-black50;
         }
@@ -219,6 +248,11 @@
         display: flex;
         flex-direction: column;
 
+        &--horizontal {
+            flex-direction: row;
+            gap: 6px;
+        }
+
         &-text {
             font-weight: 400;
             font-size: 14px;
@@ -227,6 +261,10 @@
             color: rgba(35, 38, 47, 0.6);
 
             margin-bottom: 4px;
+
+            &--horizontal {
+                margin-bottom: 0;
+            }
         }
 
         &-time {
@@ -236,5 +274,13 @@
 
             color: $color-black;
         }
+    }
+
+    //В горизонтальных карточках
+    &__info {
+        margin-left: auto;
+        max-width: 250px;
+
+        background-color: red;
     }
 }
