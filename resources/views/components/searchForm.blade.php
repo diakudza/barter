@@ -94,7 +94,26 @@
                     </svg>
 
                 </label>
-                <span class="search__checkbox-text">искать архивные</span>
+                <span class="search__checkbox-text">Искать архивные</span>
+            </label>
+        </div>
+        <div class="search-from__item">
+            <label for="barter_for" class="search__checkbox">
+                <label class="checkbox ">
+                    <input id="barter_for" type="checkbox" name="barter_for"/>
+
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                        <path class="tick" d="M4.5 10L10.5 16L24.5 1" />
+                        <circle class="dot" cx="10.5" cy="15.5" r="1.5" />
+
+                        <filter id="goo-light" x="-50%" width="200%" y="-50%" height="200%" color-interpolation-filters="sRGB">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="1.25" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7" result="cm" />
+                        </filter>
+                    </svg>
+
+                </label>
+                <span class="search__checkbox-text">Искать по тому, на что меняем</span>
             </label>
         </div>
     </div>
