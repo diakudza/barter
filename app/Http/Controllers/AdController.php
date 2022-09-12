@@ -132,7 +132,7 @@ class AdController extends Controller
         $ad = $ad->fill($validated);
         if ($ad->update()) {
             if (isset($image)) {
-                dd($ad->images()->save($image));
+                $ad->images()->save($image);
             }
             if (isset($validated['fromAdmin'])) {
                 $route = 'adIndex';
