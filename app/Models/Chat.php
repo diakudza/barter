@@ -31,10 +31,4 @@ class Chat extends Model
             ->where('user_id', '!=', auth()->user()->id)
             ->where('read', '=', '0');
     }
-
-    public function getChatByUsers(array $ids)
-    {
-        dd($this->where($this->users(), 'in', $ids));
-        return $this->where($this->users(), 'in', $ids);
-    }
 }

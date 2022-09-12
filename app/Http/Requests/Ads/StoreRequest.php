@@ -30,7 +30,10 @@ class StoreRequest extends FormRequest
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'barter_type' => ['required', 'in:free,barter'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'image' => ['image']
+            'image' => ['image'],
+            'barter_title' => ['required_if:barter_type,barter', 'string', 'min:3', 'max:255'],
+            'barter_text' => ['required_if:barter_type,barter', 'string', 'min:3'],
+            'barter_category_id' => ['required_if:barter_type,barter', 'integer', 'exists:categories,id'],
         ];
     }
 }

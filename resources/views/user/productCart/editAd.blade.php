@@ -56,15 +56,14 @@
                 </div>
 
                 <div class="change-form__group change-item">
-                    <h4 class="change-item__heading change-product__sub-heading">Тип объявление</h4>
-
-                    {{--Функционал обмена реализуем позже --}}
+                    <h4 class="change-item__heading change-product__sub-heading">Тип объявления</h4>
                     <div class="change-item__type item-type">
                         <ul class="item-type__list">
                             <li class="item-type__item">
 
                                 <label class="radio item-type__label item-type__label--radio" for="free">
-                                    <input class="item-type__radio-btn" type="radio" name="barter_type" id="free" value="free" checked>
+                                    <input class="item-type__radio-btn" type="radio" name="barter_type" id="free" value="free"
+                                        @if(old('barter_type') && old('barter_type') == 'free')) checked @elseif ($ad->barter_type == 'free') checked @endif>
                                     <svg viewBox="0 0 24 24" filter="url(#goo-light)">
                                         <circle class="top" cx="12" cy="-12" r="8" />
                                         <circle class="dot" cx="12" cy="12" r="5" />
@@ -77,7 +76,8 @@
 
                             <li class="item-type__item">
                                 <label class="radio item-type__label item-type__label--radio" for="barter">
-                                    <input class="item-type__radio-btn" type="radio" name="barter_type" id="barter" value="barter">
+                                    <input class="item-type__radio-btn" type="radio" name="barter_type" id="barter" value="barter"
+                                    @if (old('barter_type') && old('barter_type') == 'barter')) checked @elseif ($ad->barter_type == 'barter') checked @endif>
                                     <svg viewBox="0 0 24 24" filter="url(#goo-light)">
                                         <circle class="top" cx="12" cy="-12" r="8" />
                                         <circle class="dot" cx="12" cy="12" r="5" />
@@ -87,12 +87,31 @@
                                     <span class="item-type__label-text">Обмен</span>
                                 </label>
                             </li>
-
-                            <li class="item-type__item item-type__item--input">
-                                <label class="change-item__label" for="barter_for">Обменяю на</label>
-                                <input class="change-item__input input" type="text" name="barter_for" id="barter_for" placeholder="Пример: Поменять на стол">
-                            </li>
                         </ul>
+                    </div>
+                    <div class="change-item__item">
+                        <label class="change-item__label" for="barter_title">Обменяю на</label>
+                        <input class="change-item__input input" type="text" name="barter_title" id="barter_for" placeholder="Пример: Поменять на стол"
+                            value="@if(old('barter_title')) {{old('barter_title')}} @else {{$ad->barter_title}} @endif">
+                    </div>
+                    <div class="change-item__item">
+                        <label class="change-item__label" for="barter_text">Описание того, что Вы бы хотели</label>
+                        <textarea class="change-item__input input input__textarea" name="barter_text" id="barter_text" rows="3">@if (old('barter_text')){{ old('barter_text') }}@else{{ $ad->barter_text }}@endif</textarea>
+                    </div>
+                    <div class="change-item__item">
+                        <label class="change-item__label" for="barter_category_id">Категория обменивамого</label>
+                        <select class="change-item__create-select" aria-label="категория вещей"
+                            data-class="change-item__category" name="barter_category_id" id="barter_category_id">
+                            <option value="">Выберите категорию</option>
+
+                            @foreach ($categoriesList as $category)
+                                <option value="{{ $category->id }}" @if (old('barter_category_id')) @if (old('barter_category_id')==$category->id) selected @endif
+                                @endif
+                                @if ($ad->barter_category_id == $category->id) selected @endif>
+                                    {{ $category->title }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -117,7 +136,7 @@
                                             </svg>
                                         </div>
 
-                                        <h4 class="load-file__title">Нажмите чтобы загрузить файл</h4>
+                                        <label for="image" class="load-file__title">Нажмите чтобы загрузить файл</label>
 
                                         <p class="load-file__text">Формат файла PNG, JPEG, GIF. </p>
                                     </div>
@@ -140,6 +159,19 @@
                                     @if ($ad->city_id == $city->id) selected @endif>
                                         {{ $city->name }}
                                     </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label for="status_id">Статус</label>
+                            <select name="status_id" id="status_id" class="form-select">
+                                @foreach ($statusesList as $status)
+                                <option value="{{ $status->id }}" @if (old('status_id')) @if (old('status_id')==$status->id)
+                                    selected @endif
+                                    @endif
+                                    @if ($ad->status_id == $status->id) selected @endif>
+                                    {{ $status->description }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -185,10 +217,11 @@
 
                     <div class="preview-card__status-list">
                         @foreach ($statusesList as $status)
-                            <div class="preview-card__status">
-                                <span>{{ $status->description }}</span>
-                            </div>
-
+                            @if($status->id == $ad->status_id)
+                                <div class="preview-card__status">
+                                    <span>{{ $status->description }}</span>
+                                </div>
+                            @endif
                         @endforeach
 
 {{--                            <label for="status_id">Статус</label>--}}
@@ -231,6 +264,11 @@
 
                             <p class="preview-card__location-text">{{ $city->name }}</p>
                         </div>
+                        @if ($ad->barter_type == 'barter')
+                            <div>
+                                <p>Обмен на: {{ $ad->barter_title }}</p>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="preview-card__bottom">

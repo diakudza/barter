@@ -58,6 +58,11 @@
 
                     <p class="card__location-text">{{ $item->city->name }}</p>
                 </div>
+                @if ($item->barter_type == 'barter')
+                <div>
+                    <p>Обмен на {{ $item->barter_title }}</p>
+                </div>
+                @endif
             </div>
 
             <div class="card__body-bottom">
