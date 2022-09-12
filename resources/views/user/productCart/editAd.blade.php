@@ -274,8 +274,15 @@
                     <div class="preview-card__bottom">
                         <div class="preview-card__author">
                             <div class="preview-card__author-img">
-                                {{--Добавить если нет фото аватарки--}}
-                                <img class="author-img" src="{{ Storage::url(auth()->user()->avatar()->first()->path) }}" alt="{{ Auth::user()->name }}" title="{{ Auth::user()->name }}">
+                                <img class="author-img" src="
+                                    @if(auth()->user()->avatar()->first())
+                                        {{ Storage::url(auth()->user()->avatar()->first()->path) }}
+                                    @else
+                                        {{ asset('images/icon-avatar.png') }}
+                                    @endif
+                                    " 
+                                    alt="{{ Auth::user()->name }}" 
+                                    title="{{ Auth::user()->name }}">
                             </div>
 
                             <p class="preview-card__author-name">{{ Auth::user()->name }}</p>
