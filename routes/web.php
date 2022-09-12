@@ -97,11 +97,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
         'update' => 'adUpdate',
         'create' => 'adCreate',
         'edit' => 'adEdit',
-    ]);
+    ])->withoutMiddleware('isAdmin')->middleware('isModerator');
     Route::resource('user', AdminUserController::class);
     Route::resource('role', UserRoleController::class);
     Route::resource('comment', AdminCommentController::class);
-    Route::get('/main', [AdminController::class, 'main'])->name('adminmain');
+    Route::get('/main', [AdminController::class, 'main'])->name('adminmain')->withoutMiddleware('isAdmin')->middleware('isModerator');
     Route::get('/system', [SysController::class, 'index'])->name('admin.system');
     Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action');
 });
