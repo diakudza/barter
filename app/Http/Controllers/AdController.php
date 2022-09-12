@@ -123,7 +123,7 @@ class AdController extends Controller
      */
     public function update(UpdateRequest $request, Ad $ad, ImageService $imageService)
     {
-        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id', 'user_id', 'fromAdmin']);
+        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id', 'fromAdmin']);
         $imageData = $request->safe()->only(['imageMain', 'removeImage']);
         $imageService->updateExistingAdImage($imageData);
         if ($request->hasFile('image')) {
@@ -134,7 +134,7 @@ class AdController extends Controller
             if (isset($image)) {
                 $ad->images()->save($image);
             }
-            if ($validated['fromAdmin']) {
+            if (isset($validated['fromAdmin'])) {
                 $route = 'adIndex';
             } else {
                 $route = 'user.profile.listAds';

@@ -15,7 +15,10 @@
               enctype="multipart/form-data">
             @csrf
             @method('put')
-            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+            @if($fromAdmin)
+                <input type="hidden" name="fromAdmin" value="1">
+            @endif
 
             <div class="change-form__list">
                 <div class="change-form__group change-item">

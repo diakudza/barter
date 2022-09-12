@@ -35,12 +35,11 @@ class UpdateRequest extends FormRequest
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'barter_type' => ['required', 'in:free,barter'],
-            'user_id' => ['required', 'integer', 'exists:users,id'],
-            'status_id' => ['required', 'integer', 'exists:ad_statuses,id'],
+            'status_id' => ['sometimes', 'integer', 'exists:ad_statuses,id'],
             'image' => ['image'],
             'imageMain' => ['integer', 'exists:images,id'],
             'removeImage' => ['array'],
-            'fromAdmin' => ['integer']
+            'fromAdmin' => ['sometimes', 'integer']
         ];
     }
 }

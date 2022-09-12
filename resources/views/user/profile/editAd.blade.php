@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-    <h3>Страница редактирования объявления</h3>
+    <h3>Страница редактирования объявления TO DELETE</h3>
     <form action="{{ route('ad.update', $ad->id) }}" method="post" enctype="multipart/form-data" class="form-1">
         @csrf
         @method('put')
@@ -44,7 +44,6 @@
                     </select>
                 </div>
 
-                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                 <div class="d-flex flex-column">
                     <label for="free">Отдам просто так</label>
                     <input type="radio" name="barter_type" id="free" value="free" checked>
