@@ -133,7 +133,7 @@
                                             </svg>
                                         </div>
 
-                                        <h4 class="load-file__title">Нажмите чтобы загрузить файл</h4>
+                                        <label for="image" class="load-file__title">Нажмите чтобы загрузить файл</label>
 
                                         <p class="load-file__text">Формат файла PNG, JPEG, GIF. </p>
                                     </div>
