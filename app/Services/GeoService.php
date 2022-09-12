@@ -19,7 +19,6 @@ class GeoService
 
     public function getCityByIp(string $ip)
     {
-        $ip = '46.41.85.74';
         if ($this->getAllDataByIp($ip)) {
             return $this->getAllDataByIp($ip)['data']['city'];
         } else {
