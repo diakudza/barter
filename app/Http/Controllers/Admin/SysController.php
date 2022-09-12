@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminCommand;
 use App\Services\ProcessService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 class SysController extends Controller
 {
 
-    public function index(Request $request)
+    public function index(Request $request, AdminCommand $adminCommand)
     {
         $dir = config('app.dir');
         $allBranch = ProcessService::run("git branch -r", $dir);
@@ -21,56 +23,78 @@ class SysController extends Controller
             return strripos($s, '  origin/') === 0;
         });
         $branchList = array_map(fn($s) => mb_substr($s, 9), $filtered);
-        return view('Admin.System', [
+        return view('admin.system', [
+            'consoleHistory' => $adminCommand->getLastCommands(),
             'branchList' => $branchList,
             'currentBranch' => $currentBranch[0],
         ]);
     }
 
-    public function action($action, Request $request)
+    public function action($action, Request $request, AdminCommand $adminCommand)
     {
         $dir = config('app.dir');
         switch ($action) {
             case ('git'):
-                $process = Process::fromShellCommandline("git pull", $dir);
-                session(['git' => 1]);
+                $cmd = "git pull";
                 break;
             case ('gitcheckout'):
                 $branch = $request->input('branch');
-                $process = Process::fromShellCommandline("git checkout ${branch}", $dir);
+                $cmd = "git checkout ${branch}";
                 break;
             case ('gitreset'):
-                $process = Process::fromShellCommandline("git reset --hard HEAD", $dir);
+                $cmd = "git reset --hard HEAD";
                 break;
-            case  ('migrate'):
-                $process = Process::fromShellCommandline("php artisan migrate", $dir);
-                session(['migrate' => 1]);
+            case ('migrate'):
+                $cmd = "php artisan migrate";
                 break;
-            case  ('composerinstall'):
-                $process = Process::fromShellCommandline("/usr/bin/composer install", $dir);
-                session(['composerinstall' => 1]);
+            case ('composerinstall'):
+                $cmd = "/usr/bin/composer install";
                 break;
-            case  ('composerupdate'):
-                $process = Process::fromShellCommandline("/usr/bin/composer update", $dir);
-                session(['composerupdate' => 1]);
+            case ('composerupdate'):
+                $cmd = "/usr/bin/composer update";
                 break;
-            case  ('npmbuild'):
-                $process = Process::fromShellCommandline("bash/npmbuild.sh", $dir);
+            case ('npmbuild'):
+                $cmd = "bash/npmbuild.sh";
                 break;
-            case  ('npminstall'):
-                $process = Process::fromShellCommandline("bash/npminstall.sh", $dir);
+            case ('npminstall'):
+                $cmd = "bash/npminstall.sh";
                 break;
-            case  ('maintenance'):
+            case ('mysqldump'):
+                $cmd = "bash/mysqldump.sh";
+                break;
+            case ('backupstorage'):
+                $cmd = "bash/storagebackup.sh";
+                break;
+            case ('maintenance'):
                 $action = (app()->isDownForMaintenance()) ? 'up' : 'down';
                 Artisan::call($action);
                 return redirect()->back();
         }
-
+        session([$action => 1]);
+        $process = Process::fromShellCommandline($cmd, $dir);
         try {
             $process->mustRun();
-            return redirect()->back()->with('text', $process->getOutput());
+            $output = $process->getOutput();
+
+            $adminCommand->fill([
+                'user_id' => Auth::user()->id,
+                'command' => $cmd,
+                'output' => $output,
+                'status' => 1,
+            ]);
+            $adminCommand->save();
+
+            return redirect()->back()->with('text', $output);
 
         } catch (ProcessFailedException $exception) {
+
+            $adminCommand->fill([
+                'user_id' => Auth::user()->id,
+                'command' => $cmd,
+                'output' => $exception->getMessage(),
+                'status' => 0,
+            ]);
+            $adminCommand->save();
             return redirect()->back()->with('text', $exception->getMessage());;
         }
     }

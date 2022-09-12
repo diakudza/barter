@@ -21,25 +21,14 @@ class UserController extends Controller
         $status = $request->input('status');
         $role = $request->input('role');
         $searchUser = $request->input('user');
-        $users = $usersList->getAdminUsersByFilter($user, $status, $role, $searchUser);
-        // $users = $user
-        //     ->when($searchUser, function ($query, $searchUser) {
-        //         $query
-        //             ->where('email', 'like', '%' . $searchUser . '%')
-        //             ->orWhere('name', 'like', '%' . $searchUser . '%');
-        //     })
-        //     ->when($status, function ($query, $status) {
-        //         $query->whereIn('status_id', $status);
-        //     })
-        //     ->when($role, function ($query, $role) {
-        //         $query->whereIn('role_id', $role);
-        //     })
-        //     ->paginate(20)
-        //     ->withQueryString();
-        return view('Admin.Users', [
+        $online = $request->input('online');
+        $users = $usersList->getAdminUsersByFilter($user, $status, $role, $searchUser, $online);
+
+        return view('admin.users', [
             'users' => $users,
             'roles' => $roles->all(),
             'statuses' => $statuses->all(),
+            'online' => $online,
             'filterStatuses' => $status,
             'filterRoles' => $role,
             'searchString' => $searchUser,
@@ -75,7 +64,7 @@ class UserController extends Controller
      */
     public function show(User $user, UserRole $roles)
     {
-        return view('Admin.User', [
+        return view('admin.user', [
             'user' => $user,
             'roles' => $roles->all()
         ]);

@@ -16,6 +16,9 @@ class UpdateRequest extends FormRequest
     public function authorize()
     {
         $ad = $this->route('ad');
+        if(in_array(auth()->user()->getRole(), ['admin', 'developer'])) {
+            return $ad;
+        }
         return $ad && $this->user()->can('update', $ad);
     }
 
@@ -37,6 +40,7 @@ class UpdateRequest extends FormRequest
             'image' => ['image'],
             'imageMain' => ['integer', 'exists:images,id'],
             'removeImage' => ['array'],
+            'fromAdmin' => ['integer'],
             'barter_title' => [
                 'required_if:barter_type,barter',
                 'prohibited_if:barter_type,free',

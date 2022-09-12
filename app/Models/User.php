@@ -33,6 +33,7 @@ class User extends Authenticatable
         'login_time',
         'logout_time',
         'ip',
+        'online'
     ];
 
     /**
@@ -61,7 +62,7 @@ class User extends Authenticatable
 
     public function getRole()
     {
-        return $this->hasOne(UserRole::class, 'id', 'role_id');
+        return $this->hasOne(UserRole::class, 'id', 'role_id')->pluck('role')->first();
     }
 
     public function status()
@@ -188,6 +189,11 @@ class User extends Authenticatable
     public function getReviewsCount()
     {
         return $this->reviews()->count();
+    }
+
+    public function commands()
+    {
+        return $this->hasMany(AdminCommand::class);
     }
 
 }

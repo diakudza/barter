@@ -1,16 +1,13 @@
 @extends('components.base')
 
-@section('title', 'Просмотеть мои объявления')
+@section('title', 'Мои объявления')
 
 @section('content')
 
-<div class="container">
+<section class="container" id="user-adverts">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Мои объявления</h1>
-        </div>
-    </section>
+    <h2 class="jumbotron-heading">Мои объявления</h2>
+
 
     <div class="album py-5 bg-light">
         <div class="container">
@@ -85,6 +82,6 @@
 
         </div>
     </div>
-</div>
+</section>
 
 @endsection

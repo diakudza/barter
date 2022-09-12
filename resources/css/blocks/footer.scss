@@ -1,6 +1,6 @@
 .footer {
     padding: 64px 0;
-    background-color: #f4f5f6;
+    background-color: #eae9e9;
 
     &__container {
         display: flex;
@@ -17,9 +17,11 @@
         align-items: center;
 
         &-link {
+            color: rgba($color-black, 0.5);
             transition: all 0.4s ease-in;
 
             &:hover {
+                width: 700;
                 color: $color-black;
             }
 

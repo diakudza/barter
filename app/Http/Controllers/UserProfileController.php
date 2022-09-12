@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\Ads\ShowEditRequest;
 use App\Models\AdStatus;
 use App\Models\User;
 use App\Queries\QueryBuilderAds;
@@ -29,7 +30,7 @@ class UserProfileController extends Controller
         QueryBuilderCities     $citiesList
     )
     {
-        return view('user.profile.createAd', [
+        return view('user.productCart.createAd', [
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name'])
         ]);
@@ -44,7 +45,7 @@ class UserProfileController extends Controller
     }
 
     public function editAd(
-        Request                $request,
+        ShowEditRequest                $request,
         QueryBuilderAds        $adsDetail,
         QueryBuilderCategories $categoriesList,
         QueryBuilderCities     $citiesList,
@@ -57,11 +58,12 @@ class UserProfileController extends Controller
             $allowedStatuses = [];
             $allowedStatuses[] = $ad->status;
         }
-        return view('user.profile.editAd', [
+        return view('user.productCart.editAd', [
             'ad' => $ad,
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
-            'statusesList' => $allowedStatuses
+            'statusesList' => $allowedStatuses,
+            'fromAdmin' => $request->input('fromadmin') ?? null
         ]);
     }
 

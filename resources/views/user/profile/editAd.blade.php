@@ -4,48 +4,45 @@
 
 @section('content')
 
-    <div class="container">
-        <h3>Страница редактирования объявления</h3>
-
-        <form action="{{ route('ad.update', $ad->id) }}" method="post" enctype="multipart/form-data" class="form-1">
-            @csrf
-            @method('put')
-            <div class="row">
-                <div class="w-50">
-                    <div class="form-group">
-                        <label for="title">Название</label>
-                        <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
-                        <input type="text" id="title" name="title" placeholder="Название" class="form-control"
-                            value="@if (old('title')) {{ old('title') }}@else{{ $ad->title }} @endif"
-                            required>
-                    </div>
-
-                    <div>
-                        <label for="text">Описание</label>
-                        <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
-                        <textarea name="text" id="text" rows="5" required class="form-control">
-@if (old('text')){{ old('text') }}@else{{ $ad->text }}@endif
-</textarea>
-                    </div>
-
-                    <label for="image">Загрузить фото</label>
-                    <input type="file" name="image" id="image" class="form-control">
+<div class="container">
+    <h3>Страница редактирования объявления</h3>
+    <form action="{{ route('ad.update', $ad->id) }}" method="post" enctype="multipart/form-data" class="form-1">
+        @csrf
+        @method('put')
+        @if($fromAdmin)
+            <input type="hidden" name="fromAdmin" value="1">
+        @endif
+        <div class="row">
+            <div class="w-50">
+                <div class="form-group">
+                    <label for="title">Название</label>
+                    <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
+                    <input type="text" id="title" name="title" placeholder="Название" class="form-control" value="@if (old('title')) {{ old('title') }}@else{{ $ad->title }} @endif" required>
                 </div>
 
-                <div class="w-50">
-                    <div>
-                        <label for="category_id">Категория</label>
-                        <select name="category_id" id="category_id" required class="form-select ">
-                            @foreach ($categoriesList as $category)
-                                <option value="{{ $category->id }}"
-                                    @if (old('category_id')) @if (old('category_id') == $category->id) selected @endif
-                                    @endif
-                                    @if ($ad->category_id == $category->id) selected @endif>
-                                    {{ $category->title }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                <div>
+                    <label for="text">Описание</label>
+                    <!-- Здесь конструкци if endif  в одну строку, так как иначе в строку в форме добавляется куча пробелов -->
+                    <textarea name="text" id="text" rows="5" required class="form-control">@if (old('text')){{ old('text') }}@else{{ $ad->text }}@endif</textarea>
+                </div>
+
+                <label for="image">Загрузить фото</label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+
+            <div class="w-50">
+                <div>
+                    <label for="category_id">Категория</label>
+                    <select name="category_id" id="category_id" required class="form-select ">
+                        @foreach ($categoriesList as $category)
+                        <option value="{{ $category->id }}" @if (old('category_id')) @if (old('category_id')==$category->id) selected @endif
+                            @endif
+                            @if ($ad->category_id == $category->id) selected @endif>
+                            {{ $category->title }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
 
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <div class="d-flex flex-column">
@@ -97,21 +94,20 @@
                         </select>
                     </div>
 
-                    <div>
-                        <label for="status_id">Статус</label>
-                        <select name="status_id" id="status_id" class="form-select">
-                            @foreach ($statusesList as $status)
-                                <option value="{{ $status->id }}"
-                                    @if (old('status_id')) @if (old('status_id') == $status->id)
+                <div>
+                    <label for="status_id">Статус</label>
+                    <select name="status_id" id="status_id" class="form-select">
+                        @foreach ($statusesList as $status)
+                        <option value="{{ $status->id }}" @if (old('status_id')) @if (old('status_id')==$status->id)
                             selected @endif
-                                    @endif
-                                    @if ($ad->status_id == $status->id) selected @endif>
-                                    {{ $status->description }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+                            @endif
+                            @if ($ad->status_id == $status->id) selected @endif>
+                            {{ $status->description }}
+                        </option>
+                        @endforeach
+                    </select>
                 </div>
+            </div>
 
             </div>
 

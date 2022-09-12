@@ -17,7 +17,7 @@ class Ad extends Model
 
     public function getCreatedDate()
     {
-        return $this->created_at->format('d/m/Y');
+        return $this->created_at->format('d.m.Y');
     }
 
     public function Category()
@@ -68,6 +68,6 @@ class Ad extends Model
 
     public function getLastAdsByCity($city)
     {
-        return $city ? $this->whereRelation('city', 'name', 'LIKE', $city . '%')->orderBy('updated_at', 'DESC')->limit(10)->get() : null;
+        return $city ? $this->whereRelation('city', 'name', 'LIKE', $city . '%')->where('status_id', '=', 1)->orderBy('updated_at', 'DESC')->limit(10)->get() : null;
     }
 }

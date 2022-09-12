@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\Profile\UpdateRequest;
 use App\Http\Requests\User\Profile\UpdatePasswordRequest;
+use App\Http\Requests\User\RegistrationRequest;
 use App\Http\Requests\User\UpdateRatingRequest;
 use App\Models\User;
 use App\Queries\QueryBuilderUsers;
@@ -32,22 +33,23 @@ class UserController extends Controller
             'password' => $request->password
         ])) {
             $user = Auth::user();
-            $user->update(['login_time' => now(), 'ip' => $request->ip()]);
-            if (app()->isDownForMaintenance() && in_array(Auth::user()->getRole->role, ['admin', 'developer'])) {
+
+            $user->update(['login_time' => now(), 'ip' => $request->ip(), 'online' => 1]);
+            if (app()->isDownForMaintenance() && in_array(Auth::user()->getRole(), ['admin', 'developer'])) {
                 return redirect()->route('adminmain');
             }
             if (Auth::user()->status_id == 2) {
-                $user->update(['logout_time' => now()]);
+                $user->update(['logout_time' => now(), 'online' => 0]);
                 Auth::logout();
                 return redirect()->route('home')
                     ->with('fail', 'Данный пользователь не может войти в системы, так-как был заблокирован!');
             }
             return redirect()->route('home')->with(['success' => 'Привет, Вы успешно вошли в систему!']);
         }
-        return redirect()->to(route('loginPage'))->with(['fail' => 'Неверная пара логин\пароль!']);
+        return redirect()->to(route('loginPage'))->with(['fail' => 'Не верная пара логин\пароль!']);
     }
 
-    public function registration(Request $request)
+    public function registration(RegistrationRequest $request)
     {
         $user = User::create([
             'name' => $request->input('name'),
@@ -56,13 +58,13 @@ class UserController extends Controller
             'password' => Hash::make($request->input('password')),
         ]);
         Auth::login($user);
-        return redirect()->route('user.profile')->with('success', "User $request->input('name') was registered!");
+        return redirect()->route('home')->with('success', "Пользователь ". $request->input('name') . " зарегистрирован!");
     }
 
     public function logout(Request $request, User $user)
     {
         $user = Auth::user();
-        $user->update(['logout_time' => now()]);
+        $user->update(['logout_time' => now(), 'online' => 0]);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

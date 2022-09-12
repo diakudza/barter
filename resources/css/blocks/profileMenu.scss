@@ -46,6 +46,11 @@
 
         transition: all 0.4s ease-in;
 
+        &--admin {
+            color: rgba(252, 73, 73, 0.84);
+            font-weight: 700;
+        }
+
         &:first-child {
             margin-bottom: 12px;
             border-bottom: 1px solid rgba(35, 38, 47, 0.05);

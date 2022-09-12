@@ -1,0 +1,122 @@
+.testClass {
+
+}
+
+.table{
+    border: 1px solid #eee;
+    table-layout: fixed;
+    margin-bottom: 20px;
+}
+
+.table thead {
+    font-weight: bold;
+    padding: 5px;
+    background: #23262F;
+    border: 1px solid #dddddd;
+    color: white;
+}
+
+.table td{
+    padding: 5px 10px;
+    text-align: left;
+    justify-content: center;
+}
+
+.table tbody tr:nth-child(odd){
+    background: #fff;
+}
+
+.table tbody tr:nth-child(even){
+    background: #F7F7F7;
+}
+
+.tableHeader td{
+    text-align: center;
+}
+
+.svgAdmin{
+    width: 30px;
+    height: 30px;
+}
+
+.bthDel{
+    color: unset;
+    background-color: #EF466F;
+    border: none;
+    --bs-btn-hover-bg: #ae0000;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.formSort{
+    gap: 15px;
+    padding: 15px;
+}
+
+.bthChange{
+    color: unset;
+    background-color: #315DF7;
+    border: none;
+    --bs-btn-hover-bg: #58BD7D;
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 130px;
+    height: 45px;
+}
+
+.bthChange p{
+    color: white;
+    padding-left: 5px;
+}
+
+.formColumn{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.addCategory{
+    gap: 10px;
+}
+
+.tdDel{
+    display: flex;
+    justify-content: space-around;
+}
+
+.formChange{
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    margin-top: 5px;
+    height: 35px;
+}
+
+.bthReset{
+    color: unset;
+    background-color: #23262F;
+    border: none;
+    --bs-btn-hover-bg: #58BD7D;
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 200px;
+    height: 70px;
+}
+
+.bthReset p{
+    color: white;
+    padding-left: 5px;
+}
+
+.formBlock{
+    background-color: white;
+}
+
+.formFilter{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
