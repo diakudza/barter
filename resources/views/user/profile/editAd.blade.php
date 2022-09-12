@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-    <h3>Страница редактирования объявления</h3>
+    <h3>Страница редактирования объявления TO DELETE</h3>
     <form action="{{ route('ad.update', $ad->id) }}" method="post" enctype="multipart/form-data" class="form-1">
         @csrf
         @method('put')
