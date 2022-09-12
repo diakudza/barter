@@ -127,12 +127,12 @@ class AdController extends Controller
         $imageData = $request->safe()->only(['imageMain', 'removeImage']);
         $imageService->updateExistingAdImage($imageData);
         if ($request->hasFile('image')) {
-            $image = $imageService->saveExistingAdImage($validated['user_id'], $request->file('image'), $ad->id);
+            $image = $imageService->saveExistingAdImage($ad->user_id, $request->file('image'), $ad->id);
         }
         $ad = $ad->fill($validated);
         if ($ad->update()) {
             if (isset($image)) {
-                $ad->images()->save($image);
+                dd($ad->images()->save($image));
             }
             if (isset($validated['fromAdmin'])) {
                 $route = 'adIndex';
