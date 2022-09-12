@@ -51,9 +51,7 @@
             </div>
 
             <div class="change-form__group change-item">
-                <h4 class="change-item__heading change-product__sub-heading">Тип объявление</h4>
-
-                {{--Функционал обмена реализуем позже --}}
+                <h4 class="change-item__heading change-product__sub-heading">Тип объявления</h4>
                 <div class="change-item__type item-type">
                     <ul class="item-type__list">
                         <li class="item-type__item">
@@ -82,12 +80,28 @@
                                 <span class="item-type__label-text">Обмен</span>
                             </label>
                         </li>
-
-                        <li class="item-type__item item-type__item--input">
-                            <label class="change-item__label" for="barter_for">Обменяю на</label>
-                            <input class="change-item__input input" type="text" name="barter_for" id="barter_for" placeholder="Пример: Поменять на стол">
-                        </li>
                     </ul>
+                </div>
+                <div class="change-item__item">
+                        <label class="change-item__label" for="barter_title">Обменяю на</label>
+                        <input class="change-item__input input" type="text" name="barter_title" id="barter_for" placeholder="Пример: Поменять на стол"
+                            value="@if(old('barter_title')) {{old('barter_title')}}@endif">
+                </div>
+                <div class="change-item__item">
+                        <label class="change-item__label" for="barter_text">Описание того, что Вы бы хотели</label>
+                        <textarea class="change-item__input input input__textarea" name="barter_text" id="barter_text" rows="3">@if (old('barter_text')){{ old('barter_text') }}@endif</textarea>
+                </div>
+                <div class="change-item__item">
+                        <label class="change-item__label" for="barter_category_id">Категория обменивамого</label>
+                        <select class="change-item__create-select" aria-label="категория вещей"
+                            data-class="change-item__category" name="barter_category_id" id="barter_category_id">
+                            <option value="">Выберите категорию</option>
+
+                            @foreach ($categoriesList as $category)
+                                <option value="{{ $category->id }}" @if (old('barter_category_id')) @if (old('barter_category_id')==$category->id) selected @endif
+                                @endif</option>
+                            @endforeach
+                        </select>
                 </div>
             </div>
 
