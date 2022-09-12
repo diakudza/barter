@@ -96,10 +96,9 @@
                         <select class="change-item__create-select" aria-label="категория вещей"
                             data-class="change-item__category" name="barter_category_id" id="barter_category_id">
                             <option value="">Выберите категорию</option>
-
                             @foreach ($categoriesList as $category)
                                 <option value="{{ $category->id }}" @if (old('barter_category_id')) @if (old('barter_category_id')==$category->id) selected @endif
-                                @endif</option>
+                                @endif>{{$category->title}}</option>
                             @endforeach
                         </select>
                 </div>
@@ -126,7 +125,7 @@
                                         </svg>
                                     </div>
 
-                                    <h4 class="load-file__title">Нажмите чтобы загрузить файл</h4>
+                                    <label for="image" class="load-file__title">Нажмите чтобы загрузить файл</label>
 
                                     <p class="load-file__text">Формат файла PNG, JPEG, GIF. </p>
                                 </div>
