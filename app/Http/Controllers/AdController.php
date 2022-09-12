@@ -134,7 +134,7 @@ class AdController extends Controller
             if (isset($image)) {
                 $ad->images()->save($image);
             }
-            if ($validated['fromAdmin']) {
+            if (isset($validated['fromAdmin'])) {
                 $route = 'adIndex';
             } else {
                 $route = 'user.profile.listAds';
