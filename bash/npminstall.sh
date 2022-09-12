@@ -1,5 +1,5 @@
 #!/bin/sh
 
-npm install;
+cd .. && npm install;
 
 echo "npm install complete"

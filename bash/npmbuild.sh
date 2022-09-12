@@ -1,5 +1,5 @@
 #!/bin/sh
 
-npm run build;
+cd .. && npm run build;
 
 echo "npm build complete"
