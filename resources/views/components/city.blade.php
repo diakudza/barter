@@ -1,6 +1,13 @@
 <div>
+
+{{--    @if(session()->has('showCityChoice') && session('showCityChoice'))--}}
+{{--    <div>--}}
+{{--        Точно Ваш город?--}}
+{{--    </div>--}}
+{{--    @endif--}}
+
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Ваш город - {{$userCity}}
+        Ваш город - {{ session('userCity') }}
     </button>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -13,54 +20,75 @@
                 </div>
                 <div class="modal-body ">
                     Регион:
-                    <select id="regionSelect">
-                        @foreach($regions as $region)
-                            <option value="{{$region->id}}">{{$region->name}}</option>
-                        @endforeach
+                    <select id="regionSelect" data-session="{{session()->getId()}}" data-token="{{csrf_token()}}">
+
                     </select>
                     <div id="city">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    @if(session()->has('showCityChoice') && session('showCityChoice')))
-    <div>
-        Точно Ваш город?
-    </div>
-    @endif
+
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script>
 
+    regions = $.ajax({
+        url: '/getregions',
+        method: 'get',
+        dataType: 'json',
+        success: function (data) {
+            let options;
+            for (let item in data) {
+                options += '<option value="' + data[item].id + '">' + data[item].name + '</option>';
+            }
+            $('#regionSelect').html($('<option value="' + options + '</option>'))
+        },
+        error: function (data) {
+            alert('Ошибка js')
+        }
+    })
+
+
     $('#regionSelect').on('change', function () {
+        let token = $('#regionSelect').data( "token" )
+        let sessionId = $('#regionSelect').data( "session" )
         $.ajax({
-                url: '/api/getcities',
-                method: 'post',
+                url: '/getcities',
+                method: 'get',
                 dataType: 'json',
-                data: {region: this.value},
+                data: {region_id: this.value},
                 success: function (data) {
                     let options;
                     $('#city').html('');
-                    for (var item in data) {
-                        options += '<option value="data[item]">' + item + '</option>';
+                    for (let item in data) {
+                        options += '<option value="' + data[item] + '">' + item + '</option>';
                     }
                     $('#city').append($('<select name="city_id" id="selectedCity">' + options + '</select>'))
 
                     $('#selectedCity').on('change', function () {
                         $.ajax({
-                            url: '/api/setcity',
+                            url: '/setcity',
+                            headers: {
+                                'X-CSRF-TOKEN': token
+                            },
                             method: 'post',
                             dataType: 'json',
-                            data: {city: this.value},
+                            data: {
+                                city_id: this.value,
+                                sessionId: sessionId,
+                            },
                             success: function (data) {
-
+                                // alert(data)
+                            },
+                            error: function (data) {
+                                alert('Ошибка js')
                             }
                         })
                     })

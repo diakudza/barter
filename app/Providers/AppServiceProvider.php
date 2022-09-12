@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\GeoService;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 

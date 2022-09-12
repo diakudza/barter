@@ -14,31 +14,11 @@ class MainController extends Controller
 {
     public function index(Category $caterory, City $city, Ad $ad, Request $request, Region $region)
     {
-        if (session()->has('userCity')) {
-            $userCity = session('userCity');
-        } elseif (Auth::user()) {
-            $userCity = (Auth::user()->city()->first()->name) ?? (new GeoService)->getCityByIp($request->ip());
-            session(['userCity' => $userCity]);
-        } else {
-            $userCity = (new GeoService)->getCityByIp($request->ip());
-            session(['userCity' => $userCity]);
-        }
-
-        if (!session()->has('showCityChoice') && !session('showCityChoice') && $userCity) {
-          /*  dd(Auth::user());
-            if (stripos(Auth::user()->city()->first()->name, 'Москва') === false) {
-                session(['showCityChoice'=> true]);
-            } else {
-                session(['showCityChoice'=> false]);
-            }*/
-        }
-
+        (new GeoService)->getFromCacheOrNewRequest($request);
 
         return view('index', [
             'categories' => $caterory->orderBy('title', 'asc')->get(),
             'cities' => $city->orderBy('name', 'asc')->get(),
-            'regions' => $region->orderBy('name', 'asc')->get(),
-            'userCity' => $userCity,
             'lastTenAds' => $ad->whereNotIn('status_id', [2, 3, 5])->orderby('created_at', 'desc')->limit(10)->get(),
             'barter_types' => [
                 ['barter', 'Обмен'],
