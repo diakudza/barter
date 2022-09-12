@@ -35,10 +35,10 @@ class UpdateRequest extends FormRequest
             'category_id' => ['required', 'integer', 'exists:categories,id'],
             'city_id' => ['required', 'integer', 'exists:cities,id'],
             'barter_type' => ['required', 'in:free,barter'],
-            'status_id' => ['required', 'integer', 'exists:ad_statuses,id'],
+            'status_id' => ['sometimes', 'integer', 'exists:ad_statuses,id'],
             'image' => ['image'],
             'imageMain' => ['integer', 'exists:images,id'],
-            'fromAdmin' => ['integer']
+            'fromAdmin' => ['sometimes', 'integer']
             'removeImage' => ['array'],
             'barter_title' => [
                 'required_if:barter_type,barter',

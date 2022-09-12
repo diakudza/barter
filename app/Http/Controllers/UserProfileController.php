@@ -45,7 +45,7 @@ class UserProfileController extends Controller
     }
 
     public function editAd(
-        ShowEditRequest                $request,
+        ShowEditRequest        $request,
         QueryBuilderAds        $adsDetail,
         QueryBuilderCategories $categoriesList,
         QueryBuilderCities     $citiesList,
@@ -63,7 +63,7 @@ class UserProfileController extends Controller
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
             'statusesList' => $allowedStatuses,
-            'fromAdmin' => $request->input('fromadmin') ?? null
+            'fromAdmin' => true
         ]);
     }
 
