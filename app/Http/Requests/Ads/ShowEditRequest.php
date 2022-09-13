@@ -30,7 +30,7 @@ class ShowEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'fromadmin' => ['integer'],
+            'fromadmin' => ['sometimes', 'integer'],
         ];
     }
 }

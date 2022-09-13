@@ -28,9 +28,12 @@ class SearchController extends Controller
     {
         $query = '';
 
-
         if ($request->input('name')) {
-            $query .= (($query) ? " AND " : "") . "title like '%" . mb_strtolower($request->input('name')) . "%'";
+            if(!$request->input('barter_for')){
+                $query .= (($query) ? " AND " : "") . "title like '%" . mb_strtolower($request->input('name')) . "%'";
+            } else {
+                $query .= (($query) ? " AND " : "") . "barter_title like '%" . mb_strtolower($request->input('name')) . "%'";
+            }            
             //search by word in title(only)
         }
 

@@ -123,18 +123,18 @@ class AdController extends Controller
      */
     public function update(UpdateRequest $request, Ad $ad, ImageService $imageService)
     {
-        $validated = $request->safe()->only(['title', 'text', 'category_id', 'city_id', 'barter_type', 'status_id', 'user_id', 'fromAdmin']);
+        $validated = $request->safe()->except(['imageMain', 'removeImage', 'image']);
         $imageData = $request->safe()->only(['imageMain', 'removeImage']);
         $imageService->updateExistingAdImage($imageData);
         if ($request->hasFile('image')) {
-            $image = $imageService->saveExistingAdImage($validated['user_id'], $request->file('image'), $ad->id);
+            $image = $imageService->saveExistingAdImage($ad->user_id, $request->file('image'), $ad->id);
         }
         $ad = $ad->fill($validated);
         if ($ad->update()) {
             if (isset($image)) {
                 $ad->images()->save($image);
             }
-            if ($validated['fromAdmin']) {
+            if (isset($validated['fromAdmin'])) {
                 $route = 'adIndex';
             } else {
                 $route = 'user.profile.listAds';

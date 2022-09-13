@@ -11,7 +11,8 @@ class Ad extends Model
 
     protected $fillable = [
         'title', 'text', 'user_id', 'category_id', 'city_id',
-        'barter_type', 'status_id'
+        'barter_type', 'status_id', 'barter_title', 'barter_text',
+        'barter_category_id',
     ];
 
     public function getCreatedDate()
@@ -23,6 +24,12 @@ class Ad extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
+
+    public function barterCategory()
+    {
+        return $this->belongsTo(Category::class, 'barter_category_id', 'id');
+    }
+
 
     public function User()
     {
