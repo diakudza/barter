@@ -63,6 +63,7 @@
                 data: {region_id: this.value},
                 success: function (data) {
                     let options;
+                    console.log(data)
                     $('#city').html('');
                     for (let item in data) {
                         options += '<option value="' + data[item].id + '">' + data[item].name + '</option>';
