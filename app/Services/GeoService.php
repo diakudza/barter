@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Dadata\DadataClient;
+use Illuminate\Support\Facades\Auth;
 
 class GeoService
 {
