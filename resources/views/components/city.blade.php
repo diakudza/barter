@@ -7,7 +7,7 @@
 {{--    @endif--}}
 
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Ваш город - {{ session('userCity') }}
+        {{ session('userCity') }}
     </button>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -20,7 +20,7 @@
                 </div>
                 <div class="modal-body ">
                     Регион:
-                    <select id="regionSelect" data-session="{{session()->getId()}}" data-token="{{csrf_token()}}">
+                    <select id="regionSelect" data-token="{{csrf_token()}}">
 
                     </select>
                     <div id="city">
@@ -32,9 +32,6 @@
             </div>
         </div>
     </div>
-
-
-
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script>
@@ -66,9 +63,10 @@
                 data: {region_id: this.value},
                 success: function (data) {
                     let options;
+                    console.log(data)
                     $('#city').html('');
                     for (let item in data) {
-                        options += '<option value="' + data[item] + '">' + item + '</option>';
+                        options += '<option value="' + data[item].id + '">' + data[item].name + '</option>';
                     }
                     $('#city').append($('<select name="city_id" id="selectedCity">' + options + '</select>'))
 
@@ -82,7 +80,6 @@
                             dataType: 'json',
                             data: {
                                 city_id: this.value,
-                                sessionId: sessionId,
                             },
                             success: function (data) {
                                 // alert(data)

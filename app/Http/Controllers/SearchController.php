@@ -13,7 +13,7 @@ class SearchController extends Controller
 {
     public function index(Request $request, Category $caterory, City $city, AdStatus $status, Ad $ad)
     {
-        $cityByIp = (new GeoService)->getCityByIp($request->ip());
+        $cityByIp = (new GeoService)->getFromCacheOrNewRequest($request);
         return view('search', [
             'categories' => $caterory->orderBy('title', 'asc')->get(),
             'cities' => $city->orderBy('name', 'asc')->get(),

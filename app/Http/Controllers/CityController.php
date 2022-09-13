@@ -14,9 +14,8 @@ class CityController extends Controller
 {
     public function getAllCitiesByRegion(Request $request, Region $region)
     {
-        $reg = $request->input('region_id');
-        $region = $region->find($reg);
-        return ($region->cities->pluck('id', 'name'));
+        $region = $region->find($request->input('region_id'));
+        return $region->cities()->select('id','name')->get();
     }
 
     public function setUserCity(Request $request, City $city)
@@ -30,8 +29,7 @@ class CityController extends Controller
 
     public function getRegions(Region $region, Request $request)
     {
-        $region = $region->all();
-        return ($region->all());
+        return ($region->select('id', 'name')->orderBy('name', 'asc')->get());
     }
 
 }
