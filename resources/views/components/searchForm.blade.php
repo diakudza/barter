@@ -77,7 +77,7 @@
         </button>
     </div>
 
-    <div class="search-from__bottom-container">
+    <div class="search-form__bottom">
         <div class="search-from__item">
             <label for="check" class="search__checkbox">
                 <label class="checkbox ">

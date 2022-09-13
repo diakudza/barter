@@ -4,12 +4,12 @@
 
 @section('content')
 
-    <div class="container mt-5 pt-5">
+    <section class="container mt-5 pt-5">
 
         <form class="formFilter" action="{{ route('user.index') }}" method="get">
             @csrf
 
-            <p>Фильтровать пользователей по:</p>
+            <h2>Фильтровать пользователей по:</h2>
 
             <div class="d-flex w-100">
                 <div class="form-control d-flex flex-column">
@@ -68,31 +68,18 @@
                 </div>
             </div>
 
-            <div class="form-control">
-                <label for="user">Имя, e-mail</label>
-                <input type="text" name="user" id="user"
-                    @if (isset($searchString)) value="{{ $searchString }}" @endif>
-            </div>
-            <button type="submit" class="btn btn-danger bthChange">
-            <p>Применить фильтр</p>
-            </button>
-            <a href="{{ route('user.index') }}" class="btn btn-secondary bthChange">
-                <p>Сбросить фильтры</p>
-            </a>
-
         </form>
 
         <table class="table mt-5 w-100 table-bordered">
             <thead>
-
                 <td>id</td>
                 <td>Имя</td>
                 <td>Почта</td>
                 <td>Действия</td>
                 <td>Статус</td>
                 <td>Действие</td>
-
             </thead>
+
             @foreach ($users as $user)
                 <tr @if ($user->status_id == 2) class='border-danger' @endif>
                     <td class="">{{ $user['id'] }}</td>
@@ -152,9 +139,10 @@
                 </tr>
             @endforeach
         </table>
+
         <div class="d-flex">
             {!! $users->links() !!}
         </div>
-    </div>
+    </section>
 
 @endsection
