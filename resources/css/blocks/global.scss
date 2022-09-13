@@ -58,6 +58,18 @@ h6 {
     color: $color-black;
 }
 
+//Стили заголовков в секциях
+.heading {
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 110%;
+    letter-spacing: -0.03em;
+
+    @include break768 {
+        font-size: 36px;
+    }
+}
+
 *::before,
 *::after {
     box-sizing: border-box;
@@ -85,18 +97,6 @@ h6 {
     }
 }
 
-//Стили заголовков в секциях
-.heading {
-    font-weight: 500;
-    font-size: 64px;
-    line-height: 110%;
-    letter-spacing: -0.03em;
-
-    @include break768 {
-        font-size: 36px;
-    }
-}
-
 //Стили полей ввода
 .input {
     padding: 19px 15px;
@@ -112,8 +112,6 @@ h6 {
     &--hidden {
 
     }
-
-
 }
 
 //Стилизация линии
@@ -122,4 +120,29 @@ h6 {
     margin-top: 48px;
     margin-bottom: 48px;
     background-color: rgba($color-black, 0.1);
+}
+
+//затемнение фона
+.overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 6;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    visibility: hidden;
+
+    background-color: rgb($color-black, .4);
+
+    transition: all .3s ease-in-out;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
 }

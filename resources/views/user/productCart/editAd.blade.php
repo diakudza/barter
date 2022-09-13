@@ -59,7 +59,6 @@
                     <div class="change-item__type item-type">
                         <ul class="item-type__list">
                             <li class="item-type__item">
-
                                 <label class="radio item-type__label item-type__label--radio" for="free">
                                     <input class="item-type__radio-btn" type="radio" name="barter_type" id="free" value="free" checked>
                                     <svg viewBox="0 0 24 24" filter="url(#goo-light)">
@@ -185,21 +184,7 @@
                             <div class="preview-card__status">
                                 <span>{{ $status->description }}</span>
                             </div>
-
                         @endforeach
-
-{{--                            <label for="status_id">Статус</label>--}}
-{{--                            <select name="status_id" id="status_id" class="form-select">--}}
-{{--                                @foreach ($statusesList as $status)--}}
-{{--                                    <option value="{{ $status->id }}" @if (old('status_id')) @if (old('status_id')==$status->id)--}}
-{{--                                        selected @endif--}}
-{{--                                            @endif--}}
-{{--                                            @if ($ad->status_id == $status->id) selected @endif>--}}
-{{--                                        {{ $status->description }}--}}
-{{--                                    </option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-
                     </div>
 
                     @forelse ($ad->images as $image)

@@ -99,10 +99,10 @@
         </div>
     </div>
 
-{{--     @if(session('alert'))--}}
-{{--        <div class="alert-danger">--}}
-{{--            {{ session('alert') }}--}}
-{{--        </div>--}}
-{{--    @endif--}}
+    {{-- @if(session('alert'))--}}
+    {{-- <div class="alert-danger">--}}
+    {{-- {{ session('alert') }}--}}
+    {{-- </div>--}}
+    {{-- @endif--}}
 
 </form>

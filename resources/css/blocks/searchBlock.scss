@@ -167,7 +167,8 @@
             width: 350px;
 
             @include break1400 {
-
+                width: auto;
+                flex: 1;
                 margin-left: 20px;
             }
         }

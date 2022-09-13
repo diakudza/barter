@@ -1,4 +1,3 @@
-
 <div class="productInfo">
     <div class="characteristicBorder">
         <div class="characteristic">
@@ -13,9 +12,9 @@
             <div class="characteristicContent">
                 <p>Пожелали:</p>
                 <h5>@if ($inwishlist)
-                        {{ $inwishlist }}
+                    {{ $inwishlist }}
                     @else
-                        0
+                    0
                     @endif
                 </h5>
             </div>
@@ -29,9 +28,9 @@
                 <p>Добавили в избранное:</p>
                 <h5>
                     @if ($infavorites)
-                        {{ $infavorites }}
+                    {{ $infavorites }}
                     @else
-                        0
+                    0
                     @endif
                 </h5>
             </div>

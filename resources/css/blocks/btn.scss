@@ -16,18 +16,18 @@
 
     &-white {
         background-color: white;
-        border: 1px solid rgba($color-black, 0.1);
+        border: 2px solid rgba($color-black, 0.1);
         transition: all 0.4s ease-in-out;
 
         &:hover {
-            border: 1px solid rgba($color-black, 0.5);
+            border: 2px solid rgba($color-black, 0.5);
         }
     }
 
     &-blue {
         color: white;
 
-        border: 1px solid $color-blue;
+        border: 2px solid $color-blue;
         background-color: $color-blue;
 
         transition: all 0.4s ease-in-out;
@@ -41,7 +41,7 @@
     &-del {
         color: $color-red;
 
-        border: 1px solid $color-red;
+        border: 2px solid $color-red;
         background-color: white;
 
         transition: all 0.4s ease-in-out;
@@ -54,6 +54,7 @@
         &:hover {
             color: white;
             background-color: $color-red;
+            border: 2px solid $color-red;
 
             svg > path {
                 stroke: white;
@@ -64,7 +65,7 @@
     &-black {
         color: white;
 
-        border: 1px solid $color-black;
+        border: 2px solid $color-black;
         background-color: $color-black;
 
         transition: all 0.4s ease-in-out;
@@ -72,6 +73,16 @@
         &:hover {
             color: $color-black;
             background-color: white;
+        }
+    }
+
+    &-green {
+        background-color: $color-green;
+        border: 2px solid rgba($color-green, 0.1);
+        transition: all 0.4s ease-in-out;
+
+        &:hover {
+            border: 2px solid rgba($color-green, 0.5);
         }
     }
 
@@ -127,10 +138,10 @@
         }
 
         &:hover {
-            border-color: $color-black50;
+            border-color: rgba($color-black, .5);
 
             &.line {
-                background-color: $color-black50;
+                background-color: rgba($color-black, .5);
             }
         }
 
