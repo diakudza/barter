@@ -55,7 +55,10 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
         Route::get('resetPassword', 'resetPassword')->name('user.profile.resetPassword'); //Personal area - reset password
         Route::get('/rateUser/{id}', 'rateUser')->name('user.profile.rateUser')->middleware('userCanRateAnotherUser');
     });
-    Route::resource('wishlist', WishlistController::class);
+    
+    Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::post('/wishlist/destroy', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+
     Route::resource('favorite', AdUserFavorites::class);
     Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
     Route::post('storeAdComplain', [ChatController::class, 'storeAdComplain'])->name('storeAdComplain');

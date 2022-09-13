@@ -41,7 +41,7 @@ class Ad extends Model
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
 
-    public function Status()
+    public function status()
     {
         return $this->belongsTo(AdStatus::class, 'status_id', 'id');
     }
