@@ -62,23 +62,18 @@
                     </div>
                 </div>
 
-                <div class="form-control d-flex flex-column  ">
-                    <button type="submit" class="btn btn-danger">Применить фильтр</button>
-                    <a href="{{ route('user.index') }}" class="btn btn-secondary">Сбросить фильтры</a>
+                <div class="form-control d-flex  ">
+                    <button type="submit" class="btn btn-danger bthChange">
+                        <p>Применить фильтр</p>
+                    </button>
+                    <a href="{{ route('user.index') }}" class="btn btn-secondary bthChange">
+                        <p>Сбросить фильтры1</p>
+                    </a>
                 </div>
             </div>
 
-            <div class="form-control">
-                <label for="user">Имя, e-mail</label>
-                <input type="text" name="user" id="user"
-                       @if (isset($searchString)) value="{{ $searchString }}" @endif>
-            </div>
-            <button type="submit" class="btn btn-danger bthChange">
-                <p>Применить фильтр</p>
-            </button>
-            <a href="{{ route('user.index') }}" class="btn btn-secondary bthChange">
-                <p>Сбросить фильтры</p>
-            </a>
+
+
 
         </form>
 
