@@ -24,7 +24,7 @@ class GeoService
         }
     }
 
-    public static function getFromCacheOrNewRequest(Request $request)
+    public static function getFromCacheOrNewRequest($request)
     {
         if (session()->has('userCity')) {
             $userCity = session('userCity');
