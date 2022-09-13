@@ -41,7 +41,7 @@ class Ad extends Model
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
 
-    public function Status()
+    public function status()
     {
         return $this->belongsTo(AdStatus::class, 'status_id', 'id');
     }
@@ -68,6 +68,6 @@ class Ad extends Model
 
     public function getLastAdsByCity($city)
     {
-        return $city ? $this->whereRelation('city', 'name', 'LIKE', $city . '%')->where('status_id', '=', 1)->orderBy('updated_at', 'DESC')->limit(10)->get() : null;
+        return $city ? $this->whereRelation('city', 'name', 'LIKE', $city . '%')->where('status_id', 1)->orderBy('updated_at', 'DESC')->limit(10)->get() : null;
     }
 }

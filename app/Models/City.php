@@ -13,4 +13,13 @@ class City extends Model
     {
         return $this->hasMany(Ad::class);
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
+    }
 }
