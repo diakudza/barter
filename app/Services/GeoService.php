@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use Dadata\DadataClient;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,8 +31,19 @@ class GeoService
         if (session()->has('userCity')) {
             $userCity = session('userCity');
         } elseif (Auth::user()) {
-            $userCity = (Auth::user()->city()->first()->name) ?? (new GeoService)->getCityByIp($request->ip());
-            session(['userCity' => $userCity]);
+
+            if (Auth::user()->city) {
+                $userCity = Auth::user()->city()->first()->name;
+                if (Auth::user()->city()->first()->name != $userCity) {
+                    $user = User::find(Auth::user()->id);
+                    $user->update(['city_id' => session('userCityId')]);
+                }
+                session(['userCity' => $userCity]);
+            } else {
+                $userCity = (new GeoService)->getCityByIp($request->ip());
+                session(['userCity' => $userCity]);
+            }
+
         } else {
             $userCity = (new GeoService)->getCityByIp($request->ip());
             session(['userCity' => $userCity]);
