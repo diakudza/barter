@@ -196,4 +196,19 @@ class User extends Authenticatable
         return $this->hasMany(AdminCommand::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->getRole() == 'admin';
+    }
+
+    public function isDeveloper()
+    {
+        return $this->getRole() == 'developer';
+    }
+
+    public function isModerator()
+    {
+        return $this->getRole() == 'moderator';
+    }
+
 }
