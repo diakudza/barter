@@ -67,7 +67,7 @@
                         <p>Применить фильтр</p>
                     </button>
                     <a href="{{ route('user.index') }}" class="btn btn-secondary bthChange">
-                        <p>Сбросить фильтры1</p>
+                        <p>Сбросить фильтры</p>
                     </a>
                 </div>
             </div>
