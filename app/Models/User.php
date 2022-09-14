@@ -135,7 +135,7 @@ class User extends Authenticatable
 
     public function getRegistrationDate()
     {
-        return $this->created_at->format('d/m/Y');
+        return $this->created_at->format('d.m.Y');
     }
 
     public function getRating()
@@ -193,6 +193,11 @@ class User extends Authenticatable
     public function getReviewsCount()
     {
         return $this->reviews()->count();
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 
     public function commands()

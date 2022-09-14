@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SysController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\AdUserFavorites;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\ComplainController;
@@ -39,6 +40,9 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/search', [SearchController::class, 'index'])->name('searchPage');
 Route::post('/search', [SearchController::class, 'search'])->name('search');
 Route::resource('ad', AdController::class);
+Route::get('/getcities', [CityController::class, 'getAllCitiesByRegion']);
+Route::get('/getregions', [CityController::class, 'getRegions']);
+Route::post('/setcity', [CityController::class, 'setUserCity']);
 
 Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
@@ -49,11 +53,15 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
         Route::get('/editAd', 'editAd')->name('user.profile.editAd'); // Personal area - edit ad
         Route::get('/publicInfo/{id}', 'publicInfo')->name('user.public'); // Users public info
         Route::get('/youwishlist', 'wishlist')->name('user.wishlist'); // Users public info
+        Route::get('/youfavoritelist', 'favoriteList')->name('user.favoritelist'); // Users public info
         Route::get('personalData', 'personalData')->name('user.profile.personalData'); //Personal area - view and edit personal data
         Route::get('resetPassword', 'resetPassword')->name('user.profile.resetPassword'); //Personal area - reset password
         Route::get('/rateUser/{id}', 'rateUser')->name('user.profile.rateUser')->middleware('userCanRateAnotherUser');
     });
-    Route::resource('wishlist', WishlistController::class);
+
+    Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/destroy/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+
     Route::resource('favorite', AdUserFavorites::class);
     Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
     Route::post('storeAdComplain', [ChatController::class, 'storeAdComplain'])->name('storeAdComplain');

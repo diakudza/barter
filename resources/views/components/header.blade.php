@@ -6,6 +6,7 @@
         </a>
 
         <div class="header__content">
+            @include('components.city')
             @include('components.headers.nav')
             @include('components.headers.userProfile')
         </div>

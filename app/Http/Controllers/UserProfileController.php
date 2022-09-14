@@ -63,7 +63,7 @@ class UserProfileController extends Controller
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
             'statusesList' => $allowedStatuses,
-            'fromAdmin' => true
+            'fromAdmin' => $request->input('fromadmin') ?? null
         ]);
     }
 
@@ -94,6 +94,15 @@ class UserProfileController extends Controller
         $user->wishes()->update(['read' => 1]);
         return view('user.profile.yourAdsWishList', [
             'ads' => $user->wishes
+        ]);
+    }
+
+    public function favoriteList(User $user)
+    {
+        $user = $user->find(auth()->user()->id);
+        $user->wishes()->update(['read' => 1]);
+        return view('user.profile.yourAdsWishList', [
+            'ads' => $user->favoriteAds
         ]);
     }
 
