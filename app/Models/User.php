@@ -131,7 +131,7 @@ class User extends Authenticatable
 
     public function getRegistrationDate()
     {
-        return $this->created_at->format('d/m/Y');
+        return $this->created_at->format('d.m.Y');
     }
 
     public function getRating()
