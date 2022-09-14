@@ -191,6 +191,11 @@ class User extends Authenticatable
         return $this->reviews()->count();
     }
 
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
     public function commands()
     {
         return $this->hasMany(AdminCommand::class);

@@ -38,8 +38,8 @@ class UpdateRequest extends FormRequest
             'status_id' => ['sometimes', 'integer', 'exists:ad_statuses,id'],
             'image' => ['image'],
             'imageMain' => ['integer', 'exists:images,id'],
+            'fromAdmin' => ['sometimes', 'integer'],
             'removeImage' => ['array'],
-            'fromAdmin' => ['integer'],
             'barter_title' => [
                 'required_if:barter_type,barter',
                 'prohibited_if:barter_type,free',

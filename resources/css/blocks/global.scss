@@ -123,7 +123,7 @@ h6 {
 }
 
 //затемнение фона
-.overlay{
+.overlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -140,9 +140,9 @@ h6 {
     background-color: rgb($color-black, .4);
 
     transition: all .3s ease-in-out;
-
-    &.show {
-        opacity: 1;
-        visibility: visible;
-    }
 }
+
+.modal-backdrop {
+    z-index: 1;
+}
+
