@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('chats', function(Blueprint $table){
-            $table->unsignedBigInteger('chat_type_id')->nullable();
+            $table->unsignedBigInteger('chat_type_id')->default(1);
             $table->foreign('chat_type_id')->references('id')->on('chat_types');
         });
     }
@@ -27,6 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('chats', function(Blueprint $table){
+            $table->dropForeign(['chat_type_id']);
             $table->dropColumn('chat_type_id');
         });
     }

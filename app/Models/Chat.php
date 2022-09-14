@@ -31,4 +31,19 @@ class Chat extends Model
             ->where('user_id', '!=', auth()->user()->id)
             ->where('read', '=', '0');
     }
+
+    public function chatType()
+    {
+        return $this->belongsTo(ChatType::class);
+    }
+
+    public function getChatsByType($type)
+    {
+        return $this->whereRelation('chattype', 'chat_type', $type)->get();
+    }
+
+    public function getChatsWithModerators()
+    {
+        return $this->getChatsByType('user_to_moderator');
+    }
 }
