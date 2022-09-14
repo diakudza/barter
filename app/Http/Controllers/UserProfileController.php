@@ -97,6 +97,15 @@ class UserProfileController extends Controller
         ]);
     }
 
+    public function favoriteList(User $user)
+    {
+        $user = $user->find(auth()->user()->id);
+        $user->wishes()->update(['read' => 1]);
+        return view('user.profile.yourAdsWishList', [
+            'ads' => $user->favoriteAds
+        ]);
+    }
+
     public function rateUser(Request $request)
     {
         return view('user.profile.rateUser', ['votedId'=>$request->route('id'), 'voterId'=>Auth::user()->id]);
