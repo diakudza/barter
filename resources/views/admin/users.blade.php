@@ -8,7 +8,6 @@
 
         <form class="formFilter" action="{{ route('user.index') }}" method="get">
             @csrf
-<<<<<<< HEAD
 
             <h2>Фильтровать пользователей по:</h2>
 
@@ -37,7 +36,7 @@
                                @if (isset($searchString)) value="{{ $searchString }}" @endif>
                     </div>
 
-=======
+
             <h5>Фильтровать пользователей по:</h5>
             <p>Статус</p>
             <div class="form-control d-flex flex-column">
@@ -45,7 +44,7 @@
                     <label for="status1">Активен</label>
                     <input type="checkbox" name="status[]" id="status1" value="1"
                         @if (isset($filterStatuses) && in_array(1, $filterStatuses)) checked @endif>
->>>>>>> dev
+
                 </div>
                 <div>
                     <label for="status2">Заблокирован</label>
@@ -76,9 +75,7 @@
                         @if (isset($filterRoles) && in_array(4, $filterRoles)) checked @endif>
                 </div>
             </div>
-<<<<<<< HEAD
 
-=======
             <div class="form-control">
                 <label for="user">Имя, e-mail</label>
                 <input type="text" name="user" id="user"
@@ -90,7 +87,6 @@
             <a href="{{ route('user.index') }}" class="btn btn-secondary bthChange">
                 <p>Сбросить фильтры</p>
             </a>
->>>>>>> dev
         </form>
 
         <table class="table mt-5 w-100 table-bordered">

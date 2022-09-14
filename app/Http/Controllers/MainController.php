@@ -17,7 +17,7 @@ class MainController extends Controller
         return view('index', [
             'categories' => $caterory->orderBy('title', 'asc')->get(),
             'cities' => $city->orderBy('name', 'asc')->get(),
-            'lastTenAds' => $ad->where('status_id', 1)->orderby('created_at', 'desc')->limit(10)->get(),
+            'lastTenAds' => $ad->where('status_id', 1)->orderby('created_at', 'desc')->limit(12)->get(),
             'barter_types' => [
                 ['barter', 'Обмен'],
                 ['free', 'Даром']
