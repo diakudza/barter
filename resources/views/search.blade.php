@@ -21,6 +21,10 @@
 
             </div>
 
+            <div class="d-flex">
+                {!! $searchResult->links() !!}
+            </div>
+
         @elseif($adsByUserCity)
 
             <div class="search-result__city">

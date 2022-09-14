@@ -280,8 +280,8 @@
                                     @else
                                         {{ asset('images/icon-avatar.png') }}
                                     @endif
-                                    " 
-                                    alt="{{ Auth::user()->name }}" 
+                                    "
+                                    alt="{{ Auth::user()->name }}"
                                     title="{{ Auth::user()->name }}">
                             </div>
 

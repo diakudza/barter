@@ -63,7 +63,7 @@ class UserProfileController extends Controller
             'categoriesList' => $categoriesList->listItems(['id', 'title']),
             'citiesList' => $citiesList->listItems(['id', 'name']),
             'statusesList' => $allowedStatuses,
-            'fromAdmin' => true
+            'fromAdmin' => $request->input('fromadmin') ?? null
         ]);
     }
 
