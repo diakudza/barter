@@ -12,9 +12,7 @@
 
         <nav class="footer__menu">
             <a href="{{ route('home') }}" class="footer__menu-link">Главная</a>
-
             <a href="{{ route('searchPage') }}" class="footer__menu-link">Поиск</a>
-
             <a href="/about" class="footer__menu-link">О проекте</a>
             <a href="{{ route('getSupport') }}" class="footer__menu-link">Связь с техподдержкой</a>
         </nav>

@@ -3,8 +3,7 @@
 
     <div class="preview-card__wrapper">
         <div class="preview-card__img">
-            <img src="{{ asset('images/product/placeholder400x400.png' )}}" alt="Название товара"
-                 title="Название товара">
+            <img src="{{ asset('images/product/placeholder400x400.png' )}}" alt="Название товара" title="Название товара">
         </div>
 
         <div class="preview-card__body">

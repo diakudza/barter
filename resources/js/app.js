@@ -2,21 +2,21 @@
 import "./venders";
 
 //Скрипты из шаблона (удалить после их переноса)
-import "./checkFile";
+import "./modules/checkFile";
 
 //Модули
-import { headerJS } from "./navbar";
-import scrollingTop from "./scrollingTop";
-import cutText from "./cutText";
-import dropdown from "./dropdown";
-import customCheckbox from "./customCheckbox";
-import notification from "./notification";
+import { headerJS } from "./modules/navbar";
+import scrollingTop from "./modules/scrollingTop";
+import cutText from "./modules/cutText";
+import dropdown from "./modules/dropdown";
+import customCheckbox from "./modules/customCheckbox";
+import notification from "./modules/notification";
 
 
-import "./modalWindowPopup";
-import "./login";
-import chats from "./chats";
-import addProducts from "./addProduct";
+import "./modules/modalWindowPopup";
+import "./modules/login";
+import chats from "./modules/chats";
+import addProducts from "./modules/addProduct";
 
 //Вызовы модулей
 scrollingTop('.btn-top', '#main');

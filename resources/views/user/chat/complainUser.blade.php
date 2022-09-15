@@ -4,13 +4,13 @@
 
 @section('content')
 
-    <div class="container">
-        <h3>Пожаловаться на пользователя</h3>
-        @include('components.chats.complainForm', [
-            'route' => route('storeUserComplain'),
-            'inputName' => 'user_id',
-            'inputValue' => $id,
-        ])
-    </div>
+<div class="container">
+    <h3>Пожаловаться на пользователя</h3>
+    @include('components.chats.complainForm', [
+    'route' => route('storeUserComplain'),
+    'inputName' => 'user_id',
+    'inputValue' => $id,
+    ])
+</div>
 
 @endsection

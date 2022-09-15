@@ -28,47 +28,47 @@
             </div>
             <div class="chats__list_chats">
                 @if($chats !== null)
-                    @include('components.chats.chatContactList', ['chats'=> $chats])
+                @include('components.chats.chatContactList', ['chats'=> $chats])
                 @else
-                    <p>Чатов нет</p>
+                <p>Чатов нет</p>
                 @endif
             </div>
         </div>
         <div class="chats__chat">
-                @if(isset($messages))
-                    <div class="chats__chat_heading">
-                        <div class="chats__chat_heading-item">
-                            <div class="chats__chat_heading-item_photo">
-                                <img src="" alt="">
-                            </div>
-                            <div class="chats__chat_heading-item_info">
-                                <div class="chats__chat_heading-item_cost">$42,290</div>
-                                <div class="chats__chat_heading-item_title">Mercedes S-Class</div>
-                            </div>
+            @if(isset($messages))
+            <div class="chats__chat_heading">
+                <div class="chats__chat_heading-item">
+                    <div class="chats__chat_heading-item_photo">
+                        <img src="" alt="">
+                    </div>
+                    <div class="chats__chat_heading-item_info">
+                        <div class="chats__chat_heading-item_cost">$42,290</div>
+                        <div class="chats__chat_heading-item_title">Mercedes S-Class</div>
+                    </div>
+                </div>
+                <div class="chats__chat_heading-profile">
+                    <div class="chats__chat_heading-profile_avatar">
+                        <img src="" alt="">
+                    </div>
+                    <div class="chats__chat_heading-profile_info">
+                        <div class="chats__chat_heading-profile_info_name">
+                            John ⚡️
                         </div>
-                        <div class="chats__chat_heading-profile">
-                            <div class="chats__chat_heading-profile_avatar">
-                                <img src="" alt="">
-                            </div>
-                            <div class="chats__chat_heading-profile_info">
-                                <div class="chats__chat_heading-profile_info_name">
-                                    John ⚡️
-                                </div>
-                                <div class="chats__chat_heading-profile_info_online">
-                                    Заходил в 14:42
-                                </div>
-                            </div>
+                        <div class="chats__chat_heading-profile_info_online">
+                            Заходил в 14:42
                         </div>
                     </div>
-                    <div>
-                        <div class="chats__chat_date">
-                        12 мая
-                    </div>
-                        <div class="chats__chat_messages">
-                            @include('components.chats.chatMessageList', ['messages' => $messages->getMessages])
-                        </div>
-                    </div>
-                @endif
+                </div>
+            </div>
+            <div>
+                <div class="chats__chat_date">
+                    12 мая
+                </div>
+                <div class="chats__chat_messages">
+                    @include('components.chats.chatMessageList', ['messages' => $messages->getMessages])
+                </div>
+            </div>
+            @endif
             @include('components.chats.chatSendForm', ['destination_id' => 1, 'chatId' => $chatId])
         </div>
     </div>

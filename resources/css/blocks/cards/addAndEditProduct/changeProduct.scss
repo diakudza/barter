@@ -144,6 +144,11 @@
 }
 
 .item-type {
+
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
+
     &__list {}
 
     &__item {

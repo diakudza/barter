@@ -13,9 +13,12 @@
 
 //Глобальные стили
 @import "blocks/global";
+
+//Стили кнопок
 @import "blocks/btn";
+//Стили уведомлений
 @import "blocks/alerts";
-//Стили чекбокса
+//Стили чекбокса и радио кнопок
 @import "blocks/customCheckbox";
 
 //Все стили для Админки
@@ -26,33 +29,29 @@
 @import "blocks/nav";
 @import "blocks/top-profile";
 @import "blocks/profileMenu";
-
 @import "blocks/actions";
+//Стили блока hero на главной странице
 @import "blocks/hero";
 //Блок как это работает
 @import "blocks/steps";
 @import "blocks/productsLast";
+//Стили маленькой карточки
 @import "blocks/cards/card";
+//Стили большой карточки продукта
+@import "blocks/productCart";
+@import "blocks/cards/cardBig";
 
 //Блок поиска
 @import "blocks/searchBlock";
-
-//Стили большой карточки продукта
-@import "blocks/productCart";
-
 //Стили страницы авторизации и регистрации
 @import "blocks/login";
-
 //Стили чата
 @import "blocks/chats";
-
 //Стили страницы добавления и редактировнаия объявления
 @import "blocks/cards/addAndEditProduct/changeProduct";
-
-//Стили страницы добавления, превьюха
+//Стили страницы добавления и редактирования, превьюха
 @import "blocks/cards/previewCard";
-
-//Страница избранного
+//Страница избранного и моих объявлений
 @import "blocks/wishList/wishList";
 
 //Стили footer

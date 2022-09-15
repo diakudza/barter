@@ -30,6 +30,7 @@
                 </div>
             @endforelse
         </div>
+
         <div>
             <p>На что откликнулся:</p>
             @forelse($user->wishes as $wishAd)
@@ -42,7 +43,6 @@
                 </div>
             @endforelse
         </div>
-
 
     </div>
 

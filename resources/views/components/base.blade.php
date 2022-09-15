@@ -24,6 +24,8 @@
 
         @include('components.footer')
         @include('components.alert')
+
+        <div class="overlay"></div>
     </div>
 
     <div class="btn-top">
@@ -36,6 +38,7 @@
         </svg>
 
     </div>
+
 
     @vite(['resources/js/app.js'])
 </body>
