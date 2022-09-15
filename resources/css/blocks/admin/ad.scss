@@ -1,37 +1,43 @@
-.testClass {
-
-}
-
-.table{
+.admin-table{
     border: 1px solid #eee;
     table-layout: fixed;
     margin-bottom: 20px;
+
+    &__header{
+        font-weight: bold;
+        padding: 5px;
+        background: #23262F;
+        border: 1px solid #dddddd;
+        color: white;
+    }
+
+    &__header td{
+        padding: 5px 10px;
+        text-align: center;
+    }
+
 }
 
-.table thead {
-    font-weight: bold;
-    padding: 5px;
-    background: #23262F;
-    border: 1px solid #dddddd;
-    color: white;
-}
+//.admin-table thead {
+//    font-weight: bold;
+//    padding: 5px;
+ //   background: #23262F;
+ //   border: 1px solid #dddddd;
+ //   color: white;
+//}
 
-.table td{
-    padding: 5px 10px;
-    text-align: left;
-    justify-content: center;
-}
+//.admin-table td{
+//    padding: 5px 10px;
+//    text-align: left;
+//    justify-content: center;
+//}
 
-.table tbody tr:nth-child(odd){
+.admin-table tbody tr:nth-child(odd){
     background: #fff;
 }
 
-.table tbody tr:nth-child(even){
+.admin-table tbody tr:nth-child(even){
     background: #F7F7F7;
-}
-
-.tableHeader td{
-    text-align: center;
 }
 
 .svgAdmin{
@@ -41,9 +47,9 @@
 
 .bthDel{
     color: unset;
-    background-color: #EF466F;
+    background-color: $color-ligthGrey;
     border: none;
-    --bs-btn-hover-bg: #ae0000;
+    --bs-btn-hover-bg: #d6d1d1;
     padding: 10px;
     border-radius: 50%;
 }

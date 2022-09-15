@@ -79,10 +79,10 @@
 
         </div>
 
-        <table class="table mt-5 w-auto table-bordered">
-            <thead class="tableHeader">
+        <table class="table mt-5 w-auto table-bordered admin-table">
+            <thead class="admin-table__header">
                 <td>id</td>
-                <td>Заголовок</td>
+                <td class="admin-table__element">Заголовок</td>
                 <td>Текст</td>
                 <td>Автор</td>
                 <td>Категория</td>
@@ -158,7 +158,12 @@
                             @method('DELETE')
                             @csrf
                             <Button class="btn btn-danger bthDel">
-                                <svg class="svgAdmin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><path xmlns="http://www.w3.org/2000/svg" d="M21,4H17.9A5.009,5.009,0,0,0,13,0H11A5.009,5.009,0,0,0,6.1,4H3A1,1,0,0,0,3,6H4V19a5.006,5.006,0,0,0,5,5h6a5.006,5.006,0,0,0,5-5V6h1a1,1,0,0,0,0-2ZM11,2h2a3.006,3.006,0,0,1,2.829,2H8.171A3.006,3.006,0,0,1,11,2Zm7,17a3,3,0,0,1-3,3H9a3,3,0,0,1-3-3V6H18Z" fill="#f9fcff" data-original="#000000"/><path xmlns="http://www.w3.org/2000/svg" d="M10,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,10,18Z" fill="#f9fcff" data-original="#000000"/><path xmlns="http://www.w3.org/2000/svg" d="M14,18a1,1,0,0,0,1-1V11a1,1,0,0,0-2,0v6A1,1,0,0,0,14,18Z" fill="#f9fcff" data-original="#000000"/></g></svg>
+                                <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M30.1042 22.3906C30.1042 22.3906 29.6517 28.0031 29.3892 30.3673C29.2642 31.4965 28.5667 32.1581 27.4242 32.179C25.25 32.2181 23.0733 32.2206 20.9 32.1748C19.8008 32.1523 19.115 31.4823 18.9925 30.3731C18.7283 27.9881 18.2783 22.3906 18.2783 22.3906" stroke="#EF4646" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M31.2567 19.6999H17.125" stroke="#EF4646" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M28.5335 19.7C27.8793 19.7 27.316 19.2375 27.1877 18.5966L26.9852 17.5833C26.8602 17.1158 26.4368 16.7925 25.9543 16.7925H22.4268C21.9443 16.7925 21.521 17.1158 21.396 17.5833L21.1935 18.5966C21.0652 19.2375 20.5018 19.7 19.8477 19.7" stroke="#EF4646" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <rect x="1" y="1.5" width="46" height="46" rx="23" stroke="#EF4646" stroke-width="2"/>
+                                </svg>
                             </Button>
                         </form>
                         <a href="{{ route('user.profile.editAd', ['ad' => $ad->id , 'fromadmin' => 1]) }}" class="btn  btn-outline-secondary">Редак.</a>
