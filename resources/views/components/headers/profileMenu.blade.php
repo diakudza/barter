@@ -9,7 +9,7 @@
 
         @if (auth()->user() &&
             in_array(auth()->user()->getRole(),
-                ['admin', 'developer']))
+                ['admin', 'developer', 'moderator']))
             <li class="profile-menu__item">
                 <a class="profile-menu__link" href="{{ route('adminmain') }}">
                     <svg class="profile-menu__icon profile-menu__icon--admin" width="19" height="19"
