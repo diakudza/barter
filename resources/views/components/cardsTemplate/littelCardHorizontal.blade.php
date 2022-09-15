@@ -1,6 +1,9 @@
 <div class="card">
 
-    {{-- <a href="{{ route('ad.show', $item['id']) }}" class="card__link"></a>--}}
+    @if(Request::is('yourfavoritelist'))
+
+    @endif
+
 
     <div class="card__content card__content--horizontal">
         <div class="card__img card__img--horizontal">

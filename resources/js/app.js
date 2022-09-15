@@ -17,6 +17,8 @@ import "./modules/modalWindowPopup";
 import "./modules/login";
 import chats from "./modules/chats";
 import addProducts from "./modules/addProduct";
+import modulsWindow from "./modules/modulsWindow";
+import photoSlider from "./modules/photoSlider";
 
 //Вызовы модулей
 scrollingTop('.btn-top', '#main');
@@ -27,3 +29,6 @@ customCheckbox();
 chats();
 notification();
 addProducts();
+modulsWindow();
+photoSlider();
+

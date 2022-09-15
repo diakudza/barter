@@ -1,9 +1,9 @@
 .btn {
+    padding: 20px 31px;
+
     font-weight: 500;
     font-size: 16px;
     line-height: 100%;
-
-    padding: 20px 31px;
 
     border-radius: 16px;
 
@@ -19,6 +19,11 @@
         border: 2px solid rgba($color-black, 0.1);
         transition: all 0.4s ease-in-out;
 
+        svg path {
+            stroke: $color-black;
+            transition: all 0.4s ease-in-out;
+        }
+
         &:hover {
             border: 2px solid rgba($color-black, 0.5);
         }
@@ -32,9 +37,19 @@
 
         transition: all 0.4s ease-in-out;
 
+        svg path {
+            stroke: #fff;
+            transition: all 0.4s ease-in-out;
+        }
+
         &:hover {
             color: $color-blue;
             background-color: transparent;
+
+            svg path {
+                stroke: $color-blue;
+                transition: all 0.4s ease-in-out;
+            }
         }
     }
 
@@ -46,7 +61,7 @@
 
         transition: all 0.4s ease-in-out;
 
-        svg > path {
+        svg path {
             stroke: $color-red;
             transition: all 0.4s ease-in-out;
         }
@@ -56,7 +71,7 @@
             background-color: $color-red;
             border: 2px solid $color-red;
 
-            svg > path {
+            svg path {
                 stroke: white;
             }
         }
@@ -94,8 +109,8 @@
 
         transition: all 0.4s ease-in-out;
 
-        svg > path {
-            stroke: white;
+        svg path {
+            stroke: #fff;
             transition: all 0.4s ease-in-out;
         }
 
@@ -103,8 +118,8 @@
             color: $color-black;
             background-color: white;
 
-            svg > path {
-                stroke: white;
+            svg path {
+                stroke: $color-black;
             }
         }
     }
