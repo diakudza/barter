@@ -60,7 +60,6 @@
                     <div class="change-item__type item-type">
                         <ul class="item-type__list">
                             <li class="item-type__item">
-
                                 <label class="radio item-type__label item-type__label--radio" for="free">
                                     <input class="item-type__radio-btn" type="radio" name="barter_type" id="free" value="free"
                                         @if(old('barter_type') && old('barter_type') == 'free')) checked @elseif ($ad->barter_type == 'free') checked @endif>
@@ -89,17 +88,20 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="change-item__item">
+
+                    <div class="change-item__item item-type">
                         <label class="change-item__label" for="barter_title">Обменяю на</label>
                         <input class="change-item__input input" type="text" name="barter_title" id="barter_for" placeholder="Пример: Поменять на стол"
                             value="@if(old('barter_title')) {{old('barter_title')}} @else {{$ad->barter_title}} @endif">
                     </div>
-                    <div class="change-item__item">
+
+                    <div class="change-item__item item-type">
                         <label class="change-item__label" for="barter_text">Описание того, что Вы бы хотели</label>
                         <textarea class="change-item__input input input__textarea" name="barter_text" id="barter_text" rows="3">@if (old('barter_text')){{ old('barter_text') }}@else{{ $ad->barter_text }}@endif</textarea>
                     </div>
-                    <div class="change-item__item">
-                        <label class="change-item__label" for="barter_category_id">Категория обменивамого</label>
+
+                    <div class="change-item__item item-type">
+                        <label class="change-item__label" for="barter_category_id">Категория обмениваемого</label>
                         <select class="change-item__create-select" aria-label="категория вещей"
                             data-class="change-item__category" name="barter_category_id" id="barter_category_id">
                             <option value="">Выберите категорию</option>
@@ -223,19 +225,6 @@
                                 </div>
                             @endif
                         @endforeach
-
-{{--                            <label for="status_id">Статус</label>--}}
-{{--                            <select name="status_id" id="status_id" class="form-select">--}}
-{{--                                @foreach ($statusesList as $status)--}}
-{{--                                    <option value="{{ $status->id }}" @if (old('status_id')) @if (old('status_id')==$status->id)--}}
-{{--                                        selected @endif--}}
-{{--                                            @endif--}}
-{{--                                            @if ($ad->status_id == $status->id) selected @endif>--}}
-{{--                                        {{ $status->description }}--}}
-{{--                                    </option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-
                     </div>
 
                     @forelse ($ad->images as $image)
@@ -264,11 +253,13 @@
 
                             <p class="preview-card__location-text">{{ $city->name }}</p>
                         </div>
+
                         @if ($ad->barter_type == 'barter')
                             <div>
                                 <p>Обмен на: {{ $ad->barter_title }}</p>
                             </div>
                         @endif
+
                     </div>
 
                     <div class="preview-card__bottom">

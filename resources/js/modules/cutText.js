@@ -7,7 +7,7 @@ const cutText = () => {
         debounce: 100,
         responsive: true,
         className: ".card__title",
-        lines: 2,
+        lines: 1,
         portrait: null,
         break_word: false,
     });

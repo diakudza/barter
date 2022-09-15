@@ -1,29 +1,29 @@
 @extends('components.base')
 
-@section('title',"Личный кабинет")
+@section('title',"Избранные вещи")
 
 @section('content')
-    <section class="container wish-list">
 
-        @if(count($ads))
+<section class="container wish-list">
 
-            <h2 class="wish-list__title">То что вам приглянулось</h2>
+    @if(count($ads))
 
-            <div class="wish-list__list">
-           @foreach($ads as $item)
-                    {{--@include('components.cardsTemplate.littelCard')--}}
-                @include('components.cardsTemplate.littelCardHorizontal')
-            @endforeach
-            </div>
+        <h2 class="wish-list__title">То что вам приглянулось</h2>
 
-        @else
-            <div class="wish-list__empty">
-                <h2 class="wish-list__title wish-list__title--empty">Вам ни чего не понравилось. Давайте исправим? 😎 </h2>
-                <a href="{{ route('searchPage') }}" class="wish-list__btn btn btn-blue">Перейти к объявлениям</a>
-            </div>
+        <div class="wish-list__list">
+       @foreach($ads as $item)
+            @include('components.cardsTemplate.littelCardHorizontal')
+        @endforeach
+        </div>
 
-        @endif
+    @else
+        <div class="wish-list__empty">
+            <h2 class="wish-list__title wish-list__title--empty">Вам ни чего не понравилось. Давайте исправим? 😎 </h2>
+            <a href="{{ route('searchPage') }}" class="wish-list__btn btn btn-blue">Перейти к объявлениям</a>
+        </div>
 
-    </section>
+    @endif
+
+</section>
 
 @endsection
