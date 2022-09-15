@@ -4,6 +4,7 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
+use App\Http\Controllers\Admin\AdminChatController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\SysController;
 use App\Http\Controllers\Admin\UserRoleController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -105,11 +107,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
         'update' => 'adUpdate',
         'create' => 'adCreate',
         'edit' => 'adEdit',
-    ]);
+    ])->withoutMiddleware([isAdmin::class])->middleware('isModerator');
     Route::resource('user', AdminUserController::class);
     Route::resource('role', UserRoleController::class);
     Route::resource('comment', AdminCommentController::class);
-    Route::get('/main', [AdminController::class, 'main'])->name('adminmain');
+    Route::get('adminChat', [AdminChatController::class, 'index'])->name('adminChat')->withoutMiddleware([isAdmin::class])->middleware('isModerator');
+    Route::get('/main', [AdminController::class, 'main'])->name('adminmain')->withoutMiddleware([isAdmin::class])->middleware('isModerator');
     Route::get('/system', [SysController::class, 'index'])->name('admin.system');
     Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action');
 });

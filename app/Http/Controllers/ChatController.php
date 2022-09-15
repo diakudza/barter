@@ -19,8 +19,11 @@ class ChatController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->getRole() == 'moderator') {
+            $chats = auth()->user()->getUserToUserChats;
+        } else $chats = auth()->user()->getChats;
         return view('user.chat.chats', [
-            'chats' => auth()->user()->getChats
+            'chats' => $chats
         ]);
     }
 
@@ -59,6 +62,16 @@ class ChatController extends Controller
     {
         $chat = Chat::find($id);
         $user = User::find(auth()->user()->id);
+        if ($user->getRole() == 'moderator' && $chat->chatType->chat_type == 'user_to_moderator') {
+            $chat->messages()->where('user_id', '!=', auth()->user()->id)->update(['read' => 1]);
+            $chatNew = new Chat();
+            $chats = $chatNew->getChatsWithModerators();
+            return view('admin.adminChat', [
+                'chats' => $chats,
+                'messages' => $chat,
+                'chatId' => $chat->id
+            ]);
+        }
         $currentUserchat = $user->getChats()->pluck('chat_id')->toArray();
         if (in_array($id, $currentUserchat)) {
             $chat->messages()->where('user_id', '!=', auth()->user()->id)->update(['read' => 1]);
@@ -131,7 +144,7 @@ class ChatController extends Controller
         $message = new Message([
             'chat_id' => $chatId,
             'user_id' => Auth::user()->id,
-            'text' => 'Пользователь '.Auth::user()->name.' создал жалобу на объявление с номером '.$request->ad_id.' следующего содержания: "'.$request->text.'"',
+            'text' => 'Пользователь ' . Auth::user()->name . ' создал жалобу на объявление с номером ' . $request->ad_id . ' следующего содержания: "' . $request->text . '"',
         ]);
         $message->save();
         return redirect()->route('chat.index');
@@ -143,7 +156,7 @@ class ChatController extends Controller
         $message = new Message([
             'chat_id' => $chatId,
             'user_id' => Auth::user()->id,
-            'text' => 'Пользователь '.Auth::user()->name.' создал жалобу на пользователя с номером '.$request->user_id.' следующего содержания: "'.$request->text.'"',
+            'text' => 'Пользователь ' . Auth::user()->name . ' создал жалобу на пользователя с номером ' . $request->user_id . ' следующего содержания: "' . $request->text . '"',
         ]);
         $message->save();
         return redirect()->route('chat.index');
@@ -155,7 +168,7 @@ class ChatController extends Controller
         $message = new Message([
             'chat_id' => $chatId,
             'user_id' => Auth::user()->id,
-            'text' => 'Пользователь '.Auth::user()->name.' создал заявку в техподдержку следующего содержания: "'.$request->text.'"',
+            'text' => 'Пользователь ' . Auth::user()->name . ' создал заявку в техподдержку следующего содержания: "' . $request->text . '"',
         ]);
         $message->save();
         return redirect()->route('chat.index');

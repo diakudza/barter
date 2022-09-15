@@ -100,6 +100,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Chat::class, 'chat_users');
     }
 
+    public function getUserToUserChats()
+    {
+        return $this->belongsToMany(Chat::class, 'chat_users')->whereRelation('chattype', 'chat_type', 'user_to_user');
+    }
+
     public function messages()
     {
         return $this->belongsToMany(Message::class, 'messages');
@@ -114,9 +119,8 @@ class User extends Authenticatable
     public function getUnreadMessages() //for notify in navbar
     {
         return $this->getChats()
-            ->whereRelation('messages', 'read', '=' , 0)
-            ->whereRelation('messages', 'user_id', '!=' , \auth()->user()->id)
-            ;
+            ->whereRelation('messages', 'read', '=', 0)
+            ->whereRelation('messages', 'user_id', '!=', \auth()->user()->id);
     }
 
     public function images()
@@ -178,7 +182,7 @@ class User extends Authenticatable
 
     public function lastSessionDurationAttribute()
     {
-//        return $this->logout_time
+        //        return $this->logout_time
     }
 
     public function reviews()
@@ -201,4 +205,23 @@ class User extends Authenticatable
         return $this->hasMany(AdminCommand::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->getRole() == 'admin';
+    }
+
+    public function isDeveloper()
+    {
+        return $this->getRole() == 'developer';
+    }
+
+    public function isModerator()
+    {
+        return $this->getRole() == 'moderator';
+    }
+
+    public function Role()
+    {
+        return $this->belongsTo(UserRole::class);
+    }
 }
