@@ -49,9 +49,4 @@ class Chat extends Model
     {
         return $this->getChatsByType('user_to_moderator');
     }
-
-    public function UserRole()
-    {
-        return $this->belongsTo(UserRole::class);
-    }
 }
