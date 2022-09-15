@@ -28,8 +28,9 @@ class AddNewModeratorToModeratorChats
      */
     public function handle(NewModerator $event)
     {
-        $moderators = User::whereRelation('userrole', 'moderator');
-        Chat::whereRelation('chattype', 'chat_type', 'user_to_moderator')
-            ->update(['users' => $moderators]);
+        $chats = Chat::whereRelation('chattype', 'chat_type', 'user_to_moderator')->get();
+        foreach ($chats as $chat) {
+            $chat->users()->save($event->user);
+        }
     }
 }
