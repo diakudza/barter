@@ -21,7 +21,11 @@
 
     </div>
 
-    @elseif($adsByUserCity)
+            <div class="d-flex">
+                {!! $searchResult->links() !!}
+            </div>
+
+        @elseif($adsByUserCity)
 
     <div class="search-result__city">
         <h3 class="search-result__title title">Возможно вас заинтересуют объявления в Вашем городе</h3>

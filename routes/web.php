@@ -51,13 +51,14 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
         Route::get('/editAd', 'editAd')->name('user.profile.editAd'); // Personal area - edit ad
         Route::get('/publicInfo/{id}', 'publicInfo')->name('user.public'); // Users public info
         Route::get('/youwishlist', 'wishlist')->name('user.wishlist'); // Users public info
+        Route::get('/youfavoritelist', 'favoriteList')->name('user.favoritelist'); // Users public info
         Route::get('personalData', 'personalData')->name('user.profile.personalData'); //Personal area - view and edit personal data
         Route::get('resetPassword', 'resetPassword')->name('user.profile.resetPassword'); //Personal area - reset password
         Route::get('/rateUser/{id}', 'rateUser')->name('user.profile.rateUser')->middleware('userCanRateAnotherUser');
     });
-    
+
     Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
-    Route::post('/wishlist/destroy', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+    Route::delete('/wishlist/destroy/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 
     Route::resource('favorite', AdUserFavorites::class);
     Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
