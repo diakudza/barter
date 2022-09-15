@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Chat extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'chat_type_id',
+    ];
 
     public function users()
     {
@@ -30,5 +33,20 @@ class Chat extends Model
         return $this->hasMany(Message::class)
             ->where('user_id', '!=', auth()->user()->id)
             ->where('read', '=', '0');
+    }
+
+    public function chatType()
+    {
+        return $this->belongsTo(ChatType::class);
+    }
+
+    public function getChatsByType($type)
+    {
+        return $this->whereRelation('chattype', 'chat_type', $type)->get();
+    }
+
+    public function getChatsWithModerators()
+    {
+        return $this->getChatsByType('user_to_moderator');
     }
 }

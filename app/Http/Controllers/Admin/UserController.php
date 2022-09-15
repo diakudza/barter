@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserRole;
 use App\Models\UserStatus;
+use App\Providers\NewModerator;
 use App\Queries\QueryBuilderUsers;
 use Illuminate\Http\Request;
 
@@ -90,8 +91,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $wasModerator = false;
+        if ($user->getRole() == 'moderator') {
+            $wasModerator = true;
+        }
         $user->fill($request->all());
         $user->save();
+        $isModerator = false;
+        if ($user->getRole() == 'moderator') {
+            $isModerator = true;
+        }
+        if (!$wasModerator && $isModerator) {
+            NewModerator::dispatch($user);
+        }
         return redirect()->back()->with('success', "Обновил права");
     }
 

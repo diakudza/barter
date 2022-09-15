@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'isaccess' => \App\Http\Middleware\isAccess::class,
         'isUserBlocked' => \App\Http\Middleware\isUserBlocked::class,
         'userCanRateAnotherUser' => \App\Http\Middleware\UserCanRateAnotherUser::class,
+        'isModerator' => \App\Http\Middleware\IsModerator::class,
     ];
 }

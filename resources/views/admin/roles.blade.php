@@ -1,6 +1,6 @@
 @extends('components.admin_base')
 
-@section('title',"Категории")
+@section('title',"Роли")
 
 @section('content')
 
