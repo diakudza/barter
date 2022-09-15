@@ -1,3 +1,4 @@
+{{--Блок про информацию по публикации--}}
 <div class="info-blocks__list">
     <div class="info-blocks__body">
         <div class="info-blocks__item info-block">
@@ -73,7 +74,7 @@
                         {{--<p>Комментарии к обмену: {{$ad->barter_text}}</p>--}}
                         {{--<p>Категория обмениваемого: {{$ad->barterCategory->title}}</p>--}}
                     @elseif ($ad->barter_type != 'barter')
-                          отдам даром
+                        отдам даром
                     @endif
                 </span>
             </div>
@@ -84,102 +85,110 @@
         <div class="info-blocks__item info-buttons">
 
             @if (auth()->user())
-                {{-- Начать бартер--}}
-                @if (!$userFavorite)
-                    <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
-                        @method('POST')
-                        @csrf
 
-                        <button class="info-buttons__bart btn btn-reset btn-blue">
-                            <svg class="info-buttons__icon" width="22" height="22" viewBox="0 0 22 22"
-                                 fill="none" xmlns="http://www.w3
+                @if($ad->user->id != auth()->user()->id)
+                    {{-- Добавить в обмен--}}
+                    @if (!$userWishes)
+                        <form action="{{ route('wishlist.store', ['ad_id' => $ad['id']]) }}" method="post">
+                            @method('POST')
+                            @csrf
+
+                            <button class="info-buttons__bart btn btn-reset btn-blue">
+                                <svg class="info-buttons__icon" width="22" height="22" viewBox="0 0 22 22"
+                                     fill="none" xmlns="http://www.w3
                                     .org/2000/svg">
-                                <path d="M13.6 11.5799V14.3099C13.6 16.5899 12.69 17.4999 10.41 17.4999H7.69C5.42 17.4999 4.5 16.5899 4.5 14.3099V11.5799C4.5 9.3099 5.41 8.3999 7.69 8.3999H10.42C12.69 8.3999 13.6 9.3099 13.6 11.5799Z"
-                                      stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M17.5 7.68V10.41C17.5 12.69 16.59 13.6 14.31 13.6H13.6V11.58C13.6 9.31 12.69 8.4 10.41 8.4H8.39999V7.68C8.39999 5.4 9.30999 4.5 11.59 4.5H14.32C16.59 4.5 17.5 5.41 17.5 7.68Z"
-                                      stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M21 14C21 17.87 17.87 21 14 21L15.05 19.25"
-                                      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M1 8C1 4.13 4.13 1 8 1L6.95 2.75" stroke-width="1.5"
-                                      stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span class="info-buttons__text">Бартер</span>
-                        </button>
-                    </form>
+                                    <path d="M13.6 11.5799V14.3099C13.6 16.5899 12.69 17.4999 10.41 17.4999H7.69C5.42 17.4999 4.5 16.5899 4.5 14.3099V11.5799C4.5 9.3099 5.41 8.3999 7.69 8.3999H10.42C12.69 8.3999 13.6 9.3099 13.6 11.5799Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M17.5 7.68V10.41C17.5 12.69 16.59 13.6 14.31 13.6H13.6V11.58C13.6 9.31 12.69 8.4 10.41 8.4H8.39999V7.68C8.39999 5.4 9.30999 4.5 11.59 4.5H14.32C16.59 4.5 17.5 5.41 17.5 7.68Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M21 14C21 17.87 17.87 21 14 21L15.05 19.25"
+                                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M1 8C1 4.13 4.13 1 8 1L6.95 2.75" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="info-buttons__text">Бартер</span>
+                            </button>
+                        </form>
+                    @else
+                        <form action="{{ route('wishlist.destroy', $ad['id']) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+
+                            <button class="btn btn-reset btn-del">
+                                <svg class="info-buttons__icon" width="22" height="22" viewBox="0 0 22 22"
+                                     fill="none" xmlns="http://www.w3
+                                    .org/2000/svg">
+                                    <path d="M13.6 11.5799V14.3099C13.6 16.5899 12.69 17.4999 10.41 17.4999H7.69C5.42 17.4999 4.5 16.5899 4.5 14.3099V11.5799C4.5 9.3099 5.41 8.3999 7.69 8.3999H10.42C12.69 8.3999 13.6 9.3099 13.6 11.5799Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M17.5 7.68V10.41C17.5 12.69 16.59 13.6 14.31 13.6H13.6V11.58C13.6 9.31 12.69 8.4 10.41 8.4H8.39999V7.68C8.39999 5.4 9.30999 4.5 11.59 4.5H14.32C16.59 4.5 17.5 5.41 17.5 7.68Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M21 14C21 17.87 17.87 21 14 21L15.05 19.25"
+                                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M1 8C1 4.13 4.13 1 8 1L6.95 2.75" stroke-width="1.5"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="info-buttons__text">Отказаться</span>
+                            </button>
+                        </form>
+                    @endif
+
+                    {{-- Добавить в избранное--}}
+                    @if (!$userFavorite)
+                        <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
+                            @method('POST')
+                            @csrf
+
+                            <button class="btn btn-reset btn-white">
+                                <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" xmlns="http://www.w3
+                                    .org/2000/svg">
+                                    <path d="M9.25 9.05005C11.03 9.70005 12.97 9.70005 14.75 9.05005"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                </svg>
+
+                                <span class="info-buttons__text">Добавить в избранное</span>
+                            </button>
+                        </form>
+                    @else
+                        <form action="{{ route('favorite.destroy', $ad->id) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <input type="hidden" name="ad_id" value="{{ $ad->id }}"/>
+
+                            <button class="btn btn-reset btn-black">
+                                <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" xmlns="http://www.w3
+                                    .org/2000/svg">
+                                    <path d="M9.25 9.05005C11.03 9.70005 12.97 9.70005 14.75 9.05005"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
+                                          stroke-width="1.5" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                </svg>
+
+                                <span class="info-buttons__text">Убрать из избранного</span>
+                            </button>
+                        </form>
+                    @endif
                 @else
-                    <form action="{{ route('favorite.destroy', $ad->id) }}" method="post">
-                        @method('DELETE')
-                        @csrf
-                        <input type="hidden" name="ad_id" value="{{ $ad->id }}"/>
-
-                        <button class="info-buttons__bart-del btn btn-reset btn-del">
-                            <svg class="info-buttons__icon" width="22" height="22" viewBox="0 0 22 22"
-                                 fill="none" xmlns="http://www.w3
-                                    .org/2000/svg">
-                                <path d="M13.6 11.5799V14.3099C13.6 16.5899 12.69 17.4999 10.41 17.4999H7.69C5.42 17.4999 4.5 16.5899 4.5 14.3099V11.5799C4.5 9.3099 5.41 8.3999 7.69 8.3999H10.42C12.69 8.3999 13.6 9.3099 13.6 11.5799Z"
-                                      stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M17.5 7.68V10.41C17.5 12.69 16.59 13.6 14.31 13.6H13.6V11.58C13.6 9.31 12.69 8.4 10.41 8.4H8.39999V7.68C8.39999 5.4 9.30999 4.5 11.59 4.5H14.32C16.59 4.5 17.5 5.41 17.5 7.68Z"
-                                      stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M21 14C21 17.87 17.87 21 14 21L15.05 19.25"
-                                      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M1 8C1 4.13 4.13 1 8 1L6.95 2.75" stroke-width="1.5"
-                                      stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span class="info-buttons__text">Отказаться</span>
-                        </button>
-                    </form>
+                    <p class="info-blocks__notification">Это твоё объявления!</p>
                 @endif
 
-                {{-- Добавить в избранное--}}
-                @if (!$userWishes)
-                    <form action="{{ route('wishlist.store', ['ad_id' => $ad['id']]) }}" method="post">
-                        @method('POST')
-                        @csrf
-                        <button class="info-buttons__fav btn btn-reset btn-white">
-                            <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" xmlns="http://www.w3
-                                    .org/2000/svg">
-                                <path d="M9.25 9.05005C11.03 9.70005 12.97 9.70005 14.75 9.05005"
-                                      stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                      stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                      stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
-
-                            <span class="info-buttons__text">Добавить в избранное</span>
-                        </button>
-                    </form>
-                @else
-                    <form action="{{ route('wishlist.destroy', $ad['id']) }}" method="post">
-                        @method('DELETE')
-                        @csrf
-                        <button class="info-buttons__fav btn btn-reset btn-black">
-                            <svg class="info-buttons__icon white" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" xmlns="http://www.w3
-                                    .org/2000/svg">
-                                <path d="M9.25 9.05005C11.03 9.70005 12.97 9.70005 14.75 9.05005"
-                                      stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                      stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                                <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                      stroke="#292D32" stroke-width="1.5" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
-
-                            <span class="info-buttons__text">Убрать из избранного</span>
-                        </button>
-                    </form>
-                @endif
             @else
                 <p class="info-blocks__notification">Для начала бартера войдите или зарегистрируйтесь!</p>
             @endif
@@ -232,6 +241,7 @@
     </div>
 </div>
 
+{{--Блок про автора публикации--}}
 <div class="info-blocks__list ">
     <div class="info-blocks__body">
         <div class="info-blocks__item info-author">
@@ -252,7 +262,6 @@
                 </a>
 
                 <div class="info-author__feedback feedback">
-
                     <svg class="feedback__icon" width="22" height="22" viewBox="0 0 22 22" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.73 2.51001L14.49 6.03001C14.73 6.52002 15.37 6.99001 15.91 7.08001L19.1 7.61001C21.14 7.95001 21.62 9.43001 20.15 10.89L17.67 13.37C17.25 13.79 17.02 14.6 17.15 15.18L17.86 18.25C18.42 20.68 17.13 21.62 14.98 20.35L11.99 18.58C11.45 18.26 10.56 18.26 10.01 18.58L7.01997 20.35C4.87997 21.62 3.57997 20.67 4.13997 18.25L4.84997 15.18C4.97997 14.6 4.74997 13.79 4.32997 13.37L1.84997 10.89C0.38997 9.43001 0.85997 7.95001 2.89997 7.61001L6.08997 7.08001C6.61997 6.99001 7.25997 6.52002 7.49997 6.03001L9.25997 2.51001C10.22 0.600015 11.78 0.600015 12.73 2.51001Z"
@@ -292,28 +301,32 @@
             </div>
 
             @auth
-                <form action="{{route('chat.from.ad')}}" method="post">
-                    <input type="hidden" name="ad_user_id" value="{{$ad->user->id}}">
-                    @csrf @method('POST')
+                @if($ad->user->id != auth()->user()->id)
+                    <form action="{{route('chat.from.ad')}}" method="post">
+                        <input type="hidden" name="ad_user_id" value="{{$ad->user->id}}">
+                        @csrf @method('POST')
 
-                    <button class="info-buttons__write btn btn-reset btn-blue">
-                        <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
-                             fill="none" xmlns="http://www.w3
+                        <button class="info-buttons__write btn btn-reset btn-blue">
+                            <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" xmlns="http://www.w3
                                     .org/2000/svg">
-                            <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
-                                  stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M15.9965 11H16.0054" stroke="#292D32" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M11.9955 11H12.0045" stroke="#292D32" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7.99451 11H8.00349" stroke="#292D32" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                                <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
+                                      stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15.9965 11H16.0054" stroke="#292D32" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.9955 11H12.0045" stroke="#292D32" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.99451 11H8.00349" stroke="#292D32" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
 
-                        <span class="info-bottoms__text">Написать продавцу</span>
-                    </button>
-                </form>
+                            <span class="info-bottoms__text">Написать продавцу</span>
+                        </button>
+                    </form>
+                @else
+                    <p class="info-blocks__notification">Это твоё объявления!</p>
+                @endif
             @endauth
 
 
@@ -321,6 +334,9 @@
     </div>
 </div>
 
+{{--Кнопка пожаловаться--}}
 @auth
-    <a href="{{ route('complainAd', $ad->id) }}" class="btn btn-del-fill">Пожаловаться на объявление</a>
+    @if($ad->user->id != auth()->user()->id)
+        <a href="{{ route('complainAd', $ad->id) }}" class="btn btn-del-fill">Пожаловаться на объявление</a>
+    @endif
 @endauth
