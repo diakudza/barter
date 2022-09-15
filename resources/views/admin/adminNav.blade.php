@@ -6,30 +6,41 @@
         </a>
 
         <nav class="header-admin__nav" id="navbars-example-default"  aria-label="Навигация">
-            <ul class="header-admin__list navbar-nav ms-auto navbar-nav-scroll">
-                <li class="nav-item">
+
+            <div class="header-admin__list navbar-nav ms-auto navbar-nav-scroll">
+
+                <button class="header-admin__bth">
                     <a class="nav-link" aria-current="page" href="{{ route('adIndex') }}">Объявления</a>
-                    @if (Auth::user()->isAdmin() || Auth::user()->isDeveloper())
+                </button>
+                @if (Auth::user()->isAdmin() || Auth::user()->isDeveloper())
+                    <button class="header-admin__bth">
                         <a class="nav-link" aria-current="page" href="{{ route('category.index') }}">Категории</a>
-                        <a class="nav-link" aria-current="page" href="{{ route('comment.index') }}"><s>Комментарии</s></a>
-                    @endif
-                    <a class="nav-link" aria-current="page" href="{{ route('adminChat') }}">Заявки от пользователей</a>
-                </li>
-                <li class="nav-item">
-                    @if (Auth::user()->isAdmin() || Auth::user()->isDeveloper())
-                        <a class="nav-link testClass" href="{{ route('user.index') }}">Пользователи</a>
-                        <a class="nav-link" href="{{ route('role.index') }}">Роли</a>
-                        @if (Auth::user()->isDeveloper())
-                            <a class="nav-link" href="{{ route('admin.system') }}">Системный</a>
-                        @endif
-                    @endif
-                </li>
-                @if(auth()->user())
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ route('logout') }}">{{ auth()->user()->name }}</a>
-                    </li>
+                    </button>
+                    <!--a class="nav-link" aria-current="page" href="{{ route('comment.index') }}"><s>Комментарии</s></a-->
                 @endif
-            </ul>
+                <button class="header-admin__bth">
+                    <a class="nav-link" aria-current="page" href="{{ route('adminChat') }}">Заявки от пользователей</a>
+                </button>
+                @if (Auth::user()->isAdmin() || Auth::user()->isDeveloper())
+                    <button class="header-admin__bth">
+                       <a class="nav-link testClass" href="{{ route('user.index') }}">Пользователи</a>
+                    </button>
+                    <button class="header-admin__bth">
+                       <a class="nav-link" href="{{ route('role.index') }}">Роли</a>
+                    </button>
+                    @if (Auth::user()->isDeveloper())
+                        <button class="header-admin__bth">
+                            <a class="nav-link" href="{{ route('admin.system') }}">Системный</a>
+                        </button>
+                    @endif
+                @endif
+
+                @if(auth()->user())
+                    <button class="header-admin__bth">
+                        <a class="nav-link" aria-current="page" href="{{ route('logout') }}">{{ auth()->user()->name }}</a>
+                    </button>
+                @endif
+            </div>
 
             @if(auth()->guest())
                 <span class="nav-item">
