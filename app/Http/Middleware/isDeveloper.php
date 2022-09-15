@@ -7,13 +7,13 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class isAdmin
+class isDeveloper
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->getRole() == 'admin')) {
+        if (Auth::check() && (Auth::user()->getRole() == 'developer')) {
             return $next($request);
         }
-        abort(404);
+        return redirect()->back()->with('fail', 'Доступ к разделу только для разработчиков!');
     }
 }

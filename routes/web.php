@@ -113,6 +113,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
     Route::resource('comment', AdminCommentController::class);
     Route::get('adminChat', [AdminChatController::class, 'index'])->name('adminChat')->withoutMiddleware([isAdmin::class])->middleware('isModerator');
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain')->withoutMiddleware([isAdmin::class])->middleware('isModerator');
-    Route::get('/system', [SysController::class, 'index'])->name('admin.system');
-    Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action');
+    Route::get('/system', [SysController::class, 'index'])->name('admin.system')->withoutMiddleware([isAdmin::class])->middleware('isdeveloper');
+    Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action')->withoutMiddleware([isAdmin::class])->middleware('isdeveloper');
 });
