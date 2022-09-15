@@ -61,12 +61,36 @@
                           stroke-linejoin="round"/>
                 </svg>
 
-                <span class="profile-menu__item-name"> Мои объявления</span>
+                <span class="profile-menu__item-name">Мои объявления</span>
             </a>
         </li>
 
         <li class="profile-menu__item">
-            <a class="profile-menu__link" href="#">
+            <a class="profile-menu__link" href="{{ route('user.favoritelist') }} ">
+                <svg class="profile-menu__icon profile-menu__icon--buy" width="18" height="18" viewBox="0 0 18 18"
+                     fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.2915 1.70798L3.02484 2.00798L3.82733 11.5688C3.8915 12.3496 4.544 12.9488 5.32733 12.9463H14.4182C15.1657 12.948 15.7998 12.398 15.9057 11.658L16.6965 6.19297C16.7848 5.58214 16.3607 5.01547 15.7507 4.92714C15.6973 4.91964 3.30317 4.91547 3.30317 4.91547"
+                          stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M10.7705 7.9954H13.0813" stroke="#23262F" stroke-opacity="0.5" stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M4.96163 15.8351C5.21247 15.8351 5.41497 16.0384 5.41497 16.2884C5.41497 16.5393 5.21247 16.7426 4.96163 16.7426C4.7108 16.7426 4.5083 16.5393 4.5083 16.2884C4.5083 16.0384 4.7108 15.8351 4.96163 15.8351Z"
+                          stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M14.362 15.8351C14.6129 15.8351 14.8162 16.0384 14.8162 16.2884C14.8162 16.5393 14.6129 16.7426 14.362 16.7426C14.1112 16.7426 13.9087 16.5393 13.9087 16.2884C13.9087 16.0384 14.1112 15.8351 14.362 15.8351Z"
+                          stroke-width="1.5"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <span class="profile-menu__item-name">Мои избранные</span>
+            </a>
+        </li>
+
+        <li class="profile-menu__item">
+            <a class="profile-menu__link" href="{{ route('user.wishlist') }} ">
                 <svg class="profile-menu__icon profile-menu__icon--buy" width="18" height="18" viewBox="0 0 18 18"
                      fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +112,6 @@
                 <span class="profile-menu__item-name">Мои покупки</span>
             </a>
         </li>
-
         <li class="profile-menu__item">
             <a class="profile-menu__link" href="{{ route('logout') }}">
                 <svg class="profile-menu__icon profile-menu__icon--exit" width="18" height="18" viewBox="0 0 18 18"

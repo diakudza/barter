@@ -21,7 +21,7 @@
 
 
     {{--Иконка объявлений, на которые вы откликнулись--}}
-    <a class="actions__btn" href="{{ route('user.wishlist') }}" title="Ваши добавления">
+    <a class="actions__btn" href="{{ route('user.favoritelist') }}" title="Ваши избранные">
 
         <svg class="actions__icon" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.739 5.15367C16.739 2.40279 14.8583 1.30003 12.1506 1.30003H5.79167C3.16711 1.30003 1.2002 2.3276 1.2002 4.97021V19.694C1.2002 20.4198 1.98115 20.877 2.61373 20.5221L8.99568 16.9421L15.3225 20.5161C15.9561 20.873 16.739 20.4158 16.739 19.689V5.15367Z" stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

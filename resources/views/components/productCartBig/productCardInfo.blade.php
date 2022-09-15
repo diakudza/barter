@@ -84,7 +84,6 @@
         <div class="info-blocks__item info-buttons">
 
             @if (auth()->user())
-
                 {{-- Начать бартер--}}
                 @if (!$userFavorite)
                     <form action="{{ route('favorite.store', ['ad_id' => $ad['id']]) }}" method="post">
@@ -323,5 +322,5 @@
 </div>
 
 @auth
-    <button class="btn btn-reset btn-del-fill">Пожаловаться на объявление</button>
+    <a href="{{ route('complainAd', $ad->id) }}" class="btn btn-del-fill">Пожаловаться на объявление</a>
 @endauth
