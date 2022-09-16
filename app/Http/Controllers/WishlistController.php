@@ -23,7 +23,7 @@ class WishlistController extends Controller
         if (!$fromJs) {
             return redirect()->back()->with('success', 'Вы откликнулись на объявление.');
         } else {
-            return (['message' => 'добавлено в избранное']);
+            return (['message' => 'Вы откликнулись на объявление.']);
         }
     }
 
@@ -40,7 +40,7 @@ class WishlistController extends Controller
         if (!$fromJs) {
             return redirect()->back()->with('success', 'Вы отказались от объявления.');
         } else {
-            return (['message' => 'добавлено в избранное']);
+            return (['message' => 'Вы отказались от объявления.']);
         }
     }
 }

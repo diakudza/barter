@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     });
 
     Route::post('/wishlist/store', [WishlistController::class, 'store'])->name('wishlist.store');
-    Route::delete('/wishlist/destroy/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+    Route::delete('/wishlist/destroy/{ad_id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 
     Route::resource('favorite', AdUserFavorites::class);
     Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');

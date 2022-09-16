@@ -186,7 +186,7 @@
                         </form>
                     @endif
                 @else
-                    <p class="info-blocks__notification">Это твоё объявления!</p>
+                    <p class="info-blocks__notification">Это ваше объявления!</p>
                 @endif
 
             @else
@@ -325,7 +325,7 @@
                         </button>
                     </form>
                 @else
-                    <p class="info-blocks__notification">Это твоё объявления!</p>
+                    <p class="info-blocks__notification">Это ваше объявления!</p>
                 @endif
             @endauth
 
