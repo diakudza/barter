@@ -5,11 +5,14 @@
     <div class="card__content">
         <div class="card__img">
 
-            @if($item['status_id'] == 4)
-                <div class="card__img-info">
-                    <span>в архиве!</span>
-                </div>
-            @endif
+            <div class="card__img-info">
+                @if ($item->barter_type == 'barter')
+                    <span class="status-info__text">Обменять на товар</span>
+                @elseif ($item->barter_type != 'barter')
+                    <span class="status-info__text">Отдам даром</span>
+                @endif
+            </div>
+
 
             @if(auth()->user() && $item['status_id'] !== 4)
                 <button class="card__btn-fav btn-reset" aria-label="Добавить в избранное">
@@ -23,16 +26,10 @@
                 </button>
             @endif
 
-            @if(count($item->imageMain))
-                <img src="{{Storage::url($item->imageMain[0]->path)}}" alt="{{ $item['title'] }}"
-                     title="{{ $item['title'] }}">
-            @elseif(count($item->images))
-                <img src="{{Storage::url($item->images[0]->path)}}" alt="{{ $item['title'] }}"
-                     title="{{ $item['title'] }}">
-            @else
-                <img src="{{ asset('images/product/placeholder400x400.png' )}}" alt="{{ $item['title'] }}"
-                     title="{{ $item['title'] }}">
-            @endif
+            <img @if(count($item->imageMain)) src="{{Storage::url($item->imageMain[0]->path)}}"
+                 @elseif(count($item->images)) src="{{Storage::url($item->images[0]->path)}}"
+                 @else src="{{ asset('images/product/placeholder400x400.png' )}}"
+                 @endif alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
 
         </div>
 
@@ -55,15 +52,8 @@
                               stroke="#23262F" stroke-opacity="0.6" stroke-width="1.25" stroke-linecap="round"
                               stroke-linejoin="round"/>
                     </svg>
-
                     <p class="card__location-text">{{ $item->city->name }}</p>
                 </div>
-
-                @if ($item->barter_type == 'barter')
-                <div>
-                    <p>Обмен на {{ $item->barter_title }}</p>
-                </div>
-                @endif
 
             </div>
 
@@ -72,12 +62,9 @@
                     <div class="card__author-img">
                         <img class="author-img" @if($item->user->avatar()->first())
                             src="{{Storage::url($item->user->avatar()->first()->path)}}"
-                             @elseif(count($item->images))
-                                 src="{{Storage::url($item->images[0]->path)}}"
-                             @else
-                                 src="https://via.placeholder.com/40x40"
-                             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}"
-                        >
+                             @elseif(count($item->images)) src="{{Storage::url($item->images[0]->path)}}"
+                             @else src="https://via.placeholder.com/40x40"
+                             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}">
                     </div>
 
                     <a href="{{ route('user.public', $item->user->id) }}" class="card__author-link">

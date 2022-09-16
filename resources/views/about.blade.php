@@ -1,6 +1,6 @@
 @extends('components.base')
 
-@section('title',"о Нас")
+@section('title',"о нас")
 
 @section('content')
 

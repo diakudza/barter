@@ -67,16 +67,19 @@
                           stroke-linejoin="round"/>
                 </svg>
 
-                <p class="info-block__title">Тип обмена: </p><span class="info-block__text">
-                    @if ($ad->barter_type == 'barter')
-                        <p>Обмен на {{$ad->barter_title}}</p>
-                        {{-- Тут наверно кнопку сделать на модалку--}}
-                        {{--<p>Комментарии к обмену: {{$ad->barter_text}}</p>--}}
-                        {{--<p>Категория обмениваемого: {{$ad->barterCategory->title}}</p>--}}
-                    @elseif ($ad->barter_type != 'barter')
+                <p class="info-block__title">Тип обмена:
+                    <span class="info-block__text">
+                        @if ($ad->barter_type == 'barter')
+                            Обмен на {{$ad->barter_title}}
+                            {{-- Тут наверно кнопку сделать на модалку--}}
+                            {{--<p>Комментарии к обмену: {{$ad->barter_text}}</p>--}}
+                            {{--<p>Категория обмениваемого: {{$ad->barterCategory->title}}</p>--}}
+                        @elseif ($ad->barter_type != 'barter')
                         отдам даром
-                    @endif
-                </span>
+                        @endif
+                    </span>
+                </p>
+
             </div>
         </div>
 
@@ -131,6 +134,7 @@
                                     <path d="M1 8C1 4.13 4.13 1 8 1L6.95 2.75" stroke-width="1.5"
                                           stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
+
                                 <span class="info-buttons__text">Отказаться</span>
                             </button>
                         </form>
@@ -143,18 +147,12 @@
                             @csrf
 
                             <button class="btn btn-reset btn-white">
-                                <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" xmlns="http://www.w3
-                                    .org/2000/svg">
-                                    <path d="M9.25 9.05005C11.03 9.70005 12.97 9.70005 14.75 9.05005"
-                                          stroke-width="1.5" stroke-linecap="round"
-                                          stroke-linejoin="round"/>
-                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                          stroke-width="1.5" stroke-linecap="round"
-                                          stroke-linejoin="round"/>
-                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                          stroke-width="1.5" stroke-linecap="round"
-                                          stroke-linejoin="round"/>
+
+                                <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3
+                                .org/2000/svg">
+                                    <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z"
+                                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
 
                                 <span class="info-buttons__text">Добавить в избранное</span>
@@ -167,18 +165,11 @@
                             <input type="hidden" name="ad_id" value="{{ $ad->id }}"/>
 
                             <button class="btn btn-reset btn-black">
-                                <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
-                                     fill="none" xmlns="http://www.w3
-                                    .org/2000/svg">
-                                    <path d="M9.25 9.05005C11.03 9.70005 12.97 9.70005 14.75 9.05005"
-                                          stroke-width="1.5" stroke-linecap="round"
-                                          stroke-linejoin="round"/>
-                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                          stroke-width="1.5" stroke-linecap="round"
-                                          stroke-linejoin="round"/>
-                                    <path d="M16.8199 2H7.17995C5.04995 2 3.31995 3.74 3.31995 5.86V19.95C3.31995 21.75 4.60995 22.51 6.18995 21.64L11.0699 18.93C11.5899 18.64 12.4299 18.64 12.9399 18.93L17.8199 21.64C19.3999 22.52 20.6899 21.76 20.6899 19.95V5.86C20.6799 3.74 18.9499 2 16.8199 2Z"
-                                          stroke-width="1.5" stroke-linecap="round"
-                                          stroke-linejoin="round"/>
+                                <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3
+                                .org/2000/svg">
+                                    <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z"
+                                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
 
                                 <span class="info-buttons__text">Убрать из избранного</span>
