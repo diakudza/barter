@@ -92,7 +92,7 @@ class UserProfileController extends Controller
     {
         $user = $user->find(auth()->user()->id);
         $user->wishes()->update(['read' => 1]);
-        return view('user.profile.yourAdsWishList', [
+        return view('user.profile.wishList', [
             'ads' => $user->wishes
         ]);
     }
@@ -101,7 +101,7 @@ class UserProfileController extends Controller
     {
         $user = $user->find(auth()->user()->id);
         $user->wishes()->update(['read' => 1]);
-        return view('user.profile.yourAdsWishList', [
+        return view('user.profile.favoriteList', [
             'ads' => $user->favoriteAds
         ]);
     }
