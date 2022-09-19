@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for a
     });
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']], function () { //for admin users (and moderators)
+Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'isUserBlocked']], function () {
     Route::resource('category', CategoryController::class);
     Route::resource('ad', AdminAdController::class)->names([
         'index' => 'adIndex',
@@ -111,8 +111,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isadmin', 'isUserBlocked']]
     Route::resource('user', AdminUserController::class);
     Route::resource('role', UserRoleController::class);
     Route::resource('comment', AdminCommentController::class);
-    Route::get('adminChat', [AdminChatController::class, 'index'])->name('adminChat')->withoutMiddleware([isAdmin::class])->middleware('isModerator');
-    Route::get('/main', [AdminController::class, 'main'])->name('adminmain')->withoutMiddleware([isAdmin::class])->middleware('isModerator');
-    Route::get('/system', [SysController::class, 'index'])->name('admin.system')->withoutMiddleware([isAdmin::class])->middleware('isdeveloper');
-    Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action')->withoutMiddleware([isAdmin::class])->middleware('isdeveloper');
+    Route::get('adminChat', [AdminChatController::class, 'index'])->name('adminChat')
+        ->withoutMiddleware([isAdmin::class])
+        ->middleware('isModerator')
+    ;
+    Route::get('/main', [AdminController::class, 'main'])->name('adminmain')
+        ->withoutMiddleware([isAdmin::class])
+        ->middleware('isModerator')
+    ;
+    Route::get('/system', [SysController::class, 'index'])->name('admin.system')
+        ->withoutMiddleware([isAdmin::class])->middleware('isDeveloper');
+    Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action')
+        ->withoutMiddleware([isAdmin::class])->middleware('isDeveloper');
 });

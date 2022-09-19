@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class isAccess
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $role)
     {
-        if (Auth::check() && Auth::user()->getAuthIdentifier() == $request->user_id ) {
-            return $next($request);
+        if (! $request->user()->getRole($role)) {
+            dd($role);
         }
-        return redirect()->route('cabinet',['user_id' => Auth::user()->getAuthIdentifier()]);
+        return $next($request);
     }
 }

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class IsModerator
+class isModerator
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class IsModerator
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && (in_array(Auth::user()->role_id, [2, 3, 4]))) { //moderator
+        if (Auth::check() && in_array(Auth::user()->getRole(),['moderator', 'admin', 'developer'])) {
             return $next($request);
         }
         abort(404);
