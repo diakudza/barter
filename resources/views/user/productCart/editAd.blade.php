@@ -186,7 +186,7 @@
                             <div class="change-item__load-file load-file">
                                 <div class="load-file__wrapper">
 
-                                    <div class="load-file__previes">
+                                    <div class="load-file__previews">
                                         <div class="load-file__icon">
                                             <svg width="26" height="31" viewBox="0 0 26 31" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -209,7 +209,6 @@
 
                                         <p class="load-file__text">Формат файла PNG, JPEG, GIF. </p>
                                     </div>
-
                                 </div>
 
                             </div>

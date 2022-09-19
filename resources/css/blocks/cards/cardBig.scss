@@ -53,6 +53,10 @@
     width: 100%;
     max-width: 100%;
   }
+
+  @include break768 {
+    max-height: 500px;
+  }
 }
 
 .info-blocks {
@@ -89,13 +93,17 @@
   }
 
   &__notification {
-    width: 280px;
+    max-width: 280px;
     text-align: center;
 
     font-size: 18px;
     font-weight: 600;
 
     user-select: none;
+
+    @include break576 {
+      max-width: 100%;
+    }
   }
 
   .info-block {
@@ -128,6 +136,8 @@
     &__text {
       color: $color-black;
     }
+
+
   }
 
   .info-buttons {
@@ -259,7 +269,8 @@
         gap: 5px;
       }
 
-      &__point {}
+      &__point {
+      }
 
       &__reviews {
         font-weight: 400;
@@ -268,9 +279,15 @@
 
         color: rgba($color-black, 0.5);
 
-        &-count {}
+        &-count {
+        }
       }
     }
+  }
+
+  @include break576 {
+    max-width: 100%;
+    width: 100%;
   }
 }
 

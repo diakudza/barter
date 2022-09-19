@@ -1,31 +1,31 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Gilroy, sans-serif;
-    font-style: normal;
+  font-family: Gilroy, sans-serif;
+  font-style: normal;
 }
 
 a {
-    display: block;
-    text-decoration: none;
+  display: block;
+  text-decoration: none;
 
-    &:hover {
-        text-decoration: none;
-    }
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 ul,
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .h1,
@@ -40,117 +40,117 @@ h3,
 h4,
 h5,
 h6 {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .logo img {
-    width: 100%;
+  width: 100%;
 }
 
 .title {
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 100%;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 100%;
 
-    letter-spacing: -0.03em;
+  letter-spacing: -0.03em;
 
-    color: $color-black;
+  color: $color-black;
 }
 
 //Стили заголовков в секциях
 .heading {
-    font-weight: 500;
-    font-size: 64px;
-    line-height: 110%;
-    letter-spacing: -0.03em;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 110%;
+  letter-spacing: -0.03em;
 
-    @include break768 {
-        font-size: 36px;
-    }
+  @include break768 {
+    font-size: 36px;
+  }
 }
 
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .footer {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .main {
-    margin-top: 99px;
-    padding-top: 60px;
-    padding-bottom: 60px;
+  margin-top: 99px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 
-    @include break992 {
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
+  @include break992 {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 //Стили полей ввода
 .input {
-    padding: 19px 15px;
+  padding: 19px 15px;
 
-    background: #F4F5F6;
-    border: 1px solid rgba(35, 38, 47, 0.05);
-    border-radius: 8px;
+  background: #F4F5F6;
+  border: 1px solid rgba(35, 38, 47, 0.05);
+  border-radius: 8px;
 
-    &__textarea {
-        resize: none;
-    }
+  &__textarea {
+    resize: none;
+  }
 
-    &--hidden {
+  &--hidden {
 
-    }
+  }
 }
 
 //Стилизация линии
 .line {
-    height: 1px;
-    margin-top: 48px;
-    margin-bottom: 48px;
-    background-color: rgba($color-black, 0.1);
+  height: 1px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  background-color: rgba($color-black, 0.1);
 }
 
 //Стили уведомления
 .alert {
-    position: fixed;
-    z-index: 10;
-    bottom: 0;
-    right: 50px;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  right: 50px;
 }
 
 //затемнение фона
 .overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 6;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 
-    background-color: rgb($color-black, .4);
+  background-color: rgb($color-black, .4);
 
-    transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .modal-backdrop {
-    z-index: 1;
+  z-index: 1;
 }
 

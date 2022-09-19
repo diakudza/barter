@@ -1,69 +1,71 @@
 .header {
-    position: fixed;
-    top: 0;
+  position: fixed;
+  top: 0;
 
-    z-index: 10;
+  z-index: 10;
+  width: 100%;
+
+  padding: 20px 0;
+
+  background-color: #fff;
+
+  border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+
+  &__logo {
+    @include break1200 {
+      width: 150px;
+    }
+
+    @include break992 {
+      width: 134px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
     width: 100%;
 
-    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    background-color: #fff;
+    @include break992 {
+      position: absolute;
+      top: 89px;
+      left: 0;
+      bottom: 0;
+      right: 0;
 
-    border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+      z-index: 100;
 
-    &__logo {
-        @include break1200 {
-            width: 150px;
-        }
+      height: calc(100vh - 89px);
 
-        @include break992 {
-            width: 134px;
-        }
+      flex-direction: column;
+      transform: translateX(-1000px);
+      overflow: hidden;
+
+      transition: all 0.4s ease-in;
+
+      &.show {
+        overflow: visible;
+        transform: translateX(0);
+      }
     }
+  }
 
-    &__container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+  &__profile {
+    position: relative;
 
-    &__content {
-        width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        @include break992 {
-            position: absolute;
-            top: 89px;
-            left: 0;
-            bottom: 0;
-            right: 0;
-
-            z-index: 100;
-
-            height: calc(100vh - 89px);
-
-            flex-direction: column;
-            transform: translateX(-1000px);
-            overflow: hidden;
-
-            transition: all 0.4s ease-in;
-
-            &.show {
-                overflow: visible;
-                transform: translateX(0);
-            }
-        }
-    }
-
-    &__profile {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-
-        column-gap: 12px;
-    }
+    column-gap: 12px;
+  }
 }

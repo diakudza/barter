@@ -23,7 +23,7 @@
 //Стили шапки
 @import "blocks/header";
 @import "blocks/nav";
-@import "blocks/top-profile";
+@import "blocks/topProfile";
 @import "blocks/profileMenu";
 @import "blocks/actions";
 //Стили блока hero на главной странице
@@ -54,6 +54,8 @@
 @import "blocks/userPage/userPage";
 //Страница обращения в службуподдержки
 @import "blocks/getSupport";
+//Страница изменения пароля
+@import "blocks/resetPassword";
 
 //Стили footer
 @import "blocks/footer";
