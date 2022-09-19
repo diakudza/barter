@@ -11,7 +11,7 @@ class isDeveloper
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->getRole() == 'developer')) {
+        if (Auth::check() && (Auth::user()->getRole() === 'developer')) {
             return $next($request);
         }
         return redirect()->back()->with('fail', 'Доступ к разделу только для разработчиков!');
