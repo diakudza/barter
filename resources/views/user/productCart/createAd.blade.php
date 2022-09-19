@@ -4,121 +4,136 @@
 
 @section('content')
 
-<section class="container change-product">
+    <section class="container change-product">
 
-    <h2 class="change-product__heading heading">Добавить новое объявление</h2>
-    <div class="line"></div>
+        <h2 class="change-product__heading heading">Добавить новое объявление</h2>
+        <div class="line"></div>
 
-    <div class="change-product__wrapper">
+        <div class="change-product__wrapper">
 
-        <form action="{{ route('ad.store') }}" class="change-product__form change-form" method="post"
-              enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+            <form action="{{ route('ad.store') }}" class="change-product__form change-form" method="post"
+                  enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
-            <div class="change-form__group change-item">
-                <h3 class="change-item__heading change-product__sub-heading">Основная информация</h3>
+                <div class="change-form__group change-item">
+                    <h3 class="change-item__heading change-product__sub-heading">Основная информация</h3>
 
-                <div class="change-item__list">
-                    <div class="change-item__item">
-                        <label class="change-item__label" for="title">Название</label>
-                        <input class="change-item__input input" type="text" id="title" name="title"
-                               placeholder="Пример: Классный рюкзак" value="{{ old('title') }}" required>
+                    <div class="change-item__list">
+                        <div class="change-item__item">
+                            <label class="change-item__label" for="title">Название</label>
+                            <input class="change-item__input input" type="text" id="title" name="title"
+                                   placeholder="Пример: Классный рюкзак" value="{{ old('title') }}" required>
+                        </div>
+
+                        <div class="change-item__item">
+                            <label class="change-item__label" for="text">Описание</label>
+                            <textarea class="change-item__input input input__textarea" name="text" id="text" rows="3"
+                                      placeholder="Напишите полное описание товара"
+                                      required>{{ old('text') }}</textarea>
+                        </div>
+
+                        <div class="change-item__item">
+                            <label class="change-item__label" for="category_id">Категория</label>
+                            <select class="change-item__create-select" aria-label="категория вещей"
+                                    data-class="change-item__category" name="category_id" id="category_id" required>
+                                <option value="" selected>Выберите категорию</option>
+
+                                @foreach ($categoriesList as $category)
+                                    <option value="{{ $category->id }}"
+                                            @if (old('category_id')) @if (old('category_id')==$category->id) selected @endif @endif>
+                                        {{ $category->title }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
+                        <div class="change-item__item">
+                            <label class="change-item__label" for="city_id">Город подачи</label>
+
+                            <select class="change-item__create-select" name="city_id" id="city_id"
+                                    aria-label="Выберите города" data-class="change-item__city" required>
+                                <option value="" selected>Выберите город</option>
+                                @foreach ($citiesList as $city)
+
+                                    <option value="{{ $city->id }}"
+                                            @if (old('city_id')) @if (old('city_id')==$city->id) selected @endif @endif>
+                                        {{ $city->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="change-form__group change-item">
+                    <h4 class="change-item__heading change-product__sub-heading">Тип объявления</h4>
+                    <div class="change-item__type item-type">
+                        <ul class="item-type__list">
+                            <li class="item-type__item">
+
+                                <label class="radio item-type__label item-type__label--radio" for="free">
+                                    <input class="item-type__radio-btn" type="radio" name="barter_type" id="free"
+                                           value="free" checked>
+                                    <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                                        <circle class="top" cx="12" cy="-12" r="8"/>
+                                        <circle class="dot" cx="12" cy="12" r="5"/>
+                                        <circle class="drop" cx="12" cy="12" r="2"/>
+                                    </svg>
+
+                                    <span class="item-type__label-text">Отдам просто так</span>
+                                </label>
+                            </li>
+
+                            <li class="item-type__item">
+                                <label class="radio item-type__label item-type__label--radio" for="barter">
+                                    <input class="item-type__radio-btn" type="radio" name="barter_type" id="barter"
+                                           value="barter">
+                                    <svg viewBox="0 0 24 24" filter="url(#goo-light)">
+                                        <circle class="top" cx="12" cy="-12" r="8"/>
+                                        <circle class="dot" cx="12" cy="12" r="5"/>
+                                        <circle class="drop" cx="12" cy="12" r="2"/>
+                                    </svg>
+
+                                    <span class="item-type__label-text">Обмен</span>
+                                </label>
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="change-item__item">
-                        <label class="change-item__label" for="text">Описание</label>
-                        <textarea class="change-item__input input input__textarea" name="text" id="text" rows="3"
-                                  placeholder="Напишите полное описание товара"
-                                  required>{{ old('text') }}</textarea>
+                    <div class="change-item__item item-type">
+                        <label class="change-item__label" for="barter_title">Обменяю на</label>
+                        <input class="change-item__input input" type="text" name="barter_title" id="barter_for"
+                               placeholder="Пример: Поменять на стол"
+                               value="@if(old('barter_title')) {{old('barter_title')}}@endif">
                     </div>
 
-                    <div class="change-item__item">
-                        <label class="change-item__label" for="category_id">Категория</label>
+                    <div class="change-item__item item-type">
+                        <label class="change-item__label" for="barter_text">Описание того, что Вы бы хотели</label>
+                        <textarea class="change-item__input input input__textarea" name="barter_text" id="barter_text"
+                                  rows="3" placeholder="Напишите описание товара для обмена">@if (old('barter_text'))
+                                {{ old('barter_text') }}
+                            @endif</textarea>
+                    </div>
+
+                    <div class="change-item__item item-type">
+                        <label class="change-item__label" for="barter_category_id">Категория обмениваемого</label>
                         <select class="change-item__create-select" aria-label="категория вещей"
-                                data-class="change-item__category" name="category_id" id="category_id" required>
-                            <option value="" selected>Выберите категорию</option>
-
+                                data-class="change-item__category" name="barter_category_id" id="barter_category_id">
+                            <option value="">Выберите категорию</option>
                             @foreach ($categoriesList as $category)
                                 <option value="{{ $category->id }}"
-                                        @if (old('category_id')) @if (old('category_id')==$category->id) selected @endif @endif>
-                                    {{ $category->title }}
-                                </option>
+                                        @if (old('barter_category_id')) @if (old('barter_category_id')==$category->id) selected @endif
+                                        @endif>{{$category->title}}</option>
                             @endforeach
-
                         </select>
                     </div>
                 </div>
-            </div>
 
-            <div class="change-form__group change-item">
-                <h4 class="change-item__heading change-product__sub-heading">Тип объявления</h4>
-                <div class="change-item__type item-type">
-                    <ul class="item-type__list">
-                        <li class="item-type__item">
-
-                            <label class="radio item-type__label item-type__label--radio" for="free">
-                                <input class="item-type__radio-btn" type="radio" name="barter_type" id="free"
-                                       value="free" checked>
-                                <svg viewBox="0 0 24 24" filter="url(#goo-light)">
-                                    <circle class="top" cx="12" cy="-12" r="8"/>
-                                    <circle class="dot" cx="12" cy="12" r="5"/>
-                                    <circle class="drop" cx="12" cy="12" r="2"/>
-                                </svg>
-
-                                <span class="item-type__label-text">Отдам просто так</span>
-                            </label>
-                        </li>
-
-                        <li class="item-type__item">
-                            <label class="radio item-type__label item-type__label--radio" for="barter">
-                                <input class="item-type__radio-btn" type="radio" name="barter_type" id="barter"
-                                       value="barter">
-                                <svg viewBox="0 0 24 24" filter="url(#goo-light)">
-                                    <circle class="top" cx="12" cy="-12" r="8"/>
-                                    <circle class="dot" cx="12" cy="12" r="5"/>
-                                    <circle class="drop" cx="12" cy="12" r="2"/>
-                                </svg>
-
-                                <span class="item-type__label-text">Обмен</span>
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="change-item__item item-type">
-                    <label class="change-item__label" for="barter_title">Обменяю на</label>
-                    <input class="change-item__input input" type="text" name="barter_title" id="barter_for"
-                           placeholder="Пример: Поменять на стол"
-                           value="@if(old('barter_title')) {{old('barter_title')}}@endif">
-                </div>
-
-                <div class="change-item__item item-type">
-                    <label class="change-item__label" for="barter_text">Описание того, что Вы бы хотели</label>
-                    <textarea class="change-item__input input input__textarea" name="barter_text" id="barter_text"
-                              rows="3">@if (old('barter_text'))
-                            {{ old('barter_text') }}
-                        @endif</textarea>
-                </div>
-
-                <div class="change-item__item item-type">
-                    <label class="change-item__label" for="barter_category_id">Категория обмениваемого</label>
-                    <select class="change-item__create-select" aria-label="категория вещей"
-                            data-class="change-item__category" name="barter_category_id" id="barter_category_id">
-                        <option value="">Выберите категорию</option>
-                        @foreach ($categoriesList as $category)
-                            <option value="{{ $category->id }}"
-                                    @if (old('barter_category_id')) @if (old('barter_category_id')==$category->id) selected @endif
-                                    @endif>{{$category->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="change-form__group change-item">
-                <h3 class="change-item__heading change-product__sub-heading">Добавить фото</h3>
-
-                <div class="change-item__list">
+                <div class="change-form__group change-item">
+                    <h3 class="change-item__heading change-product__sub-heading">Добавить фото</h3>
 
                     <div class="change-item__item">
                         <input class="change-item__input change-item__input--photo input--hidden" hidden type="file"
@@ -155,32 +170,14 @@
 
                         </div>
                     </div>
-
-                    <div class="change-item__item">
-                        <label class="change-item__label" for="city_id">Город подачи</label>
-
-                        <select class="change-item__create-select" name="city_id" id="city_id"
-                                aria-label="Выберите города" data-class="change-item__city" required>
-                            <option value="" selected>Выберите город</option>
-                            @foreach ($citiesList as $city)
-
-                                <option value="{{ $city->id }}"
-                                        @if (old('city_id')) @if (old('city_id')==$city->id) selected @endif @endif>
-                                    {{ $city->name }}
-                                </option>
-
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
-            </div>
 
-            <button class="change-form__btn btn btn-blue btn-reset" type="submit">Опубликовать объявление</button>
-        </form>
+                <button class="change-form__btn btn btn-blue btn-reset" type="submit">Опубликовать объявление</button>
+            </form>
 
-        @include('user.productCart.previewCard')
-    </div>
+            @include('user.productCart.previewCard')
+        </div>
 
-</section>
+    </section>
 
 @endsection

@@ -97,9 +97,11 @@
                         <p class="info-blocks__notification">Это ваш профиль!</p>
                     @endif
                     @if($user->id != auth()->user()->id)
-                        <button class="btn btn-reset btn-del">Пожаловаться на пользователя</button>
+{{--                        <button class="btn btn-reset btn-del">Пожаловаться на пользователя</button>--}}
+
+                        <a href="{{ route('complainUser', $user->id) }}" class="btn btn-del">Пожаловаться на
+                            пользователя</a>
                     @endif
-                    {{-- <a href="{{ route('complainUser', $user->id) }}" class="link-danger fs-4"></a>--}}
                 @endauth
             </div>
         </div>

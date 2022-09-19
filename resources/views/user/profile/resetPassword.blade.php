@@ -1,6 +1,6 @@
 @extends('components.base')
 
-@section('title', 'Личный кабинет - пароль')
+@section('title', 'Личный кабинет - изменить пароль')
 
 @section('content')
 

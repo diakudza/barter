@@ -3,26 +3,6 @@ import '../../../node_modules/jquery/dist/jquery.slim.js'
 const city = () => {
    // Запрос на сервер
 
-    const URL_REGION = '/getregions';
-
-
-    const getInfo = async (url) => {
-        try {
-            let response = await fetch(url);
-            let data = await response.json();
-
-            let options;
-            for (let item in data) {
-                options += '<option value="' + data[item].id + '">' + data[item].name + '</option>';
-            }
-            $('#regionSelect').html($('<option value="' + options + '</option>'))
-
-        } catch (error) {
-            console.warn(error);
-        }
-    };
-
-    getInfo(URL_REGION);
 
 
     // let regions = $.ajax({
