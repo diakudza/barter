@@ -16,26 +16,44 @@
 
     <div class="about-people">
         <div class="about-people__person">
-                <p class="about-people__person-role"></p>
-                <p class="about-people__person-biography"></p>
-                <img class="about-people__photo" src="public/images/about-us/">
-                <p class="about-people__person-name"> Михаил Дьяков - Product owner, backend разработчик</p>
+                <h5 class="about-people__person-name">Михаил Дьяков</h5>
+                <div class="about-people__person-prephoto">
+                    <img class="about-people__person-photo" src="{{ Storage::url('images/about-us/Mikhail.jpg') }}">
+                </div>
+                <p class="about-people__person-role">Роль в проекте: Product owner, backend разработчик</p>
+                <p class="about-people__person-skills">Ключевые навыки: HTML, SCSS, JS, pug, PHP, MySql, Bash, Docker, Git, Laravel, Blade, Inertia.JS</p>
             </div>
             <div class="about-people__person">
-                <p> Артем Бирюков - frontend разработчик</p>
-                <img class="about-people__photo" src="public/images/about-us/">
+                <h5 class="about-people__person-name"> Артем Бирюков</h5>
+                <div class="about-people__person-prephoto">
+                    <img class="about-people__person-photo" src="{{ Storage::url('images/about-us/Artem.jpg') }}">
+                </div>
+                <p class="about-people__person-role">Роль в проекте: frontend разработчик</p>
+                <p class="about-people__person-skills">Ключевые навыки: HTML, pug, SCSS, gsap, JS, React, Git, PHP, SQL ,gulp</p>
             </div>
             <div class="about-people__person">
-                <p> Анна Егорова - frontend и backend разработчик</p>
-                <img class="about-people__photo" src="public/images/about-us/">
+                <h5 class="about-people__person-name"> Анна Егорова</h5>
+                <div class="about-people__person-prephoto">
+                    <img class="about-people__person-photo" src="{{ Storage::url('images/about-us/Anna.jpg') }}">
+                </div>
+                <p class="about-people__person-role">Роль в проекте: frontend разработчик</p>
+                <p class="about-people__person-skills">Ключевые навыки: HTML,CSS, Postgres, PHP, JS, Linux</p>
             </div>
             <div class="about-people__person">
-                <p> Никита Циунель - frontend разработчик</p>
-                <img class="about-people__photo" src="public/images/about-us/">
+                <h5 class="about-people__person-name"> Никита Циунель</h5>
+                <div class="about-people__person-prephoto">
+                    <img class="about-people__person-photo" src="{{ Storage::url('images/about-us/Nikita.jpg') }}">
+                </div>
+                <p class="about-people__person-role">Роль в проекте: frontend разработчик</p>
+                <p class="about-people__person-skills">Ключевые навыки: HTML5, CSS, JS(ReactJs), PHP(Laravel)</p>
             </div>
             <div class="about-people__person">
-                <p> Кирилл Новичков - backend разработчик</p>
-                <img class="about-people__photo" src="public/images/about-us/">
+                <h5 class="about-people__person-name"> Кирилл Новичков</h5>
+                <div class="about-people__person-prephoto">
+                    <img class="about-people__person-photo" src="{{ Storage::url('images/about-us/Kirill.jpg') }}">
+                </div>
+                <p class="about-people__person-role">Роль в проекте: backend разработчик</p>
+                <p class="about-people__person-skills">Ключевые навыки: PHP, Laravel, MySql, Postgresql, Linux, Docker, Git, bash</p>
             </div>
     </div>
 
