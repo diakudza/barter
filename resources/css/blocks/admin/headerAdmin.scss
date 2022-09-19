@@ -16,6 +16,7 @@
         border-radius: 8px;
         border-color: rgba($color-black, 0.6);
         transition: 0.3s;
+        overflow: hidden;
 
         &:hover{
             background: rgba($color-black, 0.7);
