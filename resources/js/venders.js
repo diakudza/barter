@@ -5,7 +5,7 @@ import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 // import "swiper";
 
 //Модалки и слайдеры fancyBox
-import "@fancyapps/ui";
+// import "@fancyapps/ui";
 //Анимация AOS
 // import "aos";
 //Axios или AJAX

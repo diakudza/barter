@@ -1,9 +1,12 @@
 export const headerJS = () => {
-    const overlay = document.querySelector('.overlay'),
-     profileMenu = document.querySelector('.profile-menu');
+    const profileMenu = document.querySelector('.profile-menu');
 
     const burgerBtn = document.querySelector(".btn-toggel"),
      navMenu = document.querySelector(".header__content");
+
+    if (!profileMenu) {
+        return;
+    }
 
     document.addEventListener('click', (event) => {
         const target = event.target;

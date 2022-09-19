@@ -11,6 +11,7 @@ const dropdown = () => {
             searchEnabled: false,
             itemSelectText: "",
             noResultsText: "Ничего не найдено",
+            allowHTML: true,
         });
 
         //Это назначение aril label на самый верх
@@ -38,6 +39,7 @@ const dropdown = () => {
             searchEnabled: false,
             itemSelectText: "",
             noResultsText: "Ничего не найдено",
+            allowHTML: true,
         });
 
         //Это назначение aril label на самый верх

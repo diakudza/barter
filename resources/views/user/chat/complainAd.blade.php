@@ -4,14 +4,15 @@
 
 @section('content')
 
-<div class="container">
-    <h3>Пожаловаться на объявление</h3>
+<section class="container get-support">
+    <h3 class="heading get-support__heading">Пожаловаться на объявление</h3>
 
     @include('components.chats.complainForm', [
     'route' => route('storeAdComplain'),
     'inputName' => 'ad_id',
     'inputValue' => $id,
     ])
-</div>
+
+</section>
 
 @endsection

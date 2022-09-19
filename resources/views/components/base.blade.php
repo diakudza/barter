@@ -25,7 +25,7 @@
         @include('components.footer')
         @include('components.alert')
 
-        <div class="overlay"></div>
+        @include('components.modalsWindow')
     </div>
 
     <div class="btn-top">

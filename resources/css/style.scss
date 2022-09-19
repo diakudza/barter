@@ -13,8 +13,7 @@
 
 //Стили кнопок
 @import "blocks/btn";
-//Стили уведомлений
-@import "blocks/alerts";
+
 //Стили чекбокса и радио кнопок
 @import "blocks/customCheckbox";
 
@@ -51,6 +50,10 @@
 @import "blocks/cards/previewCard";
 //Страница избранного и моих объявлений
 @import "blocks/wishList/wishList";
+//Страница ЛИЧНЫЙ КАБИНЕТ
+@import "blocks/userPage/userPage";
+//Страница обращения в службуподдержки
+@import "blocks/getSupport";
 
 //Стили footer
 @import "blocks/footer";

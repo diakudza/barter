@@ -6,7 +6,7 @@
 
     <section class="container product-card">
 
-        <h2 class="product-card__title">{{ Str::limit($ad->title, 65) }}</h2>
+        <h2 class="product-card__title">{{ Str::limit($ad->title, 55) }}</h2>
 
         <div class="product-card__container">
 

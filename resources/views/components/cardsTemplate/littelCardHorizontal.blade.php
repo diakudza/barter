@@ -1,21 +1,4 @@
 <div class="card">
-
-    {{--    Страница Избранные--}}
-    @if(Request::is('yourfavoritelist'))
-
-    @endif
-
-    {{--    Страница моих объявлений--}}
-    @if(Request::is('listAds'))
-
-    @endif
-
-    {{--    Страница бартера--}}
-    @if(Request::is('yourwishlist'))
-
-    @endif
-
-
     <div class="card__content card__content--horizontal">
         <div class="card__img card__img--horizontal">
             <img @if(count($item->imageMain)) src="{{Storage::url($item->imageMain[0]->path)}}"
@@ -28,7 +11,7 @@
 
             <div class="card__body-top card__body-top--horizontal">
                 <a class="card__link--title" href="{{ route('ad.show', $item['id']) }}">
-                    <h4 class="card__title card__title--horizontal">{{ $item['title']  }}</h4>
+                    <h4 class="card__title card__title--horizontal">{{ Str::limit($item['title'], 55) }}</h4>
                 </a>
 
                 <div class="card__item card__location card__location--horizontal">
@@ -75,7 +58,20 @@
             <div class="card__body-bottom card__buttons">
 
                 {{-- Функционал горизонтальных карточек--}}
-                <a href="{{ route('ad.show', $item->id) }}" class="card-btn btn btn-white">Просмотр</a>
+                <a href="{{ route('ad.show', $item->id) }}" class="card-btn btn btn-white">
+                    <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M11.6354 7.04418C11.6354 8.49918 10.4554 9.67835 9.00038 9.67835C7.54538 9.67835 6.36621 8.49918 6.36621 7.04418C6.36621 5.58835 7.54538 4.40918 9.00038 4.40918C10.4554 4.40918 11.6354 5.58835 11.6354 7.04418Z"
+                              stroke="#23262F" stroke-width="1.25" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M8.99866 13.129C12.172 13.129 15.0745 10.8473 16.7087 7.04398C15.0745 3.24065 12.172 0.958984 8.99866 0.958984H9.00199C5.82866 0.958984 2.92616 3.24065 1.29199 7.04398C2.92616 10.8473 5.82866 13.129 9.00199 13.129H8.99866Z"
+                              stroke="#23262F" stroke-width="1.25" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                    </svg>
+
+                    <span class="btn-text">Просмотр</span>
+                </a>
 
                 @if(Request::is('listAds'))
                     <a href="{{ route('user.profile.editAd', ['ad' => $item->id]) }}" class="card-btn btn btn-white">
@@ -167,7 +163,7 @@
                     <div class="status-info__item barter">
 
                         @if ($item->barter_type == 'barter')
-                            <span class="status-info__text">Обменять на товар</span>
+                            <span class="status-info__text">Обменяю</span>
                         @elseif ($item->barter_type != 'barter')
                             <span class="status-info__text">Отдам даром</span>
                         @endif
@@ -176,6 +172,26 @@
                 @endif
 
             </div>
+
+            @if(Request::is('listAds'))
+                <div class="info__wish">
+
+                    @forelse ($item->usersWished as $adAdded)
+                        <h5 class="info__wish-title">С кем провести обмен:</h5>
+                        <form action="{{ route('chat.from.ad') }}" method="post">
+                            <input type="hidden" name="ad_user_id" value="{{$adAdded->id}}">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="btn btn-reset btn-green info__wish-btn">{{ $adAdded->name
+                            }}</button>
+                        </form>
+
+                    @empty
+                        <h5 class="info__wish-title">Пока ни кого не приглянулось ваше объявление</h5>
+                    @endforelse
+
+                </div>
+            @endif
 
             <div class="info__bottom">
                 <div class="info__watch">
@@ -228,121 +244,4 @@
             </div>
         </div>
     </div>
-
 </div>
-
-
-{{--@forelse ($ads as $ad)--}}
-
-{{--    <div style="height: 400px;" class="d-flex gap-5 mb-4 box-shadow bg-light ">--}}
-
-
-{{--        <div class="">--}}
-{{--            <div class="d-flex flex-column ">--}}
-{{--                <small class="text-muted">Статус: {{ $ad->status->description }}</small>--}}
-{{--                <small class="text-muted">Просмотрели: {{ $ad->show_count }}</small>--}}
-{{--                <small class="text-muted">Добавили в--}}
-{{--                    избранное: {{ count($ad->favoriteUsers) }}</small>--}}
-{{--                <small class="text-muted">Откликнулись: {{ count($ad->usersWished) }}</small>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <div class="w-25">--}}
-{{--            <h5>Кто захотел ваши объявления</h5>--}}
-{{--            <div class="d-flex flex-column gap-1">--}}
-{{--                @forelse ($ad->usersWished as $adAdded)--}}
-{{--                    <form action="{{ route('chat.from.ad') }}" method="post">--}}
-{{--                        <input type="hidden" name="ad_user_id" value="{{$adAdded->id}}">--}}
-{{--                        @csrf--}}
-{{--                        @method('POST')--}}
-{{--                        <button type="submit" class="btn btn-success w-100"><p>{{ $adAdded->name }}</p></button>--}}
-{{--                    </form>--}}
-
-{{--                @empty--}}
-{{--                    <h3></h3>--}}
-{{--                @endforelse--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--    </div>--}}
-
-{{--@endforelse--}}
-
-
-{{--    <h2 class="jumbotron-heading"></h2>--}}
-
-
-{{--    <div class="album py-5 bg-light">--}}
-{{--        <div class="container">--}}
-{{--            <div class="col gap-5">--}}
-{{--                @forelse ($ads as $ad)--}}
-{{--                    --}}
-{{--                    <div style="height: 400px;" class="d-flex gap-5 mb-4 box-shadow bg-light ">--}}
-{{--                        <div class="w-25">--}}
-{{--                            <img class="w-100"--}}
-{{--                                 @if(count($ad->imageMain))  src="{{Storage::url($ad->imageMain[0]->path)}}"--}}
-{{--                                 @elseif(count($ad->images)) src="{{Storage::url($ad->images[0]->path)}}"--}}
-{{--                                 @else src="{{ asset('images/product/placeholder400x400.png' )}}"--}}
-{{--                                 @endif--}}
-{{--                                 alt="{{ $ad['title'] }}" title="{{ $ad['title'] }}"--}}
-{{--                            >--}}
-{{--                        </div>--}}
-
-
-{{--                        @if ( $ad->status->title == 'archived')--}}
-{{--                            <h1 class="position-absolute start-50 top-50 opacity-50 text-danger">в архиве</h1>--}}
-{{--                        @endif--}}
-
-{{--                        <div class="">--}}
-
-{{--                            <p class="card-text">Название: {{ $ad->title }}</p>--}}
-{{--                            <p class="card-text">Город подачи: {{ $ad->city->name }}</p>--}}
-{{--                            <p class="card-text">Категория: {{ $ad->category->title }}</p>--}}
-{{--                            <div class="d-flex justify-content-between align-items-center">--}}
-
-{{--                                    <a href="{{ route('ad.show', $ad->id) }}" class="btn  btn-outline-secondary">Просмотр</a>--}}
-{{--                                    <a href="{{ route('user.profile.editAd', ['ad' => $ad->id]) }}" class="btn  btn-outline-secondary">Редак.</a>--}}
-{{--                                    <form action="{{ route('ad.destroy', $ad->id) }}" method="post">--}}
-{{--                                        @csrf--}}
-{{--                                        @method('delete')--}}
-{{--                                        <button type="submit" class="btn btn-danger">Удалить</button>--}}
-{{--                                    </form>--}}
-
-{{--                            </div>--}}
-
-{{--                            <div class="d-flex flex-column ">--}}
-{{--                                <small class="text-muted">Статус: {{ $ad->status->description }}</small>--}}
-{{--                                <small class="text-muted">Просмотрели: {{ $ad->show_count }}</small>--}}
-{{--                                <small class="text-muted">Добавили в--}}
-{{--                                    избранное: {{ count($ad->favoriteUsers) }}</small>--}}
-{{--                                <small class="text-muted">Откликнулись: {{ count($ad->usersWished) }}</small>--}}
-{{--                            </div>--}}
-
-
-{{--                        </div>--}}
-{{--                        <div class="w-25">--}}
-{{--                            <h5>Кто захотел ваши объявления</h5>--}}
-{{--                            <div class="d-flex flex-column gap-1">--}}
-{{--                            @forelse ($ad->usersWished as $adAdded)--}}
-{{--                                <form action="{{ route('chat.from.ad') }}" method="post">--}}
-{{--                                    <input type="hidden" name="ad_user_id" value="{{$adAdded->id}}">--}}
-{{--                                    @csrf--}}
-{{--                                    @method('POST')--}}
-{{--                                    <button type="submit" class="btn btn-success w-100"><p>{{ $adAdded->name }}</p></button>--}}
-{{--                                </form>--}}
-
-{{--                            @empty--}}
-{{--                                <h3></h3>--}}
-{{--                            @endforelse--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-
-{{--                @empty--}}
-{{--                <h3>Вы пока не разместили ни одного объявления</h3>--}}
-{{--                @endforelse--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-{{--    </div>--}}

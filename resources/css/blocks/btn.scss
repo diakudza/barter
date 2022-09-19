@@ -53,6 +53,30 @@
         }
     }
 
+    &-blue-nofill {
+        color: $color-blue;
+
+        border: 2px solid $color-blue;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-blue;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-blue;
+
+            svg path {
+                stroke: white;
+                transition: all 0.4s ease-in-out;
+            }
+        }
+    }
+
     &-del {
         color: $color-red;
 
@@ -125,12 +149,46 @@
     }
 
     &-green {
+        color: $color-green;
+
+        border: 2px solid $color-green;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-green;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-green;
+            border: 2px solid $color-green;
+
+            svg path {
+                stroke: white;
+            }
+        }
+    }
+
+    &-green-fill {
         background-color: $color-green;
         border: 2px solid rgba($color-green, 0.1);
         transition: all 0.4s ease-in-out;
 
+        svg path {
+            stroke: #fff;
+            transition: all 0.4s ease-in-out;
+        }
+
         &:hover {
-            border: 2px solid rgba($color-green, 0.5);
+            color: $color-green;
+            background-color: white;
+
+            svg path {
+                stroke: $color-green;
+            }
         }
     }
 
@@ -214,7 +272,7 @@
 
         visibility: hidden;
         transform: translateX(1000px);
-        transition: all 0.5s ease-in;
+        transition: all .5s ease-in-out;
 
         &.show {
             opacity: 1;
@@ -225,12 +283,12 @@
         svg {
             path {
                 fill: $color-black;
-                transition: all 0.2s ease-in;
+                transition: all 0.3s ease-in;
             }
 
             rect {
                 fill: white;
-                transition: all 0.2s ease-in;
+                transition: all 0.3s ease-in;
             }
         }
 

@@ -12,23 +12,27 @@ import dropdown from "./modules/dropdown";
 import customCheckbox from "./modules/customCheckbox";
 import notification from "./modules/notification";
 
-
-import "./modules/modalWindowPopup";
 import "./modules/login";
 import chats from "./modules/chats";
 import addProducts from "./modules/addProduct";
 import modulsWindow from "./modules/modulsWindow";
 import photoSlider from "./modules/photoSlider";
+import checkImg from "./modules/checkImg";
+import city from "./modules/citys";
+import sendForms from "./modules/sendForms";
 
 //Вызовы модулей
-scrollingTop('.btn-top', '#main');
-cutText();
 headerJS();
+scrollingTop('.btn-top', '#main');
+// cutText();
 dropdown();
+notification();
 customCheckbox();
 chats();
-notification();
 addProducts();
-modulsWindow();
+// modulsWindow();
 photoSlider();
+// checkImg();
+city();
+sendForms();
 

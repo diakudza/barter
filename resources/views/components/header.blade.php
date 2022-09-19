@@ -5,7 +5,11 @@
             <img src="{{ asset('images/logo.svg') }}" alt="Поменяем или обменяем">
         </a>
 
-        @include('components.city')
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            {{ session('userCity') }}
+        </button>
+
+{{--        @include('components.city')--}}
 
         <div class="header__content">
             @include('components.headers.nav')
