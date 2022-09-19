@@ -1,11 +1,17 @@
 import {Carousel, Fancybox} from "@fancyapps/ui";
 
 const photoSlider = () => {
+    if (!document.querySelector("#mainCarousel")) {
+        return;
+    }
     // Initialise Carousel
     const mainCarousel = new Carousel(document.querySelector("#mainCarousel"), {
         Dots: false,
     });
 
+    if (!document.querySelector("#thumbCarousel")) {
+        return;
+    }
 // Thumbnails
     const thumbCarousel = new Carousel(document.querySelector("#thumbCarousel"), {
         Sync: {
@@ -20,6 +26,9 @@ const photoSlider = () => {
     });
 
 // Customize Fancybox
+    if (!document.querySelector('[data-fancybox="product-card"]')) {
+        return;
+    }
     Fancybox.bind('[data-fancybox="product-card"]', {
         Toolbar: false,
         closeButton: "top",

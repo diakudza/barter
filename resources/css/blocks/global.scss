@@ -122,6 +122,14 @@ h6 {
     background-color: rgba($color-black, 0.1);
 }
 
+//Стили уведомления
+.alert {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    right: 50px;
+}
+
 //затемнение фона
 .overlay {
     position: fixed;

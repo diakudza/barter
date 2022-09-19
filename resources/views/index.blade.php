@@ -16,9 +16,15 @@
 
 {{-- Последние 10 объявлений --}}
 <section id="products-last" class="products-last container">
-  <h3 class="products-last__title title">Последние 10 объявлений</h3>
+  <h3 class="products-last__title title">Последние объявления</h3>
 
-  @include('components.productsLast')
+  <div class="products-last__list">
+
+    @foreach($lastTenAds as $item)
+      @include('components.cardsTemplate.littelCard')
+    @endforeach()
+
+  </div>
 
 </section>
 

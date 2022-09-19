@@ -38,9 +38,6 @@ const addProducts = () => {
 
             loadFileWrapper.innerHTML = itemFile;
         }
-
-        console.log(itemFile);
-
     });
 
     cardTitleInput.addEventListener('input', ()=> {

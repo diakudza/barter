@@ -21,7 +21,8 @@ class UserProfileController extends Controller
         return view('user.profile.index', [
             'ads' => $adsList->listAdsByUser(Auth::user()->id),
             'wishes' => Auth::user()->wishes,
-            'favorites' => Auth::user()->favoriteAds
+            'favorites' => Auth::user()->favoriteAds,
+            'user'=> Auth::user()
         ]);
     }
 

@@ -1,9 +1,4 @@
 .change-product {
-
-    &__heading {
-
-    }
-
     &__sub-heading {
         font-weight: 500;
         font-size: 32px;
@@ -24,12 +19,9 @@
             column-gap: 0;
         }
     }
-
-    &__form {}
 }
 
 .change-form {
-    &__group{}
 
     &__buttons {
         display: flex;
@@ -148,8 +140,6 @@
     &:not(:last-child) {
         margin-bottom: 24px;
     }
-
-    &__list {}
 
     &__item {
         &:not(:last-child) {

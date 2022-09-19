@@ -7,26 +7,24 @@
 
             <div class="card__img-info">
                 @if ($item->barter_type == 'barter')
-                    <span class="status-info__text">Обменять на товар</span>
+                    <span class="status-info__text">Обменяю</span>
                 @elseif ($item->barter_type != 'barter')
                     <span class="status-info__text">Отдам даром</span>
                 @endif
             </div>
 
-
             @if(auth()->user() && $item['status_id'] !== 4)
-                <button class="card__btn-fav btn-reset" aria-label="Добавить в избранное">
-                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M14.449 4.1281C14.449 1.83571 12.8818 0.916748 10.6253 0.916748H5.32622C3.13909 0.916748 1.5 1.77305 1.5 3.97522V16.245C1.5 16.8499 2.15079 17.2308 2.67794 16.9351L7.99623 13.9518L13.2686 16.9301C13.7965 17.2275 14.449 16.8465 14.449 16.2409V4.1281Z"
-                              stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.89258 6.52342H10.9911" stroke-width="1.25" stroke-linecap="round"
-                              stroke-linejoin="round"/>
+                <button class="card__btn-fav btn-reset" >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3
+        .org/2000/svg">
+                        <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z"
+                              stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             @endif
 
-            <img @if(count($item->imageMain)) src="{{Storage::url($item->imageMain[0]->path)}}"
+            <img class="card__product-img" @if(count($item->imageMain)) src="{{Storage::url
+            ($item->imageMain[0]->path)}}"
                  @elseif(count($item->images)) src="{{Storage::url($item->images[0]->path)}}"
                  @else src="{{ asset('images/product/placeholder400x400.png' )}}"
                  @endif alt="{{ $item['title'] }}" title="{{ $item['title'] }}">
@@ -37,7 +35,7 @@
 
             <div class="card__body-top">
                 <a class="card__link--title" href="{{ route('ad.show', $item['id']) }}">
-                    <h4 class="card__title">{{ $item['title']  }}</h4>
+                    <h4 class="card__title">{{ Str::limit($item['title'], 55)  }}</h4>
                 </a>
 
                 <div class="card__location">
@@ -60,11 +58,11 @@
             <div class="card__body-bottom">
                 <div class="card__author">
                     <div class="card__author-img">
-                        <img class="author-img" @if($item->user->avatar()->first())
-                            src="{{Storage::url($item->user->avatar()->first()->path)}}"
-                             @elseif(count($item->images)) src="{{Storage::url($item->images[0]->path)}}"
-                             @else src="https://via.placeholder.com/40x40"
-                             @endif alt="{{ $item->user->name }}" title="{{ $item->user->name }}">
+                        <img class="author-img"
+                             @if($item->user->avatar()->first())
+                                 src="{{Storage::url($item->user->avatar()->first()->path)}}"
+                             @else src="{{ asset('images/icon-avatar.png')}}"
+                             @endif alt="{{ $item->user->name }}">
                     </div>
 
                     <a href="{{ route('user.public', $item->user->id) }}" class="card__author-link">
