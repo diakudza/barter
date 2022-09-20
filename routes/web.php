@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\Admin\AdmCityController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
@@ -111,6 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'isUserBlocked']]
     Route::resource('user', AdminUserController::class);
     Route::resource('role', UserRoleController::class);
     Route::resource('comment', AdminCommentController::class);
+
     Route::get('adminChat', [AdminChatController::class, 'index'])->name('adminChat')
         ->withoutMiddleware([isAdmin::class])
         ->middleware('isModerator')
@@ -123,4 +125,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'isUserBlocked']]
         ->withoutMiddleware([isAdmin::class])->middleware('isDeveloper');
     Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action')
         ->withoutMiddleware([isAdmin::class])->middleware('isDeveloper');
+
+    Route::controller(AdmCityController::class)->group(function () {
+        Route::get('/cities', 'getAllCities')->name('admin.cities');
+        Route::get('/regions', 'getAllRegions')->name('admin.regions');
+        Route::post('/city', 'storeCity')->name('admin.city.store');
+        Route::delete('/city/{id}', 'destroyCity')->name('admin.city.destroy');
+        Route::put('/city/{id}', 'updateCity')->name('admin.city.update');
+    });
+
+
 });

@@ -23,7 +23,9 @@
                 <button class="header-admin__bth">
                     <a class="nav-link" aria-current="page" href="{{ route('adminChat') }}">Заявки от пользователей</a>
                 </button>
-
+                <button class="header-admin__bth">
+                    <a class="nav-link" aria-current="page" href="{{ route('admin.cities') }}">Города</a>
+                </button>
                 @if (Auth::user()->isAdmin() || Auth::user()->isDeveloper())
                     <button class="header-admin__bth">
                        <a class="nav-link testClass" href="{{ route('user.index') }}">Пользователи</a>
