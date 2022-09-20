@@ -91,7 +91,11 @@
             @foreach ($users as $user)
                 <tr @if ($user->status_id == 2) class='border-danger' @endif>
                     <td class="">{{ $user['id'] }}</td>
-                    <td><a href="{{ route('user.show', $user['id']) }}"> {{ $user['name'] }}</a></td>
+                    <td><a href="{{ route('user.show', $user['id']) }}"> {{ $user['name'] }}</a>
+                        <span>@if($user['online']) в сети c {{$user['login_time']}}
+                            @else Был в сети {{$user['logout_time']}} @endif
+                        </span>
+                    </td>
                     <td> {{ $user['email'] }} </td>
                     <td>
                         <form class="form-group admin-table__column" action="{{ route('user.update', $user['id']) }}"
