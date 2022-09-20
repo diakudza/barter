@@ -24,7 +24,7 @@
         @endif
     </a>
 
-    {{--Иконка объявлений, на которые вы откликнулись--}}
+    {{--Иконка избранных объявлений--}}
     <a class="actions__btn" href="{{ route('user.favoritelist') }}" title="Ваши избранные">
         <svg class="actions__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3
         .org/2000/svg">
@@ -32,10 +32,10 @@
                   stroke="#23262F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
 
-        @if(auth()->user()->yourAddedUnreadAds()->count())
+        @if(auth()->user()->favoriteAds()->count())
             <div class="actions__notif">
                 <span class="actions__notif-text">
-                    {{ auth()->user()->yourAddedUnreadAds()->count() }}
+                    {{ auth()->user()->favoriteAds()->count() }}
                 </span>
             </div>
         @endif
@@ -43,7 +43,7 @@
 
     {{-- Иконка уведомлений о том, что кто-то пожелал ваше объявление--}}
 
-    <a class="actions__btn" href="{{route('user.wishlist')}}">
+    <a class="actions__btn" href="{{route('user.profile.listAds')}}" title="Кто-то нажал бартер на вашем объявлении">
         <svg class="actions__icon" width="22" height="22" viewBox="0 0 22 22"
              fill="none" xmlns="http://www.w3
                                     .org/2000/svg">

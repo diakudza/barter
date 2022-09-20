@@ -109,7 +109,9 @@
                     </form>
 
                 @elseif(Request::is('yourfavoritelist'))
-                    {{-- Сделать кнопку удалить из избранного--}}
+                    <form action="{{ route('favorite.destroy', $item->id) }}" method="post">
+                        @csrf
+                        @method('delete')
                     <button class="btn-reset btn-del">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3
         .org/2000/svg">
@@ -118,7 +120,7 @@
                                   stroke-linejoin="round"/>
                         </svg>
                     </button>
-
+                    </form>
                 @elseif(Request::is('yourwishlist'))
                     @if($item->user->id != auth()->user()->id)
                         <form action="{{route('chat.from.ad')}}" method="post">
@@ -217,7 +219,7 @@
                               stroke-linejoin="round"/>
                     </svg>
 
-                    <span class="info__text--gray">0</span>
+                    <span class="info__text--gray">{{ count($item->usersWished) }}</span>
                 </div>
 
                 @if(Request::is('listAds'))

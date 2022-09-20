@@ -85,10 +85,10 @@ class AdUserFavorites extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request, $id)
     {
-        $favorite = AdUserFavorite::where('user_id', Auth::id())->where('ad_id', $request->ad_id)->first();
+        $favorite = AdUserFavorite::where('user_id', Auth::id())->where('ad_id', $id)->first();
         AdUserFavorite::destroy($favorite->id);
-        return redirect()->back()->with('success', 'Обьявление удалено из избранного.');
+        return redirect()->back()->with('success', 'Объявление удалено из избранного.');
     }
 }
