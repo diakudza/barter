@@ -4,12 +4,12 @@
 
 @section('content')
 
-    <section class="container users-office">
+    <section class="container user-office">
 
-        <h2 class="users-office__heading heading">Личный кабинет 😜</h2>
+        <h2 class="user-office__heading heading">Личный кабинет</h2>
         <div class="line"></div>
 
-        <div class="users-office__wrapper">
+        <div class="user-office__wrapper">
 
             <div class="user-shop__top">
                 <div class="user-shop__info">
@@ -26,6 +26,20 @@
 
                         <div class="info-author__content">
                             <h3 class="info-author__name">{{ $user->name }}</h3>
+
+                            <div class="info-author__item">
+
+                                <svg class="info-author__icon"  width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3
+                                .org/2000/svg">
+                                    <rect x="0.900146" y="4.5" width="22.2" height="15" rx="1.5" stroke="black" stroke-width="1.8"/>
+                                    <path d="M22.5 5.25L12.8719 12.1272C12.3503 12.4998 11.6497 12.4998 11.1281 12.1272L1.5 5.25" stroke="#292D32" stroke-width="1.5"/>
+                                </svg>
+
+
+                                <p class="info-author__title">Электронная почта:
+                                    <span class="info-author__text">{{ $user->email }}</span>
+                                </p>
+                            </div>
 
                             <div class="info-author__item">
                                 <svg class="info-author__icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -61,109 +75,54 @@
 
                             </div>
 
-
                         </div>
-
                     </div>
 
                 </div>
 
                 <div class="user-shop__buttons">
-
-                        @if($user->id != auth()->user()->id)
-                            <form action="{{route('chat.from.ad')}}" method="post">
-                                <input type="hidden" name="ad_user_id" value="{{$user->id}}">
-                                @csrf @method('POST')
-
-                                <button class="btn btn-reset btn-blue-nofill">
-                                    <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" xmlns="http://www.w3
-                                    .org/2000/svg">
-                                        <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
-                                              stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M15.9965 11H16.0054" stroke="#292D32" stroke-width="2"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M11.9955 11H12.0045" stroke="#292D32" stroke-width="2"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M7.99451 11H8.00349" stroke="#292D32" stroke-width="2"
-                                              stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-
-                                    <span class="info-bottoms__text">Написать продавцу</span>
-                                </button>
-                            </form>
-
-
-                    @endauth
+                    <a href="{{ route ('user.profile.createAd' )}}" class="btn btn-blue-nofill">Новое объявление</a>
+                    <a href="{{ route ('user.profile.personalData') }}" class="btn btn-green">Изменить данные</a>
                 </div>
             </div>
 
+            <div class="user-office__list">
+                <div class="user-office__item">
+                    <h3 class="user-office__title">Мои объявления</h3>
 
-            <div class="user-shop__list">
-                @foreach($ads as $item)
-                    @include('components.cardsTemplate.littelCard')
-                @endforeach()
+                    <div class="user-office__item-wrapper">
+                        @forelse ($ads as $item)
+                            @include('components.cardsTemplate.littelCard', ['var' => 'yours'])
+                        @empty
+                            <p class="user-office__subtitle">У вас нет пока объявлений</p>
+                        @endforelse
+                    </div>
+                </div>
+
+                <div class="user-office__item">
+                    <h3 class="user-office__title">То что вы хотите получить или на что то поменять</h3>
+
+                    <div class="user-office__item-wrapper">
+                        @forelse ($wishes as $item)
+                            @include('components.cardsTemplate.littelCard', ['var' => 'wishList'])
+                        @empty
+                            <p class="user-office__subtitle">Вы пока ничего не добавили</p>
+                        @endforelse
+                    </div>
+                </div>
+
+                <div class="user-office__item">
+                    <h3 class="user-office__title">В избранном</h3>
+
+                    <div class="user-office__item-wrapper">
+                        @forelse ($favorites as $item)
+                            @include('components.cardsTemplate.littelCard', ['var' => 'favoritList'])
+                        @empty
+                            <p class="user-office__subtitle">Вы пока ничего не добавили</p>
+                        @endforelse
+                    </div>
+                </div>
             </div>
-
-
-            {{--            <div class="users-office__menu">--}}
-            {{--                <ul class="users-office__list">--}}
-            {{--                    <li class="users-office__item">--}}
-            {{--                        <a href="#" class="users-office__link">Информация о профиле</a>--}}
-            {{--                    </li>--}}
-            {{--                </ul>--}}
-
-            {{--            </div>--}}
-
-
-            {{--            {{ dd(Auth::user()-av) }}--}}
-
-            {{--            <div class="users-office__content">--}}
-            {{--                <div class="d-flex gap-5 ">--}}
-
-            {{--                    <div class="row gap-5 w-100" style="height: 300px;">--}}
-            {{--                        <div class="col">--}}
-            {{--                            <p>Вам понравилось:</p>--}}
-            {{--                            <div>--}}
-            {{--                                @forelse($wishes as $ad)--}}
-            {{--                                    @include('components.cardsTemplate.adCartLKHorizont')--}}
-            {{--                                @empty--}}
-            {{--                                    Вы пока ничего не добавили--}}
-            {{--                                @endforelse--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                        <div class="col">--}}
-            {{--                            <p>В избранном:</p>--}}
-            {{--                            <div class="overflow-hidden">--}}
-            {{--                                @forelse($favorites as $ad)--}}
-            {{--                                    @include('components.cardsTemplate.adCartLKHorizont')--}}
-            {{--                                @empty--}}
-            {{--                                    Пока ничего--}}
-            {{--                                @endforelse--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                        <div class="col d-flex flex-column gap-1">--}}
-            {{--                            <p>Действия</p>--}}
-            {{--                            <a href="{{ route ('user.profile.createAd' )}}" class="btn btn-info">Новое объявление</a>--}}
-            {{--                            <a href="{{ route('user.profile.personalData') }}" class="btn btn-info">Изменить данные</a>--}}
-            {{--                        </div>--}}
-
-            {{--                    </div>--}}
-
-            {{--                </div>--}}
-
-            {{--                <div class="mt-5">--}}
-            {{--                    <h3>Ваши обьявления</h3>--}}
-            {{--                    <div class="d-flex flex-row flex-wrap justify-content-between">--}}
-            {{--                        @forelse ($ads as $ad)--}}
-            {{--                            @include('components.adCartLK')--}}
-            {{--                        @empty--}}
-            {{--                            Пока ничего--}}
-            {{--                        @endforelse--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
 
         </div>
 

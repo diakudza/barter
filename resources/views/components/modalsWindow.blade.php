@@ -1,29 +1,5 @@
 <div class="overlay"></div>
 
-
-<div class="modal-container">
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Выберите ваш город</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body ">
-                    Регион:
-                    <select id="regionSelect" data-token="{{csrf_token()}}"> </select>
-                    <div id="city">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 {{--    @if(Request::is('publicInfo/*'))--}}
 {{--        <form style="display: none" id="form-reviews" class="form-reviews" action="{{ route('user.updateUserRating') }}"--}}
 {{--              method="post">--}}
@@ -58,6 +34,4 @@
 {{--            <button type="reset">Отмена</button>--}}
 {{--        </form>--}}
 {{--    @endif--}}
-
-</div>
 

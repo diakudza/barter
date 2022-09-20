@@ -109,25 +109,49 @@
                     </form>
 
                 @elseif(Request::is('yourfavoritelist'))
+                    <form action="{{route('chat.from.ad')}}" method="post">
+                        <input type="hidden" name="ad_user_id" value="{{$item->user->id}}">
+                        @csrf @method('POST')
+
+                        <button class="btn btn-reset btn-blue-nofill card-btn">
+                            <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
+                                 fill="none" xmlns="http://www.w3
+                                    .org/2000/svg">
+                                <path d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
+                                      stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15.9965 11H16.0054" stroke="#292D32" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.9955 11H12.0045" stroke="#292D32" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.99451 11H8.00349" stroke="#292D32" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+
+                            <span class="info-bottoms__text">Написать продавцу</span>
+                        </button>
+                    </form>
+
                     <form action="{{ route('favorite.destroy', $item->id) }}" method="post">
                         @csrf
                         @method('delete')
-                    <button class="btn-reset btn-del">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3
+                        <button class="btn-reset btn-del">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3
         .org/2000/svg">
-                            <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z"
-                                  stroke-width="1.5" stroke-linecap="round"
-                                  stroke-linejoin="round"/>
-                        </svg>
-                    </button>
+                                <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z"
+                                      stroke-width="1.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                        </button>
                     </form>
+
                 @elseif(Request::is('yourwishlist'))
                     @if($item->user->id != auth()->user()->id)
                         <form action="{{route('chat.from.ad')}}" method="post">
                             <input type="hidden" name="ad_user_id" value="{{$item->user->id}}">
                             @csrf @method('POST')
 
-                            <button class="btn btn-reset btn-blue card-btn">
+                            <button class="btn btn-reset btn-blue-nofill card-btn">
                                 <svg class="info-buttons__icon" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" xmlns="http://www.w3
                                     .org/2000/svg">
@@ -145,11 +169,34 @@
                                 <span class="info-bottoms__text">Написать продавцу</span>
                             </button>
                         </form>
+
+                        <form action="{{ route('wishlist.destroy', $item['id']) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+
+                            <button class="btn btn-reset btn-del">
+                                <svg class="info-buttons__icon" width="22" height="22" viewBox="0 0 22 22"
+                                     fill="none" xmlns="http://www.w3
+                                    .org/2000/svg">
+                                    <path d="M13.6 11.5799V14.3099C13.6 16.5899 12.69 17.4999 10.41 17.4999H7.69C5.42 17.4999 4.5 16.5899 4.5 14.3099V11.5799C4.5 9.3099 5.41 8.3999 7.69 8.3999H10.42C12.69 8.3999 13.6 9.3099 13.6 11.5799Z"
+                                          stroke-width="1.5" stroke-linecap="round" stroke="black"
+                                          stroke-linejoin="round"/>
+                                    <path d="M17.5 7.68V10.41C17.5 12.69 16.59 13.6 14.31 13.6H13.6V11.58C13.6 9.31 12.69 8.4 10.41 8.4H8.39999V7.68C8.39999 5.4 9.30999 4.5 11.59 4.5H14.32C16.59 4.5 17.5 5.41 17.5 7.68Z"
+                                          stroke-width="1.5" stroke-linecap="round" stroke="black"
+                                          stroke-linejoin="round"/>
+                                    <path d="M21 14C21 17.87 17.87 21 14 21L15.05 19.25"
+                                          stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M1 8C1 4.13 4.13 1 8 1L6.95 2.75" stroke-width="1.5" stroke="black"
+                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+
+
+                            </button>
+                        </form>
                     @else
-                        <p class="11__notification">Это ваше объявления!</p>
+                        <p class="card-body__notification">Это ваше объявления!</p>
                     @endif
                 @endif
-
             </div>
 
         </div>
