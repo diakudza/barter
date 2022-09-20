@@ -51,31 +51,6 @@
       min-width: 100%;
     }
 
-    &-info {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-
-      background-color: #fff;
-      border-radius: 333px;
-      box-shadow: 0 0 5px 3px rgba($color-black, 0.1);
-      padding: 13px 20px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      span {
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 100%;
-
-        letter-spacing: 0.05em;
-
-        color: $color-black;
-      }
-    }
-
     & img {
       width: 100%;
       height: 100%;
@@ -85,43 +60,6 @@
     }
   }
 
-  &__body {
-    margin-top: 32px;
-
-    &--horizontal {
-      margin-top: 17px;
-      margin-bottom: 17px;
-      margin-left: 32px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      flex: 1;
-
-      @include break992 {
-        margin-left: 0;
-      }
-    }
-
-    &-top {
-      border-bottom: 1px solid rgba(35, 38, 47, 0.05);
-      overflow: hidden;
-
-      &--horizontal {
-        border-bottom: none;
-        overflow: initial;
-      }
-    }
-
-    &-bottom {
-      padding-top: 14px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-  }
 
   &__buttons {
     display: flex;
@@ -141,6 +79,7 @@
     }
 
     .btn-del {
+      padding: 10px;
       width: 48px;
       height: 48px;
 
@@ -337,6 +276,104 @@
       flex: 1;
       position: relative;
       z-index: 5;
+    }
+  }
+
+  &__body {
+    margin-top: 32px;
+
+    &--horizontal {
+      margin-top: 17px;
+      margin-bottom: 17px;
+      margin-left: 32px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      flex: 1;
+
+      @include break992 {
+        margin-left: 0;
+      }
+    }
+
+    &-item {
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+        margin-bottom: 6px;
+      }
+    }
+
+    &-top {
+      overflow: hidden;
+
+      &--horizontal {
+        border-bottom: none;
+        overflow: initial;
+      }
+    }
+
+    &-controls {
+      position: relative;
+      z-index: 3;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      padding: 10px 0 16px 0;
+
+      //Этот момент удалить
+      & .btn-white {
+        width: 100%;
+        padding: 23px 31px !important;
+      }
+    }
+
+    &-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      padding: 10px 0 16px 0;
+    }
+
+    &-bottom {
+      padding-top: 14px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  //Информация на картинке
+  &__info-top {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .info-type {
+      background-color: #fff;
+      border-radius: 333px;
+      box-shadow: 0 0 5px 3px rgba($color-black, 0.1);
+      padding: 13px 20px;
+
+      span {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 100%;
+
+        letter-spacing: 0.05em;
+
+        color: $color-black;
+      }
     }
   }
 

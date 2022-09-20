@@ -2,8 +2,14 @@
     <div class="reviews__item">
         <div class="reviews-author">
             <div class="reviews-author__avatar">
-                <img class="reviews-author__img" src="{{asset('images/icon-avatar.png')}}" alt="{{ $review->author->name
-             }}">
+
+                <img class="reviews-author__img"
+                     @if($review->user->avatar()->first())
+                         src="{{Storage::url($review->user->avatar()->first()->path)}}"
+                     @else
+                         src="{{ asset('images/icon-avatar.png')}}"
+                     @endif
+                     alt="{{ $review->user->name }}">
             </div>
 
             <h4 class="reviews-author__name">{{ $review->author->name }}</h4>
