@@ -29,7 +29,7 @@
                 @endif
             </div>
 
-            @if(!Request::is('personal') )
+            @if(!Request::is('personal') && auth()->user())
                 @if($item->user->id != auth()->user()->id)
 
                     @if(auth()->user() && $item['status_id'] !== 4)
@@ -78,7 +78,7 @@
 
             </div>
 
-            @if(Request::is('personal'))
+            @if(Request::is('personal') && auth()->user())
                 @if(isset($var))
                     @if($var == 'yours')
                         <div class="card__body-item  card__body-controls">
