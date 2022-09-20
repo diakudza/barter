@@ -21,7 +21,7 @@ class QueryBuilderAds extends QueryBuilderBase implements QueryBuilder
         return $this->model::where('user_id', $userId)
 
             ->whereRelation('status', 'title', '=', 'active')
-            ->orWhereRelation('status', 'title', '!=', 'deleted')
+//            ->orWhereRelation('status', 'title', '!=', 'deleted')
             ->with(['city', 'category', 'status', 'imageMain'])->paginate(15);
     }
 
