@@ -18,7 +18,11 @@ class QueryBuilderAds extends QueryBuilderBase implements QueryBuilder
 
     public function listAdsByUser(int $userId): LengthAwarePaginator
     {
-        return $this->model::where('user_id', $userId)->whereRelation('status', 'title', '!=', 'deleted')->with(['city', 'category', 'status', 'imageMain'])->paginate(15);
+        return $this->model::where('user_id', $userId)
+
+            ->whereRelation('status', 'title', '=', 'active')
+            ->orWhereRelation('status', 'title', '!=', 'deleted')
+            ->with(['city', 'category', 'status', 'imageMain'])->paginate(15);
     }
 
     public function getAdDetailById(int $adId): Ad
