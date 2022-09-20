@@ -33,6 +33,6 @@ addProducts();
 // modulsWindow();
 photoSlider();
 // checkImg();
-city();
+// city();
 sendForms();
 
