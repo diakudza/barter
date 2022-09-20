@@ -148,6 +148,29 @@
         }
     }
 
+    &-black-nofill {
+        color: $color-black;
+
+        border: 2px solid $color-black;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-black;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-black;
+
+            svg path {
+                stroke: white;
+            }
+        }
+    }
+
     &-green {
         color: $color-green;
 
