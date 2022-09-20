@@ -77,12 +77,12 @@ class User extends Authenticatable
 
     public function wishes()
     {
-        return $this->belongsToMany(Ad::class);
+        return $this->belongsToMany(Ad::class)->where('status_id', '!=', 3);;
     }
 
     public function favoriteAds()
     {
-        return $this->belongsToMany(Ad::class, 'ad_user_favorites');
+        return $this->belongsToMany(Ad::class, 'ad_user_favorites')->where('status_id', '!=', 3);;
     }
 
     public function isBlockedUser()
