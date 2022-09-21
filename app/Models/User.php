@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -90,10 +91,10 @@ class User extends Authenticatable
         return ($this->status->status == 'blocked') ? true : false;
     }
 
-    public function isUserHasAdminAccess()
-    {
-        return (in_array($this->getRole->id, [2, 3, 4])) ? true : false;
-    }
+//    public function isUserHasAdminAccess()
+//    {
+//        return (in_array($this->getRole->id, [2, 3, 4])) ? true : false;
+//    }
 
     public function getChats()
     {
@@ -223,5 +224,10 @@ class User extends Authenticatable
     public function Role()
     {
         return $this->belongsTo(UserRole::class);
+    }
+
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
     }
 }

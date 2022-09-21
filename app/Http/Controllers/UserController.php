@@ -12,6 +12,7 @@ use App\Services\ImageService;
 use App\Services\RatingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -61,9 +62,10 @@ class UserController extends Controller
         return redirect()->route('home')->with('success', "Пользователь ". $request->input('name') . " зарегистрирован!");
     }
 
-    public function logout(Request $request, User $user)
+    public function logout(Request $request)
     {
         $user = Auth::user();
+        Cache::forget('user-is-online-' . $user->id);
         $user->update(['logout_time' => now(), 'online' => 0]);
         Auth::logout();
         $request->session()->invalidate();
