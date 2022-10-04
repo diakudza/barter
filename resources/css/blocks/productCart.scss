@@ -1,0 +1,485 @@
+
+.productCartContainer {
+    @include break768 {
+        width: 880px;
+    }
+}
+
+.productName {
+    margin-bottom: 22px;
+    max-height: 140px;
+    font-family: Gilroy;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 70px;
+    letter-spacing: -0.03em;
+    text-align: left;
+
+    @include break1200 {
+        font-size: 55px;
+    }
+}
+
+.productHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.location {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    @include break1200 {
+        gap: 5px;
+        width: 285px;
+    }
+}
+
+.productLocation {
+    height: 20px;
+    width: 385px;
+    left: 32px;
+    top: 2px;
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+
+    text-align: left;
+    color: rgba(35, 38, 47, 0.6);
+    margin-bottom: 50px;
+
+    @include break1200 {
+        font-size: 17px;
+    }
+}
+
+.adcart {
+    height: 300px;
+    width: 200px;
+    outline: 1px solid #0c63e4;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.adcart_link {
+    text-decoration: none;
+}
+
+.adcart_link:hover {
+    text-decoration: none;
+}
+
+.productCart {
+    display: flex;
+    justify-content: space-between;
+    height: 558px;
+    gap: 10px;
+    @include break768 {
+        flex-direction: column;
+    }
+}
+
+.productImgCarousel {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.productViewBig img {
+    border-radius: 20px;
+}
+
+.productViewSmall {
+    position: relative;
+}
+
+.productViewSmall [data-bs-target] {
+    width: 63px;
+    height: 63px;
+}
+
+.productImg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productContact {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 24px 24px;
+    gap: 24px;
+    width: 384px;
+    background: #ffffff;
+    border: 2px solid rgba(35, 38, 47, 0.1);
+    border-radius: 20px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    height: 280px;
+    @include break1200 {
+        width: 280px;
+    }
+    @include break768 {
+        width: 845px;
+        height: 300px;
+    }
+}
+
+.status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 20px;
+    width: 91px;
+    height: 40px;
+    background: rgba(151, 87, 215, 0.1);
+    backdrop-filter: blur(16px);
+    border-radius: 333px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    align-self: flex-start;
+}
+
+.user {
+    align-items: flex-start;
+    padding: 24px 16px;
+    gap: 24px;
+    width: 336px;
+    height: 235px;
+    background: #f4f5f6;
+    border-radius: 8px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    @include break1200 {
+        width: 245px;
+    }
+    @include break768 {
+        width: 790px;
+        height: 245px;
+    }
+}
+
+.user hr {
+    width: 304px;
+    color: darkgray;
+    size: 5px;
+    margin-top: 29px;
+    @include break1200 {
+        width: 230px;
+    }
+    @include break768 {
+        display: none;
+    }
+}
+
+.userView {
+    display: flex;
+    align-items: center;
+    @include break768 {
+        width: 780px;
+    }
+}
+
+.userRating {
+    display: flex;
+    align-items: baseline;
+    @include break768 {
+        font-size: 25px;
+    }
+}
+
+.userName {
+    margin-left: 15px;
+    height: 48px;
+}
+.userName h5 {
+    margin-bottom: 0;
+    min-width: 120px;
+    @include break1200 {
+        font-size: 14px;
+    }
+    @include break768 {
+        font-size: 35px;
+    }
+}
+
+.contacts p {
+    display: flex;
+}
+.contacts div {
+    margin-bottom: 10px;
+    @include break768 {
+        font-size: 25px;
+        margin-left: 95px;
+    }
+}
+.contactsInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contactsButton {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 304px;
+    height: 50px;
+    background: #315df7;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    color: white;
+    margin-bottom: 8px;
+    border-color: #315df7;
+    @include break1200 {
+        height: 40px;
+        font-size: 13px;
+        width: 215px;
+    }
+    @include break768 {
+        width: 755px;
+        height: 75px;
+        font-size: 45px;
+    }
+}
+
+.contactsButton svg {
+    @include break768 {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.orderCall {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 32px;
+    gap: 8px;
+    width: 304px;
+    height: 58px;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    border-color: rgb(35 38 47 / 29%);
+}
+
+.additionalInfo {
+    margin-top: 25px;
+}
+
+.productInfo {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+    flex-direction: column;
+    border: 2px solid rgba(35, 38, 47, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    align-content: center;
+    @include break1200 {
+        width: 280px;
+        padding: 16px;
+        margin-top: 10px;
+    }
+    @include break768 {
+        width: 845px;
+        height: 275px;
+    }
+}
+
+.characteristic {
+    display: flex;
+    border: 1px solid rgba(35, 38, 47, 0.1);
+    border-radius: 8px;
+    height: 50px;
+    width: 304px;
+    align-items: center;
+    padding: 24px 32px;
+    justify-content: flex-start;
+    background: #fffefe;
+    @include break1200 {
+        width: 215px;
+        font-size: 10px;
+    }
+    @include break768 {
+        width: 745px;
+        height: 65px;
+        font-size: 40px;
+    }
+}
+
+.characteristic svg {
+    margin-right: 10px;
+    @include break768 {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.characteristic h5 {
+    @include break768 {
+        font-size: 40px;
+        padding-top: 19px;
+    }
+}
+
+.description {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 880px;
+    max-height: 288px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 200%;
+    color: rgba(35, 38, 47, 0.75);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    @include break992 {
+        margin-top: 90px;
+    }
+    @include break768 {
+        margin-top: 1111px;
+    }
+}
+
+.description p {
+    width: 640px;
+}
+
+.galery {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+    float: left;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.popup {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    text-align: center;
+}
+
+.popup_bg {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.popup_img {
+    position: relative;
+    margin: 0 auto;
+    z-index: 2;
+    max-height: 94%;
+    max-width: 94%;
+    margin: 1% 0 0 0;
+}
+
+.characteristicBorder {
+    align-items: center;
+    padding: 17px 16px;
+    width: 336px;
+    height: 200px;
+    background: #f4f5f6;
+    border-radius: 8px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @include break1200 {
+        width: 245px;
+    }
+    @include break768 {
+        width: 790px;
+        margin-left: 10px;
+        height: 240px;
+    }
+}
+
+.addToFav {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+    flex-direction: column;
+    border: 2px solid rgba(35, 38, 47, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    align-content: center;
+    @include break1200 {
+        width: 280px;
+        padding: 16px;
+        gap: 0px;
+        margin-top: 10px;
+    }
+    @include break768 {
+        margin: 5px 0;
+        width: 845px;
+    }
+}
+
+.addToFav button {
+    @include break1200 {
+        margin-left: 14px;
+    }
+    @include break768 {
+        margin-left: 30px;
+    }
+}
+
+.productCartInfo {
+    @include break1200 {
+        width: 285px;
+    }
+    @include break768 {
+        width: 845px;
+    }
+}
+
+.userAvatar {
+    @include break768 {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.characteristicContent {
+    @include break768 {
+        display: flex;
+        gap: 10px;
+    }
+}

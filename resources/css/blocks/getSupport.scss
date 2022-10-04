@@ -1,0 +1,15 @@
+.get-support {
+  &__heading {
+    margin-bottom: 32px;
+  }
+
+  &__wrapper {
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    @include break768 {
+      width: 100%;
+    }
+  }
+}

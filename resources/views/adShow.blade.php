@@ -1,32 +1,33 @@
-@extends('component.base')
+@extends('components.base')
 
-@section('title',"Просмотр обьявления")
+@section('title', 'Просмотр объявления')
 
 @section('content')
 
-<div class="mt-5 mb-5 h-25">
-</div>
+    <section class="container product-card">
 
-<div class="container">
-    <div>
-        <div style="font-size: x-large" class="mb-3">{{ $ad['title'] }}</div>
-        <div class="d-flex flex-row justify-content-sm-between">
-            <div>
-                <p>Категория: {{ $ad->category->title }} в {{ $ad->city->name }}</p>
-                <p>Автор: {{ $ad->user->name }}</p>
-                <p>Дата создания: {{ $ad['created_at'] }}</p>
+        <h2 class="product-card__title">{{ Str::limit($ad->title, 55) }}</h2>
+
+        <div class="product-card__container">
+
+            <div class="product-card__wrapper">
+                <div class="product-card__photo-content photo-content">
+                    @include('components.productCartBig.productCardPhoto')
+                </div>
+
+                <div class="product-card__description description-block">
+                    <h3 class="description-block__title">Описание</h3>
+
+                    <p class="description-block__text">{{ $ad['text'] }}</p>
+                </div>
             </div>
 
-            <p>Описание: {{ $ad['text'] }}</p>
-        </div>
-        @if(auth()->user())
-        <div>
-            <button>Хочу это</button>
-            <button>Добавить В избранное</button>
-            <button>Написать автору</button>
-        </div>
-        @endif
+            <div class="product-card__info info-blocks">
+                @include('components.productCartBig.productCardInfo')
+            </div>
 
-    </div>
-</div>
+        </div>
+
+    </section>
+
 @endsection

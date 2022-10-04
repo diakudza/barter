@@ -1,0 +1,153 @@
+.profile-menu {
+  position: absolute;
+  top: 73px;
+  right: 0;
+
+  z-index: 100;
+
+  width: 370px;
+
+  background: white;
+  box-shadow: 0 4px 250px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+
+  padding: 8px 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+  transition: all 0.4s ease-in;
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+
+  @include break992 {
+    top: initial;
+    bottom: 120px;
+    right: inherit;
+    width: 310px;
+  }
+
+  &__item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    transition: all 0.3s ease-in;
+
+    &:first-child {
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+    }
+
+    &:last-child {
+      margin-top: 12px;
+      border-top: 1px solid rgba(35, 38, 47, 0.05);
+    }
+
+    &:after {
+      content: url("data:image/svg+xml;charset=UTF-8, <svg width='15' height='12' viewBox='0 0 15 12' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M13.4585 5.77132L0.958496 5.77132' stroke='black' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'/><path d='M8.41699 0.750964L13.4587 5.77097L8.41699 10.7918' stroke='black' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+      position: absolute;
+      top: 50%;
+      right: -16px;
+
+      transform: translateY(-50%);
+      transition: all .3s;
+    }
+
+    &:hover {
+      background: #f4f5f6;
+
+      .profile-menu__item-name {
+        color: rgba($color-black, 1);
+
+        &--admin {
+          color: rgba($color-red, 1);
+        }
+      }
+
+      .profile-menu__icon {
+        path,
+        circle {
+          stroke: rgba($color-black, 1);
+        }
+
+        &--setting {
+          path {
+            fill: rgba($color-black, 1);
+          }
+        }
+
+        &--exit {
+          path {
+            stroke: rgba($color-red, 1);
+          }
+        }
+
+        &--admin {
+          path, circle {
+            stroke: rgba($color-red, 1);
+          }
+        }
+      }
+
+    }
+
+    &:hover:after {
+      right: 16px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 24px 12px;
+  }
+
+  &__icon {
+    margin-right: 12px;
+
+    path,
+    circle {
+      stroke: rgba($color-black, .6);
+      transition: all 0.3s ease-in;
+    }
+
+    &--setting {
+      path {
+        fill: rgba($color-black, .6);
+        transition: all 0.3s ease-in;
+      }
+    }
+
+    &--exit {
+      path {
+        stroke: rgba($color-red, .6);
+        transition: all 0.3s ease-in;
+      }
+    }
+
+    &--admin {
+      path, circle {
+        stroke: rgba($color-red, .6);
+        transition: all 0.3s ease-in;
+      }
+    }
+  }
+
+  &__item-name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+
+    color: rgba($color-black, 0.6);
+    transition: all 0.3s ease-in;
+
+    &--admin {
+      color: rgba($color-red, 0.6);
+    }
+  }
+}

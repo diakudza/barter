@@ -1,43 +1,31 @@
-@extends('component.base')
+@extends('components.base')
 
 @section('title',"Главная")
 
 @section('content')
 
-@include('component.header')
+@include('components.hero')
 
-<div class="container">
+{{-- Блок как это работает --}}
+{{-- @include('components.headers.steps') --}}
 
-  <div id="howitwork" class="mb-5">
-    <p>
-      Вы можете разместить обьявление с вашей ненужной вещью и кто-то обязательно ее найдет и откликнится.
-      Или вы можете воспользоваться поиском и попробовать предложить кому-то обмен вашей вещи на найденную в
-      поиске.
-      После предложения обмена, хозяин вещи может выбрать способ доставки или личной встречи дял обмена.
-    </p>
+{{-- Блок поиска --}}
+<section id="main-search" class="container">
+  @include('components.searchForm')
+</section>
+
+{{-- Последние 10 объявлений --}}
+<section id="products-last" class="products-last container">
+  <h3 class="products-last__title title">Последние объявления</h3>
+
+  <div class="products-last__list">
+
+    @foreach($lastTenAds as $item)
+      @include('components.cardsTemplate.littelCard')
+    @endforeach()
+
   </div>
 
-  <!-- Блок поиска -->
-  <div class="d-flex flex-row justify-content-sm-evenly">
-
-    @include('component.searchForm')
-
-  </div>
-
-  <!-- Последние 10 объявлений -->
-  <div class="d-flex flex-column w-50">
-    <h3>Последние 10 обьявлений</h3>
-
-    <div class="products-last__list">
-      @foreach($lastTenAds as $ad)
-      <div class="product-last__item">
-        <a href="{{ route('ad.show', $ad['id']) }}">
-          <h4 class="product__title">{{ $ad['title'] }}</h4>
-        </a>
-      </div>
-      @endforeach()
-    </div>
-  </div>
-</div>
+</section>
 
 @endsection

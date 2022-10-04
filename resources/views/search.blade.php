@@ -1,28 +1,44 @@
-@extends('component.base')
+@extends('components.base')
 
-@section('title',"Поиск")
+@section('title', 'Поиск')
 
 @section('content')
 
-<div class="mt-5 mb-5 h-25">
-</div>
+<section class="container">
+    @include('components.searchForm')
+</section>
 
-@include('component.searchForm')
+<section class="container search-result">
 
-@if (isset($searchResult))
+    @if(isset($searchResult))
+    <h3 class="search-result__title title">Результаты поиска</h3>
 
-<div class="container mt-5">
-    <table class="mt-5 table-bordered">
-        @foreach( $searchResult as $item)
+    <div class="search-result__container">
 
-        <tr>
-            <td>{{ $item['id'] }}</td>
-            <td><a href="{{ route('ad.show', $item['id'])}}"> {{ $item['title'] }}</a></td>
-            <td>{{ $item['text'] }}</td>
-            <td>{{ $item->category->title }}</td>
-        </tr>
+        @foreach ($searchResult as $item)
+        @include('components.cardsTemplate.littelCard')
         @endforeach
-    </table>
-</div>
-@endif
+
+    </div>
+
+            <div class="d-flex">
+                {!! $searchResult->links() !!}
+            </div>
+
+        @elseif($adsByUserCity)
+
+    <div class="search-result__city">
+        <h3 class="search-result__title title">Возможно вас заинтересуют объявления в Вашем городе</h3>
+
+        <div class="search-result__container">
+            @foreach ($adsByUserCity as $item)
+            @include('components.cardsTemplate.littelCard')
+            @endforeach
+        </div>
+    </div>
+    @else
+    <h3 class="search-result__title title">Давайте что-нибудь поищем!</h3>
+    @endif
+
+</section>
 @endsection

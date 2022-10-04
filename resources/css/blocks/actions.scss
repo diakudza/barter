@@ -1,0 +1,59 @@
+.actions {
+  &__btn {
+    position: relative;
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    transition: all 0.4s ease-in;
+
+    &:hover {
+      background-color: #f4f5f6;
+    }
+
+    @include break992 {
+      width: initial;
+      height: initial;
+
+      border: 2px solid rgba(35, 38, 47, 0.1);
+
+      padding: 13px 36px;
+      border-radius: 3333px;
+    }
+  }
+
+  &__notif {
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+
+    width: 24px;
+    height: 24px;
+
+    background: #ef4646;
+    border-radius: 333333px;
+    border: 2px solid white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-text {
+      color: #fff;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 100%;
+    }
+
+    @include break992 {
+      top: 0px;
+      right: 20px;
+    }
+  }
+}

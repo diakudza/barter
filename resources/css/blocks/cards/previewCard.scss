@@ -1,0 +1,176 @@
+.preview-card {
+
+  &__heading {
+    margin-bottom: 16px;
+  }
+
+  &__wrapper {
+    position: relative;
+    padding: 16px;
+
+    border: 2px solid rgba(35, 38, 47, 0.05);
+    border-radius: 16px;
+  }
+
+  &__img {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 16px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__body {
+    margin-top: 32px;
+  }
+
+  &__top {
+    border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+  }
+
+  &__bottom {
+    padding-top: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 4px;
+    width: 100%;
+
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: $color-black;
+
+    word-wrap: anywhere;
+    cursor: default;
+
+    //Обрезка заголовка
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+  }
+
+  &__location {
+    padding-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      margin-right: 10px;
+    }
+
+    &-text {
+      user-select: none;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+
+    margin-right: 10px;
+
+    &-img {
+      width: 32px;
+      height: 32px;
+
+      margin-right: 8px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+      overflow: hidden;
+
+      & .author-img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+
+        object-fit: cover;
+      }
+    }
+
+    &-name {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: $color-black;
+
+      cursor: default;
+    }
+
+  }
+
+  &__add {
+    display: flex;
+    flex-direction: column;
+
+    &-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+
+      color: rgba(35, 38, 47, 0.6);
+
+      margin-bottom: 4px;
+      cursor: default;
+    }
+
+    &-time {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: $color-black;
+      cursor: default;
+    }
+  }
+
+  &__status {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    background-color: #fff;
+    border-radius: 333px;
+    box-shadow: 0 0 5px 3px rgba($color-black, 0.1);
+    padding: 13px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 100%;
+
+      letter-spacing: 0.05em;
+
+      color: $color-black;
+    }
+  }
+
+  @include break992 {
+    display: none;
+  }
+}

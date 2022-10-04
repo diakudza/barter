@@ -1,0 +1,531 @@
+// Маленькая карточка
+.card {
+  position: relative;
+  padding: 16px;
+
+  border: 2px solid rgba($color-black, 0.05);
+  border-radius: 16px;
+  transition: all 0.4s ease-in-out;
+
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &--horizontal {
+      flex-direction: row;
+      justify-content: initial;
+
+      @include break992 {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  &__img {
+    position: relative;
+
+    height: 385px;
+    max-height: 385px;
+    min-width: 278px;
+    border-radius: 16px;
+
+    &--horizontal {
+      height: 280px;
+      width: 280px;
+    }
+
+    @include break375 {
+      min-width: 100%;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+
+      object-fit: cover;
+    }
+  }
+
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
+    .btn-white {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+
+      svg {
+        margin-right: 8px;
+      }
+    }
+
+    .btn-del {
+      padding: 10px;
+      width: 48px;
+      height: 48px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-btn {
+      padding: 14px 22px;
+
+      &.btn-blue {
+        padding: 10px 18px;
+      }
+
+      @include break768 {
+        span {
+          display: none;
+        }
+      }
+    }
+
+  }
+
+  &__btn-fav {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    z-index: 5;
+
+    width: 48px;
+    height: 48px;
+
+    background-color: #fff;
+
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 3px rgba($color-black, 0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.5s;
+    cursor: pointer;
+
+    svg > path {
+      transition: all 0.5s;
+      stroke: $color-black;
+    }
+
+    &.add {
+      background-color: $color-blue;
+
+      svg > path {
+        stroke: #fff;
+      }
+    }
+
+    &:hover {
+      background-color: rgb(179, 179, 179);
+
+      svg > path {
+        stroke: $color-black;
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 4px;
+
+    display: inline-block;
+
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: $color-black;
+
+    transition: all 0.3s;
+
+    &--horizontal {
+      width: 300px;
+      margin-bottom: 8px;
+
+      //Обрезка заголовка
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    &:hover {
+      color: rgba($color-black, 0.5);
+    }
+  }
+
+  &__location {
+    padding-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      margin-right: 10px;
+    }
+
+    &--horizontal {
+      padding-bottom: 0;
+    }
+  }
+
+  &__add {
+    display: flex;
+    flex-direction: column;
+
+    &--horizontal {
+      flex-direction: row;
+    }
+
+    &-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+
+      color: rgba($color-black, 0.6);
+
+      margin-bottom: 4px;
+    }
+
+    &-time {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: $color-black;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+
+    margin-right: 10px;
+
+    &-img {
+      width: 32px;
+      height: 32px;
+
+      margin-right: 8px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+      overflow: hidden;
+
+      & .author-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+        object-fit: cover;
+      }
+
+      &--horizontal {
+        width: 40px;
+        height: 40px;
+
+        flex: none;
+      }
+    }
+
+    &-name {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: $color-black;
+
+      transition: color 0.4s ease-in;
+
+      &:hover {
+        color: rgba($color-black, 0.5);
+      }
+    }
+
+    &-link {
+      flex: 1;
+      position: relative;
+      z-index: 5;
+    }
+  }
+
+  &__body {
+    margin-top: 32px;
+
+    &--horizontal {
+      margin-top: 17px;
+      margin-bottom: 17px;
+      margin-left: 32px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      flex: 1;
+
+      @include break992 {
+        margin-left: 0;
+      }
+    }
+
+    &-item {
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(35, 38, 47, 0.05);
+        margin-bottom: 6px;
+      }
+    }
+
+    &-top {
+      overflow: hidden;
+
+      &--horizontal {
+        border-bottom: none;
+        overflow: initial;
+      }
+    }
+
+    &-controls {
+      position: relative;
+      z-index: 3;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      padding: 10px 0 16px 0;
+
+      //Этот момент удалить
+      & .btn-white {
+        width: 100%;
+        padding: 23px 31px !important;
+      }
+    }
+
+    &-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      padding: 10px 0 16px 0;
+    }
+
+    &-bottom {
+      padding-top: 14px;
+
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  //Информация на картинке
+  &__info-top {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .info-type {
+      background-color: #fff;
+      border-radius: 333px;
+      box-shadow: 0 0 5px 3px rgba($color-black, 0.1);
+      padding: 13px 20px;
+
+      span {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 100%;
+
+        letter-spacing: 0.05em;
+
+        color: $color-black;
+      }
+    }
+  }
+
+  //В горизонтальных карточках
+  &__info {
+    max-width: 190px;
+    margin: 10px 10px 10px auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .info {
+      &__top {
+        margin-bottom: 10px;
+      }
+
+      &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+      }
+
+      &__watch,
+      &__fav {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 8px;
+        }
+      }
+
+      &__text {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: uppercase;
+
+        &--gray {
+          color: rgba($color-black, 0.6);
+
+          cursor: default;
+          user-select: none;
+        }
+      }
+
+      &__wish {
+        max-height: 185px;
+        margin-bottom: 10px;
+        flex: 1;
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        overflow: auto;
+
+        &-title {
+          font-weight: 400;
+          font-size: 18px;
+          margin-bottom: 8px;
+        }
+
+        &-btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    &-title {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: rgba($color-black, 0.6);
+    }
+
+    &-text {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: $color-black;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px 5px rgba($color-black, 0.1);
+  }
+}
+
+.status-info {
+  &__item {
+    background-color: #fff;
+    border-radius: 333px;
+    padding: 11px 18px;
+    border: 2px solid rgba($color-black, 0.4);
+
+    text-align: center;
+    color: rgba($color-black, 0.4);
+
+    cursor: default;
+  }
+
+  &__text {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0.05em;
+
+    text-transform: uppercase;
+  }
+
+  .active {
+    border: 2px solid $color-blue;
+    color: $color-blue;
+  }
+
+  .moderated {
+    border: 2px solid $color-yellow;
+    color: $color-yellow;
+  }
+
+  .noactive, .archived {
+    border: 2px solid rgba($color-black, 0.5);
+    color: rgba($color-black, 0.5);
+  }
+
+  .gived {
+    border: 2px solid $color-green;
+    color: $color-green;
+  }
+
+  .deleted, .blocked {
+    border: 2px solid $color-red;
+    color: $color-red;
+  }
+
+  .barter {
+    border: 2px solid $color-blue;
+    color: $color-blue;
+  }
+}

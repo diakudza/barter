@@ -1,0 +1,61 @@
+.hero {
+  margin-bottom: 40px;
+
+  &__title {
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 100%;
+
+    text-align: center;
+
+    color: $color-black;
+    user-select: none;
+
+    @include break1200 {
+      font-size: 62px;
+    }
+
+    @include break992 {
+      font-size: 52px;
+    }
+
+    @include break576 {
+      font-size: 42px;
+    }
+  }
+
+  &__sub-title {
+    margin-bottom: 32px;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 100%;
+
+    text-align: center;
+
+    color: $color-black;
+    user-select: none;
+
+    &--black {
+      font-weight: 700;
+    }
+
+    @include break1200 {
+      font-size: 36px;
+    }
+
+    @include break992 {
+      font-size: 28px;
+    }
+
+    @include break576 {
+      font-size: 20px;
+    }
+  }
+
+  &__img {
+    img {
+      width: 100%;
+    }
+  }
+}

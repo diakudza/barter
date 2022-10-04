@@ -1,0 +1,334 @@
+.btn {
+    padding: 20px 31px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+
+    border-radius: 16px;
+
+    color: $color-black;
+
+    &-reset {
+        border: none;
+        background-color: transparent;
+    }
+
+    &-white {
+        background-color: white;
+        border: 2px solid rgba($color-black, 0.1);
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-black;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            border: 2px solid rgba($color-black, 0.5);
+        }
+    }
+
+    &-blue {
+        color: white;
+
+        border: 2px solid $color-blue;
+        background-color: $color-blue;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: #fff;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: $color-blue;
+            background-color: transparent;
+
+            svg path {
+                stroke: $color-blue;
+                transition: all 0.4s ease-in-out;
+            }
+        }
+    }
+
+    &-blue-nofill {
+        color: $color-blue;
+
+        border: 2px solid $color-blue;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-blue;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-blue;
+
+            svg path {
+                stroke: white;
+                transition: all 0.4s ease-in-out;
+            }
+        }
+    }
+
+    &-del {
+        color: $color-red;
+
+        border: 2px solid $color-red;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-red;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-red;
+            border: 2px solid $color-red;
+
+            svg path {
+                stroke: white;
+            }
+        }
+    }
+
+    &-del-fill {
+        color: white;
+
+        border: 2px solid $color-red;
+        background-color: $color-red;
+
+        transition: all 0.4s ease-in-out;
+
+        svg > path {
+            stroke: white;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: $color-red;
+            background-color: white;
+            border: 2px solid $color-red;
+
+            svg > path {
+                stroke: white;
+            }
+        }
+    }
+
+    &-black {
+        color: white;
+
+        border: 2px solid $color-black;
+        background-color: $color-black;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: #fff;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: $color-black;
+            background-color: white;
+
+            svg path {
+                stroke: $color-black;
+            }
+        }
+    }
+
+    &-black-nofill {
+        color: $color-black;
+
+        border: 2px solid $color-black;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-black;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-black;
+
+            svg path {
+                stroke: white;
+            }
+        }
+    }
+
+    &-green {
+        color: $color-green;
+
+        border: 2px solid $color-green;
+        background-color: white;
+
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: $color-green;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: white;
+            background-color: $color-green;
+            border: 2px solid $color-green;
+
+            svg path {
+                stroke: white;
+            }
+        }
+    }
+
+    &-green-fill {
+        background-color: $color-green;
+        border: 2px solid rgba($color-green, 0.1);
+        transition: all 0.4s ease-in-out;
+
+        svg path {
+            stroke: #fff;
+            transition: all 0.4s ease-in-out;
+        }
+
+        &:hover {
+            color: $color-green;
+            background-color: white;
+
+            svg path {
+                stroke: $color-green;
+            }
+        }
+    }
+
+    //Кнопка бургера
+    &-toggel {
+        position: relative;
+        width: 48px;
+        height: 48px;
+
+        padding: 0;
+
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        flex-direction: column;
+
+        border-radius: 50%;
+        border: 2px solid rgba(35, 38, 47, 0.1);
+
+        transition: all 0.4s ease-in-out;
+
+        & .line {
+            display: block;
+            margin: 0;
+            width: 14px;
+
+            height: 1px;
+            background-color: $color-black;
+            transition: all 0.4s ease-in-out;
+
+            &:nth-child(2) {
+                margin-top: 7px;
+            }
+
+            @media (max-width: 990.98px) {
+                &.active:nth-child(1) {
+                    transform: rotate(45deg);
+                }
+
+                &.active:nth-child(2) {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        &.active .line:nth-child(1) {
+            transform: translateY(3px) rotate(45deg);
+        }
+
+        &.active .line:nth-child(2) {
+            transform: translateY(-5px) rotate(-45deg);
+        }
+
+        &:hover {
+            border-color: rgba($color-black, .5);
+
+            &.line {
+                background-color: rgba($color-black, .5);
+            }
+        }
+
+        @include break992 {
+            display: flex;
+        }
+    }
+
+    //Стилизация кнопки на верх
+    &-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 5;
+
+        box-shadow: 0 0 5px 3px rgba($color-black, 0.15);
+        border-radius: 50%;
+
+        opacity: 0;
+
+        cursor: pointer;
+
+        visibility: hidden;
+        transform: translateX(1000px);
+        transition: all .5s ease-in-out;
+
+        &.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        svg {
+            path {
+                fill: $color-black;
+                transition: all 0.3s ease-in;
+            }
+
+            rect {
+                fill: white;
+                transition: all 0.3s ease-in;
+            }
+        }
+
+        &:hover {
+            svg {
+                path {
+                    fill: white;
+                }
+
+                rect {
+                    fill: rgba($color-black, 0.4);
+                }
+            }
+        }
+    }
+
+    @include break992 {
+        font-size: 15px;
+    }
+}
