@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\GoogleRecaptcha;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -70,6 +71,6 @@ class Kernel extends HttpKernel
         'isaccess' => \App\Http\Middleware\isAccess::class,
         'isUserBlocked' => \App\Http\Middleware\isUserBlocked::class,
         'userCanRateAnotherUser' => \App\Http\Middleware\UserCanRateAnotherUser::class,
-
+        'r' => GoogleRecaptcha::class,
     ];
 }

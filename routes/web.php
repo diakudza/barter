@@ -75,6 +75,22 @@ Route::group(['middleware' => 'guest'], function () { //for not authorized users
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
     Route::post('/registration', [UserController::class, 'registration'])->name('registration');
     Route::get('/login', [UserController::class, 'index'])->name('loginPage');
+//    Route::get('/forgetpassword', [UserController::class, 'forgetPasswordForm'])->name('forget.password');
+//    Route::post('/forgetpassword', [UserController::class, 'forgetPassword'])->name('forget.password.process');
+
+//--------------
+    Route::post('/forgot-password', [UserController::class, 'forgotpassword'])->name('password.email');
+    Route::post('/reset-password', [UserController::class, 'passwordUpdate'])->name('password.update');
+
+    Route::get('/forgot-password', function () {
+        return view('forgetPassword');
+    })->name('password.request');
+
+    Route::get('/reset-password/{token}', function ($token) {
+        return view('passwordReset', ['token' => $token]);
+    })->name('password.reset');
+
+
 });
 
 Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for authorized users
@@ -115,12 +131,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'isUserBlocked']]
 
     Route::get('adminChat', [AdminChatController::class, 'index'])->name('adminChat')
         ->withoutMiddleware([isAdmin::class])
-        ->middleware('isModerator')
-    ;
+        ->middleware('isModerator');
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain')
         ->withoutMiddleware([isAdmin::class])
-        ->middleware('isModerator')
-    ;
+        ->middleware('isModerator');
     Route::get('/system', [SysController::class, 'index'])->name('admin.system')
         ->withoutMiddleware([isAdmin::class])->middleware('isDeveloper');
     Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action')
