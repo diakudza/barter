@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\AdUserFavorites;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\ComplainController;
@@ -38,6 +39,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/payment', [MainController::class, 'payment'])->name('payment');
 Route::get('/search', [SearchController::class, 'index'])->name('searchPage');
 Route::post('/search', [SearchController::class, 'search'])->name('search');
 Route::resource('ad', AdController::class);
@@ -69,14 +71,16 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::post('storeUserComplain', [ChatController::class, 'storeUserComplain'])->name('storeUserComplain');
     Route::post('storeSupportTicket', [ChatController::class, 'storeSupportTicket'])->name('storeSupportTicket');
     Route::resource('chat', ChatController::class);
+
+    Route::post('/payment', [PaymentController::class,'payWithpaypal'])->name('payment');
+    Route::get('/payment/status',[PaymentController::class, 'getPaymentStatus'])->name('status');
+
 });
 
 Route::group(['middleware' => 'guest'], function () { //for not authorized users
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
     Route::post('/registration', [UserController::class, 'registration'])->name('registration');
     Route::get('/login', [UserController::class, 'index'])->name('loginPage');
-//    Route::get('/forgetpassword', [UserController::class, 'forgetPasswordForm'])->name('forget.password');
-//    Route::post('/forgetpassword', [UserController::class, 'forgetPassword'])->name('forget.password.process');
 
 //--------------
     Route::post('/forgot-password', [UserController::class, 'forgotpassword'])->name('password.email');

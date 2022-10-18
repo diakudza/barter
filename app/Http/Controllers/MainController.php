@@ -25,4 +25,9 @@ class MainController extends Controller
         ]);
     }
 
+    public function payment()
+    {
+        return view('payment');
+    }
+
 }
