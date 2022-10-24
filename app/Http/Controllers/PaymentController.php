@@ -37,8 +37,9 @@ class PaymentController extends Controller
     public function payWithpaypal(Request $request): \Illuminate\Http\RedirectResponse
     {
         $amountToBePaid = $request->input('amountToBePaid');
-        $paymentDescription = $request->input('paymentDescription') ?? 'text';
-        $currency = $request->input('currency') ?? 'USD';
+
+        $paymentDescription = $request->input('paymentDescription');
+        $currency = $request->input('currency') ?? 'text';
         $quantity = $request->input('quantity') ?? '1';
 
         $payer = new Payer();
@@ -46,7 +47,8 @@ class PaymentController extends Controller
 
         $item_1 = new Item();
         $item_1->setName($paymentDescription) /** название элемента **/
-            ->setCurrency($currency)
+
+            ->setCurrency('RUB')
             ->setQuantity($quantity)
             ->setPrice($amountToBePaid); /** цена **/
 

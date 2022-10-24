@@ -28,3 +28,7 @@ composer install
 * * * * * cd /projects/barter && ./vendor/bin/sail artisan schedule:run >> /dev/null 2>&1
 ````
 (где "/projects/barter" путь до корня к проекту)
+
+Добавлена возможность пополнят счет, через YooKassa. Для локального тестирования необходимо установить ngrok, зарегистрировать акаунт и запустит его командой:
+``ngrok http  --scheme=https 127.0.0.1:80
+``

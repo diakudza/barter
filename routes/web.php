@@ -13,6 +13,7 @@ use App\Http\Controllers\AdUserFavorites;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentYookassaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\ComplainController;
@@ -71,11 +72,15 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::post('storeUserComplain', [ChatController::class, 'storeUserComplain'])->name('storeUserComplain');
     Route::post('storeSupportTicket', [ChatController::class, 'storeSupportTicket'])->name('storeSupportTicket');
     Route::resource('chat', ChatController::class);
-
+    //--PayPal
     Route::post('/payment', [PaymentController::class,'payWithpaypal'])->name('payment');
     Route::get('/payment/status',[PaymentController::class, 'getPaymentStatus'])->name('status');
+    //---- YooKassa
+    Route::get('/payments',[PaymentYookassaController::class, 'index'])->name('payment.form.yookassa');
+    Route::post('/payments',[PaymentYookassaController::class, 'create'])->name('payment.create.yookassa');
 
 });
+Route::post('/payments/callback',[PaymentYookassaController::class, 'callback'])->name('payment.callback.yookassa');
 
 Route::group(['middleware' => 'guest'], function () { //for not authorized users
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
