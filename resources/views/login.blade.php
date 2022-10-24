@@ -51,7 +51,8 @@
             <div class="mb-3">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" class="@error('password') is-invalid @enderror">
             </div>
-            <a href="#">Забыли пароль?</a>
+            <a href="{{route('password.request')}}">Забыли пароль?</a>
+
             <button type="submit" class="btn bthEnter bth-login btn-primary">Войти</button>
         </form>
     </div>

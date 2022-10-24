@@ -230,4 +230,30 @@ class User extends Authenticatable
     {
         return Cache::has('user-is-online-' . $this->id);
     }
+
+    public function getBalance()
+    {
+        return DB::table('user_balance')
+            ->select('amount')
+            ->where('user_id', $this->id)
+            ->first() ?? 0;
+    }
+
+    public function setBalance($amount): void
+    {
+        $balanceForUser = DB::table('user_balance')->where('user_id', $this->id)->first();
+
+        if (!$balanceForUser) {
+            DB::table('user_balance')
+                ->insert([
+                    'user_id' => $this->id,
+                    'amount' => (float)$amount
+                ]);
+        } else {
+            DB::table('user_balance')->where('user_id', $this->id)->increment('amount', $amount);
+        }
+
+        return;
+    }
+
 }

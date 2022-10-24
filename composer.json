@@ -15,7 +15,9 @@
         "hflabs/dadata": "^22.3",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "paypal/rest-api-sdk-php": "^1.14",
+        "yoomoney/yookassa-sdk-php": "^2.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

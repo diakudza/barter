@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\AdUserFavorites;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentYookassaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\ComplainController;
@@ -38,6 +40,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/payment', [MainController::class, 'payment'])->name('payment');
 Route::get('/search', [SearchController::class, 'index'])->name('searchPage');
 Route::post('/search', [SearchController::class, 'search'])->name('search');
 Route::resource('ad', AdController::class);
@@ -69,12 +72,40 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::post('storeUserComplain', [ChatController::class, 'storeUserComplain'])->name('storeUserComplain');
     Route::post('storeSupportTicket', [ChatController::class, 'storeSupportTicket'])->name('storeSupportTicket');
     Route::resource('chat', ChatController::class);
+    //--PayPal
+    Route::post('/payment', [PaymentController::class,'payWithpaypal'])->name('payment');
+    Route::get('/payment/status',[PaymentController::class, 'getPaymentStatus'])->name('status');
+    //---- YooKassa
+    Route::get('/payments',[PaymentYookassaController::class, 'index'])->name('payment.form.yookassa');
+    Route::post('/payments',[PaymentYookassaController::class, 'create'])->name('payment.create.yookassa');
+
+    Route::resource('favorite', AdUserFavorites::class);
+    Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
+    Route::post('storeAdComplain', [ChatController::class, 'storeAdComplain'])->name('storeAdComplain');
+    Route::post('storeUserComplain', [ChatController::class, 'storeUserComplain'])->name('storeUserComplain');
+    Route::post('storeSupportTicket', [ChatController::class, 'storeSupportTicket'])->name('storeSupportTicket');
+    Route::resource('chat', ChatController::class);
 });
+Route::post('/payments/callback',[PaymentYookassaController::class, 'callback'])->name('payment.callback.yookassa');
 
 Route::group(['middleware' => 'guest'], function () { //for not authorized users
     Route::post('/auth', [UserController::class, 'login'])->name('auth');
     Route::post('/registration', [UserController::class, 'registration'])->name('registration');
     Route::get('/login', [UserController::class, 'index'])->name('loginPage');
+
+//--------------
+    Route::post('/forgot-password', [UserController::class, 'forgotpassword'])->name('password.email');
+    Route::post('/reset-password', [UserController::class, 'passwordUpdate'])->name('password.update');
+
+    Route::get('/forgot-password', function () {
+        return view('forgetPassword');
+    })->name('password.request');
+
+    Route::get('/reset-password/{token}', function ($token) {
+        return view('passwordReset', ['token' => $token]);
+    })->name('password.reset');
+
+
 });
 
 Route::group(['middleware' => ['auth', 'isUserBlocked']], function () {  //for authorized users
@@ -115,12 +146,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'isUserBlocked']]
 
     Route::get('adminChat', [AdminChatController::class, 'index'])->name('adminChat')
         ->withoutMiddleware([isAdmin::class])
-        ->middleware('isModerator')
-    ;
+        ->middleware('isModerator');
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain')
         ->withoutMiddleware([isAdmin::class])
-        ->middleware('isModerator')
-    ;
+        ->middleware('isModerator');
+
     Route::get('/system', [SysController::class, 'index'])->name('admin.system')
         ->withoutMiddleware([isAdmin::class])->middleware('isDeveloper');
     Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action')
