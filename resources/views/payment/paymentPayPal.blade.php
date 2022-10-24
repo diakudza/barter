@@ -9,6 +9,7 @@
     <div class="about-project">
         <form action="{{route('payment')}}" method="POST">
             @csrf
+
             <input name="amountToBePaid" placeholder="amountToBePaid">
             <select name="currency" placeholder="currency">
                 <option value="USD" selected>USD</option>
