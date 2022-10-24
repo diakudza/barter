@@ -79,7 +79,6 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::get('/payments',[PaymentYookassaController::class, 'index'])->name('payment.form.yookassa');
     Route::post('/payments',[PaymentYookassaController::class, 'create'])->name('payment.create.yookassa');
 
-
 });
 Route::post('/payments/callback',[PaymentYookassaController::class, 'callback'])->name('payment.callback.yookassa');
 
