@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         'isUserBlocked' => \App\Http\Middleware\isUserBlocked::class,
         'userCanRateAnotherUser' => \App\Http\Middleware\UserCanRateAnotherUser::class,
         'r' => GoogleRecaptcha::class,
+
     ];
 }

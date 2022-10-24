@@ -89,6 +89,7 @@
                                         руб.
                                     </p> <a href="{{route('payment.form.yookassa')}}"> Пополнить</a>
                                 </div>
+
                             </div>
 
                         </div>

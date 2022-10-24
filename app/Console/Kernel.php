@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
         })->everyMinute(); // autochange ads status
 
         $schedule->command('auth:clear-resets')->everyFifteenMinutes();
+
     }
 
     /**

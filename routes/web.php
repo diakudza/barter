@@ -79,6 +79,12 @@ Route::group(['middleware' => 'auth'], function () {  //for authorized users
     Route::get('/payments',[PaymentYookassaController::class, 'index'])->name('payment.form.yookassa');
     Route::post('/payments',[PaymentYookassaController::class, 'create'])->name('payment.create.yookassa');
 
+    Route::resource('favorite', AdUserFavorites::class);
+    Route::post('chatFormAd', [ChatController::class, 'chatFormAd'])->name('chat.from.ad');
+    Route::post('storeAdComplain', [ChatController::class, 'storeAdComplain'])->name('storeAdComplain');
+    Route::post('storeUserComplain', [ChatController::class, 'storeUserComplain'])->name('storeUserComplain');
+    Route::post('storeSupportTicket', [ChatController::class, 'storeSupportTicket'])->name('storeSupportTicket');
+    Route::resource('chat', ChatController::class);
 });
 Route::post('/payments/callback',[PaymentYookassaController::class, 'callback'])->name('payment.callback.yookassa');
 
@@ -144,6 +150,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'isUserBlocked']]
     Route::get('/main', [AdminController::class, 'main'])->name('adminmain')
         ->withoutMiddleware([isAdmin::class])
         ->middleware('isModerator');
+
     Route::get('/system', [SysController::class, 'index'])->name('admin.system')
         ->withoutMiddleware([isAdmin::class])->middleware('isDeveloper');
     Route::get('/system/action/{action}', [SysController::class, 'action'])->name('admin.system.action')

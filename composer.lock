@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "76615fdaf8a9bbdda5c2defb09e81f15",
     "packages": [
         {
@@ -232,6 +233,7 @@
         },
         {
             "name": "doctrine/dbal",
+
             "version": "3.4.4",
             "source": {
                 "type": "git",
@@ -5739,6 +5741,7 @@
                 "yoomoney"
             ],
             "time": "2022-10-07T10:30:14+00:00"
+
         }
     ],
     "packages-dev": [
